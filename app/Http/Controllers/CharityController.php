@@ -15,6 +15,8 @@ class CharityController extends Controller
     public function index()
     {
         //
+        $charities=Charity::all();
+        return view('Charity.index',['charities'=>$charities]);
     }
 
     /**
@@ -24,7 +26,8 @@ class CharityController extends Controller
      */
     public function create()
     {
-        //
+        return view('Charity.crup');
+
     }
 
     /**
@@ -36,6 +39,8 @@ class CharityController extends Controller
     public function store(Request $request)
     {
         //
+        echo "store function";
+        return redirect(route('charity.index'));
     }
 
     /**
@@ -70,6 +75,8 @@ class CharityController extends Controller
     public function update(Request $request, Charity $charity)
     {
         //
+        return "update function";
+
     }
 
     /**

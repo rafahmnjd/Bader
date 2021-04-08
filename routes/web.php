@@ -20,4 +20,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('Fill', 'FillController');
+// Route::resource('fill', 'FillController');
+Route::resource('charity', 'CharityController');
+Route::resource('volunteer', 'VolunteerController');
+// Route::resource('fill', 'FillController');
+
