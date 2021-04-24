@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Fill;
+use App\Models\Fill;
 use Illuminate\Http\Request;
 
 class FillController extends Controller
@@ -41,7 +41,7 @@ class FillController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Fill  $fill
+     * @param  \App\Models\Fill  $fill
      * @return \Illuminate\Http\Response
      */
     public function show(Fill $fill)
@@ -52,7 +52,7 @@ class FillController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Fill  $fill
+     * @param  \App\Models\Fill  $fill
      * @return \Illuminate\Http\Response
      */
     public function edit(Fill $fill)
@@ -64,7 +64,7 @@ class FillController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Fill  $fill
+     * @param  \App\Models\Fill  $fill
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Fill $fill)
@@ -75,7 +75,7 @@ class FillController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Fill  $fill
+     * @param  \App\Models\Fill  $fill
      * @return \Illuminate\Http\Response
      */
     public function destroy(Fill $fill)

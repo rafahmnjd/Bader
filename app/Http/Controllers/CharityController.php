@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Charity;
+use App\Models\Charity;
 use Illuminate\Http\Request;
 
 class CharityController extends Controller
@@ -46,7 +46,7 @@ class CharityController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Charity  $charity
+     * @param  \App\Models\Charity  $charity
      * @return \Illuminate\Http\Response
      */
     public function show(Charity $charity)
@@ -57,7 +57,7 @@ class CharityController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Charity  $charity
+     * @param  \App\Models\Charity  $charity
      * @return \Illuminate\Http\Response
      */
     public function edit(Charity $charity)
@@ -69,7 +69,7 @@ class CharityController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Charity  $charity
+     * @param  \App\Models\Charity  $charity
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Charity $charity)
@@ -82,7 +82,7 @@ class CharityController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Charity  $charity
+     * @param  \App\Models\Charity  $charity
      * @return \Illuminate\Http\Response
      */
     public function destroy(Charity $charity)

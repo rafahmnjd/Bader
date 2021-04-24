@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Article;
+use App\Models\Article;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -41,7 +41,7 @@ class ArticleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Article  $article
+     * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
     public function show(Article $article)
@@ -52,7 +52,7 @@ class ArticleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Article  $article
+     * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
     public function edit(Article $article)
@@ -64,7 +64,7 @@ class ArticleController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Article  $article
+     * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Article $article)
@@ -75,7 +75,7 @@ class ArticleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Article  $article
+     * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
     public function destroy(Article $article)

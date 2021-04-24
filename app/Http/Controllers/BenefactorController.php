@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Benefactor;
+use App\Models\Benefactor;
 use Illuminate\Http\Request;
 
 class BenefactorController extends Controller
@@ -41,7 +41,7 @@ class BenefactorController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Benefactor  $benefactor
+     * @param  \App\Models\Benefactor  $benefactor
      * @return \Illuminate\Http\Response
      */
     public function show(Benefactor $benefactor)
@@ -52,7 +52,7 @@ class BenefactorController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Benefactor  $benefactor
+     * @param  \App\Models\Benefactor  $benefactor
      * @return \Illuminate\Http\Response
      */
     public function edit(Benefactor $benefactor)
@@ -64,7 +64,7 @@ class BenefactorController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Benefactor  $benefactor
+     * @param  \App\Models\Benefactor  $benefactor
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Benefactor $benefactor)
@@ -75,7 +75,7 @@ class BenefactorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Benefactor  $benefactor
+     * @param  \App\Models\Benefactor  $benefactor
      * @return \Illuminate\Http\Response
      */
     public function destroy(Benefactor $benefactor)
