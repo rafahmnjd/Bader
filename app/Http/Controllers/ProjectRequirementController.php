@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\ProjectRequirement;
+use App\Models\ProjectRequirement;
 use Illuminate\Http\Request;
 
 class ProjectRequirementController extends Controller
@@ -41,7 +41,7 @@ class ProjectRequirementController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\ProjectRequirement  $projectRequirement
+     * @param  \App\Models\ProjectRequirement  $projectRequirement
      * @return \Illuminate\Http\Response
      */
     public function show(ProjectRequirement $projectRequirement)
@@ -52,7 +52,7 @@ class ProjectRequirementController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\ProjectRequirement  $projectRequirement
+     * @param  \App\Models\ProjectRequirement  $projectRequirement
      * @return \Illuminate\Http\Response
      */
     public function edit(ProjectRequirement $projectRequirement)
@@ -64,7 +64,7 @@ class ProjectRequirementController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ProjectRequirement  $projectRequirement
+     * @param  \App\Models\ProjectRequirement  $projectRequirement
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, ProjectRequirement $projectRequirement)
@@ -75,7 +75,7 @@ class ProjectRequirementController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\ProjectRequirement  $projectRequirement
+     * @param  \App\Models\ProjectRequirement  $projectRequirement
      * @return \Illuminate\Http\Response
      */
     public function destroy(ProjectRequirement $projectRequirement)

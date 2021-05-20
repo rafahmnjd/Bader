@@ -16,12 +16,12 @@ class CreateCharitiesTable extends Migration
         Schema::create('charities', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('name_en');
-            $table->string('name_ar');
+            $table->string('name_en')->nullable();
+            $table->string('name_ar')->nullable();
             $table->unsignedInteger('license')->unique();
-            $table->unsignedBigInteger('gov_id');
-            $table->unsignedBigInteger('city_id');
-            $table->unsignedBigInteger('area_id');
+            $table->unsignedBigInteger('country_id')->nullable();
+            $table->unsignedBigInteger('city_id')->nullable();
+            $table->unsignedBigInteger('state_id')->nullable();
             $table->string('address_ar')->nullable();
             $table->string('address_en')->nullable();
             $table->string('whatsapp')->nullable();

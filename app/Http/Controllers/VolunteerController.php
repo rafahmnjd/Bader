@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Volunteer;
+use App\Models\Volunteer;
 use Illuminate\Http\Request;
 
 class VolunteerController extends Controller
@@ -41,7 +41,7 @@ class VolunteerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Volunteer  $volunteer
+     * @param  \App\Models\Volunteer  $volunteer
      * @return \Illuminate\Http\Response
      */
     public function show(Volunteer $volunteer)
@@ -52,7 +52,7 @@ class VolunteerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Volunteer  $volunteer
+     * @param  \App\Models\Volunteer  $volunteer
      * @return \Illuminate\Http\Response
      */
     public function edit(Volunteer $volunteer)
@@ -64,7 +64,7 @@ class VolunteerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Volunteer  $volunteer
+     * @param  \App\Models\Volunteer  $volunteer
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Volunteer $volunteer)
@@ -75,7 +75,7 @@ class VolunteerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Volunteer  $volunteer
+     * @param  \App\Models\Volunteer  $volunteer
      * @return \Illuminate\Http\Response
      */
     public function destroy(Volunteer $volunteer)
