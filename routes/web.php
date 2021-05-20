@@ -15,8 +15,28 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('base');
+Route::view('/about','about.index')->name('about');
+
+Route::get('locale/{locale}', function ($locale) {
+    if (!in_array($locale, ['en', 'ar'])) {
+        abort(400);
+    }
+    // dd($locale);
+    Session::put('locale', $locale);
+    App::setLocale($locale);
+    return redirect()->back();
+})->name('lang');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::middleware(['auth'])->group(function () {
+Route::resource('charities', 'CharityController');
+Route::resource('volunteers', 'VolunteerController');
+
+
+});
+
