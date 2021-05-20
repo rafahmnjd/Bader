@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Charity;
 use Illuminate\Http\Request;
-
+use Auth;
 class CharityController extends Controller
 {
     /**
@@ -40,7 +40,7 @@ class CharityController extends Controller
     {
         //
         echo "store function";
-        return redirect(route('charity.index'));
+        return redirect(route('charities.index'));
     }
 
     /**

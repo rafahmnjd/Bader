@@ -21,58 +21,26 @@
         <div class="card">
             <div class="card-header"></div>
             <div class="card-body">
-                <form action="{{empty($charity)? route('charity.store') : route('charity.update',$charity)}}" method="Post"enctype="multipart/form-data">
+                <form action="{{empty($charity)? route('charities.store') : route('charities.update',$charity)}}"
+                    method="Post" enctype="multipart/form-data">
                     @csrf
                     @if (!empty($charity))
                     @method('PUT')
                     @endif
                     <div class="row">
-                        <div class="col-md-12 col-form-label text-md-left">
-                            <label class="" for="id">{{ __('id') }} : </label>
-                            @if (!empty($charity))
-                            {{ $charity->id }}
-                            @endif
-                        </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-2 col-form-label text-md-left">
                             <label for="name_ar">{{ __('Arabic Name') }}:</label>
                         </div>
                         <div class="col-4"><input class="form-control" type="text" name="name_ar"
-                            value=@if(!empty($charity) && old('name_ar', $charity->name_ar))
+                                value=@if(!empty($charity) && old('name_ar', $charity->name_ar))
                             {{ $charity->name_ar }}@else {{old('name_ar')}} @endif>
                         </div>
                         <div class="col-md-2 col-form-label text-md-left">
-                            <label for="name_ar">{{ __('English Name') }}:</label>
+                            <label for="name_en">{{ __('English Name') }}:</label>
                         </div>
-                        <div class="col-4"><input class="form-control" type="text" name="name_en" value=@if(!empty($charity) && old('name_en', $charity->name_en))
+                        <div class="col-4"><input class="form-control" type="text" name="name_en"
+                                value=@if(!empty($charity) && old('name_en', $charity->name_en))
                             {{ $charity->name_en }}@else{{old('name_en')}} @endif>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2 col-form-label text-md-left">
-                            <label for="start_date">{{ __('Start Date') }}:</label>
-                        </div>
-                        <div class="col-4">
-                            <input class="form-control" type="date" name="start_date" value=@if (!empty($charity) &&
-                                old('start_date', $charity->start_date)) {{ $charity->start_date }}@else{{old('start_date')}}
-                            @endif>
-                        </div>
-                        <div class="col-md-2 col-form-label text-md-left">
-                            <label for="end_date">{{ __('End Date') }}:</label>
-                        </div>
-                        <div class="col-4"><input class="form-control" type="date" name="end_date"
-                            value=@if(!empty($charity) && old('end_date', $charity->end_date))
-                            {{ $charity->end_date }}@else{{old('end_date')}} @endif>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4 col-form-label " style="text-align:start">
-                            <label for="active">{{ __('Active') }}:</label>
-                        </div>
-                        <div class="col-8">
-                            <input type="checkbox" class="form-check" name="active" value="1" @if (!empty($charity) &&
-                                old('active', $charity->active)) checked @else{{old('active')}} @endif>
                         </div>
                     </div>
                     <div class="row">
@@ -82,11 +50,13 @@
                         </div>
                         @if (!empty($charity))
                         <div class="col-md-2 col-form-label " style="text-align:start">
-                            <img src="{{ asset('storage/charities/logo/' . $charity->logo_ar) }}" class="img-fluid img-thumbnail">
+                            <img src="{{ asset('storage/charities/logo/' . $charity->logo_ar) }}"
+                                class="img-fluid img-thumbnail">
                         </div>
                         @endif
                         <div class="col-8">
-                            <input class="form-control" type="file" name="logo_ar" @if (empty($charity)) required @endif>
+                            <input class="form-control" type="file" name="logo_ar" @if (empty($charity)) required
+                                @endif>
                         </div>
                     </div>
                     <div class="row">
@@ -97,21 +67,27 @@
 
                         @if (!empty($charity))
                         <div class="col-md-2 col-form-label " style="text-align:start">
-                            <img src="{{ asset('storage/charities/logo/' . $charity->logo_en) }}" class="img-fluid img-thumbnail">
+                            <img src="{{ asset('storage/charities/logo/' . $charity->logo_en) }}"
+                                class="img-fluid img-thumbnail">
                         </div>
                         @endif
 
                         <div class="col-8">
-                            <input class="form-control" type="file" name="logo_en" @if (empty($charity)) required @endif>
+                            <input class="form-control" type="file" name="logo_en" @if (empty($charity)) required
+                                @endif>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col--md-2 col-form-label">
 
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-6 text-md-center">
                             <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
                         </div>
                         <div class="col-6 text-md-center">
-                            <a href="{{ route('charity.index') }}" type="button"
+                            <a href="{{ route('charities.index') }}" type="button"
                                 class="btn btn-secondary">{{ __('Cancel') }}</a>
                         </div>
                     </div>
