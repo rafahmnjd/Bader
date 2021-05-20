@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('base');
+Route::view('/about','about.index')->name('about');
 
 Route::get('locale/{locale}', function ($locale) {
     if (!in_array($locale, ['en', 'ar'])) {
@@ -33,11 +34,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::middleware(['auth'])->group(function () {
-Route::resource('charity', 'CharityController');
-Route::resource('volunteer', 'VolunteerController');
+Route::resource('charities', 'CharityController');
+Route::resource('volunteers', 'VolunteerController');
+
 
 });
-// Route::resource('fill', 'FillController');
-
-// Route::resource('fill', 'FillController');
 

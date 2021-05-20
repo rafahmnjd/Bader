@@ -64,12 +64,12 @@
                                     <div class="btn-group-justified">
                                         <div class="btn-group">
                                             <a class="btn btn-outline-warning rounded-circle"
-                                                href="{{ route('charity.edit', $charity->id) }}">
+                                                href="{{ route('charities.edit', $charity->id) }}">
                                                 <i class="zmdi zmdi-settings"></i>
                                             </a>
                                         </div>
                                         <div class="btn-group">
-                                            <form action="{{ route('charity.destroy', $charity->id) }}" method="POST">
+                                            <form action="{{ route('charities.destroy', $charity->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button Type="submit" class="btn rounded-circle btn-outline-danger">

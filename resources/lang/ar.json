@@ -1,1 +1,43 @@
-{}
+{
+
+
+    "Home":"الصفحة الرئيسية"
+    ,"Login":"تسجيل الدخول"
+    ,"Logout" : "تسجيل الخروج"
+    ,"Password" : "كلمة المرور"
+    ,"Email" : "البريد الالكتروني"
+    ,"Forgot your password?" : "هل نسيت كلمة المرور؟"
+    ,"Name" : "الاسم"
+    ,"Confirm Password" : "تأكيد كلمة المرور"
+    ,"Already registered?" : "لديك حساب بالفعل ؟"
+    ,"Register" : "التسجيل"
+    ,"E-Mail Address":"عنوان البريد الاكتروني"
+    ,"Update Password":"تعديل كلمة المرور"
+    ,"Ensure your account is using a long, random password to stay secure.":"تأكد من اختيار كلمة مرور طولة , كلمة مرور عشوائية  للامان"
+    ,"Current Password":"كلمة المرور الحالية"
+    ,"New Password":"كلمة المرور الجديدة"
+    ,"Remember Me":"تذكرني"
+    ,"Forgot Your Password?":"نسيت كلمة المرور؟"
+    ,"Verify Your Email Address":"تحقق من عنوان بريدك الإلكتروني"
+
+    ,"A fresh verification link has been sent to your email address.":"تم إرسال رابط تحقق جديد إلى عنوان بريدك الإلكتروني"
+    ,"Before proceeding, please check your email for a verification link.":"قبل المتابعة ، يرجى التحقق من بريدك الإلكتروني للحصول على رابط التحقق."
+    ,"If you did not receive the email":"إذا لم تستلم البريد الإلكتروني"
+    ,"click here to request another":"انقر هنا لطلب آخر"
+
+    ,"Please confirm your password before continuing.":".يرجى تأكيد كلمة المرور الخاصة بك قبل المتابعة."
+    ,"Reset Password":"إعادة تعيين كلمة المرور"
+    ,"Send Password Reset Link":"إرسال رابط إعادة تعيين كلمة السر"
+
+
+    ,"about_title":"لمحة عن الموقع"
+    ,"about_content":"منصة وطنية إلكترونية لتكون هي صلة الوصل المباشرة والشفافة بين الجهات المانحة والمتبرعين من داخل وخارج سورية من جانب، وبين المؤسسات والجمعيات المعنية بإيصال المساعدات وتنفيذ البرامج التنموية من الجانب الآخر."
+    ,"goals_title":"أهداف المنصة"
+    ,"Role":"السماحية"
+    ,"Charity":"جمعية"
+    ,"Volunteer":"متطوع"
+    ,"benef":"متبرع"
+
+
+
+}

@@ -22,6 +22,15 @@
         <link href="{{ asset('css/zmdi.css') }}" rel="stylesheet">
 
         @yield('style')
+
+        @if(app()->getLocale() == 'ar')
+        <style>
+            h1,h2,h3,h4,h5,h6,p,label,div{
+               text-align: right;
+            }
+        </style>
+        @endif
+
     </head>
 
     <body>
@@ -29,11 +38,12 @@
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm mb-2">
                 <div class="container">
-                    <a class="navbar-brand" href="{{route('home')}}">{{ config('app.name', 'Laravel') }}</a>
+                    <a class="navbar-brand" href="{{route('about')}}">{{ config('app.name', 'Laravel') }}</a>
                     <div class="navbar-collapse collapse show" id="navbarColor01">
 
                         <!-- Left Side Of Navbar -->
                         <ul class="navbar-nav @if(app()->getLocale() == 'ar') ml-auto text-right @else mr-auto @endif">
+                            <a class="nav-link" href="{{route('base')}}">{{__('Home')}}</a>
                             @yield('left_nav')
                             @if(App::isLocale('en'))
                             <a class="nav-link" href="{{ route('lang','ar') }}">{{ __('Ar') }}</a>
@@ -79,7 +89,8 @@
                 </div>
             </nav>
 
-            <main class="container py-4">
+            {{-- <main class="container-fluid"> --}}
+            <main class="container">
                 @yield('content')
             </main>
         </div>
@@ -88,8 +99,5 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{asset('js/jquery.min.js')}}"></script>
     @yield('script')
-    {{-- <script src="{{asset('js/jquery.min.js')}}"></script>
-    <script src="{{asset('js/app.js')}}" type="script"></script> --}}
-
-</html>
