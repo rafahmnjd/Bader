@@ -18,7 +18,7 @@ class CreateCharitiesTable extends Migration
             $table->unsignedBigInteger('user_id');//
             $table->string('name_en')->nullable();//
             $table->string('name_ar')->nullable();//
-            $table->unsignedInteger('license')->unique();
+            $table->unsignedInteger('license')->nullable()->unique();
             $table->unsignedBigInteger('country_id')->nullable();
             $table->unsignedBigInteger('city_id')->nullable();
             $table->unsignedBigInteger('state_id')->nullable();
