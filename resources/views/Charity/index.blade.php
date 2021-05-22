@@ -9,24 +9,26 @@
                         <thead>
                             <tr>
                                 <th scope="col">{{ __('id') }}</th>
-                                <th scope="col">{{ __('name_ar') }}</th>
-                                <th scope="col">{{ __('name_en') }}</th>
-                                <th scope="col">{{ __('license') }}</th>
-                                <th scope="col">{{ __('city') }}</th>
-                                <th scope="col">{{ __('logo_ar') }}</th>
-                                <th scope="col">{{ __('logo_en') }}</th>
-                                <th scope="col">{{ __('cover') }}</th>
+                                <th scope="col">{{ __('Arabic Name') }}</th>
+                                <th scope="col">{{ __('English Name') }}</th>
+                                <th scope="col">{{ __('Logo_AR') }}</th>
+                                <th scope="col">{{ __('Logo_EN') }}</th>
+                                <th scope="col">{{ __('Cover') }}</th>
+                                <th scope="col">{{ __('License') }}</th>
+                                <th scope="col">{{ __('Email') }}</th>
+                                <th scope="col">{{ __('City') }}</th>
+
                                 <th scope="col" width="150">{{ __('Control') }}</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($charities as $charity)
                             <tr>
-                                <th scope="row">{{ $charity->id }}</th>
+                                <th scope="row">
+                                    {{ $charity->id }}</th>
+
                                 <td>{{ $charity->name_ar }}</td>
                                 <td>{{ $charity->name_en }}</td>
-                                <td>{{ $charity->license }}</td>
-                                <td>{{ $charity->city }}</td>
                                 <td style="width:10% ; max-width:15%;"><img
                                         src="{{ asset(config('path.ch_logo').$charity->logo_ar) }}"
                                         class=" img-fluid img-thumbnail">
@@ -39,6 +41,12 @@
                                         src="{{ asset(config('path.covers').$charity->cover)}}"
                                         class=" img-fluid img-thumbnail">
                                 </td>
+                                
+                                <td>{{ $charity->license }}</td>
+                                <td>{{ $charity->email }}</td>
+                                <td>{{ $charity->city }}</td>
+
+
                                 <td>
                                     <div class="btn-group-justified">
                                         <div class="btn-group">

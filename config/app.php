@@ -52,9 +52,9 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost:81/fifthYear/gitlapGroup/networkingOfCharities/v1/'),
+    'url' => env('APP_URL', null),
 
-    'asset_url' => env('ASSET_URL', 'http://localhost:81/fifthYear/gitlapGroup/networkingOfCharities/v1/public'),
+    'asset_url' => env('ASSET_URL', null),
 
     /*
     |--------------------------------------------------------------------------
