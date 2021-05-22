@@ -17,8 +17,8 @@ class CharityController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('can:admin')->only('delete');
-        // $this->middleware('can::charity')->except('delete');
+        // $this->middleware('can:admin')->only('destroy');
+        // $this->middleware('can::charity')->except('destroy','show');
 
     }
 
@@ -61,7 +61,6 @@ class CharityController extends Controller
         $input = $request->except(['logo_ar', 'logo_en', 'cover']);
         if (request()->hasfile('logo_ar')) {
             $logo_arfilepath = public_path(config('path.ch_logo'));
-
             $logo_arfile = request()->file('logo_ar');
             $logo_arname = time() . "_ar." . $request->logo_ar->extension();
             $logo_arfile->move($logo_arfilepath, $logo_arname);
@@ -85,7 +84,6 @@ class CharityController extends Controller
         }
 
         $input = array_merge($input, ["user_id" => Auth::user()->id]);
-
         $charity = Charity::create($input);
         return redirect(route('charities.index'));
     }
@@ -99,6 +97,7 @@ class CharityController extends Controller
     public function show(Charity $charity)
     {
         //
+        return view('Charity.show');
     }
 
     /**
@@ -165,7 +164,11 @@ class CharityController extends Controller
         }
 
         $charity->update($input);
-
+        if ($charity->user_id == Auth::user()->id) {
+            return redirect(route('charities.show',$charity));
+        } else {
+            return redirect(route('charities.index'));
+        }
     }
 
     /**
