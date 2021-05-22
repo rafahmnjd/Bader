@@ -15,7 +15,7 @@ class CharityController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct() //صلاحيات
     {
         // $this->middleware('can:admin')->only('destroy');
         // $this->middleware('can::charity')->except('destroy','show');
@@ -27,7 +27,7 @@ class CharityController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index() //للادمن فقط
     {
         //
         $charities = Charity::all();
@@ -54,14 +54,14 @@ class CharityController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request)// حفظ من الكرييت
     {
         //
         // echo "store function";
-        $input = $request->except(['logo_ar', 'logo_en', 'cover']);
+        $input = $request->except(['logo_ar', 'logo_en', 'cover']); // ما بخزن الصور متل ما هنن
         if (request()->hasfile('logo_ar')) {
             $logo_arfilepath = public_path(config('path.ch_logo'));
-            $logo_arfile = request()->file('logo_ar');
+            $logo_arfile = request()->file('logo_ar');//بتعطي الصورة كفايل
             $logo_arname = time() . "_ar." . $request->logo_ar->extension();
             $logo_arfile->move($logo_arfilepath, $logo_arname);
             $input = array_merge($input, ["logo_ar" => $logo_arname]);
