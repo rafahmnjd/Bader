@@ -9,17 +9,17 @@
                         <thead>
                             <tr>
                                 <th scope="col">{{ __('id') }}</th>
-                                {{-- <th scope="col">{{ __('suite_id') }}</th> --}}
-                                <th scope="col">{{ __('Category') }}</th>
-                                <th scope="col">{{ __('Subegory') }}</th>
-                                <th scope="col">{{ __('name_ar') }}</th>
-                                <th scope="col">{{ __('name_en') }}</th>
-                                <th scope="col">{{ __('active') }}</th>
-                                <th scope="col">{{ __('descp_ar') }}</th>
-                                <th scope="col">{{ __('descp_en') }}</th>
-                                <th scope="col">{{ __('hits') }}</th>
-                                <th scope="col">{{ __('imgfile') }}</th>
-                                <th scope="col">{{ __('Control') }}</th>
+                                {{-- <th scope="col">{{ __('user_id') }}</th> --}}
+                                <th scope="col">{{ __('Arabic Name') }}</th>
+                                <th scope="col">{{ __('English Name') }}</th>
+                                <th scope="col">{{ __('License') }}</th>
+                                <th scope="col">{{ __('Email') }}</th>
+                                <th scope="col">{{ __('Phone') }}</th>
+                                <th scope="col">{{ __('Mobile') }}</th>
+                                <th scope="col">{{ __('Whatsapp') }}</th>
+                                <th scope="col">{{ __('Facebook') }}</th>
+                                <th scope="col">{{ __('Info_AR') }}</th>
+                                <th scope="col">{{ __('Info_EN') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -27,35 +27,39 @@
                             <tr>
                                 <th scope="row">
                                     {{ $charity->id }}</th>
-                                {{-- <td>{{ $charity->suite_id }}</td> --}}
-                                <td>
-                                    @if (!empty($charity->category))
-                                    @if (config('app.locale') == 'ar')
-                                    {{ $charity->category->name_ar }}
-                                    @else
-                                    {{ $charity->category->name_en }}
-                                    @endif
-                                    @endif
-                                </td>
-                                <td>
-                                    @if (!empty($charity->subcategory))
-                                    @if (config('app.locale') == 'ar')
-                                    {{ $charity->subcategory->name_ar }}
-                                    @else
-                                    {{ $charity->subcategory->name_en }}
-                                    @endif
-                                    @endif
-                                </td>
-
-
+                                {{-- <td>{{ $charity->user_id }}</td> --}}
 
                                 <td>{{ $charity->name_ar }}</td>
                                 <td>{{ $charity->name_en }}</td>
+                                
+                                
+                                <td>
+                                    @if (!empty($charity->license))
+                                    @if (config('app.locale') == 'ar')
+                                    {{ $charity->license->name_ar }}
+                                    @else
+                                    {{ $charity->license->name_en }}
+                                    @endif
+                                    @endif
+                                </td>
+                                <td>
+                                    @if (!empty($charity->email))
+                                    @if (config('app.locale') == 'ar')
+                                    {{ $charity->email->name_ar }}
+                                    @else
+                                    {{ $charity->email->name_en }}
+                                    @endif
+                                    @endif
+                                </td>
+                                 
 
-                                <td>{{ $charity->active }}</td>
-                                <td>{{ $charity->descp_ar }}</td>
-                                <td>{{ $charity->descp_en }}</td>
-                                <td>{{ $charity->hits }}</td>
+                                <td>{{ $charity->phone }}</td>
+                                <td>{{ $charity->mobile }}</td>
+                                <td>{{ $charity->whatsapp }}</td>
+                                <td>{{ $charity->facebook }}</td>
+                                <td>{{ $charity->info_ar }}</td>                                
+                                <td>{{ $charity->info_en }}</td>
+
                                 <td style="width:20% ; max-width:24%;"><img
                                         src="{{ asset('storage/charities/' . $charity->imgfile) }}"
                                         class=" img-fluid img-thumbnail">
