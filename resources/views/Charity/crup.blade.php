@@ -31,7 +31,7 @@
                         </div>
                         @if (!empty($charity))
                         <div class="col-md-2 col-form-label " style="text-align:start">
-                            <img src="{{ asset('storage/charities/cover/' . $charity->cover) }}"
+                            <img src="{{ asset(config('path.covers').$charity->cover) }}"
                                 class="img-fluid img-thumbnail">
                         </div>
                         @endif
@@ -48,7 +48,7 @@
                         </div>
                         @if (!empty($charity))
                         <div class="col-md-2 col-form-label " style="text-align:start">
-                            <img src="{{ asset('storage/charities/logo/' . $charity->logo_ar) }}"
+                            <img src="{{ asset(config('path.ch_logo').$charity->logo_ar) }}"
                                 class="img-fluid img-thumbnail">
                         </div>
                         @endif
@@ -68,7 +68,7 @@
 
                         @if (!empty($charity))
                         <div class="col-md-2 col-form-label " style="text-align:start">
-                            <img src="{{ asset('storage/charities/logo/' . $charity->logo_en) }}"
+                            <img src="{{ asset(config('path.ch_logo').$charity->logo_en) }}"
                                 class="img-fluid img-thumbnail">
                         </div>
                         @endif
@@ -86,47 +86,44 @@
                             <label for="name_ar">{{ __('Arabic Name') }}:</label>
                         </div>
                         <div class="col-4"><input class="form-control" type="text" name="name_ar"
-                                value=@if(!empty($charity) && old('name_ar', $charity->name_ar))
-                            {{ $charity->name_ar }}@else {{old('name_ar')}} @endif>
+                                value=@if(!empty($charity))"{{$charity->name_ar}}"@else "{{old('name_ar')}}" @endif>
                         </div>
                         <div class="col-md-2 col-form-label text-md-left">
                             <label for="name_en">{{ __('English Name') }}:</label>
                         </div>
                         <div class="col-4"><input class="form-control" type="text" name="name_en"
-                                value=@if(!empty($charity) && old('name_en', $charity->name_en))
-                            {{ $charity->name_en }}@else{{old('name_en')}} @endif>
+                                value=@if(!empty($charity))"{{$charity->name_en}}" @else "{{old('name_en')}}" @endif>
                         </div>
                     </div>
 
 
                     <!--license   ماخلصت-->
                     <!-- <div class="row">
-                        <div class=" @if (!empty($charity)) col-md-2 @else col-md-4 @endif col-form-label "
+                        {{-- <div class=" @if (!empty($charity)) col-md-2 @else col-md-4 @endif col-form-label " --}}
                             style="text-align:start">
-                            <label for="license">{{ __('license') }}:</label>
+                            {{-- <label for="license">{{ __('license') }}:</label> --}}
                         </div>
-                        @if (!empty($charity))
+                        {{-- @if (!empty($charity)) --}}
                         <div class="col-md-2 col-form-label " style="text-align:start">
-                            <img src="{{ asset('storage/charities/logo/' . $charity->license) }}"
+                            {{-- <img src="{{ asset('storage/charities/logo/' . $charity->license) }}" --}}
                                 class="img-fluid img-thumbnail">
                         </div>
-                        @endif
+                        {{-- @endif --}}
                         <div class="col-8">
-                            <input class="form-control" type="file" name="license" @if (empty($charity)) required
-                                @endif>
+                            {{-- <input class="form-control" type="file" name="license" @if (empty($charity)) required --}}
+                                {{-- @endif> --}}
                         </div>
                     </div> -->
 
 
-                   
+
                     <!--email-->
                     <div class="row">
                         <div class="col-md-2 col-form-label text-md-left">
                             <label for="email">{{ __('Email') }}:</label>
                         </div>
                         <div class="col-4"><input class="form-control" type="text" name="email"
-                                value=@if(!empty($charity) && old('email', $charity->email))
-                            {{ $charity->email }}@else {{old('email')}} @endif>
+                                value=@if(!empty($charity))"{{$charity->email}}" @else "{{old('email')}}" @endif>
                         </div>
                     </div>
 
@@ -137,8 +134,7 @@
                             <label for="phone">{{ __('Phone') }}:</label>
                         </div>
                         <div class="col-4"><input class="form-control" type="text" name="phone"
-                                value=@if(!empty($charity) && old('phone', $charity->phone))
-                            {{ $charity->phone }}@else {{old('phone')}} @endif>
+                                value=@if(!empty($charity))"{{$charity->phone}}"@else "{{old('phone')}}" @endif>
                         </div>
                     </div>
 
@@ -148,8 +144,7 @@
                             <label for="mobile">{{ __('Mobile') }}:</label>
                         </div>
                         <div class="col-4"><input class="form-control" type="text" name="mobile"
-                                value=@if(!empty($charity) && old('mobile', $charity->mobile))
-                            {{ $charity->mobile }}@else {{old('mobile')}} @endif>
+                                value=@if(!empty($charity)) "{{$charity->mobile}}" @else "{{old('mobile')}}" @endif>
                         </div>
                     </div>
 
@@ -160,8 +155,7 @@
                             <label for="whatsapp">{{ __('Whatsapp') }}:</label>
                         </div>
                         <div class="col-4"><input class="form-control" type="text" name="whatsapp"
-                                value=@if(!empty($charity) && old('whatsapp', $charity->whatsapp))
-                            {{ $charity->whatsapp }}@else {{old('whatsapp')}} @endif>
+                                value=@if(!empty($charity)) "{{$charity->whatsapp}}" @else "{{old('whatsapp')}}" @endif>
                         </div>
                     </div>
 
@@ -172,8 +166,7 @@
                             <label for="facebook">{{ __('Facebook') }}:</label>
                         </div>
                         <div class="col-4"><input class="form-control" type="text" name="facebook"
-                                value=@if(!empty($charity) && old('facebook', $charity->facebook))
-                            {{ $charity->facebook }}@else {{old('facebook')}} @endif>
+                                value=@if(!empty($charity))"{{$charity->facebook}}" @else "{{old('facebook')}}" @endif>
                         </div>
                     </div>
 
@@ -184,15 +177,13 @@
                             <label for="address_ar">{{ __('Address_AR') }}:</label>
                         </div>
                         <div class="col-4"><input class="form-control" type="text" name="address_ar"
-                                value=@if(!empty($charity) && old('address_ar', $charity->address_ar))
-                            {{ $charity->address_ar }}@else {{old('address_ar')}} @endif>
+                                value=@if(!empty($charity))"{{$charity->address_ar}}" @else "{{old('address_ar')}}" @endif>
                         </div>
                         <div class="col-md-2 col-form-label text-md-left">
                             <label for="address_en">{{ __('Address_EN') }}:</label>
                         </div>
                         <div class="col-4"><input class="form-control" type="text" name="address_en"
-                                value=@if(!empty($charity) && old('address_en', $charity->address_en))
-                            {{ $charity->address_en }}@else{{old('address_en')}} @endif>
+                                value=@if(!empty($charity) )"{{$charity->address_en}}" @else "{{old('address_en')}}" @endif>
                         </div>
                     </div>
 
@@ -203,15 +194,13 @@
                             <label for="info_ar">{{ __('Info_AR') }}:</label>
                         </div>
                         <div class="col-4"><input class="form-control" type="text" name="info_ar"
-                                value=@if(!empty($charity) && old('info_ar', $charity->info_ar))
-                            {{ $charity->info_ar }}@else {{old('info_ar')}} @endif>
+                                value=@if(!empty($charity)) "{{$charity->info_ar}}" @else "{{old('info_ar')}}" @endif>
                         </div>
                         <div class="col-md-2 col-form-label text-md-left">
                             <label for="info_en">{{ __('Info_EN') }}:</label>
                         </div>
                         <div class="col-4"><input class="form-control" type="text" name="info_en"
-                                value=@if(!empty($charity) && old('info_en', $charity->info_en))
-                            {{ $charity->info_en }}@else {{old('info_en')}} @endif>
+                                value=@if(!empty($charity)) "{{$charity->info_en}}" @else "{{old('info_en')}}" @endif>
                         </div>
 
                     </div>

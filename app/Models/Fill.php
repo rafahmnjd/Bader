@@ -7,4 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Fill extends Model
 {
     //
+     protected $guarded = [];
 }
