@@ -97,7 +97,7 @@ class CharityController extends Controller
     public function show(Charity $charity)
     {
         //
-        return view('Charity.show');
+        return view('Charity.show',compact('charity'));
     }
 
     /**
