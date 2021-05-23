@@ -8,6 +8,16 @@ use Illuminate\Http\Request;
 class VolunteerController extends Controller
 {
     /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('can:admin')->only('destroy','index');
+        $this->middleware('can:volunteer')->except('index','destroy','show');
+    }
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
