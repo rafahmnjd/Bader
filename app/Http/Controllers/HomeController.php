@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Charity;
 class HomeController extends Controller
 {
     /**
@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->only('index');
     }
 
     /**
@@ -24,5 +24,10 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function base(){
+        $charities = Charity::latest()->take(5)->get();
+        return view('welcome',compact('charities'));
     }
 }

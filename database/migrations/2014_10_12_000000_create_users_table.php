@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->set('role',['admin','charity','volunteer','benef'])->default('volunteer');
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('img')->nullable()->default('default.jpg');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

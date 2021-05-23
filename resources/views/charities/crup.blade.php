@@ -1,14 +1,5 @@
 @extends('layouts.app')
 
-@section('left_nav')
-<li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
-</li>
-
-<li class="nav-item">
-    <a class="nav-link disabled" href="#">Disabled</a>
-</li>
-@endsection
 
 @section('content')
 <div class="row justify-content-center">
