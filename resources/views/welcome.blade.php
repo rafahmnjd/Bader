@@ -5,28 +5,31 @@
     <div class="col-lg-3 col-md-4 d-none d-sm-none d-md-block">
         <div class="row">
             <div class="col">
-
                 <div class="list-group p-1">
-                    <li class="list-group-item bg-yelow2" aria-current="true" aria-disabled="true">
+                    <a class="list-group-item list-group-item-action active list-group-item-light " aria-current="true">
                         <h5 class='text-gray'>{{__('Newest Charities')}}</h5>
-                    </li>
-                    @if(app()->getLocale() == 'ar')
-                    @foreach ($charities as $ch)
-                    <a class="list-group-item list-group-item-action px-2 " href="{{route('charities.show',$ch)}}">
-                        <img width="40" height="40" src="{{asset(config('path.ch_logo').$ch->logo_ar)}}"
-                            class="img-fluid border border-wight" alt="Card image cap">
-                        {{$ch->name_ar}}
                     </a>
-                    @endforeach
-                    @else
                     @foreach ($charities as $ch)
                     <a class="list-group-item list-group-item-action px-2" href="{{route('charities.show',$ch)}}">
-                        <img width="40" height="40" src="{{asset(config('path.ch_logo').$ch->logo_en)}}"
-                            class="img-fluid border border-wight" alt="Card image cap">
-                        {{$ch->name_en}}
+                        <img width="40" height="40" @if(app()->getLocale() ==
+                        'ar')src="{{asset(config('path.ch_logo').$ch->logo_ar)}}" @else
+                        src="{{asset(config('path.ch_logo').$ch->logo_en)}}"@endif
+                        class="img-fluid border border-wight" alt="Card image cap">
+                        @if(app()->getLocale() == 'ar'){{$ch->name_ar}} @else {{$ch->name_en}}@endif
                     </a>
                     @endforeach
-                    @endif
+                    {{-- <hr> --}}
+                    <a class="list-group-item list-group-item-action active list-group-item-light " aria-current="true">
+                        <h5 class='text-gray'>{{__('Newest Charities')}}</h5>
+                    </a>
+                    @foreach ($charities as $ch)
+                    <a class="list-group-item list-group-item-action px-2" href="{{route('charities.show',$ch)}}">
+                        <img width="40" height="40" @if(app()->getLocale() == 'ar')src="{{asset(config('path.ch_logo').$ch->logo_ar)}}"
+                        @else src="{{asset(config('path.ch_logo').$ch->logo_en)}}"@endif
+                        class="img-fluid border border-wight" alt="Card image cap">
+                        @if(app()->getLocale() == 'ar'){{$ch->name_ar}} @else {{$ch->name_en}}@endif
+                    </a>
+                    @endforeach
                 </div>
             </div>
         </div>

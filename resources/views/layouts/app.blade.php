@@ -22,12 +22,7 @@
         <link href="{{ asset('css/zmdi.css') }}" rel="stylesheet">
 
         @yield('style')
-<style>
-    .bg-yelow2{
-        background: #f0ad4e;
-        text-color:#dbdbdb
-    }
-</style>
+
         @if(app()->getLocale() == 'ar')
         <style>
             h1,
