@@ -1,9 +1,9 @@
 @extends('layouts.app')
-@section('content')
-
+@section('style')
 <!-- include my style -->
-<link rel="stylesheet" type="text/css" href="public/css/show.css">
-
+<link rel="stylesheet" type="text/css" href="{{asset('css/show.css')}}">
+@endsection
+@section('content')
 <div class="container db-social">
     <div class="jumbotron jumbotron-fluid"></div>
     <div class="container-fluid">
@@ -65,3 +65,4 @@
     </div>
 </div>
 
+@endsection
