@@ -198,7 +198,7 @@ class CharityController extends Controller
                 File::delete($logo_enfilepath . $charity->logo_en);}
         }
         if ($charity->cover != null) {
-            $coverfilepath = public_path(config('path.ch_logo'));
+            $coverfilepath = public_path(config('path.covers'));
             if (Storage::exists($coverfilepath . $charity->cover)) {
                 File::delete($coverfilepath . $charity->cover);}
         }
