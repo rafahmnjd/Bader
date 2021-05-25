@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Auth;
+
 class RegisterController extends Controller
 {
     /*
@@ -74,7 +75,13 @@ class RegisterController extends Controller
 
     protected function redirectTo()
     {
-        if(Auth::user()->role='Charity')
-        return route('charities.create');
+        if (Auth::user()->role == 'charity') {
+            return route('charities.create');
+        } else if (Auth::user()->role == 'volunteer') {
+            return route('volunteers.create');
+        } else if (Auth::user()->role == 'benef') {
+            return route('benefs.create');
+        }
+
     }
 }

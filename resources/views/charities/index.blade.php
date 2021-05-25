@@ -4,7 +4,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-body">
-                <div class="table table-responsive">
+                <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
@@ -41,7 +41,7 @@
                                         src="{{ asset(config('path.covers').$charity->cover)}}"
                                         class=" img-fluid img-thumbnail">
                                 </td>
-                                
+
                                 <td>{{ $charity->license }}</td>
                                 <td>{{ $charity->email }}</td>
                                 <td>{{ $charity->city }}</td>

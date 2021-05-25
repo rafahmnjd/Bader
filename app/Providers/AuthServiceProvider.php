@@ -2,11 +2,12 @@
 
 namespace App\Providers;
 
-use App\Models\User;
-use App\Models\Charity;
+
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use App\Models\User;
+use App\Models\Charity;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -34,8 +35,8 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('charity', function (User $user) {
             return $user->role === 'charity';
         });
-        Gate::define('ch_access',function(User $user,Charty $charity){
-           return $user->id === $charity->user_id;
+        Gate::define('ch_access',function(User $user,Charity $charity){
+           return ($user->role === 'admin'|| $user->id === $charity->user_id);
         });
         Gate::define('volunteer', function (User $user) {
             return $user->role === 'volunteer';

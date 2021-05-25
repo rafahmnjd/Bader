@@ -17,9 +17,9 @@ class CharityController extends Controller
      */
     public function __construct() //صلاحيات
     {
-        // $this->middleware('can:admin')->only('destroy');
-        // $this->middleware('can::charity')->except('destroy','show');
-
+        $this->middleware('can:admin')->only('destroy','index');
+        $this->middleware('can:ch_access,charity')->only(['edit','update']);
+        $this->middleware('can:charity')->except('index','destroy','show');
     }
 
     /**
@@ -31,7 +31,7 @@ class CharityController extends Controller
     {
         //
         $charities = Charity::all();
-        return view('Charity.index', ['charities' => $charities]);
+        return view('charities.index', ['charities' => $charities]);
     }
 
     /**
@@ -44,7 +44,7 @@ class CharityController extends Controller
         if (Auth::user()->charity != null) {
             return redirect(route('charities.edit', Auth::user()->charity));
         }
-        return view('Charity.crup');
+        return view('charities.crup');
 
     }
 
@@ -85,7 +85,12 @@ class CharityController extends Controller
 
         $input = array_merge($input, ["user_id" => Auth::user()->id]);
         $charity = Charity::create($input);
-        return redirect(route('charities.index'));
+        if ($charity->user_id == Auth::user()->id) {
+            return redirect(route('charities.show', $charity));
+        } else {
+            return redirect(route('charities.index'));
+        }
+
     }
 
     /**
@@ -97,7 +102,7 @@ class CharityController extends Controller
     public function show(Charity $charity)
     {
         //
-        return view('Charity.show',compact('charity'));
+        return view('charities.show', compact('charity'));
     }
 
     /**
@@ -109,7 +114,7 @@ class CharityController extends Controller
     public function edit(Charity $charity)
     {
         //
-        return view('Charity.crup', compact('charity'));
+        return view('charities.crup', compact('charity'));
     }
 
     /**
@@ -128,7 +133,8 @@ class CharityController extends Controller
             $logo_arfilepath = public_path(config('path.ch_logo'));
             if ($charity->logo_ar != null) {
                 if (Storage::exists($logo_arfilepath . $charity->logo_ar)) {
-                    File::delete($logo_arfilepath . $charity->logo_ar);}
+                    File::delete($logo_arfilepath . $charity->logo_ar);
+                }
             }
 
             $logo_arfile = request()->file('logo_ar');
@@ -164,11 +170,11 @@ class CharityController extends Controller
         }
 
         $charity->update($input);
-        // if ($charity->user_id == Auth::user()->id) {
-        //     return redirect(route('charities.show',$charity));
-        // } else {
+        if ($charity->user_id == Auth::user()->id) {
+            return redirect(route('charities.show', $charity));
+        } else {
             return redirect(route('charities.index'));
-        // }
+        }
     }
 
     /**

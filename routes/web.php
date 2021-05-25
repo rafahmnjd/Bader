@@ -36,6 +36,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::middleware(['auth'])->group(function () {
 Route::resource('charities', 'CharityController');
 Route::resource('volunteers', 'VolunteerController');
+Route::resource('benfes', 'BenefactorController');
+
 
 
 });
