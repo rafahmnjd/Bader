@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('base');
+Route::get('/', 'HomeController@base')->name('base');
 Route::view('/about','about.index')->name('about');
 
 Route::get('locale/{locale}', function ($locale) {

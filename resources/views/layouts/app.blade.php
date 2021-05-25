@@ -25,8 +25,16 @@
 
         @if(app()->getLocale() == 'ar')
         <style>
-            h1,h2,h3,h4,h5,h6,p,label,div{
-               text-align: right;
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p,
+            label,
+            div {
+                text-align: right;
             }
         </style>
         @endif
@@ -35,12 +43,10 @@
 
     <body>
         <div id="app">
-
-            <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm mb-2">
-                <div class="container">
+            <nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm mb-2">
+                <div class="container-fluid">
                     <a class="navbar-brand" href="{{route('about')}}">{{ config('app.name', 'Laravel') }}</a>
                     <div class="navbar-collapse collapse show" id="navbarColor01">
-
                         <!-- Left Side Of Navbar -->
                         <ul class="navbar-nav @if(app()->getLocale() == 'ar') ml-auto text-right @else mr-auto @endif">
                             <a class="nav-link" href="{{route('base')}}">{{__('Home')}}</a>
@@ -66,21 +72,39 @@
                             @endif
                             @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    {{ Auth::user()->name }} <span class=""></span>
+                                    @can('charity')
+                                    @if(!empty(Auth::user()->charity->logo_ar))
+                                    <img src="{{asset(config('path.ch_logo').Auth::user()->charity->logo_ar)}}"
+                                        width="30" height="30" alt="">
+                                    @else
+                                    <img src="{{asset(config('path.default'))}}" width="30" height="30" alt="">
+                                    @endif
+                                    @else
+                                    <img src="{{asset(config('path.default'))}}" width="30" height="30" alt="">
+                                    @endcan
+                                </a>
+                                <div class="dropdown-menu @if(app()->getLocale() == 'ar') dropdown-menu-left text-right @else dropdown-menu-right @endif "
+                                    aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                         style="display: none;">
                                         @csrf
                                     </form>
+                                    @can('charity')
+                                    <a class="dropdown-item" href="{{route('charities.create')}}">
+                                        {{__('Manage my charity')}}
+                                    </a>
+                                    @endcan
+                                    {{-- <a class="dropdown-item" href="{{route('profile.show')}}">
+                                    {{__('Profile')}}
+                                    </a> --}}
                                 </div>
                             </li>
                             @endguest
@@ -90,7 +114,7 @@
             </nav>
 
             {{-- <main class="container-fluid"> --}}
-            <main class="container">
+            <main class="container-fluid">
                 @yield('content')
             </main>
         </div>

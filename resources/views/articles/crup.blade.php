@@ -13,15 +13,27 @@
                     @if (!empty($charity))
                     @method('PUT')
                     @endif
-
+                    <div class="row">
+                        <div class="col-md-2 col-form-label text-md-left">
+                            <label for="name_ar">{{ __('Arabic Name') }}:</label>
+                        </div>
+                        <div class="col-4"><input class="form-control" type="text" name="name_ar"
+                                value=@if(!empty($charity))"{{$charity->name_ar}}"@else "{{old('name_ar')}}" @endif>
+                        </div>
+                        <div class="col-md-2 col-form-label text-md-left">
+                            <label for="name_en">{{ __('English Name') }}:</label>
+                        </div>
+                        <div class="col-4"><input class="form-control" type="text" name="name_en"
+                                value=@if(!empty($charity))"{{$charity->name_en}}" @else "{{old('name_en')}}" @endif>
+                        </div>
+                    </div>
                     <!--cover-->
                     <div class="row">
-                        <div class=" @if (!empty($charity)) col-md-2 @else col-md-4 @endif col-form-label "
-                            style="text-align:start">
-                            <label for="cover">{{ __('Cover') }}:</label>
+                        <div class=" @if (!empty($charity)) col-md-2 @else col-md-4 @endif col-form-label ">
+                            <label for="title">{{ __('Title') }}:</label>
                         </div>
                         @if (!empty($charity))
-                        <div class="col-md-2 col-form-label " style="text-align:start">
+                        <div class="col-md-2 col-form-label">
                             <img src="{{ asset(config('path.covers').$charity->cover) }}"
                                 class="img-fluid img-thumbnail">
                         </div>
@@ -129,7 +141,7 @@
                         </div>
                     </div>
 
-                     <!--mobile-->
+                    <!--mobile-->
                     <div class="row">
                         <div class="col-md-2 col-form-label text-md-left">
                             <label for="mobile">{{ __('Mobile') }}:</label>
@@ -162,24 +174,26 @@
                     </div>
 
 
-                   <!-- address-->
+                    <!-- address-->
                     <div class="row">
                         <div class="col-md-2 col-form-label text-md-left">
                             <label for="address_ar">{{ __('Address_AR') }}:</label>
                         </div>
                         <div class="col-4"><input class="form-control" type="text" name="address_ar"
-                                value=@if(!empty($charity))"{{$charity->address_ar}}" @else "{{old('address_ar')}}" @endif>
+                                value=@if(!empty($charity))"{{$charity->address_ar}}" @else "{{old('address_ar')}}"
+                                @endif>
                         </div>
                         <div class="col-md-2 col-form-label text-md-left">
                             <label for="address_en">{{ __('Address_EN') }}:</label>
                         </div>
                         <div class="col-4"><input class="form-control" type="text" name="address_en"
-                                value=@if(!empty($charity) )"{{$charity->address_en}}" @else "{{old('address_en')}}" @endif>
+                                value=@if(!empty($charity) )"{{$charity->address_en}}" @else "{{old('address_en')}}"
+                                @endif>
                         </div>
                     </div>
 
 
-                  <!--info-->
+                    <!--info-->
                     <div class="row">
                         <div class="col-md-2 col-form-label text-md-left">
                             <label for="info_ar">{{ __('Info_AR') }}:</label>
