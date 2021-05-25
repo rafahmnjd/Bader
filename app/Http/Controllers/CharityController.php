@@ -164,11 +164,11 @@ class CharityController extends Controller
         }
 
         $charity->update($input);
-        if ($charity->user_id == Auth::user()->id) {
-            return redirect(route('charities.show',$charity));
-        } else {
+        // if ($charity->user_id == Auth::user()->id) {
+        //     return redirect(route('charities.show',$charity));
+        // } else {
             return redirect(route('charities.index'));
-        }
+        // }
     }
 
     /**
