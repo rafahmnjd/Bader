@@ -22,8 +22,7 @@
                         </div>
                         @if (!empty($charity))
                         <div class="col-md-2 col-form-label " style="text-align:start">
-                            <img src="{{ asset(config('path.covers').$charity->cover) }}"
-                                class="img-fluid img-thumbnail">
+                            <img src="{{ asset(config('path.covers').$charity->cover) }}" class="img-fluid img-thumbnail">
                         </div>
                         @endif
                         <div class="col-8">
