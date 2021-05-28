@@ -16,11 +16,18 @@ class CreateVolunteersTable extends Migration
         Schema::create('volunteers', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->string('name_ar')->nullable();
+            $table->string('name_en')->nullable();
+            $table->string('profile_ar')->nullable();
+            $table->string('profile_en')->nullable();
             $table->date('birth_date')->nullable();
             $table->string('email');
-            $table->text('education')->nullable();
-            $table->text('skills')->nullable();
-            $table->text('experiences')->nullable();
+            $table->text('education_ar')->nullable();
+            $table->text('education_en')->nullable();
+            $table->text('skills_ar')->nullable();
+            $table->text('skills_en')->nullable();
+            $table->text('experiences_ar')->nullable();
+            $table->text('experiences_en')->nullable();
             $table->timestamps();
         });
     }

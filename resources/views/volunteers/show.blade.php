@@ -9,44 +9,37 @@
                 <div class="row align-items-center flex-row-reverse">
                     <div class="col-lg-6">
                         <div class="about-text go-to">
-                                <!-- <td>
+                            <h3 class="dark-color">
+                                <td>
                                     @if (config('app.locale') == 'ar')
-                                        <h2>{{ $volunteer->name_ar }}</h2>
+                                        {{ $volunteer->name_ar }}
                                     @else
-                                        <h2>{{ $volunteer->name_en }}</h2>
+                                        {{ $volunteer->name_en }}
                                     @endif
-                                </td> --> 
+                                </td> 
                             </h3>
                             <h6 class="theme-color lead">
                                 @if (config('app.locale') == 'ar')
-                                    <h2>{{ $volunteer->education_ar }}</h2>
+                                    {{ $volunteer->education_ar }}
                                 @else
-                                    <h2>{{ $volunteer->education_en }}</h2>
+                                    {{ $volunteer->education_en }}
                                 @endif
                             </h6>
                             <div class="row about-list">
                                 <div class="col-md-6">
                                     <div class="media">
-                                        <label>Birthday</label>
-                                            <p>
-                                                <td>
-                                                    @if (config('app.locale') == 'ar')
-                                                        <h2>{{ $volunteer->birth_date }}</h2>
-                                                    @else
-                                                        <h2>{{ $volunteer->birth_date }}</h2>
-                                                    @endif
-                                                </td>
-                                            </p>
+                                        <label>{{ __('Birthday') }}</label>
+                                        <p>{{ $volunteer->birth_date }}</p>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="media">
-                                        <label>E-mail</label>
-                                        <p>$volunteer->email</p>
+                                        <label>{{ __('Email') }}</label>
+                                        <p>{{ $volunteer->email }} </p>
                                     </div>
                                 </div>
                             </div>
-                            <p><mark>Skills:</mark>
+                            <p><mark>{{ __('Skills') }}:</mark>
                                 <td>
                                     @if (config('app.locale') == 'ar')
                                         <h2>{{ $volunteer->skills_ar }}</h2>
@@ -55,7 +48,7 @@
                                     @endif
                                 </td>
                             </p>
-                            <p><mark>Experiences:</mark>
+                            <p><mark>{{ __('Experiences') }}:</mark>
                                 <td>
                                     @if (config('app.locale') == 'ar')
                                         <h2>{{ $volunteer->experiences_ar }}</h2>
@@ -66,10 +59,22 @@
                             </p>
                         </div>
                     </div>
-
+                    <!-- صورة المتطوع -->
                     <div class="col-lg-6">
                         <div class="about-avatar">
-                            <img src="{{ asset(config('path.covers').$charity->cover) }}" title="" max_width="50%" height="300">
+                            @if (!empty($volunteer) )
+                                @if (config('app.locale') == 'ar')
+                                    <img src="{{ asset(config('path.vprofile').$volunteer->profile_ar) }}" title="" max_width="50%" height="300">
+                                @else
+                                    <img src="{{ asset(config('path.vprofile').$volunteer->profile_en) }}" title="" max_width="50%" height="300">
+                                @endif
+                            @else
+                                @if (config('app.locale') == 'ar')
+                                    <img src="{{ asset(config('path.default').$volunteer->profile_ar) }}" title="" max_width="50%" height="300">
+                                @else
+                                    <img src="{{ asset(config('path.default').$volunteer->profile_en) }}" title="" max_width="50%" height="300">
+                                @endif
+                            @endif
                         </div>
                     </div>
                 </div>

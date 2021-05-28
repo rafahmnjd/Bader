@@ -57,7 +57,6 @@ class CharityController extends Controller
     public function store(Request $request)// حفظ من الكرييت
     {
         //
-        // echo "store function";
         $input = $request->except(['logo_ar', 'logo_en', 'cover']); // ما بخزن الصور متل ما هنن
         if (request()->hasfile('logo_ar')) {
             $logo_arfilepath = public_path(config('path.ch_logo'));
