@@ -7,10 +7,14 @@ use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
-    public function __construct() //صلاحيات
+    /**
+     * Admin role is required for all function in this controller
+     */
+    public function __construct()
     {
         $this->middleware('can:admin');
     }
+
 
     /**
      * Display a listing of the resource.
@@ -19,19 +23,8 @@ class ItemController extends Controller
      */
     public function index()
     {
-        //
-        $items=Item::all();
-        return view('items.index',compact('items'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $items = Item::all();
+        return view('items.index', compact('items'));
     }
 
     /**
@@ -42,29 +35,8 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Item  $item
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Item $item)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Item  $item
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Item $item)
-    {
-        //
+        $item = Item::create($request->all());
+        return back();
     }
 
     /**
@@ -77,6 +49,8 @@ class ItemController extends Controller
     public function update(Request $request, Item $item)
     {
         //
+        $item->update($request->all());
+        return back();
     }
 
     /**
@@ -88,5 +62,7 @@ class ItemController extends Controller
     public function destroy(Item $item)
     {
         //
+        $item->delete();
+        return back();
     }
 }
