@@ -20,6 +20,7 @@ class CreateCharityJobsTable extends Migration
             $table->string('job_title_en');
             $table->text('job_details_ar');
             $table->text('job_details_en');
+            $table->set('state', ['waiting', 'closed']);
             $table->timestamps();
         });
     }

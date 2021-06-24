@@ -40,7 +40,7 @@ class VolunteerController extends Controller
      */
     public function create()
     {
-        
+
         if (Auth::user()->volunteer != null) {
             return redirect(route('volunteers.edit', Auth::user()->volunteer));
         }
@@ -56,21 +56,13 @@ class VolunteerController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->except(['profile_ar', 'profile_en']); // ما بخزن الصور متل ما هنن
-        if (request()->hasfile('profile_ar')) {
-            $profile_arfilepath = public_path(config('path.vprofile'));
-            $profile_arfile = request()->file('profile_ar');//بتعطي الصورة كفايل
-            $profile_arname = time() . "_ar." . $request->profile_ar->extension();
-            $profile_arfile->move($profile_arfilepath, $profile_arname);
-            $input = array_merge($input, ["profile_ar" => $profile_arname]);
-        }
-
-        if (request()->hasfile('profile_en')) {
-            $profile_enfilepath = public_path(config('path.vprofile'));
-            $profile_enfile = request()->file('profile_en');
-            $profile_enname = time() . "_en." . $request->profile_en->extension();
-            $profile_enfile->move($profile_enfilepath, $profile_enname);
-            $input = array_merge($input, ["profile_en" => $profile_enname]);
+        $input = $request->except(['profile']); // ما بخزن الصور متل ما هنن
+        if (request()->hasfile('profile')) {
+            $profilefilepath = public_path(config('path.vprofile'));
+            $profilefile = request()->file('profile');//بتعطي الصورة كفايل
+            $profilename = time() . "_." . $request->profile->extension();
+            $profilefile->move($profilefilepath, $profilename);
+            $input = array_merge($input, ["profile" => $profilename]);
         }
 
         $input = array_merge($input, ["user_id" => Auth::user()->id]);
@@ -115,33 +107,22 @@ class VolunteerController extends Controller
     public function update(Request $request, Volunteer $volunteer)
     {
         //
-        $input = $request->except(['profile_ar', 'profile_en', 'cover']);
-        if (request()->hasfile('profile_ar')) {
-            $profile_arfilepath = public_path(config('path.vprofile'));
-            if ($volunteer->profile_ar != null) {
-                if (Storage::exists($profile_arfilepath . $volunteer->profile_ar)) {
-                    File::delete($profile_arfilepath . $volunteer->profile_ar);
+        $input = $request->except(['profile']);
+        if (request()->hasfile('profile')) {
+            $profilefilepath = public_path(config('path.vprofile'));
+            if ($volunteer->profile != null) {
+                if (Storage::exists($profilefilepath . $volunteer->profile)) {
+                    File::delete($profilefilepath . $volunteer->profile);
                 }
             }
 
-            $profile_arfile = request()->file('profile_ar');
-            $profile_arname = time() . "_ar." . $request->profile_ar->extension();
-            $profile_arfile->move($profile_arfilepath, $profile_arname);
-            $input = array_merge($input, ["profile_ar" => $profile_arname]);
+            $profilefile = request()->file('profile');
+            $profilename = time() . "_." . $request->profile->extension();
+            $profilefile->move($profilefilepath, $profilename);
+            $input = array_merge($input, ["profile" => $profilename]);
         }
 
-        if (request()->hasfile('profile_en')) {
-            $profile_enfilepath = public_path(config('path.vprofile'));
-            if ($volunteer->profile_en != null) {
-                if (Storage::exists($profile_enfilepath . $volunteer->profile_en)) {
-                    File::delete($profile_enfilepath . $volunteer->profile_en);}
-            }
 
-            $profile_enfile = request()->file('profile_en');
-            $profile_enname = time() . "_en." . $request->profile_en->extension();
-            $profile_enfile->move($profile_enfilepath, $profile_enname);
-            $input = array_merge($input, ["profile_en" => $profile_enname]);
-        }
 
         $volunteer->update($input);
         if ($volunteer->user_id == Auth::user()->id) {

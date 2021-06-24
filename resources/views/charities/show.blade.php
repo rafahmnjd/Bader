@@ -48,7 +48,7 @@
 						</div>
 					</div>
 				</div>
-        </div>      
+        </div>
 </section>
 @endsection
 
@@ -69,19 +69,16 @@
                             <div class="col-xl-4 col-md-4 d-flex justify-content-lg-start justify-content-md-start justify-content-center"></div>
                             <div class="col-xl-4 col-md-4 d-flex justify-content-center">
                                 <div class="image-default">
-                                    @if (config('app.locale') == 'ar')
-                                        <img class="rounded-circle" src="{{ asset(config('path.ch_logo').$charity->logo_ar) }}" alt="...">
-                                    @else
-                                        <img class="rounded-circle" src="{{ asset(config('path.ch_logo').$charity->logo_en) }}" alt="...">
-                                    @endif
+                                        <img class="rounded-circle" src="{{ asset(config('path.ch_logo').$charity->logo) }}" alt="...">
+
                                 </div>
                                 <div class="infos">
                                 <td>
-                                @if (config('app.locale') == 'ar')
-                                    <h2>{{ $charity->name_ar }}</h2>
-                                @else
-                                    <h2>{{ $charity->name_en }}</h2>
-                                @endif
+                                {{-- @if (config('app.locale') == 'ar') --}}
+                                    {{-- <h2>{{ $charity->name_ar }}</h2> --}}
+                                {{-- @else --}}
+                                    {{-- <h2>{{ $charity->name_en }}</h2> --}}
+                                {{-- @endif --}}
                                 </td>
                                 </div>
                             </div>

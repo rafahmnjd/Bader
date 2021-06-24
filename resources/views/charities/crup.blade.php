@@ -30,41 +30,20 @@
                         </div>
                     </div>
 
-                    <!--logo_ar-->
+                    <!--logo-->
                     <div class="row">
                         <div class=" @if (!empty($charity)) col-md-2 @else col-md-4 @endif col-form-label "
                             style="text-align:start">
-                            <label for="logo_ar">{{ __('Logo_AR') }}:</label>
+                            <label for="logo">{{ __('Logo') }}:</label>
                         </div>
                         @if (!empty($charity))
                         <div class="col-md-2 col-form-label " style="text-align:start">
-                            <img src="{{ asset(config('path.ch_logo').$charity->logo_ar) }}"
+                            <img src="{{ asset(config('path.ch_logo').$charity->logo) }}"
                                 class="img-fluid img-thumbnail">
                         </div>
                         @endif
                         <div class="col-8">
-                            <input class="form-control" type="file" name="logo_ar" @if (empty($charity)) required
-                                @endif>
-                        </div>
-                    </div>
-
-
-                    <!--logo_en-->
-                    <div class="row">
-                        <div class=" @if (!empty($charity)) col-md-2 @else col-md-4 @endif col-form-label "
-                            style="text-align:start">
-                            <label for="logo_en">{{ __('Logo_EN') }}:</label>
-                        </div>
-
-                        @if (!empty($charity))
-                        <div class="col-md-2 col-form-label " style="text-align:start">
-                            <img src="{{ asset(config('path.ch_logo').$charity->logo_en) }}"
-                                class="img-fluid img-thumbnail">
-                        </div>
-                        @endif
-
-                        <div class="col-8">
-                            <input class="form-control" type="file" name="logo_en" @if (empty($charity)) required
+                            <input class="form-control" type="file" name="logo" @if (empty($charity)) required
                                 @endif>
                         </div>
                     </div>

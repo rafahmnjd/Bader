@@ -10,7 +10,7 @@
                             <tr>
                                 <th scope="col">{{ __('id') }}</th>
                                 <th scope="col">{{ __('Name') }}</th>
-                                <th scope="col">{{ __('Profile') }}</th>
+                                <th scope="col">{{ __('Profile_pic') }}</th>
                                 <th scope="col">{{ __('Birthday') }}</th>
                                 <th scope="col">{{ __('Email') }}</th>
                                 <th scope="col">{{ __('Education') }}</th>
@@ -23,52 +23,49 @@
                             @foreach ($volunteers as $volunteer)
                             <tr>
                                 <th scope="row">
-                                    {{ $volunteer->id }}</th>
+                                    {{ $volunteer->id }}
+                                </th>
 
                                 <td>
-                                @if (config('app.locale') == 'ar')
+                                    @if (config('app.locale') == 'ar')
                                     {{ $volunteer->name_ar }}
-                                @else
+                                    @else
                                     {{ $volunteer->name_en }}
-                                @endif
+                                    @endif
                                 </td>
 
                                 <td style="width:10% ; max-width:15%;">
-                                @if (config('app.locale') == 'ar')
-                                <img src="{{ asset(config('path.vprofile').$volunteer->profile_ar) }}"
+
+                                    <img src="{{ asset(config('path.vprofile').$volunteer->profile) }}"
                                         class=" img-fluid img-thumbnail">
-                                @else
-                                <img src="{{ asset(config('path.vprofile').$volunteer->profile_en) }}"
-                                        class=" img-fluid img-thumbnail">
-                                @endif
                                 </td>
 
-                                
+
                                 <td>{{ $volunteer->birth_date }}</td>
                                 <td>{{ $volunteer->email }}</td>
 
                                 <td>
-                                @if (config('app.locale') == 'ar')
+                                    @if (config('app.locale') == 'ar')
                                     {{ $volunteer->education_ar }}
-                                @else
+                                    @else
                                     {{ $volunteer->education_en }}
-                                @endif
+                                    @endif
                                 </td>
 
                                 <td>
-                                @if (config('app.locale') == 'ar')
+                                    @if (config('app.locale') == 'ar')
                                     {{ $volunteer->skills_ar }}
-                                @else
+                                    @else
                                     {{ $volunteer->skills_en }}
-                                @endif
+                                    @endif
                                 </td>
 
                                 <td>
-                                @if (config('app.locale') == 'ar')
+                                    @if (config('app.locale') == 'ar')
                                     {{ $volunteer->experiences_ar }}
-                                @else
+                                    @else
                                     {{ $volunteer->experiences_en }}
-                                @endif
+                                    @endif
                                 </td>
 
 
@@ -87,7 +84,8 @@
                                             </a>
                                         </div>
                                         <div class="btn-group">
-                                            <form action="{{ route('volunteers.destroy', $volunteer->id) }}" method="POST">
+                                            <form action="{{ route('volunteers.destroy', $volunteer->id) }}"
+                                                method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button Type="submit" class="btn rounded-circle btn-outline-danger">
@@ -96,9 +94,7 @@
                                             </form>
                                         </div>
                                     </div>
-
                                 </td>
-                                </th>
                             </tr>
                             @endforeach
                         </tbody>

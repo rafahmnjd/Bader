@@ -17,6 +17,8 @@ class CreateItemsTable extends Migration
             $table->id();
             $table->string('name_en');
             $table->string('name_ar');
+            $table->string('unite_en')->default("kg");
+            $table->string('unite_ar')->default("كغ");
             $table->timestamps();
         });
     }

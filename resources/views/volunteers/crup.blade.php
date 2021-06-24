@@ -13,41 +13,20 @@
                     @method('PUT')
                     @endif
 
-                    <!--profile_ar-->
+                    <!--profile-->
                     <div class="row">
                         <div class=" @if (!empty($volunteer)) col-md-2 @else col-md-4 @endif col-form-label "
                             style="text-align:start">
-                            <label for="profile_ar">{{ __('Profile_AR') }}:</label>
+                            <label for="profile">{{ __('Profile_pic') }}:</label>
                         </div>
                         @if (!empty($volunteer))
                         <div class="col-md-2 col-form-label " style="text-align:start">
-                            <img src="{{ asset(config('path.vprofile').$volunteer->profile_ar) }}"
+                            <img src="{{ asset(config('path.vprofile').$volunteer->profile) }}"
                                 class="img-fluid img-thumbnail">
                         </div>
                         @endif
                         <div class="col-8">
-                            <input class="form-control" type="file" name="profile_ar" @if (empty($volunteer)) required
-                                @endif>
-                        </div>
-                    </div>
-
-
-                    <!--profile_en-->
-                    <div class="row">
-                        <div class=" @if (!empty($volunteer)) col-md-2 @else col-md-4 @endif col-form-label "
-                            style="text-align:start">
-                            <label for="profile_en">{{ __('Profile_EN') }}:</label>
-                        </div>
-
-                        @if (!empty($volunteer))
-                        <div class="col-md-2 col-form-label " style="text-align:start">
-                            <img src="{{ asset(config('path.vprofile').$volunteer->profile_en) }}"
-                                class="img-fluid img-thumbnail">
-                        </div>
-                        @endif
-
-                        <div class="col-8">
-                            <input class="form-control" type="file" name="profile_en" @if (empty($volunteer)) required
+                            <input class="form-control" type="file" name="profile" @if (empty($volunteer)) required
                                 @endif>
                         </div>
                     </div>

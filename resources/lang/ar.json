@@ -43,8 +43,7 @@
     ,"Address_AR":"العنوان بالعربية"
     ,"Address_EN":"العنوان بالإنكليزية"
     ,"Cover":"الغلاف الخارجي"
-    ,"Logo_AR":"الشعار بالعربية"
-    ,"Logo_EN":"الشعار بالإنكليزية"
+    ,"Logo":"الشعار "
     ,"Submit":"إرسال"
     ,"Cancel":"إلغاء"
     ,"Phone":"الهاتف"
@@ -67,5 +66,15 @@
     ,"Experiences":"الخبرات"
     ,"Arabic Experiences":"الخبرات بالعربية"
     ,"English Experiences":"الخبرات بالإنكليزية"
-    ,"Profile":"الصورة الشخصية"
+    ,"Profile_pic":"الصورة الشخصية"
+    ,"Name in Arabic":"الاسم بالعربية"
+    ,"Name in English":"الاسم بالانكليزية"
+    ,"Manage my charity":"إدارة الجمعية"
+    ,"Manage Charities":"إدارة الجمعيات"
+    ,"Manage Items":"إدارة المواد"
+    ,"Unite in Arabic":"الواحد باللغة العربية"
+    ,"Unite in English":"الواحدة باللغة الانكليزية"
+    ,"Control":"التحكم"
+
+
 }

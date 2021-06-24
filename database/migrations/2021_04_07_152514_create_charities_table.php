@@ -29,8 +29,7 @@ class CreateCharitiesTable extends Migration
             $table->string('email')->nullable();//
             $table->string('phone')->nullable();//
             $table->string('mobile')->nullable();//
-            $table->string('logo_ar')->nullable();//
-            $table->string('logo_en')->nullable();//
+            $table->string('logo')->nullable();//
             $table->string('cover')->nullable();//
             $table->text('info_ar')->nullable();//
             $table->text('info_en')->nullable();//

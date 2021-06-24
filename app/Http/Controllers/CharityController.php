@@ -17,9 +17,9 @@ class CharityController extends Controller
      */
     public function __construct() //صلاحيات
     {
-        // $this->middleware('can:admin')->only('destroy','index');
-        $this->middleware('can:ch_access,charity')->only(['edit','update']);
-        $this->middleware('can:charity')->except('index','destroy','show');
+        $this->middleware('can:admin')->only('destroy','index');
+        $this->middleware('can:ch_access,charity')->only(['edit','update','create']);
+        // $this->middleware('can:charity')->except('index','destroy','show');
     }
 
     /**
@@ -57,21 +57,13 @@ class CharityController extends Controller
     public function store(Request $request)// حفظ من الكرييت
     {
         //
-        $input = $request->except(['logo_ar', 'logo_en', 'cover']); // ما بخزن الصور متل ما هنن
-        if (request()->hasfile('logo_ar')) {
-            $logo_arfilepath = public_path(config('path.ch_logo'));
-            $logo_arfile = request()->file('logo_ar');//بتعطي الصورة كفايل
-            $logo_arname = time() . "_ar." . $request->logo_ar->extension();
-            $logo_arfile->move($logo_arfilepath, $logo_arname);
-            $input = array_merge($input, ["logo_ar" => $logo_arname]);
-        }
-
-        if (request()->hasfile('logo_en')) {
-            $logo_enfilepath = public_path(config('path.ch_logo'));
-            $logo_enfile = request()->file('logo_en');
-            $logo_enname = time() . "_en." . $request->logo_en->extension();
-            $logo_enfile->move($logo_enfilepath, $logo_enname);
-            $input = array_merge($input, ["logo_en" => $logo_enname]);
+        $input = $request->except(['logo','cover']); // ما بخزن الصور متل ما هنن
+        if (request()->hasfile('logo')) {
+            $logofilepath = public_path(config('path.ch_logo'));
+            $logofile = request()->file('logo');//بتعطي الصورة كفايل
+            $logoname = time() . "_logo." . $request->logo->extension();
+            $logofile->move($logofilepath, $logoname);
+            $input = array_merge($input, ["logo" => $logoname]);
         }
 
         if (request()->hasfile('cover')) {
@@ -86,7 +78,7 @@ class CharityController extends Controller
         $charity = Charity::create($input);
         if ($charity->user_id == Auth::user()->id) {
             return redirect(route('charities.show', $charity));
-        } else {
+        } else if(Auth::user()->role=="admin") {
             return redirect(route('charities.index'));
         }
 
@@ -127,33 +119,22 @@ class CharityController extends Controller
     {
         //
         // return "update function";
-        $input = $request->except(['logo_ar', 'logo_en', 'cover']);
-        if (request()->hasfile('logo_ar')) {
-            $logo_arfilepath = public_path(config('path.ch_logo'));
-            if ($charity->logo_ar != null) {
-                if (Storage::exists($logo_arfilepath . $charity->logo_ar)) {
-                    File::delete($logo_arfilepath . $charity->logo_ar);
+        $input = $request->except(['logo', 'cover']);
+        if (request()->hasfile('logo')) {
+            $logofilepath = public_path(config('path.ch_logo'));
+            if ($charity->logo != null) {
+                if (Storage::exists($logofilepath . $charity->logo)) {
+                    File::delete($logofilepath . $charity->logo);
                 }
             }
 
-            $logo_arfile = request()->file('logo_ar');
-            $logo_arname = time() . "_ar." . $request->logo_ar->extension();
-            $logo_arfile->move($logo_arfilepath, $logo_arname);
-            $input = array_merge($input, ["logo_ar" => $logo_arname]);
+            $logofile = request()->file('logo');
+            $logoname = time() . "_ar." . $request->logo->extension();
+            $logofile->move($logofilepath, $logoname);
+            $input = array_merge($input, ["logo" => $logoname]);
         }
 
-        if (request()->hasfile('logo_en')) {
-            $logo_enfilepath = public_path(config('path.ch_logo'));
-            if ($charity->logo_en != null) {
-                if (Storage::exists($logo_enfilepath . $charity->logo_en)) {
-                    File::delete($logo_enfilepath . $charity->logo_en);}
-            }
 
-            $logo_enfile = request()->file('logo_en');
-            $logo_enname = time() . "_en." . $request->logo_en->extension();
-            $logo_enfile->move($logo_enfilepath, $logo_enname);
-            $input = array_merge($input, ["logo_en" => $logo_enname]);
-        }
 
         if (request()->hasfile('cover')) {
             $coverfilepath = public_path(config('path.covers'));
@@ -185,17 +166,12 @@ class CharityController extends Controller
     public function destroy(Charity $charity)
     {
         //
-        if ($charity->logo_ar != null) {
-            $logo_arfilepath = public_path(config('path.ch_logo'));
-            if (Storage::exists($logo_arfilepath . $charity->logo_ar)) {
-                File::delete($logo_arfilepath . $charity->logo_ar);}
+        if ($charity->logo != null) {
+            $logofilepath = public_path(config('path.ch_logo'));
+            if (Storage::exists($logofilepath . $charity->logo)) {
+                File::delete($logofilepath . $charity->logo);}
         }
 
-        if ($charity->logo_en != null) {
-            $logo_enfilepath = public_path(config('path.ch_logo'));
-            if (Storage::exists($logo_enfilepath . $charity->logo_en)) {
-                File::delete($logo_enfilepath . $charity->logo_en);}
-        }
         if ($charity->cover != null) {
             $coverfilepath = public_path(config('path.covers'));
             if (Storage::exists($coverfilepath . $charity->cover)) {

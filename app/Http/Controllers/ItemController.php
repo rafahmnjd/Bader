@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
+    public function __construct() //صلاحيات
+    {
+        $this->middleware('can:admin');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +20,8 @@ class ItemController extends Controller
     public function index()
     {
         //
+        $items=Item::all();
+        return view('items.index',compact('items'));
     }
 
     /**

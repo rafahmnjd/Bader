@@ -15,9 +15,11 @@ class CreateFillsTable extends Migration
     {
         Schema::create('fills', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('charity_id');
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('shortage_id');
+            // $table->set('type')->default('shortage');
             $table->unsignedInteger('quantity')->default(1);
+            $table->set('state', ['waiting', 'completed']);
             $table->timestamps();
         });
     }

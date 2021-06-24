@@ -18,8 +18,7 @@ class CreateVolunteersTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('name_ar')->nullable();
             $table->string('name_en')->nullable();
-            $table->string('profile_ar')->nullable();
-            $table->string('profile_en')->nullable();
+            $table->string('profile')->nullable();
             $table->date('birth_date')->nullable();
             $table->string('email');
             $table->text('education_ar')->nullable();

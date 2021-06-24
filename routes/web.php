@@ -35,7 +35,7 @@ Route::middleware(['auth'])->group(function () {
 Route::resource('charities', 'CharityController');
 Route::resource('volunteers', 'VolunteerController');
 Route::resource('benfes', 'BenefactorController');
-
+Route::resource('items', "ItemController")->except(['show']);
 
 
 });

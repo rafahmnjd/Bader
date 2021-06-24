@@ -11,10 +11,8 @@
                     </a>
                     @foreach ($charities as $ch)
                     <a class="list-group-item list-group-item-action px-2" href="{{route('charities.show',$ch)}}">
-                        <img width="40" height="40" @if(app()->getLocale() ==
-                        'ar')src="{{asset(config('path.ch_logo').$ch->logo_ar)}}" @else
-                        src="{{asset(config('path.ch_logo').$ch->logo_en)}}"@endif
-                        class="img-fluid border border-wight" alt="Card image cap">
+                        <img width="40" height="40" src="{{asset(config('path.ch_logo').$ch->logo)}}"
+                            class="img-fluid border border-wight" alt="Card image cap">
                         @if(app()->getLocale() == 'ar'){{$ch->name_ar}} @else {{$ch->name_en}}@endif
                     </a>
                     @endforeach
@@ -24,9 +22,8 @@
                     </a>
                     @foreach ($charities as $ch)
                     <a class="list-group-item list-group-item-action px-2" href="{{route('charities.show',$ch)}}">
-                        <img width="40" height="40" @if(app()->getLocale() == 'ar')src="{{asset(config('path.ch_logo').$ch->logo_ar)}}"
-                        @else src="{{asset(config('path.ch_logo').$ch->logo_en)}}"@endif
-                        class="img-fluid border border-wight" alt="Card image cap">
+                        <img width="40" height="40" src="{{asset(config('path.ch_logo').$ch->logo)}}"
+                            class="img-fluid border border-wight" alt="Card image cap">
                         @if(app()->getLocale() == 'ar'){{$ch->name_ar}} @else {{$ch->name_en}}@endif
                     </a>
                     @endforeach

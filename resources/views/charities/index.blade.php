@@ -11,8 +11,7 @@
                                 <th scope="col">{{ __('id') }}</th>
                                 <th scope="col">{{ __('Arabic Name') }}</th>
                                 <th scope="col">{{ __('English Name') }}</th>
-                                <th scope="col">{{ __('Logo_AR') }}</th>
-                                <th scope="col">{{ __('Logo_EN') }}</th>
+                                <th scope="col">{{ __('Logo') }}</th>
                                 <th scope="col">{{ __('Cover') }}</th>
                                 <th scope="col">{{ __('License') }}</th>
                                 <th scope="col">{{ __('Email') }}</th>
@@ -30,11 +29,7 @@
                                 <td>{{ $charity->name_ar }}</td>
                                 <td>{{ $charity->name_en }}</td>
                                 <td style="width:10% ; max-width:15%;"><img
-                                        src="{{ asset(config('path.ch_logo').$charity->logo_ar) }}"
-                                        class=" img-fluid img-thumbnail">
-                                </td>
-                                <td style="width:10% ; max-width:15%;"><img
-                                        src="{{ asset(config('path.ch_logo').$charity->logo_en) }}"
+                                        src="{{ asset(config('path.ch_logo').$charity->logo) }}"
                                         class=" img-fluid img-thumbnail">
                                 </td>
                                 <td style="width:20% ; max-width:24%;"><img

@@ -77,9 +77,9 @@
                                     aria-haspopup="true" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class=""></span>
                                     @can('charity')
-                                    @if(!empty(Auth::user()->charity->logo_ar))
-                                    <img src="{{asset(config('path.ch_logo').Auth::user()->charity->logo_ar)}}"
-                                        width="30" height="30" alt="">
+                                    @if(!empty(Auth::user()->charity->logo))
+                                    <img src="{{asset(config('path.ch_logo').Auth::user()->charity->logo)}}" width="30"
+                                        height="30" alt="">
                                     @else
                                     <img src="{{asset(config('path.default'))}}" width="30" height="30" alt="">
                                     @endif
@@ -101,9 +101,16 @@
                                     <a class="dropdown-item" href="{{route('charities.create')}}">
                                         {{__('Manage my charity')}}
                                     </a>
+                                    @elsecan('admin')
+                                    <a class="dropdown-item" href="{{route('charities.index')}}">
+                                        {{__('Manage Charities')}}
+                                    </a>
+                                    <a class="dropdown-item" href="{{route('items.index')}}">
+                                        {{__('Manage Items')}}
+                                    </a>
                                     @endcan
                                     {{-- <a class="dropdown-item" href="{{route('profile.show')}}">
-                                    {{__('Profile')}}
+                                    {{__('Profile_pic')}}
                                     </a> --}}
                                 </div>
                             </li>
