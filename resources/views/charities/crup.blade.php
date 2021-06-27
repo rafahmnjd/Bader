@@ -14,7 +14,7 @@
 
                     <!--cover-->
                     <div class="row">
-                        <div class=" @if (!empty($charity)) col-md-2 @else col-md-4 @endif col-form-label ">
+                        <div class="col-md-2 col-form-label ">
                             <label for="cover">{{ __('Cover') }}:</label>
                         </div>
                         @if (!empty($charity))
@@ -23,7 +23,7 @@
                                 class="img-fluid img-thumbnail">
                         </div>
                         @endif
-                        <div class="col-8 input-group mt-3">
+                        <div class="@if(!empty($charity))col-md-8 @else col-md-10 @endif input-group mt-3">
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" name="cover" @if(empty($charity)) required
                                     @endif>
@@ -34,7 +34,7 @@
 
                     <!--logo-->
                     <div class="row">
-                        <div class=" @if (!empty($charity)) col-md-2 @else col-md-4 @endif col-form-label "
+                        <div class="col-md-2 col-form-label "
                             >
                             <label for="logo">{{ __('Logo') }}:</label>
                         </div>
@@ -44,7 +44,7 @@
                                 class="img-fluid img-thumbnail">
                         </div>
                         @endif
-                        <div class="col-8 input-group mt-3">
+                        <div class="@if(!empty($charity))col-md-8 @else col-md-10 @endif input-group mt-3">
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" name="logo" @if (empty($charity)) required @endif>
                                 <label class="custom-file-label text-left">No file chosen</label>
@@ -54,7 +54,7 @@
 
 
                     <!--name-->
-                    <div class="row">
+                    <div class="row mt-2">
                         <div class="col-md-2 col-form-label  ">
                             <label for="name_ar">{{ __('Arabic Name') }}:</label>
                         </div>

@@ -18,8 +18,8 @@ class CharityController extends Controller
     public function __construct() //صلاحيات
     {
         $this->middleware('can:admin')->only('destroy','index');
-        $this->middleware('can:ch_access,charity')->only(['edit','update','create']);
-        // $this->middleware('can:charity')->except('index','destroy','show');
+        $this->middleware('can:ch_access,charity')->only(['edit','update']);
+        $this->middleware('can:charity')->only(['create','store']);
     }
 
     /**

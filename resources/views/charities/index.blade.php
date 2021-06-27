@@ -3,6 +3,12 @@
 <div class="row justify-content-center">
     <div class="col-md-12">
         <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">{{__('Manage Charities')}}</h5>
+            </div>
+            {{-- <a id="top-plus" href="{{route('charities.create')}}" class="btn btn-outline-success">
+                <i class="zmdi zmdi-plus"></i>
+            </a> --}}
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table">

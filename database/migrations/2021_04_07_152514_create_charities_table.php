@@ -15,7 +15,7 @@ class CreateCharitiesTable extends Migration
     {
         Schema::create('charities', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->uniqid();
             $table->string('name_en')->nullable();//
             $table->string('name_ar')->nullable();//
             $table->unsignedInteger('license')->nullable()->unique();

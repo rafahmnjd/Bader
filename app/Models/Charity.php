@@ -27,4 +27,14 @@ class Charity extends Model
      {
          return $this->hasMany('App\Models\Article', 'charity_id');
      }
+
+     /**
+      * Get all of the jobs for the Charity
+      *
+      * @return \Illuminate\Database\Eloquent\Relations\HasMany
+      */
+     public function jobs()
+     {
+        return $this->hasMany('App\Models\CharityJob', 'charity_id');
+     }
 }

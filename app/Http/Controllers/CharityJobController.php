@@ -2,11 +2,28 @@
 
 namespace App\Http\Controllers;
 
+// use APP\Models\Charity;
 use App\Models\CharityJob;
 use Illuminate\Http\Request;
+use Auth;
 
 class CharityJobController extends Controller
 {
+    /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct() //صلاحيات
+    {
+        // $this->middleware('can:ch_access,charity');
+        $this->middleware('can:charity');
+        // $this->middleware('can:admin')->only('destroy','index');
+        // $this->middleware('can:ch_access,charity')->only(['edit','update']);
+        // $this->middleware('can:charity')->only(['index','create','store']);
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +32,13 @@ class CharityJobController extends Controller
     public function index()
     {
         //
+        $user =Auth::user();
+        if( $user->can('charity'))
+            $jobs = $user->Charity->jobs;
+        elseif($user->can('admin'))
+            $jobs=CharityJob::all();
+        else return back();
+        return view('jobs.index',compact('jobs'));
     }
 
     /**
@@ -25,6 +49,7 @@ class CharityJobController extends Controller
     public function create()
     {
         //
+        return view('jobs.crup');
     }
 
     /**
@@ -36,50 +61,59 @@ class CharityJobController extends Controller
     public function store(Request $request)
     {
         //
+        $data=$request->all();
+        $data=array_merge(['charity_id'=>Auth::user()->charity->id],$data);
+        CharityJob::create($data);
+        // Auth::user()->charity->jobs()->create($request->all());
+        return redirect(route('jobs.index'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\CharityJob  $charityJob
+     * @param  \App\Models\CharityJob  $job
      * @return \Illuminate\Http\Response
      */
-    public function show(CharityJob $charityJob)
+    public function show(CharityJob $job)
     {
         //
+        return view('jobs.show',compact('job'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\CharityJob  $charityJob
+     * @param  \App\Models\CharityJob  $job
      * @return \Illuminate\Http\Response
      */
-    public function edit(CharityJob $charityJob)
+    public function edit(CharityJob $job)
     {
-        //
+        return view('jobs.crup',compact('job'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\CharityJob  $charityJob
+     * @param  \App\Models\CharityJob  $job
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CharityJob $charityJob)
+    public function update(Request $request, CharityJob $job)
     {
-        //
+        $job->update($request->all());
+        return redirect(route('jobs.index'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\CharityJob  $charityJob
+     * @param  \App\Models\CharityJob  $job
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CharityJob $charityJob)
+    public function destroy(CharityJob $job)
     {
         //
+        $job->delete();
+        return redirect(route('jobs.index'));
     }
 }
