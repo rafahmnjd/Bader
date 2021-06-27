@@ -30,13 +30,13 @@
                                 <input class=" form-control" type="text" name='name_ar' value="{{$item->name_ar}}" required>
                             </div>
                             <div class="col p-1">
-                                <input class=" form-control" type="text" name='unite_ar' value="{{$item->unite_ar}}">
+                                <input class=" form-control" type="text" name='unite_ar' value="{{$item->unite_ar}}" required>
                             </div>
                             <div class="col p-1">
                                 <input class=" form-control" type="text" name='name_en' value="{{$item->name_en}}" required>
                             </div>
                             <div class="col p-1">
-                                <input class="form-control" type="text" name='unite_en' value="{{$item->unite_en}}">
+                                <input class="form-control" type="text" name='unite_en' value="{{$item->unite_en}}" required>
                             </div>
                             <div class="col-2 p-1">
                                 <button type="submit" class="btn btn-outline-warning">
@@ -62,13 +62,13 @@
                             <input class=" form-control" type="text" name='name_ar' required>
                         </div>
                         <div class="col p-1">
-                            <input class=" form-control" type="text" name='unite_ar'>
+                            <input class=" form-control" type="text" name='unite_ar' required>
                         </div>
                         <div class="col p-1">
                             <input class=" form-control" type="text" name='name_en' required>
                         </div>
                         <div class="col p-1">
-                            <input class="form-control" type="text" name='unite_en'>
+                            <input class="form-control" type="text" name='unite_en' required>
                         </div>
                         <div class="col-2 p-1">
                             <button type="submit" class="btn btn-outline-success">

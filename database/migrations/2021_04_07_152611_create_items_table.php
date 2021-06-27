@@ -19,6 +19,7 @@ class CreateItemsTable extends Migration
             $table->string('name_ar');
             $table->string('unite_en')->nullable()->default("kg");
             $table->string('unite_ar')->nullable()->default("كغ");
+            $table->unsignedBigInteger('created_by');
             $table->timestamps();
         });
     }

@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+;
 class ItemController extends Controller
 {
     /**
@@ -12,7 +13,7 @@ class ItemController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('can:admin');
+        $this->middleware('can:admin')->except('store');
     }
 
 
@@ -35,7 +36,8 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        $item = Item::create($request->all());
+        $data= array_merge($request->all(),['created_by'=>Auth::user()->id]);
+        $item = Item::create();
         return back();
     }
 

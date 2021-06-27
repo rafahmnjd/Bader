@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 // use APP\Models\Charity;
 use App\Models\CharityJob;
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+;
 
 class CharityJobController extends Controller
 {
