@@ -17,4 +17,16 @@ class Volunteer extends Model
      {
          return $this->belongsTo('App\Models\User', 'user_id');
      }
+
+     /**
+      * Get all of the jobRequests for the Volunteer
+      *
+      * @return \Illuminate\Database\Eloquent\Relations\HasMany
+      */
+     public function jobRequests()
+     {
+         return $this->hasMany('App\Models\VolunteerRequest', 'volunteer_id','user_id');
+     }
 }
+
+

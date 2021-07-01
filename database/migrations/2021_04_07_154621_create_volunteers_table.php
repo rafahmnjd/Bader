@@ -14,7 +14,7 @@ class CreateVolunteersTable extends Migration
     public function up()
     {
         Schema::create('volunteers', function (Blueprint $table) {
-            $table->id();
+            // $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('name_ar')->nullable();
             $table->string('name_en')->nullable();

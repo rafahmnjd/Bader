@@ -14,7 +14,7 @@ class Charity extends Model
     protected $primaryKey = 'user_id';
 
     public $incrementing = false;
-    // public $keyType = 'string';
+
     /**
      * Get the user associated with the CharityJob
      *
@@ -58,5 +58,23 @@ class Charity extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
+         /**
+      * Get all of the fills for the Shortage
+      *
+      * @return \Illuminate\Database\Eloquent\Relations\HasMany
+      */
+     public function fills()
+     {
+         return $this->hasMany('App\Models\Fill', 'shortage_id', 'user_id');
+     }
 
+     /**
+      * Get all of the shortages for the Charity
+      *
+      * @return \Illuminate\Database\Eloquent\Relations\HasMany
+      */
+     public function shortages()
+     {
+         return $this->hasMany('App\Models\Shortage', 'charity_id', 'user_id');
+     }
 }

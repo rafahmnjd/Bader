@@ -42,5 +42,6 @@ Route::resource('volunteers', 'VolunteerController');
 Route::resource('benfes', 'BenefactorController');
 Route::resource('items', "ItemController")->except(['show','create','edit']);
 Route::resource('projeacts','ProjectController');
+Route::resource('fills', 'FillController');
 });
 
