@@ -34,17 +34,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::middleware(['auth'])->group(function () {
-    
+
 Route::resource('charities', 'CharityController');
 Route::get('charities/{charity}/projects', 'CharityController@projects')->name('charities.projects');
 Route::resource('jobs', 'CharityJobController');
 Route::resource('volunteers', 'VolunteerController');
 Route::resource('benfes', 'BenefactorController');
 Route::resource('items', "ItemController")->except(['show','create','edit']);
-<<<<<<< HEAD
-Route::resource('projects',"ProjectController");
-=======
 Route::resource('projeacts','ProjectController');
->>>>>>> 95d0ea3dc811f279672eed67af35109cfb1f2aae
 });
 
