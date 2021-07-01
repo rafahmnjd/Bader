@@ -15,7 +15,7 @@ class CharityJob extends Model
      */
     public function charity()
     {
-        return $this->belongsTo('App\Models\Charity', 'charity_id');
+        return $this->belongsTo('App\Models\Charity', 'charity_id','user_id');
     }
 
          /**

@@ -79,9 +79,10 @@ class RegisterController extends Controller
             return route('charities.create');
         } else if (Auth::user()->role == 'volunteer') {
             return route('volunteers.create');
-        } else if (Auth::user()->role == 'benef') {
-            return route('benefs.create');
         }
+        // else if (Auth::user()->role == 'benef') {
+        //     return route('benefs.create');
+        // }
 
     }
 }

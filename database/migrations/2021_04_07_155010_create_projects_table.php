@@ -16,8 +16,10 @@ class CreateProjectsTable extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('charity_id');
-            $table->text('text');
-            $table->text('title');
+            $table->text('text_ar');
+            $table->text('text_en');
+            $table->text('title_ar');
+            $table->text('title_en');
             $table->string('image')->nullable();
             $table->set('state', ['waiting', 'closed']);
             $table->timestamps();
