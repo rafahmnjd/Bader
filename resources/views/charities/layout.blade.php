@@ -4,7 +4,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/ch_show.css') }}">
 @endsection
 @section('content')
-    <div class="container">
+    {{-- <div class="container"> --}}
         <div class="profile-page tx-13">
             <div class="row">
                 <div class="col-12 grid-margin">
@@ -12,7 +12,7 @@
                         <div class="cover">
                             <div class="gray-shade"></div>
                             <figure>
-                                <img src="{{ asset(config('path.covers') . $charity->cover) }}" class="img-fluid"
+                                <img src="{{ asset(config('path.covers') . $charity->cover) }}" class="img-fluid" style="max-height: 25rem"
                                     alt="profile cover">
                             </figure>
                             <div class="cover-body d-flex justify-content-between align-items-center">
@@ -48,21 +48,20 @@
                             <ul class="links d-flex align-items-center mt-3 mt-md-0">
 
                                 <!-- Artical -->
-                                <li class="header-link-item d-flex align-items-center active">
-                                    <a class="pt-1px d-none d-md-block" href="#">{{ __('Artical') }}</a>
+                                <li class="header-link-item d-flex align-items-center @if(!empty($articles))active @endif">
+                                    <a class="pt-1px d-none d-md-block" href="{{ route('charities.show', $charity) }}">{{ __('Articles') }}</a>
                                 </li>
                                 <!-- Projects -->
-                                <li class="header-link-item ml-3 pl-3 border-left d-flex align-items-center">
-                                    <a class="pt-1px d-none d-md-block"
-                                        href="{{ route('charities.projects', $charity) }}">{{ __('Projects') }}</a>
+                                <li class="header-link-item ml-3 pl-3 border-left d-flex align-items-center @if(!empty($projects))active @endif">
+                                    <a class="pt-1px d-none d-md-block" href="{{ route('charities.projects', $charity) }}">{{ __('Projects') }}</a>
                                 </li>
                                 <!-- Shortage -->
-                                <li class="header-link-item ml-3 pl-3 border-left d-flex align-items-center">
-                                    <a class="pt-1px d-none d-md-block" href="#">{{ __('Shortage') }}</a>
+                                <li class="header-link-item ml-3 pl-3 border-left d-flex align-items-center @if(!empty($shortages))active @endif">
+                                    <a class="pt-1px d-none d-md-block" href="{{ route('charities.shortage', $charity) }}">{{ __('Shortage') }}</a>
                                 </li>
                                 <!-- Surplus -->
-                                <li class="header-link-item ml-3 pl-3 border-left d-flex align-items-center">
-                                    <a class="pt-1px d-none d-md-block" href="#">{{ __('Surplus') }}</a>
+                                <li class="header-link-item ml-3 pl-3 border-left d-flex align-items-center @if(!empty($surpluses))active @endif">
+                                    <a class="pt-1px d-none d-md-block" href="{{ route('charities.surplus', $charity) }}">{{ __('Surplus') }}</a>
                                 </li>
                             </ul>
                         </div>
@@ -136,45 +135,43 @@
                             <div class="card rounded">
                                 <div class="card-body">
                                     <h6 class="card-title tx-11 font-weight-bold ">{{ __('Job Vacancies') }}</h6>
+                                    @foreach ($charity->jobs as $job)
                                     <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
                                         <div class="d-flex align-items-center hover-pointer">
                                             <div class="ml-2">
                                                 <p>
                                                     @if (config('app.locale') == 'ar')
-                                                        {{ $charity->name_ar }}
+                                                        {{ $job->job_title_ar }}
                                                     @else
-                                                        {{ $charity->name_en }}
+                                                        {{ $job->job_title_en }}
                                                     @endif
                                                 </p>
-                                                <p class="tx-11 text-muted">{{ $charity->info_en }}</p>
-                                                <button class="btn btn-light btn-icon-text btn-edit-profile">
-                                                    <a href="#">
-                                                        {{ __('Show post') }}
-                                                    </a>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
-                                        <div class="d-flex align-items-center hover-pointer">
-                                            <div class="ml-2">
-                                                <p>
-                                                    @if (config('app.locale') == 'ar')
-                                                        {{ $charity->name_ar }}
-                                                    @else
-                                                        {{ $charity->name_en }}
-                                                    @endif
-                                                </p>
-                                                <p class="tx-11 text-muted">{{ $charity->info_en }}</p>
-                                                <button class="btn btn-light btn-icon-text btn-edit-profile">
-                                                    <a href="#">
-                                                        {{ __('Show post') }}
-                                                    </a>
-                                                </button>
-                                            </div>
 
+                                                <p class="tx-11 text-muted">
+                                                    @if (config('app.locale') == 'ar')
+                                                        {{ $job->job_details_ar }}
+                                                    @else
+                                                        {{ $job->job_details_en }}
+                                                    @endif
+                                                </p>
+                                                <p class="tx-11 text-muted">
+                                                    @if (config('app.locale') == 'ar')
+                                                        {{ $job->job_location_ar }}
+                                                    @else
+                                                        {{ $job->job_location_en }}
+                                                    @endif
+                                                </p>
+                                                <button class="btn btn-light btn-icon-text btn-edit-profile">
+                                                    <a href="#">
+                                                        {{ __('Show post') }}
+                                                    </a>
+                                                </button>
+                                                <span class="tx-11 text-muted">{{ $job->created_at }}</span>
+
+                                            </div>
                                         </div>
                                     </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -183,5 +180,5 @@
                 <!-- right wrapper end -->
             </div>
         </div>
-    </div>
+    {{-- </div> --}}
 @endsection
