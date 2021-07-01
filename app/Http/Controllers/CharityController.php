@@ -183,4 +183,10 @@ class CharityController extends Controller
         return redirect(route('charities.index'));
 
     }
+
+    public function projects(Charity $charity)
+    {
+        $projects=$charity->projects;
+        return view('charities.projects.project_sh',compact('projects','charity'));
+    }
 }
