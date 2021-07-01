@@ -7,8 +7,8 @@
                 <h5 class="card-title">{{__("Job Info")}}</h5>
             </div>
             <div class="card-body">
-                <form action="{{empty($project)? route('projects.store') : route('projects.update',$project)}}" method="Post"
-                    enctype="multipart/form-data">
+                <form action="{{empty($project)? route('projects.store') : route('projects.update',$project)}}"
+                    method="Post" enctype="multipart/form-data">
                     @csrf
                     @if (!empty($project))
                     @method('PUT')
@@ -40,7 +40,7 @@
                                 <div class="col-md-4 col-form-label">
                                     <label for="title_en">{{ __('title_en') }}:</label>
                                 </div>
-                                <div class="col-8"><input class="form-control" type="text" name="project_title_en"
+                                <div class="col-8"><input class="form-control" type="text" name="title_en"
                                         @if(!empty($project))value="{{$project->title_en}}" @else
                                         value="{{old('title_en')}}" @endif required>
                                 </div>
@@ -66,31 +66,35 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-6">
+
+                        {{-- </div> --}}
+                        <!--Image-->
+                        {{-- <div class="row"> --}}
+                        <div class="col-md-6 ">
                             <div class="form-group">
-                                <label for="tag">{{__('tags')}}</label>
-                                <input type="text" class="form-control" name="tag" id="tag" @if(!empty($project))value="{{$project->tag}}" @else value="{{old('tag')}}"@endif>
+                                <label for="image">{{ __('Image') }}:</label>
+
+                                @if (!empty($project))
+
+                                <img src="{{ asset(config('path.pro_img').$project->image) }}"
+                                    class="img-fluid img-thumbnail">
+
+                                @endif
+                                {{-- <div class="@if(!empty($project))col-md-8 @else col-md-10 @endif input-group mt-3"> --}}
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" name="image" @if (empty($project))
+                                        required @endif>
+                                    <label class="custom-file-label text-left">No file chosen</label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col d-flex align-items-end d-flex justify-content-end">
-                            <button type="submit"class="btn btn-primary">{{__("save")}}</button>
                         </div>
                     </div>
-                    <!--Image-->
                     <div class="row">
-                        <div class="col-md-2 col-form-label ">
-                            <label for="image">{{ __('Logo') }}:</label>
+                        <div class="col-6 text-md-center">
+                            <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
                         </div>
-                        @if (!empty($charity))
-                        <div class="col-md-2 col-form-label ">
-                            <img src="{{ asset(config('path.proj_image').$charity->image) }}" class="img-fluid img-thumbnail">
-                        </div>
-                        @endif
-                        <div class="@if(!empty($charity))col-md-8 @else col-md-10 @endif input-group mt-3">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="image" @if (empty($charity)) required @endif>
-                                <label class="custom-file-label text-left">No file chosen</label>
-                            </div>
+                        <div class="col-6 text-md-center">
+                            <a href="{{ route('projects.index') }}" type="button" class="btn btn-secondary">{{ __('Cancel') }}</a>
                         </div>
                     </div>
                 </form>

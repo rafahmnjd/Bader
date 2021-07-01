@@ -13,16 +13,19 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-     public function index()
+    public function index()
     {
         //
-        $user =Auth::user();
-        if( $user->can('charity'))
+        $user = Auth::user();
+        if ($user->can('charity')) {
             $projects = $user->Charity->projects;
-        elseif($user->can('admin'))
-            $projects=Project::all();
-        else return back();
-        return view('projects.index',compact('projects'));
+        } elseif ($user->can('admin')) {
+            $projects = Project::all();
+        } else {
+            return back();
+        }
+
+        return view('projects.index', compact('projects'));
     }
 
     /**
@@ -45,8 +48,16 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         //
-        $data=$request->all();
-        $data=array_merge(['charity_id'=>Auth::user()->charity->user_id],$data);
+        $data = $request->except(['image']); // ما بخزن الصور متل ما هنن
+        if (request()->hasfile('image')) {
+            $imagefilepath = public_path(config('path.pro_img'));
+            $imagefile = request()->file('image'); //بتعطي الصورة كفايل
+            $imagename = time() . "_image." . $request->image->extension();
+            $imagefile->move($imagefilepath, $imagename);
+            $data = array_merge($data, ["image" => $imagename]);
+        }
+
+        $data = array_merge(['charity_id' => Auth::user()->charity->user_id], $data);
         Project::create($data);
         // Auth::user()->charity->projects()->create($request->all());
         return redirect(route('projects.index'));
@@ -61,7 +72,7 @@ class ProjectController extends Controller
     public function show(Project $project)
     {
         //
-        return view('projects.show',compact('project'));
+        return view('projects.show', compact('project'));
     }
 
     /**
@@ -72,7 +83,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('projects.crup',compact('project'));
+        return view('projects.crup', compact('project'));
     }
 
     /**
@@ -84,7 +95,22 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        $project->update($request->all());
+        $data = $request->except(['image']); // ما بخزن الصور متل ما هنن
+        if (request()->hasfile('image')) {
+            $imagefilepath = public_path(config('path.pro_img'));
+            if ($project->image != null) {
+                if (file_exists($imagefilepath . $project->image)) {
+                    File::delete($imagefilepath . $project->image);
+                }
+            }
+
+            $imagefile = request()->file('image');
+            $imagename = time() . "_ar." . $request->image->extension();
+            $imagefile->move($imagefilepath, $imagename);
+            $data = array_merge($data, ["image" => $imagename]);
+        }
+
+        $project->update($data->all());
         return redirect(route('projects.index'));
     }
 
@@ -97,6 +123,11 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         //
+        if ($project->image != null) {
+            $imagefilepath = public_path(config('path.pro_img'));
+            if (file_exists($imagefilepath . $project->image)) {
+                File::delete($imagefilepath . $project->image);}
+        }
         $project->delete();
         return redirect(route('projects.index'));
     }
