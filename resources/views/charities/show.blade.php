@@ -25,7 +25,7 @@
 
                         <!-- choice -->
                         <div class="dropdown">
-                            <span class="tx-11 text-muted">1 min ago</span>
+                            {{-- <span class="tx-11 text-muted">{{ $artical->created_at }}</span> --}}
                             <button class="btn p-0" type="button" id="dropdownMenuButton2" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -51,13 +51,13 @@
 
                 <!-- card-body -->
                 <!-- text with image -->
-                <div class="card-body">
+                <div class="card-body ">
                     <p class="mb-3 tx-14">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus minima
                         delectus nemo unde quae recusandae assumenda.</p>
-                    <img class="img-fluid" src="{{ asset(config('path.ch_logo') . $charity->logo) }}" alt="">
+                    <img class="card-img-bottom" src="{{ asset(config('path.ch_logo') . $charity->logo) }}" alt="" style="max-block-size: 25rem">
                 </div>
 
-                <div class="card-footer">
+                {{-- <div class="card-footer">
                     <div class="d-flex post-actions">
                         <a href="javascript:;" class="d-flex align-items-center text-muted mr-4">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -88,7 +88,7 @@
                             <span class="d-none d-md-block ml-2">{{ __('Share') }}</span>
                         </a>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

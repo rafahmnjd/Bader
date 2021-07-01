@@ -189,4 +189,16 @@ class CharityController extends Controller
         $projects=$charity->projects;
         return view('charities.projects.project_sh',compact('projects','charity'));
     }
+
+    public function shortages(Charity $charity)
+    {
+        $shortages = $charity->shortages()->where('type', 'min');
+        return view('charities.shortages', compact('shortages','charity'));
+    }
+
+    public function surpluses(Charity $charity)
+    {
+        $surpluses = $charity->shortages()->where('type', 'plus');
+        return view('charities.surpluses', compact('surpluses', 'charity'));
+    }
 }

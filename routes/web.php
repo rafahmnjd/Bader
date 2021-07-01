@@ -37,6 +37,8 @@ Route::middleware(['auth'])->group(function () {
 
 Route::resource('charities', 'CharityController');
 Route::get('charities/{charity}/projects', 'CharityController@projects')->name('charities.projects');
+Route::get('charities/{charity}/shortages', 'CharityController@shortages')->name('charities.shortage');
+Route::get('charities/{charity}/surpluses', 'CharityController@surpluses')->name('charities.surplus');
 Route::resource('jobs', 'CharityJobController');
 Route::resource('volunteers', 'VolunteerController');
 Route::resource('benfes', 'BenefactorController');
