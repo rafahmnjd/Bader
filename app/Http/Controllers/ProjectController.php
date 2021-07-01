@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
@@ -15,6 +16,16 @@ class ProjectController extends Controller
     public function index()
     {
         //
+        $user = Auth::user();
+        if ($user->can('charity')) {
+            $projects = $user->Charity->projects;
+        } elseif ($user->can('admin')) {
+            $projects = Project::all();
+        } else {
+            return back();
+        }
+
+        return view('projects.index', compact('projects'));
     }
 
     /**
@@ -25,6 +36,7 @@ class ProjectController extends Controller
     public function create()
     {
         //
+        return view('projects.crup');
     }
 
     /**
@@ -36,51 +48,87 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         //
+        $data = $request->except(['image']); // ما بخزن الصور متل ما هنن
+        if (request()->hasfile('image')) {
+            $imagefilepath = public_path(config('path.pro_img'));
+            $imagefile = request()->file('image'); //بتعطي الصورة كفايل
+            $imagename = time() . "_image." . $request->image->extension();
+            $imagefile->move($imagefilepath, $imagename);
+            $data = array_merge($data, ["image" => $imagename]);
+        }
+
+        $data = array_merge(['charity_id' => Auth::user()->charity->user_id], $data);
+        Project::create($data);
+        // Auth::user()->charity->projects()->create($request->all());
+        return redirect(route('projects.index'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Project  $project
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
     public function show(Project $project)
     {
         //
-        return view('charities.projects.project_sh');
+        return view('projects.show', compact('project'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Project  $project
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
     public function edit(Project $project)
     {
-        //
+        return view('projects.crup', compact('project'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Project  $project
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Project $project)
     {
-        //
+        $data = $request->except(['image']); // ما بخزن الصور متل ما هنن
+        if (request()->hasfile('image')) {
+            $imagefilepath = public_path(config('path.pro_img'));
+            if ($project->image != null) {
+                if (file_exists($imagefilepath . $project->image)) {
+                    File::delete($imagefilepath . $project->image);
+                }
+            }
+
+            $imagefile = request()->file('image');
+            $imagename = time() . "_ar." . $request->image->extension();
+            $imagefile->move($imagefilepath, $imagename);
+            $data = array_merge($data, ["image" => $imagename]);
+        }
+
+        $project->update($data->all());
+        return redirect(route('projects.index'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Project  $project
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
     public function destroy(Project $project)
     {
         //
+        if ($project->image != null) {
+            $imagefilepath = public_path(config('path.pro_img'));
+            if (file_exists($imagefilepath . $project->image)) {
+                File::delete($imagefilepath . $project->image);}
+        }
+        $project->delete();
+        return redirect(route('projects.index'));
     }
 }

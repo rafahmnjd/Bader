@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Benefactor;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class BenefactorController extends Controller
@@ -15,6 +15,8 @@ class BenefactorController extends Controller
     public function index()
     {
         //
+        $users=User::where('role','benef')->get();
+        return view('users.index',compact('users'));
     }
 
     /**
@@ -41,10 +43,10 @@ class BenefactorController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Benefactor  $benefactor
+     * @param  \App\Models\User  $benefactor
      * @return \Illuminate\Http\Response
      */
-    public function show(Benefactor $benefactor)
+    public function show(User $benefactor)
     {
         //
     }
@@ -52,10 +54,10 @@ class BenefactorController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Benefactor  $benefactor
+     * @param  \App\Models\User  $benefactor
      * @return \Illuminate\Http\Response
      */
-    public function edit(Benefactor $benefactor)
+    public function edit(User $benefactor)
     {
         //
     }
@@ -64,10 +66,10 @@ class BenefactorController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Benefactor  $benefactor
+     * @param  \App\Models\User  $benefactor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Benefactor $benefactor)
+    public function update(Request $request, User $benefactor)
     {
         //
     }
@@ -75,10 +77,10 @@ class BenefactorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Benefactor  $benefactor
+     * @param  \App\Models\User  $benefactor
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Benefactor $benefactor)
+    public function destroy(User $benefactor)
     {
         //
     }

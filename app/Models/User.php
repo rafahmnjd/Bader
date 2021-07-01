@@ -56,4 +56,5 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Models\User', 'user_id', 'local_key');
     }
+
 }
