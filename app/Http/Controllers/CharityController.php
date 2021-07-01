@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Charity;
+use App\Models\CharityJob;
 use Illuminate\Support\Facades\Auth;
 ;
 use Illuminate\Http\Request;
