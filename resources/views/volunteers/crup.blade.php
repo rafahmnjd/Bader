@@ -104,7 +104,6 @@
                         </div>
                     </div>
 
-
                     <!--Arabic Experiences-->
                     <div class="row">
                         <div class="col-md-2 col-form-label text-md-left">
@@ -114,7 +113,6 @@
                                 value=@if(!empty($volunteer)) "{{$volunteer->experiences_ar}}" @else "{{old('experiences_ar')}}" @endif>
                         </div>
                     </div>
-
                     <!--English Experiences-->
                     <div class="row">
                         <div class="col-md-2 col-form-label text-md-left">

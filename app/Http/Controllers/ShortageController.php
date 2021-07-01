@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Shortage;
+use App\Models\Shortage;
+use App\Models\Item;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ShortageController extends Controller
 {
@@ -15,6 +18,9 @@ class ShortageController extends Controller
     public function index()
     {
         //
+        $shortages = Auth::user()->charity->shortages()->where('type', 'min');
+        $surplus = Auth::user()->charity->shortages()->where('type', 'plus');
+        return view('shortages.index', compact('shortages', 'surplus'));
     }
 
     /**
@@ -25,6 +31,8 @@ class ShortageController extends Controller
     public function create()
     {
         //
+        $items=Item::all();
+        return view('shortages.crup');
     }
 
     /**
@@ -35,7 +43,10 @@ class ShortageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //TODO accsess To Charity Only
+        $data = array_merge($request->all(), ['charity_id' => Auth::user()->id]);
+        $shortage = Shortage::create($data);
+        return redirect(route('shortages.index'));
     }
 
     /**
@@ -47,6 +58,8 @@ class ShortageController extends Controller
     public function show(Shortage $shortage)
     {
         //
+        return view('shortages.show', compact('shortage'));
+
     }
 
     /**
@@ -58,6 +71,8 @@ class ShortageController extends Controller
     public function edit(Shortage $shortage)
     {
         //
+        return view('shortages.crup', compact('shortage'));
+
     }
 
     /**
@@ -70,6 +85,9 @@ class ShortageController extends Controller
     public function update(Request $request, Shortage $shortage)
     {
         //
+        $shortage->update($request->all());
+        return back();
+
     }
 
     /**
@@ -81,5 +99,8 @@ class ShortageController extends Controller
     public function destroy(Shortage $shortage)
     {
         //
+        $shortage->delete();
+        return back();
+
     }
 }

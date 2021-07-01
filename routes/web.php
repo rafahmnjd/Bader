@@ -45,5 +45,6 @@ Route::resource('benfes', 'BenefactorController');
 Route::resource('items', "ItemController")->except(['show','create','edit']);
 Route::resource('projects','ProjectController');
 Route::resource('fills', 'FillController');
+Route::resource('shortages', 'ShortageController');
 });
 

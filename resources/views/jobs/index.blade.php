@@ -5,11 +5,10 @@
         <div class="card">
             <div class="card-header">
                 <h5 class="card-title">{{__('Manage Jobs')}}
-                <a id="top-plus" href="{{route('jobs.create')}}" class="btn btn-outline-success btn-sm float-left">
-                    <i class="zmdi zmdi-plus"></i>
-                </a></h5>
+                    <a id="top-plus" href="{{route('jobs.create')}}" class="btn btn-outline-success  float-left">
+                        <i class="zmdi zmdi-plus"></i>
+                    </a></h5>
             </div>
-
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table">
@@ -38,38 +37,34 @@
                                 <td>{{ $job->job_details_ar}}</td>
                                 <td>{{ $job->job_details_en}}</td>
                                 <td>{{ $job->created_at }}</td>
-                                <td>{{ $job->location_ar }}</td><td>{{ $job->location_en}}</td>
+                                <td>{{ $job->location_ar }}</td>
+                                <td>{{ $job->location_en}}</td>
                                 <td>{{ $job->tag }}</td>
                                 <td>{{ $job->state }}</td>
-
-
                                 <td>
                                     <div class="btn-group-justified">
-                                        {{-- <div class="btn-group">
+                                       {{-- <div class="btn-group">
                                             <a class="btn btn-outline-primary rounded-circle"
                                                 href="{{ route('jobs.show', $job->id) }}">
-                                                <i class="zmdi zmdi-eye"></i>
-                                            </a>
-                                        </div> --}}
-                                        <div class="btn-group">
-                                            <a class="btn btn-outline-warning rounded-circle"
-                                                href="{{ route('jobs.edit', $job->id) }}">
-                                                <i class="zmdi zmdi-edit"></i>
-                                            </a>
-                                        </div>
-                                        <div class="btn-group">
-                                            <form action="{{ route('jobs.destroy', $job->id) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button Type="submit" class="btn rounded-circle btn-outline-danger">
-                                                    <i class="zmdi zmdi-delete"></i>
-                                                </button>
-                                            </form>
-                                        </div>
+                                        <i class="zmdi zmdi-eye"></i>
+                                        </a>
+                                    </div> --}}
+                                    <div class="btn-group">
+                                        <a class="btn btn-outline-warning rounded-circle"
+                                            href="{{ route('jobs.edit', $job->id) }}">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </a>
                                     </div>
-
+                                    <div class="btn-group">
+                                        <form action="{{ route('jobs.destroy', $job->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                             <button Type="submit" class="btn rounded-circle btn-outline-danger">
+                                                <i class="zmdi zmdi-delete"></i>
+                                            </button>
+                                        </form>
+                                    </div>
                                 </td>
-                                </th>
                             </tr>
                             @endforeach
                         </tbody>
