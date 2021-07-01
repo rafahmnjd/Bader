@@ -14,13 +14,13 @@ class CreateCharitiesTable extends Migration
     public function up()
     {
         Schema::create('charities', function (Blueprint $table) {
-            $table->id();
+            // $table->id();
             $table->unsignedBigInteger('user_id')->uniqid();
             $table->string('name_en')->nullable();//
             $table->string('name_ar')->nullable();//
             $table->unsignedInteger('license')->nullable()->unique();
-            $table->unsignedBigInteger('country_id')->nullable();
-            $table->unsignedBigInteger('city_id')->nullable();
+            // $table->unsignedBigInteger('country_id')->nullable();
+            // $table->unsignedBigInteger('city_id')->nullable();
             $table->unsignedBigInteger('state_id')->nullable();
             $table->string('address_ar')->nullable();//
             $table->string('address_en')->nullable();//

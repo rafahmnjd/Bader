@@ -63,7 +63,7 @@ class CharityJobController extends Controller
     {
         //
         $data=$request->all();
-        $data=array_merge(['charity_id'=>Auth::user()->charity->id],$data);
+        $data=array_merge(['charity_id'=>Auth::user()->charity->user_id],$data);
         CharityJob::create($data);
         // Auth::user()->charity->jobs()->create($request->all());
         return redirect(route('jobs.index'));

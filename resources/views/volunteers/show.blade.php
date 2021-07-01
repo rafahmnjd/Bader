@@ -3,6 +3,7 @@
 <!-- include my style -->
 <link rel="stylesheet" type="text/css" href="{{asset('css/show.css')}}">
 @endsection
+
 @section('content')
 <section class="section about-section gray-bg" id="about">
     <div class="container">
@@ -67,6 +68,7 @@
                         height="300">
                     @else
                     <img src="{{ asset(config('path.default').'userProfile') }}" title="" max_width="50%" height="300">
+                @endif
                 </div>
             </div>
         </div>
@@ -74,13 +76,14 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 @if (config('app.locale') == 'ar')
                 <div class="text-left">
-                @else
-                <div class="text-right">
-                @endif
-                    <button type="button" id="submit" name="submit"
+                    @else
+                    <div class="text-right">
+                        @endif
+                        <button type="button" id="submit" name="submit"
                             class="btn btn-outline-secondary">{{ __('Upload CV') }}</button>
-                    <button type="button" id="submit" name="submit"
+                        <button type="button" id="submit" name="submit"
                             class="btn btn-outline-primary">{{ __('Create CV') }}</button>
+                    </div>
                 </div>
             </div>
         </div>

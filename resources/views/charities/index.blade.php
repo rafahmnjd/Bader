@@ -7,7 +7,7 @@
                 <h5 class="card-title">{{__('Manage Charities')}}</h5>
             </div>
             {{-- <a id="top-plus" href="{{route('charities.create')}}" class="btn btn-outline-success">
-                <i class="zmdi zmdi-plus"></i>
+            <i class="zmdi zmdi-plus"></i>
             </a> --}}
             <div class="card-body">
                 <div class="table-responsive">
@@ -22,16 +22,13 @@
                                 <th scope="col">{{ __('License') }}</th>
                                 <th scope="col">{{ __('Email') }}</th>
                                 <th scope="col">{{ __('City') }}</th>
-
                                 <th scope="col" width="150">{{ __('Control') }}</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($charities as $charity)
                             <tr>
-                                <th scope="row">
-                                    {{ $charity->id }}</th>
-
+                                <th scope="row">{{ $charity->user_id}}</th>
                                 <td>{{ $charity->name_ar }}</td>
                                 <td>{{ $charity->name_en }}</td>
                                 <td style="width:10% ; max-width:15%;"><img
@@ -51,19 +48,20 @@
                                 <td>
                                     <div class="btn-group-justified">
                                         <div class="btn-group">
-                                            <a class="btn btn-outline-primary rounded-circle"
-                                                href="{{ route('charities.show', $charity->id) }}">
+                                            <a class="btn btn-outline-primary rounded-circle" href="{{ route('charities.show', $charity->user_id
+) }}">
                                                 <i class="zmdi zmdi-eye"></i>
                                             </a>
                                         </div>
                                         <div class="btn-group">
-                                            <a class="btn btn-outline-warning rounded-circle"
-                                                href="{{ route('charities.edit', $charity->id) }}">
+                                            <a class="btn btn-outline-warning rounded-circle" href="{{ route('charities.edit', $charity->user_id
+) }}">
                                                 <i class="zmdi zmdi-edit"></i>
                                             </a>
                                         </div>
                                         <div class="btn-group">
-                                            <form action="{{ route('charities.destroy', $charity->id) }}" method="POST">
+                                            <form action="{{ route('charities.destroy', $charity->user_id
+) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button Type="submit" class="btn rounded-circle btn-outline-danger">

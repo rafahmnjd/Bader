@@ -21,7 +21,8 @@
                                 <th scope="col">{{ __('job_details_ar') }}</th>
                                 <th scope="col">{{ __('job_details_en') }}</th>
                                 <th scope="col">{{ __('created_at') }}</th>
-                                <th scope="col">{{ __('location') }}</th>
+                                <th scope="col">{{ __('location_ar') }}</th>
+                                <th scope="col">{{ __('location_en') }}</th>
                                 <th scope="col">{{ __('tag') }}</th>
                                 <th scope="col">{{ __('state') }}</th>
 
@@ -37,7 +38,7 @@
                                 <td>{{ $job->job_details_ar}}</td>
                                 <td>{{ $job->job_details_en}}</td>
                                 <td>{{ $job->created_at }}</td>
-                                <td>{{ $job->location }}</td>
+                                <td>{{ $job->location_ar }}</td><td>{{ $job->location_en}}</td>
                                 <td>{{ $job->tag }}</td>
                                 <td>{{ $job->state }}</td>
 

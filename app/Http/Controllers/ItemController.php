@@ -37,7 +37,7 @@ class ItemController extends Controller
     public function store(Request $request)
     {
         $data= array_merge($request->all(),['created_by'=>Auth::user()->id]);
-        $item = Item::create();
+        $item = Item::create($data);
         return back();
     }
 

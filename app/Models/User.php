@@ -46,4 +46,14 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Models\Charity', 'user_id', 'id');
     }
+
+    /**
+     * Get the Volunteer associated with the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function Volunteer()
+    {
+        return $this->hasOne('App\Models\User', 'user_id', 'local_key');
+    }
 }

@@ -124,7 +124,7 @@ class CharityController extends Controller
         if (request()->hasfile('logo')) {
             $logofilepath = public_path(config('path.ch_logo'));
             if ($charity->logo != null) {
-                if (Storage::exists($logofilepath . $charity->logo)) {
+                if (file_exists($logofilepath . $charity->logo)) {
                     File::delete($logofilepath . $charity->logo);
                 }
             }
@@ -140,7 +140,7 @@ class CharityController extends Controller
         if (request()->hasfile('cover')) {
             $coverfilepath = public_path(config('path.covers'));
             if ($charity->cover != null) {
-                if (Storage::exists($coverfilepath . $charity->cover)) {
+                if (file_exists($coverfilepath . $charity->cover)) {
                     File::delete($coverfilepath . $charity->cover);}
             }
 
@@ -169,13 +169,13 @@ class CharityController extends Controller
         //
         if ($charity->logo != null) {
             $logofilepath = public_path(config('path.ch_logo'));
-            if (Storage::exists($logofilepath . $charity->logo)) {
+            if (file_exists($logofilepath . $charity->logo)) {
                 File::delete($logofilepath . $charity->logo);}
         }
 
         if ($charity->cover != null) {
             $coverfilepath = public_path(config('path.covers'));
-            if (Storage::exists($coverfilepath . $charity->cover)) {
+            if (file_exists($coverfilepath . $charity->cover)) {
                 File::delete($coverfilepath . $charity->cover);}
         }
 

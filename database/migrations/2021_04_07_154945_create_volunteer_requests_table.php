@@ -19,7 +19,6 @@ class CreateVolunteerRequestsTable extends Migration
             $table->unsignedBigInteger('charity_job_id');
             $table->string('cv')->nullable();
             $table->set('state', ['waiting', 'accepted','refused']);
-
             $table->timestamps();
         });
     }
