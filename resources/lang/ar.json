@@ -42,6 +42,7 @@
     ,"License":"الترخيص"
     ,"Address_AR":"العنوان بالعربية"
     ,"Address_EN":"العنوان بالإنكليزية"
+    ,"Address":"العنوان"
     ,"Cover":"الغلاف الخارجي"
     ,"Logo":"الشعار "
     ,"Submit":"إرسال"
@@ -76,7 +77,16 @@
     ,"Unite in English":"الواحدة باللغة الانكليزية"
     ,"Control":"التحكم"
     ,"Charity Info":"معلومات الجمعية"
-    
-
+    ,"Projects":"المشاريع"
+    ,"Shortage":"النقص"
+    ,"Surplus":"الفائض"
+    ,"About":"لمحة عن الجمعية"
+    ,"Artical":"المقالات"
+    ,"Write a new article":"اكتب مقالاً جديداً"
+    ,"Like":"إعجاب"
+    ,"Comment":"تعليق"
+    ,"Share":"مشاركة"
+    ,"Show post":"عرض المنشور"
+    ,"Job Vacancies":"الشواغر الوظيفية"
 
 }

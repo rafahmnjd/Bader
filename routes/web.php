@@ -1,6 +1,8 @@
 <?php
-
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,11 +34,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::middleware(['auth'])->group(function () {
+    
 Route::resource('charities', 'CharityController');
+Route::get('charities/{charity}/projects', 'CharityController@projects')->name('charities.projects');
 Route::resource('jobs', 'CharityJobController');
 Route::resource('volunteers', 'VolunteerController');
 Route::resource('benfes', 'BenefactorController');
 Route::resource('items', "ItemController")->except(['show','create','edit']);
-
+Route::resource('projeacts','ProjectController');
 });
 
