@@ -43,4 +43,20 @@ class Charity extends Model
     {
         return $this->hasMany('App\Models\CharityJob', 'charity_id','user_id');
     }
+
+    /**
+     * Get all of the projects for the Charity
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function projects()
+    {
+        return $this->hasMany(Project::class, 'charity_id', 'user_id');
+    }
+    /**
+     * Get all of the articles for the Charity
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+
 }
