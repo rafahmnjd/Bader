@@ -19,6 +19,7 @@ class CreateProjectRequirementsTable extends Migration
             $table->string('name');
             $table->text('details');
             $table->unsignedInteger("quantity");
+            $table->set('state', ['waiting', 'closed']);
             $table->timestamps();
         });
     }

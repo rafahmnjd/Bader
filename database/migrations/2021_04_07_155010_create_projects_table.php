@@ -18,8 +18,8 @@ class CreateProjectsTable extends Migration
             $table->unsignedBigInteger('charity_id');
             $table->text('text_ar');
             $table->text('text_en');
-            $table->text('title_ar');
-            $table->text('title_en');
+            $table->string('title_ar');
+            $table->string('title_en');
             $table->string('image')->nullable();
             $table->set('state', ['waiting', 'closed']);
             $table->timestamps();

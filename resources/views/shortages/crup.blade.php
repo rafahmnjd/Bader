@@ -51,7 +51,7 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="item_id">{{__("item_id")}}</label>
-                                <select id="" class="select2" name="item_id" required>
+                                <select id="" class="form-control" name="item_id" required>
 
                                     @foreach ($items as $item)
                                     <option value="{{$item->id}}">{{$item->name_ar}}-{{$item->name_en}}</option>
