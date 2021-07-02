@@ -59,12 +59,12 @@
                             <!-- Shortage -->
                             <li class="header-link-item ml-3 pl-3 border-left d-flex align-items-center @if (!empty($shortages)) active @endif">
                                 <a class="pt-1px d-none d-md-block"
-                                    href="{{ route('charities.shortage', $charity) }}">{{ __('Shortage') }}</a>
+                                    href="{{ route('charities.shortage', $charity) }}">{{ __('Shortages') }}</a>
                             </li>
                             <!-- Surplus -->
                             <li class="header-link-item ml-3 pl-3 border-left d-flex align-items-center @if (!empty($surpluses)) active @endif">
                                 <a class="pt-1px d-none d-md-block"
-                                    href="{{ route('charities.surplus', $charity) }}">{{ __('Surplus') }}</a>
+                                    href="{{ route('charities.surplus', $charity) }}">{{ __('Surpluses') }}</a>
                             </li>
                         </ul>
                     </div>

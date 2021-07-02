@@ -1,6 +1,6 @@
 @extends('charities.layout')
-@section('create_href', '#')
-@section('create_word', __('Write a new project'))
+@section('create_href', route("projects.create"))
+@section('create_word', __('Add a new project'))
 @section('middile')
 
     <div class="row">
@@ -55,7 +55,16 @@
                     <div class="card-body">
                         <h3 class="mb-3 tx-14">{{ $project->title }}</h3>
                         <p>{{ $project->text }}</p>
-                        <img class="card-img-bottom" src="{{ asset(config('path.pro_img') . $project->image) }}" alt="" style="max-block-size: 25rem">
+                        <p>
+                            {{-- @foreach ($projectReq->project->charity as $projectReqs) --}}
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                            <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
+                        </div>
+                        {{-- @endforeach --}}
+                        </p>
+                        <img class="card-img-bottom" src="{{ asset(config('path.pro_img') . $project->image) }}" alt=""
+                            style="max-block-size: 25rem">
                     </div>
                 </div>
             </div>
