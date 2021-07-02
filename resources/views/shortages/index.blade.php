@@ -31,7 +31,7 @@
                             <td>{{ $sur->charity_id }}</td>
                             <td>{{ $sur->quantity }}</td>
                             <td>{{ $sur->type}}</td>
-                            <td>{{ $sur->item_id}}</td>
+                            <td>{{ $sur->item->name_ar}} , {{ $sur->item->name_en}}</td>
                             <td>{{ $sur->created_at }}</td>
                             <td>{{ $sur->state }}</td>
                             <td>
@@ -82,7 +82,7 @@
                             <td>{{ $shortage->charity_id }}</td>
                             <td>{{ $shortage->quantity }}</td>
                             <td>{{ $shortage->type}}</td>
-                            <td>{{ $shortage->item_id}}</td>
+                            <td>{{ $shortage->item->name_ar}} , {{ $shortage->item->name_en}}</td>
                             <td>{{ $shortage->created_at }}</td>
                             <td>{{ $shortage->state }}</td>
                             <td>

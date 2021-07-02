@@ -27,6 +27,7 @@
                             <div class="form-group">
                                 <label for="type">{{__("type")}}</label>
                                 <select id="type" class="custom-select" name="type" required>
+                                    <option value="{{$shortage->type}}" selected>{{__($shortage->type)}}</option>
                                     <option value="min">{{__("min")}}</option>
                                     <option value="plus">{{__("plus")}}</option>
                                 </select>
@@ -36,6 +37,7 @@
                             <div class="form-group">
                                 <label for="state">{{__("state")}}</label>
                                 <select id="state" class="custom-select" name="state" required>
+                                    <option value="{{$shortage->state}}" selected>{{__($shortage->state)}}</option>
                                     <option value="waiting">{{__("waiting")}}</option>
                                     {{-- <option value="undeployed">{{__("undeployed")}}</option> --}}
                                     <option value="closed">{{__("closed")}}</option>
@@ -46,6 +48,7 @@
                             <div class="form-group">
                                 <label for="item_id">{{__("item_id")}}</label>
                                 <select id="" class="form-control" name="item_id" required>
+                                    <option value="{{$shortage->item}}" selected>{{__($shortage->item->name_ar)}}</option>
                                     @foreach ($items as $item)
                                     <option value="{{$item->id}}">{{$item->name_ar}}-{{$item->name_en}}</option>
                                     @endforeach
