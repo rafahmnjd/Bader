@@ -74,7 +74,9 @@
                             <div class="form-group">
                                 <label for="state">{{__("state")}}</label>
                                 <select id="state" class="custom-select" name="state" required>
+                                    @if(!empty($job))
                                     <option value="{{$job->state}}" selected>{{__($job->state)}}</option>
+                                    @endif
                                     <option value="waiting">{{__("waiting")}}</option>
                                     <option value="undeployed">{{__("undeployed")}}</option>
                                     <option value="closed">{{__("closed")}}</option>
