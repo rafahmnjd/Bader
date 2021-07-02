@@ -75,6 +75,15 @@ class Charity extends Model
       */
      public function shortages()
      {
-         return $this->hasMany('App\Models\Shortage', 'charity_id', 'user_id');
+         return $this->hasMany('App\Models\Shortage', 'charity_id', 'user_id')->where('type', 'min');
+     }
+          /**
+      * Get all of the surpluses for the Charity
+      *
+      * @return \Illuminate\Database\Eloquent\Relations\HasMany
+      */
+     public function surpluses()
+     {
+         return $this->hasMany('App\Models\Shortage', 'charity_id', 'user_id')->where('type', 'plus');
      }
 }

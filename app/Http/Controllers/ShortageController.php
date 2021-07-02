@@ -18,9 +18,9 @@ class ShortageController extends Controller
     public function index()
     {
         //
-        $shortages = Auth::user()->charity->shortages()->where('type', 'min');
-        $surplus = Auth::user()->charity->shortages()->where('type', 'plus');
-        return view('shortages.index', compact('shortages', 'surplus'));
+        $shortages = Auth::user()->charity->shortages;
+        $surpluses = Auth::user()->charity->surpluses;
+        return view('shortages.index', compact('shortages', 'surpluses'));
     }
 
     /**
@@ -71,7 +71,8 @@ class ShortageController extends Controller
     public function edit(Shortage $shortage)
     {
         //
-        return view('shortages.crup', compact('shortage'));
+        $items = Item::all();
+        return view('shortages.crup', compact('shortage','items'));
 
     }
 
@@ -86,8 +87,7 @@ class ShortageController extends Controller
     {
         //
         $shortage->update($request->all());
-        return back();
-
+        return redirect(route('shortages.index'));
     }
 
     /**
