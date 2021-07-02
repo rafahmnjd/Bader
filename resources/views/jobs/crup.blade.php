@@ -4,7 +4,7 @@
     <div class="col-md">
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title">{{__("Job Info")}}</h5>
+                <h5 class="card-title">{{__("Job Information")}}</h5>
             </div>
             <div class="card-body">
                 <form action="{{empty($job)? route('jobs.store') : route('jobs.update',$job)}}" method="Post"
@@ -19,7 +19,7 @@
                         <div class="col">
                             <div class="row">
                                 <div class="col-md-4 col-form-label">
-                                    <label for="job_title_ar">{{ __('job_title_ar') }}:</label>
+                                    <label for="job_title_ar">{{ __('Title AR') }}:</label>
                                 </div>
                                 <div class="col-8">
                                     <input class="form-control" type="text" name="job_title_ar" required
@@ -27,14 +27,14 @@
                                         value="{{old('job_title_ar')}}" @endif>
                                 </div>
                                 <div class="col-md-4 col-form-label">
-                                    <label for="job_details_ar">{{ __('job_details_ar') }}:</label>
+                                    <label for="job_details_ar">{{ __('Job details AR') }}:</label>
                                 </div>
                                 <div class="col-8">
                                     <textarea class="form-control my-1" type="text" required
                                         name="job_details_ar">@if(!empty($job)){{$job->job_details_ar}} @else{{old('job_details_ar')}} @endif</textarea>
                                 </div>
                                 <div class="col-md-4 col-form-label">
-                                    <label for="location_ar">{{ __('location_ar') }}:</label>
+                                    <label for="location_ar">{{ __('Location AR') }}:</label>
                                 </div>
                                 <div class="col-8">
                                     <textarea class="form-control my-1" type="text"
@@ -45,7 +45,7 @@
                         <div class="col">
                             <div class="row">
                                 <div class="col-md-4 col-form-label">
-                                    <label for="job_title_en">{{ __('job_title_en') }}:</label>
+                                    <label for="job_title_en">{{ __('Title EN') }}:</label>
                                 </div>
                                 <div class="col-8"><input class="form-control" type="text" name="job_title_en"
                                         @if(!empty($job))value="{{$job->job_title_en}}" @else
@@ -53,14 +53,14 @@
                                 </div>
 
                                 <div class="col-md-4 col-form-label">
-                                    <label for="job_details_en">{{ __('job_details_en') }}:</label>
+                                    <label for="job_details_en">{{ __('Job details EN') }}:</label>
                                 </div>
                                 <div class="col-8">
                                     <textarea class="form-control my-1" type="text" required
                                         name="job_details_en">@if(!empty($job)){{$job->job_details_en}} @else{{old('job_details_en')}} @endif</textarea>
                                 </div>
                                 <div class="col-md-4 col-form-label">
-                                    <label for="location_en">{{ __('location_en') }}:</label>
+                                    <label for="location_en">{{ __('Location EN') }}:</label>
                                 </div>
                                 <div class="col-8">
                                     <textarea class="form-control my-1" type="text"
@@ -72,22 +72,22 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="state">{{__("state")}}</label>
+                                <label for="state">{{__("State")}}</label>
                                 <select id="state" class="custom-select" name="state" required>
-                                    <option value="waiting">{{__("waiting")}}</option>
+                                    <option value="waiting">{{__("Waiting")}}</option>
                                     <option value="undeployed">{{__("undeployed")}}</option>
-                                    <option value="closed">{{__("closed")}}</option>
+                                    <option value="closed">{{__("Closed")}}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="tag">{{__('tags')}}</label>
+                                <label for="tag">{{__('Tags')}}</label>
                                 <input type="text" class="form-control" name="tag" id="tag" @if(!empty($job))value="{{$job->tag}}" @else value="{{old('tag')}}"@endif>
                             </div>
                         </div>
                         <div class="col d-flex align-items-end d-flex justify-content-end">
-                            <button type="submit"class="btn btn-primary">{{__("save")}}</button>
+                            <button type="submit"class="btn btn-primary">{{__("Save")}}</button>
                         </div>
                     </div>
                 </form>
