@@ -94,10 +94,10 @@
     ,"Fill":"تسديد"
     ,"Message":"مراسلة"
     ,"Job Information":"معلومات الوظيفة"
-    ,"Title AR":"نوع العمل بالعربية"
+    ,"Title AR":"العنوان بالعربية"
     ,"Job details AR":"تفاصيل العمل بالعربية"
     ,"Location AR":"العنوان بالعربية"
-    ,"Title EN":"نوع العمل بالإنكليزية"
+    ,"Title EN":"العنوان بالإنكليزية"
     ,"Job details EN":"تفاصيل العمل بالإنكلزية"
     ,"Location EN":"العنوان بالإنكليزية"
     ,"Project Information":"معلومات المشروع"
@@ -114,4 +114,9 @@
     ,"Type":"النوع"
     ,"Item":"المادة"
     ,"Created at":"تاريخ النشر"
+    ,"Manage Jobs":"إدارة الوظائف"
+    ,"Manage Projects":"إدارة المشاريع"
+    ,"Manage Surplus":"إدارة الفائض"
+    ,"Manage Shortage":"إدارة النقص"
+
 }

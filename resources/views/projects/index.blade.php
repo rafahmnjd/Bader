@@ -4,7 +4,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title">{{__('Manage Jobs')}}
+                <h5 class="card-title">{{__('Manage Projects')}}
                     <a id="top-plus" href="{{route('projects.create')}}"
                         class="btn btn-outline-success  float-left">
                         <i class="zmdi zmdi-plus"></i>
@@ -16,13 +16,13 @@
                         <thead>
                             <tr>
                                 <th scope="col">{{ __('id') }}</th>
-                                <th scope="col">{{ __('title_ar') }}</th>
-                                <th scope="col">{{ __('title_en') }}</th>
-                                <th scope="col">{{ __('text_ar') }}</th>
-                                <th scope="col">{{ __('text_en') }}</th>
-                                <th scope="col">{{ __('created_at') }}</th>
+                                <th scope="col">{{ __('Title AR') }}</th>
+                                <th scope="col">{{ __('Title EN') }}</th>
+                                <th scope="col">{{ __('Text AR') }}</th>
+                                <th scope="col">{{ __('Text EN') }}</th>
+                                <th scope="col">{{ __('Created at') }}</th>
                                 <th scope="col">{{ __('Image') }}</th>
-                                <th scope="col">{{ __('state') }}</th>
+                                <th scope="col">{{ __('State') }}</th>
                                 <th scope="col" width="150">{{ __('Control') }}</th>
                             </tr>
                         </thead>

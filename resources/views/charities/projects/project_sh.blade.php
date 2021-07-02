@@ -1,5 +1,5 @@
 @extends('charities.layout')
-@section('create_href', route("projects.create"))
+@section('create_href', route('projects.create'))
 @section('create_word', __('Add a new project'))
 @section('middile')
 
@@ -53,8 +53,19 @@
                     <!-- card-body -->
                     <!-- text with image -->
                     <div class="card-body">
-                        <h3 class="mb-3 tx-14">{{ $project->title }}</h3>
-                        <p>{{ $project->text }}</p>
+                        <h3 class="mb-3 tx-14">
+                            @if (config('app.locale') == 'ar')
+                                {{ $project->title_ar }}
+                            @else
+                                {{ $project->title_en }}
+                            @endif
+                        </h3>
+                        <p>
+                            @if (config('app.locale') == 'ar')
+                                {{ $project->text_ar }}
+                            @else
+                                {{ $project->text_en }}
+                            @endif</p>
                         <p>
                             {{-- @foreach ($projectReq->project->charity as $projectReqs) --}}
                         <div class="custom-control custom-checkbox">
@@ -70,5 +81,4 @@
             </div>
         @endforeach
     </div>
-
 @endsection

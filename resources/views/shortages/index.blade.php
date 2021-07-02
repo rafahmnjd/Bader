@@ -9,18 +9,18 @@
     </div>
     <div class="card-body row">
         <div class="col-md-6 ">
-            <h5 class="card-title">{{__('Manage surplus')}}</h5>
+            <h5 class="card-title">{{__('Manage Surplus')}}</h5>
             <div class="table-responsive border">
                 <table class="table">
                     <thead>
-                        <tr>
+                         <tr>
                             <th scope="col">{{ __('id') }}</th>
-                            <th scope="col">{{ __('charity_id') }}</th>
-                            <th scope="col">{{ __('quantity') }}</th>
-                            <th scope="col">{{ __('type') }}</th>
-                            <th scope="col">{{ __('item_id') }}</th>
-                            <th scope="col">{{ __('created_at') }}</th>
-                            <th scope="col">{{ __('state') }}</th>
+                            <th scope="col">{{ __('Charity') }}</th>
+                            <th scope="col">{{ __('Quantity') }}</th>
+                            <th scope="col">{{ __('Type') }}</th>
+                            <th scope="col">{{ __('Item') }}</th>
+                            <th scope="col">{{ __('Created at') }}</th>
+                            <th scope="col">{{ __('State') }}</th>
                             <th scope="col" width="150">{{ __('Control') }}</th>
                         </tr>
                     </thead>
@@ -60,18 +60,18 @@
             </div>
         </div>
         <div class="col-md-6">
-            <h5 class="card-title">{{__('Manage shortages')}}</h5>
+            <h5 class="card-title">{{__('Manage Shortage')}}</h5>
             <div class="table-responsive border">
                 <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">{{ __('id') }}</th>
-                            <th scope="col">{{ __('charity_id') }}</th>
-                            <th scope="col">{{ __('quantity') }}</th>
-                            <th scope="col">{{ __('type') }}</th>
-                            <th scope="col">{{ __('item_id') }}</th>
-                            <th scope="col">{{ __('created_at') }}</th>
-                            <th scope="col">{{ __('state') }}</th>
+                            <th scope="col">{{ __('Charity') }}</th>
+                            <th scope="col">{{ __('Quantity') }}</th>
+                            <th scope="col">{{ __('Type') }}</th>
+                            <th scope="col">{{ __('Item') }}</th>
+                            <th scope="col">{{ __('Created at') }}</th>
+                            <th scope="col">{{ __('State') }}</th>
                             <th scope="col" width="150">{{ __('Control') }}</th>
                         </tr>
                     </thead>
