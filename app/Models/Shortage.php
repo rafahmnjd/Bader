@@ -28,4 +28,14 @@ class Shortage extends Model
      {
          return $this->belongsTo('App\Models\Charity', 'charity_id','user_id');
      }
+
+     /**
+      * Get the item that owns the Shortage
+      *
+      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+      */
+     public function item()
+     {
+         return $this->belongsTo('App\Models\Item', 'item_id');
+     }
 }

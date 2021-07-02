@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('style')
-<link rel="stylesheet" href="{{asset('bootstrap-select/css/bootstrap-select.css')}}" />
-<link rel="stylesheet" href="{{asset('select2/select2.css')}}" />
-<link rel="stylesheet" href="/path/to/select2.css">
-<link rel="stylesheet" href="/path/to/select2-bootstrap4.min.css">
+{{-- <link rel="stylesheet" href="{{asset('bootstrap-select/css/bootstrap-select.css')}}" /> --}}
+
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />{{-- <link rel="stylesheet" href="/path/to/select2.css">
+<link rel="stylesheet" href="/path/to/select2-bootstrap4.min.css"> --}}
 @endsection
 @section('content')
 <div class="row justify-content-center">
@@ -51,10 +51,10 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="item_id">{{__("item_id")}}</label>
-                                <select id="item_id" class="select2-hidden-accessible" name="item_id" required>
-                                    <option></option>
+                                <select id="" class="select2" name="item_id" required>
+
                                     @foreach ($items as $item)
-                                        <option value="{{$item->id}}">{{$item->name_ar}}-{{$item->name_en}}</option>
+                                    <option value="{{$item->id}}">{{$item->name_ar}}-{{$item->name_en}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -68,12 +68,14 @@
         </div>
     </div>
 </div>
+
 @endsection
 @section('script')
-<script>
-
-    $('select').select2({
-    theme: 'bootstrap4',
-    });
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script type="text/javascript">
+$('.select2').select2({
+    placeholder: 'This is my placeholder',
+    allowClear: true
+});
 </script>
 @stop
