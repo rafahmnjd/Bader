@@ -33,21 +33,19 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//TODO middelware and permation
 
 Route::middleware(['auth'])->group(function () {
-
-
 
     Route::resource('charities', 'CharityController');
     Route::get('charities/{charity}/projects', 'CharityController@projects')->name('charities.projects');
     Route::get('charities/{charity}/shortages', 'CharityController@shortages')->name('charities.shortage');
     Route::get('charities/{charity}/surpluses', 'CharityController@surpluses')->name('charities.surplus');
-
     Route::resource('jobs', 'CharityJobController');
     Route::resource('volunteers', 'VolunteerController');
     Route::resource('benfes', 'BenefactorController');
     Route::resource('items', 'ItemController')->except(['show', 'create', 'edit']);
-    Route::resource('projeacts', 'ProjectController');
+    Route::resource('projects', 'ProjectController');
     Route::resource('fills', 'FillController');
     Route::resource('shortages', 'ShortageController');
 

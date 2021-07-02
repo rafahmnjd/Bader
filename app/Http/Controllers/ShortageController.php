@@ -32,7 +32,7 @@ class ShortageController extends Controller
     {
         //
         $items=Item::all();
-        return view('shortages.crup');
+        return view('shortages.crup',compact('items'));
     }
 
     /**
