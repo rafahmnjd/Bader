@@ -4,14 +4,9 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-<<<<<<< HEAD
-                <h5 class="card-title">{{__('Manage Jobs')}}
-                    <a id="top-plus" href="{{route('projects.create')}}" class="btn btn-outline-success  float-left">
-=======
                 <h5 class="card-title">{{__('Manage Projects')}}
                     <a id="top-plus" href="{{route('projects.create')}}"
                         class="btn btn-outline-success  float-left">
->>>>>>> 4ea68e8a5a820941af71ceef682ed6c32ae5175b
                         <i class="zmdi zmdi-plus"></i>
                     </a>
                 </h5>
