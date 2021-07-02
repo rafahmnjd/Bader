@@ -27,4 +27,14 @@ class Fill extends Model
      {
          return $this->belongsTo('App\Models\Shortage', 'shortage_id');
      }
+
+     /**
+      * Get all of the messages for the Fill
+      *
+      * @return \Illuminate\Database\Eloquent\Relations\HasMany
+      */
+     public function messages()
+     {
+         return $this->hasMany('App\Models\Message', 'foreign_key', 'local_key');
+     }
 }

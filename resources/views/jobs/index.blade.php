@@ -15,15 +15,15 @@
                         <thead>
                             <tr>
                                 <th scope="col">{{ __('id') }}</th>
-                                <th scope="col">{{ __('job_title_ar') }}</th>
-                                <th scope="col">{{ __('job_title_en') }}</th>
-                                <th scope="col">{{ __('job_details_ar') }}</th>
-                                <th scope="col">{{ __('job_details_en') }}</th>
-                                <th scope="col">{{ __('created_at') }}</th>
-                                <th scope="col">{{ __('location_ar') }}</th>
-                                <th scope="col">{{ __('location_en') }}</th>
-                                <th scope="col">{{ __('tag') }}</th>
-                                <th scope="col">{{ __('state') }}</th>
+                                <th scope="col">{{ __('Title AR') }}</th>
+                                <th scope="col">{{ __('Title EN') }}</th>
+                                <th scope="col">{{ __('Job details AR') }}</th>
+                                <th scope="col">{{ __('Job details EN') }}</th>
+                                <th scope="col">{{ __('Created at') }}</th>
+                                <th scope="col">{{ __('Location AR') }}</th>
+                                <th scope="col">{{ __('Location EN') }}</th>
+                                <th scope="col">{{ __('Tags') }}</th>
+                                <th scope="col">{{ __('State') }}</th>
 
                                 <th scope="col" width="150">{{ __('Control') }}</th>
                             </tr>
