@@ -110,7 +110,7 @@ class ProjectController extends Controller
             $data = array_merge($data, ["image" => $imagename]);
         }
 
-        $project->update($data->all());
+        $project->update($data);
         return redirect(route('projects.index'));
     }
 
@@ -131,4 +131,5 @@ class ProjectController extends Controller
         $project->delete();
         return redirect(route('projects.index'));
     }
+
 }

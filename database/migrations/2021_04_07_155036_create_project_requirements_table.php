@@ -16,8 +16,10 @@ class CreateProjectRequirementsTable extends Migration
         Schema::create('project_requirements', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('project_id');
-            $table->string('name');
-            $table->text('details');
+            $table->string('name_ar');
+            $table->string('name_en');
+            $table->text('details_ar');
+            $table->text('details_en');
             $table->unsignedInteger("quantity");
             $table->set('state', ['waiting', 'closed']);
             $table->timestamps();

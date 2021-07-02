@@ -18,4 +18,14 @@ class Project extends Model
         return $this->belongsTo('App\Models\Charity', 'charity_id', 'user_id');
     }
 
+    /**
+     * Get all of the requirments for the Project
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function requirments()
+    {
+        return $this->hasMany('App\Models\ProjectRequirement', 'project_id');
+    }
 }
+

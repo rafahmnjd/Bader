@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ProjectRequirement;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class ProjectRequirementController extends Controller
@@ -12,9 +13,11 @@ class ProjectRequirementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Project $project)
     {
         //
+        $projReqs=$project->requirments;
+        return view('projReqs.index',compact('projReqs','project'));
     }
 
     /**
@@ -22,9 +25,12 @@ class ProjectRequirementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Project $project)
     {
         //
+        // dd($project);
+        return view('projReqs.crup', compact('project'));
+
     }
 
     /**
@@ -33,18 +39,20 @@ class ProjectRequirementController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Project $project,Request $request)
     {
         //
+        $data=$request->all();
+        return redirect(route('projReqs.index',$project));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ProjectRequirement  $projectRequirement
+     * @param  \App\Models\ProjectRequirement  $projReq
      * @return \Illuminate\Http\Response
      */
-    public function show(ProjectRequirement $projectRequirement)
+    public function show(ProjectRequirement $projReq)
     {
         //
     }
@@ -52,34 +60,41 @@ class ProjectRequirementController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ProjectRequirement  $projectRequirement
+     * @param  \App\Models\ProjectRequirement  $projReq
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProjectRequirement $projectRequirement)
+    public function edit(ProjectRequirement $projReq)
     {
         //
+        return view('projReqs.crup', ['project' => $projReq->project, 'projReq' => $projReq]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ProjectRequirement  $projectRequirement
+     * @param  \App\Models\ProjectRequirement  $projReq
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProjectRequirement $projectRequirement)
+    public function update(Request $request, ProjectRequirement $projReq)
     {
-        //
+        //route('projReqs.index',$project)
+        $projReq->update($request->all());
+        return redirect(route('projReqs.index',$project));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ProjectRequirement  $projectRequirement
+     * @param  \App\Models\ProjectRequirement  $projReq
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProjectRequirement $projectRequirement)
+    public function destroy(ProjectRequirement $projReq)
     {
         //
+        // $project=$projReq->project;
+        $projReq->delete();
+        return back();
+
     }
 }

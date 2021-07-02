@@ -5,10 +5,10 @@
         <div class="card">
             <div class="card-header">
                 <h5 class="card-title">{{__('Manage Jobs')}}
-                    <a id="top-plus" href="{{route('projects.create')}}" class="btn btn-outline-success  float-left">
+                    <a id="top-plus" href="{{route('projReqs.create',$project)}}"
+                        class="btn btn-outline-success  float-left">
                         <i class="zmdi zmdi-plus"></i>
-                    </a>
-                </h5>
+                    </a></h5>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -16,46 +16,37 @@
                         <thead>
                             <tr>
                                 <th scope="col">{{ __('id') }}</th>
-                                <th scope="col">{{ __('title_ar') }}</th>
-                                <th scope="col">{{ __('title_en') }}</th>
-                                <th scope="col">{{ __('text_ar') }}</th>
-                                <th scope="col">{{ __('text_en') }}</th>
-                                <th scope="col">{{ __('created_at') }}</th>
-                                <th scope="col">{{ __('Image') }}</th>
+                                <th scope="col">{{ __('project') }}</th>
+                                <th scope="col">{{ __('name_ar') }}</th>
+                                <th scope="col">{{ __('details_ar') }}</th>
+                                <th scope="col">{{ __('name_en') }}</th>
+                                <th scope="col">{{ __('details_en') }}</th>
+                                <th scope="col">{{ __('quantity') }}</th>
                                 <th scope="col">{{ __('state') }}</th>
                                 <th scope="col" width="150">{{ __('Control') }}</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($projects as $project)
+                            @foreach ($projReqs as $projReq)
                             <tr>
-                                <th scope="row">{{ $project->id }}</th>
-                                <td>{{ $project->title_ar }}</td>
-                                <td>{{ $project->title_en }}</td>
-                                <td>{{ $project->text_ar}}</td>
-                                <td>{{ $project->text_en}}</td>
-                                <td>{{ $project->created_at }}</td>
-                                <td style="width:10% ; max-width:15%;"><img
-                                        src="{{ asset(config('path.pro_img').$project->image) }}"
-                                        class=" img-fluid img-thumbnail">
-                                </td>
-                                <td>{{ $project->state }}</td>
+                                <th scope="row">{{ $projReq->id }}</th>
+                                <td>{{ $projReq->project->title_ar}}</td>
+                                <td>{{ $projReq->name_ar }}</td>
+                                <td>{{ $projReq->details_ar}}</td>
+                                <td>{{ $projReq->details_en}}</td>
+                                <td>{{ $projReq->quantity }}</td>
+                                <td>{{ $projReq->state }}</td>
                                 <td>
                                     <div class="btn-group-justified">
-                                        <div class="btn-group">
-                                            <a class="btn btn-outline-primary"
-                                                href="{{ route('projReqs.index', $project) }}">
-                                                {{__('manage Requirments')}}
-                                            </a>
-                                        </div>
+
                                         <div class="btn-group">
                                             <a class="btn btn-outline-warning rounded-circle"
-                                                href="{{ route('projects.edit', $project->id) }}">
+                                                href="{{ route('projReqs.edit', $projReq->id) }}">
                                                 <i class="zmdi zmdi-edit"></i>
                                             </a>
                                         </div>
                                         <div class="btn-group">
-                                            <form action="{{ route('projects.destroy', $project->id) }}" method="POST">
+                                            <form action="{{ route('projReqs.destroy', $projReq->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button Type="submit" class="btn rounded-circle btn-outline-danger">
