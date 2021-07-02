@@ -22,7 +22,7 @@ class Charity extends Model
      */
     public function user()
     {
-        return $this->belongsTo('App\Models\User', 'user_id','user_id');
+        return $this->belongsTo('App\Models\User', 'user_id', 'user_id');
     }
     /**
      * Get all of the articles for the Charity
@@ -31,7 +31,7 @@ class Charity extends Model
      */
     public function articles()
     {
-        return $this->hasMany('App\Models\Article', 'charity_id','user_id');
+        return $this->hasMany('App\Models\Article', 'charity_id', 'user_id');
     }
 
     /**
@@ -41,7 +41,7 @@ class Charity extends Model
      */
     public function jobs()
     {
-        return $this->hasMany('App\Models\CharityJob', 'charity_id','user_id');
+        return $this->hasMany('App\Models\CharityJob', 'charity_id', 'user_id');
     }
 
     /**
@@ -58,32 +58,32 @@ class Charity extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-         /**
-      * Get all of the fills for the Shortage
-      *
-      * @return \Illuminate\Database\Eloquent\Relations\HasMany
-      */
-     public function fills()
-     {
-         return $this->hasMany('App\Models\Fill', 'shortage_id', 'user_id');
-     }
+    /**
+     * Get all of the fills for the Shortage
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function fills()
+    {
+        return $this->hasMany('App\Models\Fill', 'shortage_id', 'user_id');
+    }
 
-     /**
-      * Get all of the shortages for the Charity
-      *
-      * @return \Illuminate\Database\Eloquent\Relations\HasMany
-      */
-     public function shortages()
-     {
-         return $this->hasMany('App\Models\Shortage', 'charity_id', 'user_id')->where('type', 'min');
-     }
-          /**
-      * Get all of the surpluses for the Charity
-      *
-      * @return \Illuminate\Database\Eloquent\Relations\HasMany
-      */
-     public function surpluses()
-     {
-         return $this->hasMany('App\Models\Shortage', 'charity_id', 'user_id')->where('type', 'plus');
-     }
+    /**
+     * Get all of the shortages for the Charity
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function shortages()
+    {
+        return $this->hasMany('App\Models\Shortage', 'charity_id', 'user_id')->where('type', 'min');
+    }
+    /**
+     * Get all of the surpluses for the Charity
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function surpluses()
+    {
+        return $this->hasMany('App\Models\Shortage', 'charity_id', 'user_id')->where('type', 'plus');
+    }
 }

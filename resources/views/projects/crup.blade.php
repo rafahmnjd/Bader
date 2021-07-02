@@ -53,16 +53,17 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="state">{{ __('State') }}</label>
-                                    <select id="state" class="custom-select" name="state" required>
-                                        <option value="waiting">{{ __('Waiting') }}</option>
-                                        {{-- <option value="undeployed">{{__("undeployed")}}</option> --}}
-                                        <option value="closed">{{ __('Closed') }}</option>
-                                    </select>
-                                </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="state">{{__("state")}}</label>
+                                <select id="state" class="custom-select" name="state" required>
+                                    <option value="{{$project->state}}" selected>{{__($project->state)}}</option>
+                                    <option value="waiting">{{__("Waiting")}}</option>
+                                    {{-- <option value="undeployed">{{__("undeployed")}}</option> --}}
+                                    <option value="closed">{{__("Closed")}}</option>
+                                </select>
                             </div>
 
                             {{-- </div> --}}
