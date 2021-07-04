@@ -1,8 +1,7 @@
 @extends('search.show')
 @section('search_class',__("Surpluses"))
 @section('search_form_action',route('search.getSurpluses'))
-@section('middile')
-
+@section('search_middile')
      <div class="result-body">
         <div class="table-responsive">
             <table class="table widget-26">
@@ -59,4 +58,6 @@
             </table>
         </div>
     </div>
+
+
 @endsection

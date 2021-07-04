@@ -1,7 +1,7 @@
 @extends('search.show')
 @section('search_class',__("Shortages"))
 @section('search_form_action',route('search.getShortages'))
-@section('middile')
+@section('search_middile')
 
     <div class="result-body">
         <div class="table-responsive">

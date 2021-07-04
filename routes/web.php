@@ -54,8 +54,17 @@ Route::middleware(['auth'])->group(function () {
     Route::match(['put', 'post'], 'project/requirments/{projReq}','ProjectRequirementController@update')->name('projReqs.update');
     Route::delete('project/requirments/{projReq}', 'ProjectRequirementController@destroy')->name('projReqs.destroy');
 
+
     Route::resource('fills', 'FillController');
     Route::resource('shortages', 'ShortageController');
+
+    //fill Shortage
+Route::get('fill/{fill}/requirments', 'FillController@index')->name('fills.index');
+Route::get('fill/{fill}/requirments/create', 'FillController@create')->name('fills.create');
+Route::post('fill/{fill}/requirments', 'FillController@store')->name('fills.store');
+Route::get('fill/requirments/{fill}/edit', 'FillController@edit')->name('fills.edit');
+Route::match(['put', 'post'], 'fill/requirments/{fill}', 'FillController@update')->name('fills.update');
+Route::delete('fill/requirments/{fill}', 'FillController@destroy')->name('fills.destroy');
 
 
 

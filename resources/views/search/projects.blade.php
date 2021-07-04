@@ -1,8 +1,7 @@
 @extends('search.show')
 @section('search_class',__("Project"))
 @section('search_form_action',route('search.getProjects'))
-@section('middile')
-
+@section('search_middile')
     <div class="result-body">
         <div class="table-responsive">
             <table class="table widget-26">
@@ -65,4 +64,7 @@
             </table>
         </div>
     </div>
+@endsection
+@section('search_pagination')
+{{$projects->links()}}
 @endsection

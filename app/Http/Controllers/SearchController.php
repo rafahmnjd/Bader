@@ -173,8 +173,31 @@ class SearchController extends Controller
     public function surpluses()
     {
         # code...
-        $shortages = Shortage::where('type', 'plus')->latest()->paginate(10);
-        return view('search.shortages', compact('shortages'));
+        $surpluses = Shortage::where('type', 'plus')->latest()->paginate(10);
+        return view('search.surpluses', compact('surpluses'));
+    }
+        public function surplusesNameAtoZ($lang)
+    {
+        # code...
+        if ($lang == 'ar') {
+             $surpluses = Shortage::where('type','plus')->orderBy('title_ar')->paginate(10);
+        } else {
+             $surpluses = Shortage::orderBy('title_en')->paginate(10);
+        }
+        return view('search.surpluses', compact('surpluses'));
+    }
+
+    public function getSurpluses(Request $request)
+    {
+        $data=$request->data;
+        # code...
+        $surpluses = Shortage::with('Item')->where('type','plus')->wherehas('Item', function($q)use($data){
+            $q->where('name_en', 'like', '%' . $data . '%')
+            ->orWhere('name_ar', 'like', '%' . $data . '%');
+        })
+        ->paginate(10);
+        return view('search.surpluses', compact('surpluses'));
+
     }
 
     public function show()
