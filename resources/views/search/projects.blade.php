@@ -47,9 +47,6 @@
                                 </div>
                             </td>
                             <td>
-                                <div class="widget-26-job-salary"></div>
-                            </td>
-                            <td>
                                 <div class="widget-26-job-info">
                                     @if (config('app.locale') == 'ar')
                                         <p class="type m-0">{{ $project->text_ar }}</p>
