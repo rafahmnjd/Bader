@@ -81,5 +81,9 @@ Route::middleware(['auth'])->group(function () {
 
 
 
+    Route::resource('search', 'SearchController');
+    Route::get('search/charities', 'SearchController@show_charities')->name('search.charities');
+    Route::get('search/projects', 'SearchController@show_projects')->name('search.projects');
+    Route::get('search/jobs', 'SearchController@show_charities')->name('search.jobs');
 
 });

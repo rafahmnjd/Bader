@@ -8,6 +8,7 @@ use App\Models\{
     Shortage,
     Item
 };
+
 use Illuminate\Http\Request;
 
 class SearchController extends Controller
@@ -77,4 +78,27 @@ class SearchController extends Controller
         $jobs=CharityJob::where('nam');
     }
 
+
+    public function show()
+    {
+        return view('search.show');
+    }
+
+    public function show_charities()
+    {
+        $charities = Charity::orderBy('created_at', 'DESC')->first();
+        return view('search.charities', compact('charities'));
+    }
+
+    public function show_projects()
+    {
+        $projects = Project::orderBy('created_at', 'DESC')->first();
+        return view('search.projects', compact('projects'));
+    }
+
+    public function show_jobs()
+    {
+        $jobs = CharityJob::orderBy('created_at', 'DESC')->first();
+        return view('search.jobs', compact('jobs'));
+    }
 }

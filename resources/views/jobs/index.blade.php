@@ -34,11 +34,11 @@
                                 <th scope="row">{{ $job->id }}</th>
                                 <td>{{ $job->job_title_ar }}</td>
                                 <td>{{ $job->job_title_en }}</td>
-                                <td>{{ $job->job_details_ar}}</td>
-                                <td>{{ $job->job_details_en}}</td>
+                                <td>{{ $job->job_details_ar }}</td>
+                                <td>{{ $job->job_details_en }}</td>
                                 <td>{{ $job->created_at }}</td>
                                 <td>{{ $job->location_ar }}</td>
-                                <td>{{ $job->location_en}}</td>
+                                <td>{{ $job->location_en }}</td>
                                 <td>{{ $job->tag }}</td>
                                 <td>{{ $job->state }}</td>
                                 <td>
