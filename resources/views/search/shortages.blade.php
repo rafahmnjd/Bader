@@ -1,6 +1,6 @@
 @extends('search.show')
-@section('search_class',__("Shortages"))
-@section('search_form_action',route('search.getShortages'))
+@section('search_class', __('Shortages'))
+@section('search_form_action', route('search.getShortages'))
 @section('search_middile')
 
     <div class="result-body">
@@ -16,41 +16,35 @@
                             </td>
                             <td>
                                 <div class="widget-26-job-title">
+                                    <span>
+                                        @if (config('app.locale') == 'ar')
+                                            <p class="m-0">{{ $shortage->item->name_ar }}</p>
+                                            <p class="text-muted m-0">{{ $shortage->item->name_en }}</p>
+                                        @else
+                                            <p class="m-0">{{ $shortage->item->name_en }}</p>
+                                            <p class="text-muted m-0">{{ $shortage->item->name_ar }}</p>
+                                        @endif
+                                    </span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="widget-26-job-title">
                                     <a href="{{ route('charities.show', $shortage->charity) }}">
                                         <span>
                                             @if (config('app.locale') == 'ar')
-                                                {{ $shortage->item->name_ar }}
-                                                <p class="m-0"><a href="{{ route('charities.shortage', $shortage->charity) }}"
-                                                        class="employer-name">{{$shortage->item->name_en }}</a></p>
+                                                <p class="m-0">{{ $shortage->charity->name_ar }}</p>
+                                                <p class="text-muted m-0">{{ $shortage->charity->name_en }}</p>
                                             @else
-                                                {{ $shortage->item->name_en }}
-                                                <p class="m-0"><a href="{{ route('charities.shortage', $shortage->charity) }}"
-                                                        class="employer-name">{{ $shortage->item->name_ar }}</a></p>
+                                                <p class="m-0">{{ $shortage->charity->name_en }}</p>
+                                                <p class="text-muted m-0">{{ $shortage->charity->name_ar }}</p>
                                             @endif
                                         </span>
                                     </a>
                                 </div>
                             </td>
-                             <td>
-                                <div class="widget-26-job-title">
-                                        <a href="{{ route('charities.show', $shortage->charity) }}">
-                                            <span>
-                                                @if (config('app.locale') == 'ar')
-                                                    {{ $shortage->charity->name_ar }}
-                                                    <p class="m-0"><a href="{{ route('charities.show', $shortage->charity) }}"
-                                                            class="employer-name">{{ $shortage->charity->name_en }}</a></p>
-                                                @else
-                                                    {{ $shortage->charity->name_en }}
-                                                    <p class="m-0"><a href="{{ route('charities.show', $shortage->charity) }}"
-                                                            class="employer-name">{{ $shortage->charity->name_ar }}</a></p>
-                                                @endif
-                                            </span>
-                                        </a>
-                                </div>
-                            </td>
                             <td>
                                 <div class="widget-26-job-info">
-                                        <p class="type m-0">{{ $shortage->quantity}}</p>
+                                    <p class="type m-0">{{ $shortage->quantity }}</p>
                                 </div>
                             </td>
                             <td>
@@ -75,5 +69,5 @@
     </div>
 @endsection
 @section('search_pagination')
-{{$shortages->links()}}
+    {{ $shortages->links() }}
 @endsection

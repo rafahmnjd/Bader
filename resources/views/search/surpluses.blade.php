@@ -15,19 +15,15 @@
                             </td>
                             <td>
                                 <div class="widget-26-job-title">
-                                    <a href="{{ route('charities.show', $surplus->charity) }}">
                                         <span>
-                                            @if (config('app.locale') == 'ar')
-                                                {{ $surplus->item->name_ar }}
-                                                <p class="m-0"><a href="{{ route('charities.surplus', $surplus->charity) }}"
-                                                        class="employer-name">{{$surplus->item->name_en }}</a></p>
-                                            @else
-                                                {{ $surplus->item->name_en }}
-                                                <p class="m-0"><a href="{{ route('charities.surplus', $surplus->charity) }}"
-                                                        class="employer-name">{{ $surplus->item->name_ar }}</a></p>
-                                            @endif
-                                        </span>
-                                    </a>
+                                        @if (config('app.locale') == 'ar')
+                                            <p class="m-0">{{ $surplus->item->name_ar }}</p>
+                                            <p class="text-muted m-0">{{ $surplus->item->name_en }}</p>
+                                        @else
+                                            <p class="m-0">{{ $surplus->item->name_en }}</p>
+                                            <p class="text-muted m-0">{{ $surplus->item->name_ar }}</p>
+                                        @endif
+                                    </span>
                                 </div>
                             </td>
                              <td>
@@ -35,13 +31,11 @@
                                         <a href="{{ route('charities.show', $surplus->charity) }}">
                                             <span>
                                                 @if (config('app.locale') == 'ar')
-                                                    {{ $surplus->charity->name_ar }}
-                                                    <p class="m-0"><a href="{{ route('charities.show', $surplus->charity) }}"
-                                                            class="employer-name">{{ $surplus->charity->name_en }}</a></p>
+                                                    <p class="m-0">{{ $surplus->charity->name_ar }}</p>
+                                                    <p class="text-muted m-0">{{ $surplus->charity->name_en }}</p>
                                                 @else
-                                                    {{ $surplus->charity->name_en }}
-                                                    <p class="m-0"><a href="{{ route('charities.show', $surplus->charity) }}"
-                                                            class="employer-name">{{ $surplus->charity->name_ar }}</a></p>
+                                                    <p class="m-0">{{ $surplus->charity->name_en }}</p>
+                                                    <p class="text-muted m-0">{{ $surplus->charity->name_ar }}</p>
                                                 @endif
                                             </span>
                                         </a>
