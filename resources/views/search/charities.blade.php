@@ -1,4 +1,6 @@
 @extends('search.show')
+@section('search_class',__("Charities"))
+@section('search_form_action',route('search.getCharities'))
 @section('middile')
 
     <div class="result-body">

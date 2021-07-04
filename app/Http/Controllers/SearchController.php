@@ -6,6 +6,7 @@ use App\Models\Charity;
 use App\Models\CharityJob;
 use App\Models\Project;
 use App\Models\Shortage;
+use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
@@ -31,8 +32,10 @@ class SearchController extends Controller
 
         return view('search.jobs', compact('jobs'));
     }
-    public function getJobs($data)
+    public function getJobs(Request $request)
     {
+        $data = $request->data;
+
         # code...
         $jobs = CharityJob::where('job_title_ar', 'like', '%' . $data . '%')
             ->orWhere('job_title_en', 'like', '%' . $data . '%')
@@ -75,11 +78,14 @@ class SearchController extends Controller
         }
         return view('search.charities', compact('charities'));
     }
-    public function getCharities($data)
+    public function getCharities(Request $request)
     {
+
+        $data = $request->data;
+// dd($data);
+
         # code...
-        $charities = Charity::where('job_title_ar', 'like', '%' . $data . '%')
-            ->orWhere('name_en', 'like', '%' . $data . '%')
+        $charities = Charity::where('name_en', 'like', '%' . $data . '%')
             ->orWhere('name_ar', 'like', '%' . $data . '%')
             ->orWhere('address_ar', 'like', '%' . $data . '%')
             ->orWhere('address_en', 'like', '%' . $data . '%')
@@ -112,12 +118,12 @@ class SearchController extends Controller
         }
         return view('search.projects', compact('projects'));
     }
-    public function getProjects($data)
+    public function getProjects(Request $request)
     {
+        $data = $request->data;
 
         # code...
-        $projects = Project::where('job_title_ar', 'like', '%' . $data . '%')
-            ->orWhere('title_en', 'like', '%' . $data . '%')
+        $projects = Project::where('title_en', 'like', '%' . $data . '%')
             ->orWhere('title_ar', 'like', '%' . $data . '%')
             ->orWhere('text_ar', 'like', '%' . $data . '%')
             ->orWhere('text_en', 'like', '%' . $data . '%')
@@ -146,9 +152,10 @@ class SearchController extends Controller
         }
         return view('search.shortages', compact('shortages'));
     }
-    
-    public function getShortages($data)
+
+    public function getShortages(Request $request)
     {
+        $data=$request->data;
         # code...
         $shortages = Shortage::with('Item')->where('type','min')->wherehas('Item', function($q)use($data){
             $q->where('name_en', 'like', '%' . $data . '%')
