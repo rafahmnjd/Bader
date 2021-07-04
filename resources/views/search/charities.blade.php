@@ -3,8 +3,8 @@
 
     <div class="result-body">
         <div class="table-responsive">
-            @foreach ($charities as $charity)
-                <table class="table widget-26">
+            <table class="table widget-26">
+                @foreach ($charities as $charity)
                     <tbody>
                         <tr>
                             <td>
@@ -31,37 +31,33 @@
                             </td>
                             <td>
                                 <div class="widget-26-job-info">
-                                    <p class="type m-0">Full-Time</p>
-                                    <p class="text-muted m-0">in <span class="location">London,
-                                            UK</span></p>
+                                    @if (config('app.locale') == 'ar')
+                                        <p class="type m-0">{{ $charity->address_ar }}</p>
+                                        <p class="text-muted m-0">{{ $charity->address_en }}</p>
+                                    @else
+                                        <p class="type m-0">{{ $charity->address_en }}</p>
+                                        <p class="text-muted m-0">{{ $charity->address_ar }}</p>
+                                    @endif
                                 </div>
                             </td>
                             <td>
-                                <div class="widget-26-job-salary">$ 50/hr</div>
+                                <div class="widget-26-job-salary"></div>
                             </td>
                             <td>
-                                <div class="widget-26-job-category bg-soft-base">
-                                    <i class="indicator bg-base"></i>
-                                    <span>Software Development</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="widget-26-job-starred">
-                                    <a href="#">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" class="feather feather-star">
-                                            <polygon
-                                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                            </polygon>
-                                        </svg>
-                                    </a>
+                                <div class="widget-26-job-info">
+                                    @if (config('app.locale') == 'ar')
+                                        <p class="type m-0">{{ $charity->info_ar }}</p>
+                                        <p class="text-muted m-0">{{ $charity->info_en }}</p>
+                                    @else
+                                        <p class="type m-0">{{ $charity->info_en }}</p>
+                                        <p class="text-muted m-0">{{ $charity->info_ar }}</p>
+                                    @endif
                                 </div>
                             </td>
                         </tr>
                     </tbody>
-                </table>
-            @endforeach
+                @endforeach
+            </table>
         </div>
     </div>
 @endsection
