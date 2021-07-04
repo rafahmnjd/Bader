@@ -50,6 +50,7 @@
                         </div>
                     </div>
 
+                    {{-- gjvgj,v --}}
                     <!-- card-body -->
                     <!-- text with image -->
                     <div class="card-body">
