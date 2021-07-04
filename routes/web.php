@@ -61,19 +61,19 @@ Route::middleware(['auth'])->group(function () {
 
     //Search Routes
     Route::get('search/jobs','SearchController@jobs')->name('search.jobs');//allJobs
-    Route::post('search/{job}/jobs', 'SearchController@getJobs')->name('search.getJobs'); //search Jobs
+    Route::post('search/{data}/jobs', 'SearchController@getJobs')->name('search.getJobs'); //search Jobs
 
     Route::get('search/charities', 'SearchController@charities')->name('search.charities');
-    Route::post('search/{charity}/charities', 'SearchController@getCharities')->name('search.getCharities'); //search Charities
+    Route::post('search/{data}/charities', 'SearchController@getCharities')->name('search.getCharities'); //search Charities
 
     Route::get('search/projects', 'SearchController@projects')->name('search.projects');
-    Route::post('search/{project}/projects', 'SearchController@getProjects')->name('search.getProjects'); //search Projects
+    Route::post('search/{data}/projects', 'SearchController@getProjects')->name('search.getProjects'); //search Projects
 
     Route::get('search/shortages', 'SearchController@shortages')->name('search.shortages');
-    Route::post('search/{shortage}/shortages', 'SearchController@getShortages')->name('search.getShortages'); //search Shortages
+    Route::post('search/{data}/shortages', 'SearchController@getShortages')->name('search.getShortages'); //search Shortages
 
     Route::get('search/surpluses', 'SearchController@surpluses')->name('search.surpluses');
-    Route::post('search/{surpluse}/surpluses', 'SearchController@getSurpluses')->name('search.getSurpluses'); //search Surpluses
+    Route::post('search/{data}/surpluses', 'SearchController@getSurpluses')->name('search.getSurpluses'); //search Surpluses
 
 
     // Route::get('search/articles', 'SearchController@articles')->name('search.articles');
@@ -81,7 +81,7 @@ Route::middleware(['auth'])->group(function () {
 
 
 
-    Route::resource('search', 'SearchController');
+    Route::get('search/show', 'SearchController@show');
     Route::get('search/charities', 'SearchController@show_charities')->name('search.charities');
     Route::get('search/projects', 'SearchController@show_projects')->name('search.projects');
     Route::get('search/jobs', 'SearchController@show_charities')->name('search.jobs');

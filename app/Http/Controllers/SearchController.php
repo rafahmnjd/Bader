@@ -34,7 +34,6 @@ class SearchController extends Controller
     {
         # code...
         $charities = Charity::latest()->paginate(10);
-
         return view('search.charities',compact('charities'));
     }
         /**
@@ -67,15 +66,15 @@ class SearchController extends Controller
     public function surpluses()
     {
         # code...
-        $surpluses = Shortage::where('type','plus')->latest()->paginate(10);
-        return view('search.surpluses',compact('surpluses'));
+        $shortages = Shortage::where('type','plus')->latest()->paginate(10);
+        return view('search.shortages',compact('shortages'));
     }
 
 
-    public function getJobs($job)
+    public function getJobs($data)
     {
         # code...
-        $jobs=CharityJob::where('nam');
+        $jobs=CharityJob::where('');
     }
 
 
