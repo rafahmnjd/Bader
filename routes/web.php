@@ -75,15 +75,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('search/surpluses', 'SearchController@surpluses')->name('search.surpluses');
     Route::post('search/{data}/surpluses', 'SearchController@getSurpluses')->name('search.getSurpluses'); //search Surpluses
 
-
     // Route::get('search/articles', 'SearchController@articles')->name('search.articles');
     // Route::post('search/{article}/articles', 'SearchController@getArticles')->name('search.getArticles'); //search Articles
-
-
-
-    Route::get('search/show', 'SearchController@show');
-    Route::get('search/charities', 'SearchController@show_charities')->name('search.charities');
-    Route::get('search/projects', 'SearchController@show_projects')->name('search.projects');
-    Route::get('search/jobs', 'SearchController@show_charities')->name('search.jobs');
 
 });
