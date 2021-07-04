@@ -1,7 +1,7 @@
 @extends('search.show')
 @section('search_class',__("Jobs"))
 @section('search_form_action',route('search.getJobs'))
-@section('middile')
+@section('search_middile')
 
     <div class="result-body">
         <div class="table-responsive">
@@ -65,4 +65,7 @@
             </table>
         </div>
     </div>
+@endsection
+@section('search_pagination')
+{{$jobs->links()}}
 @endsection

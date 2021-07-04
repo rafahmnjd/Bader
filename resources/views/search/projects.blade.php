@@ -1,8 +1,7 @@
 @extends('search.show')
 @section('search_class',__("Project"))
 @section('search_form_action',route('search.getProjects'))
-@section('middile')
-
+@section('search_middile')
     <div class="result-body">
         <div class="table-responsive">
             <table class="table widget-26">
@@ -33,6 +32,7 @@
                             </td>
                              <td>
                                 <div class="widget-26-job-title">
+                                    dd($project->charity)
                                         <a href="{{ route('charities.show', $project->charity) }}">
                                             <span>
                                                 @if (config('app.locale') == 'ar')
@@ -65,4 +65,7 @@
             </table>
         </div>
     </div>
+@endsection
+@section('search_pagination')
+{{$projects->links()}}
 @endsection
