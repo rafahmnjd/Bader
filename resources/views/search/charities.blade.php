@@ -19,13 +19,11 @@
                                     <a href="{{ route('charities.show', $charity) }}">
                                         <span>
                                             @if (config('app.locale') == 'ar')
-                                                {{ $charity->name_ar }}
-                                                <p class="m-0"><a href="{{ route('charities.show', $charity) }}"
-                                                        class="employer-name">{{ $charity->name_en }}</a></p>
+                                                <p class="m-0">{{ $charity->name_ar }}</p>
+                                                <p class="text-muted m-0">{{ $charity->name_en }}</p>
                                             @else
-                                                {{ $charity->name_en }}
-                                                <p class="m-0"><a href="{{ route('charities.show', $charity) }}"
-                                                        class="employer-name">{{ $charity->name_ar }}</a></p>
+                                                <p class="m-0">{{ $charity->name_en }}</p>
+                                                <p class="text-muted m-0">{{ $charity->name_ar }}</p>
                                             @endif
                                         </span>
                                     </a>
@@ -54,6 +52,15 @@
                                         <p class="type m-0">{{ $charity->info_en }}</p>
                                         <p class="text-muted m-0">{{ $charity->info_ar }}</p>
                                     @endif
+                                </div>
+                            </td>
+                            <td>
+                                <div class="widget-26-job-info">
+                                    <button class="btn btn-light btn-icon-text btn-edit-profile">
+                                        <a href="{{ route('charities.show', $charity) }}">
+                                            {{ __('Show') }}
+                                        </a>
+                                    </button>
                                 </div>
                             </td>
                         </tr>

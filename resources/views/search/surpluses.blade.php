@@ -52,12 +52,27 @@
                                         <p class="type m-0">{{ $surplus->quantity}}</p>
                                 </div>
                             </td>
+                            <td>
+                                <div class="widget-26-job-info">
+                                    <button class="btn btn-light btn-icon-text btn-edit-profile">
+                                        <a href="#">
+                                            {{ __('Fill') }}
+                                        </a>
+                                    </button>
+                                    <button class="btn btn-light btn-icon-text btn-edit-profile">
+                                        <a href="#">
+                                            {{ __('Message') }}
+                                        </a>
+                                    </button>
+                                </div>
+                            </td>
                         </tr>
                     </tbody>
                 @endforeach
             </table>
         </div>
     </div>
-
-
+@endsection
+@section('search_pagination')
+{{$surpluses->links()}}
 @endsection

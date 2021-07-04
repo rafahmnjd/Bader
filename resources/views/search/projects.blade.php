@@ -15,19 +15,15 @@
                             </td>
                             <td>
                                 <div class="widget-26-job-title">
-                                    <a href="{{ route('charities.projects', $project) }}">
                                         <span>
                                             @if (config('app.locale') == 'ar')
-                                                {{ $project->title_ar }}
-                                                <p class="m-0"><a href="{{ route('charities.projects', $project) }}"
-                                                        class="employer-name">{{ $project->title_en }}</a></p>
+                                                <p class="m-0">{{ $project->title_ar }}</p>
+                                                <p class="text-muted m-0">{{ $project->title_en }}</p>
                                             @else
-                                                {{ $project->title_en }}
-                                                <p class="m-0"><a href="{{ route('charities.projects', $project) }}"
-                                                        class="employer-name">{{ $project->title_ar }}</a></p>
+                                                <p class="m-0">{{ $project->title_en }}</p>
+                                                <p class="text-muted m-0">{{ $project->title_ar }}</p>
                                             @endif
                                         </span>
-                                    </a>
                                 </div>
                             </td>
                              <td>
@@ -35,13 +31,11 @@
                                         <a href="{{ route('charities.show', $project->charity) }}">
                                             <span>
                                                 @if (config('app.locale') == 'ar')
-                                                    {{ $project->charity->name_ar }}
-                                                    <p class="m-0"><a href="{{ route('charities.show', $project->charity) }}"
-                                                            class="employer-name">{{ $project->charity->name_en }}</a></p>
+                                                    <p class="m-0">{{ $project->charity->name_ar }}</p>
+                                                    <p class="text-muted m-0">{{ $project->charity->name_en }}</p>
                                                 @else
-                                                    {{ $project->charity->name_en }}
-                                                    <p class="m-0"><a href="{{ route('charities.show', $project->charity) }}"
-                                                            class="employer-name">{{ $project->charity->name_ar }}</a></p>
+                                                    <p class="m-0">{{ $project->charity->name_en }}</p>
+                                                    <p class="text-muted m-0">{{ $project->charity->name_ar }}</p>
                                                 @endif
                                             </span>
                                         </a>
@@ -56,6 +50,15 @@
                                         <p class="type m-0">{{ $project->text_en }}</p>
                                         <p class="text-muted m-0">{{ $project->text_ar }}</p>
                                     @endif
+                                </div>
+                            </td>
+                            <td>
+                                <div class="widget-26-job-info">
+                                    <button class="btn btn-light btn-icon-text btn-edit-profile">
+                                        <a href="{{ route('charities.projects', $project) }}">
+                                            {{ __('Show') }}
+                                        </a>
+                                    </button>
                                 </div>
                             </td>
                         </tr>
