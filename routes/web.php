@@ -55,7 +55,6 @@ Route::middleware(['auth'])->group(function () {
     Route::match(['put', 'post'], 'project/requirments/{projReq}', 'ProjectRequirementController@update')->name('projReqs.update');
     Route::delete('project/requirments/{projReq}', 'ProjectRequirementController@destroy')->name('projReqs.destroy');
 
-
     // Route::resource('fills', 'FillController');
     Route::resource('shortages', 'ShortageController');
 
@@ -67,7 +66,9 @@ Route::middleware(['auth'])->group(function () {
     Route::match(['put', 'post'], 'fill/fills/{fill}', 'FillController@update')->name('fills.update');
     Route::delete('shortage/fills/{fill}', 'FillController@destroy')->name('fills.destroy');
 
-
+    //messages
+    Route::get('fill/{fill}/messages', 'MessageController@index')->name('messages.index');
+    Route::post('fill/{fill}/messages', 'MessageController@send')->name('messages.send');
 
     //Search Routes
     Route::get('search/jobs', 'SearchController@jobs')->name('search.jobs'); //allJobs

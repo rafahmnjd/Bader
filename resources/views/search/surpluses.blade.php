@@ -49,15 +49,15 @@
                             <td>
                                 <div class="widget-26-job-info">
                                     <button class="btn btn-light btn-icon-text btn-edit-profile">
-                                        <a href="#">
+                                        <a href="{{route('fills.create',$shortage)}}">
                                             {{ __('Fill') }}
                                         </a>
                                     </button>
-                                    <button class="btn btn-light btn-icon-text btn-edit-profile">
+                                    {{-- <button class="btn btn-light btn-icon-text btn-edit-profile">
                                         <a href="#">
                                             {{ __('Message') }}
                                         </a>
-                                    </button>
+                                    </button> --}}
                                 </div>
                             </td>
                         </tr>

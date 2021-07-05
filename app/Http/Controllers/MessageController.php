@@ -17,7 +17,9 @@ class MessageController extends Controller
     public function index(Fill $fill)
     {
         //
-        $messages = $fill->messages()->latest()->paginate(30);
+        $messages = $fill->messages()->latest()->take(30)->get();
+        Message::where('user_id', '<>', Auth::user()->id)->where('read', 0)->update(['read' => 1]);
+
         return view('fills.show', compact('fill', 'messages'));
     }
 
@@ -27,11 +29,14 @@ class MessageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function send(Request $request)
+    public function send(Request $request,int $fill)
     {
         //
         $data = $request->all();
+        // dd($data);
         $data = array_merge($data, ['fill_id' => $fill, 'user_id' => Auth::user()->id]);
+        Message::create($data);
+        return redirect(route('messages.index',$fill));
     }
 
 }

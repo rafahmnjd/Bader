@@ -22,6 +22,8 @@ class CreateMessagesTable extends Migration
             $table->text('text');
             $table->timestamps();
             $table->index(['fill_id', 'created_at']);
+            $table->index(['user_id','read']);
+
         });
     }
 

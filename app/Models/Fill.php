@@ -35,6 +35,6 @@ class Fill extends Model
       */
      public function messages()
      {
-         return $this->hasMany('App\Models\Message', 'foreign_key', 'local_key');
+         return $this->hasMany('App\Models\Message', 'fill_id');
      }
 }

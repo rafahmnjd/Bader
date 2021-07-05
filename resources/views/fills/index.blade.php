@@ -49,6 +49,11 @@
                                                 </button>
                                             </form>
                                         </div>
+                                        <div class="btn-group">
+                                            <a class="btn btn-outline-primary" href="{{ route('messages.index', $fill->id) }}">
+
+                                            </a>
+                                        </div>
                                     </div>
                                 </td>
                             </tr>

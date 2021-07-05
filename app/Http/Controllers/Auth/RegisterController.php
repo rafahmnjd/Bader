@@ -70,6 +70,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'role' => $data['role'],
         ]);
+
         return $user;
     }
 
@@ -80,6 +81,7 @@ class RegisterController extends Controller
         } else if (Auth::user()->role == 'volunteer') {
             return route('volunteers.create');
         }
+        return route('base');
         // else if (Auth::user()->role == 'benef') {
         //     return route('benefs.create');
         // }
