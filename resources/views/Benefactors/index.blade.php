@@ -1,12 +1,15 @@
 @extends('layouts.app')
-
+@section('style')
+    <!-- include my style -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/ch_show.css') }}">
+@endsection
 @section('content')
 <div class="row justify-content-center">
     <div class="col-12">
         <div class="card">
             <div class="card-header">
                 <h5 class="card-title">
-                {{__('Manage Items')}}</h5>
+                {{__('Manage Benefactors')}}</h5>
             </div>
             <div class="card-body text-nowrap overflow-auto font-weight-bolder">
                 <div class="row mx-1 py-2 border-bottom border-top">
@@ -18,24 +21,24 @@
                     <div class="col-2 p-1 ">{{ __('Control') }}       </div>
                 </div>
                 <hr class="m-0 p-0 ">
-                @foreach ($items as $item)
+                @foreach ($users as $user)
                 <div>
-                    <form method="POST" action="{{route('items.update',$item)}}">
+                    <form method="POST" action="{{route('benefactor.update',$user)}}">
                         @csrf
                         @method('PUT')
                         <div class="row mx-2 py-2  border-top">
-                            <div class="col-1 p-1">{{$item->id}}</div>
+                            <div class="col-1 p-1">{{$user->id}}</div>
                             <div class="col p-1">
-                                <input class=" form-control" type="text" name='name_ar' value="{{$item->name_ar}}" required>
+                                <input class=" form-control" type="text" name='name_ar' value="{{$benefactor->name}}" required>
                             </div>
                             <div class="col p-1">
-                                <input class=" form-control" type="text" name='unite_ar' value="{{$item->unite_ar}}" required>
+                                <input class=" form-control" type="text" name='email' value="{{$benefactor->email}}" required>
                             </div>
                             <div class="col p-1">
-                                <input class=" form-control" type="text" name='name_en' value="{{$item->name_en}}" required>
+                                <input class=" form-control" type="text" name='name_en' value="{{$benefactor->name_en}}" required>
                             </div>
                             <div class="col p-1">
-                                <input class="form-control" type="text" name='unite_en' value="{{$item->unite_en}}" required>
+                                <input class="form-control" type="text" name='unite_en' value="{{$benefactor->unite_en}}" required>
                             </div>
                             <div class="col-2 p-1">
                                 <button type="submit" class="btn btn-outline-warning">
@@ -47,13 +50,13 @@
                             </div>
                         </div>
                     </form>
-                    <form class="form-delet" method="POST" action="{{route('items.destroy',$item)}}">
+                    <form class="form-delet" method="POST" action="{{route('benefactors.destroy',$benefactor)}}">
                         @csrf
                         @method('DELETE')
                     </form>
                 </div>
                 @endforeach
-                <form method="POST" action="{{route('items.store')}}">
+                <form method="POST" action="{{route('benefactors.store')}}">
                     @csrf
                     <div class="row mx-2 py-2">
                         <div class="col-1 p-1">#</div>

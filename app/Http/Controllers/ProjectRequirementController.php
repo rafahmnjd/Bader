@@ -17,7 +17,7 @@ class ProjectRequirementController extends Controller
     {
         //
         $projReqs=$project->requirments;
-        return view('projReqs.index',compact('projReqs','project'));
+        return view('projReqs.show', compact('projReqs','project'));
     }
 
     /**
@@ -52,9 +52,9 @@ class ProjectRequirementController extends Controller
      * @param  \App\Models\ProjectRequirement  $projReq
      * @return \Illuminate\Http\Response
      */
-    public function show(ProjectRequirement $projReq)
+    public function show(ProjectRequirement $projectR)
     {
-        //
+        return view('projReqs.show', compact('project'));
     }
 
     /**
@@ -80,7 +80,7 @@ class ProjectRequirementController extends Controller
     {
         //route('projReqs.index',$project)
         $projReq->update($request->all());
-        return redirect(route('projReqs.index',$project));
+        return redirect(route('projReqs.index', $projReq));
     }
 
     /**

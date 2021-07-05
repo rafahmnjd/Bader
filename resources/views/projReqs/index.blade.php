@@ -16,13 +16,13 @@
                         <thead>
                             <tr>
                                 <th scope="col">{{ __('id') }}</th>
-                                <th scope="col">{{ __('project') }}</th>
-                                <th scope="col">{{ __('name_ar') }}</th>
-                                <th scope="col">{{ __('details_ar') }}</th>
-                                <th scope="col">{{ __('name_en') }}</th>
-                                <th scope="col">{{ __('details_en') }}</th>
-                                <th scope="col">{{ __('quantity') }}</th>
-                                <th scope="col">{{ __('state') }}</th>
+                                <th scope="col">{{ __('Project') }}</th>
+                                <th scope="col">{{ __('Name AR') }}</th>
+                                <th scope="col">{{ __('Details AR') }}</th>
+                                <th scope="col">{{ __('Name EN') }}</th>
+                                <th scope="col">{{ __('Details EN') }}</th>
+                                <th scope="col">{{ __('Quantity') }}</th>
+                                <th scope="col">{{ __('State') }}</th>
                                 <th scope="col" width="150">{{ __('Control') }}</th>
                             </tr>
                         </thead>

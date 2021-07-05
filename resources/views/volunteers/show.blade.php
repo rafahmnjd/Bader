@@ -1,92 +1,88 @@
 @extends('layouts.app')
 @section('style')
-<!-- include my style -->
-<link rel="stylesheet" type="text/css" href="{{asset('css/show.css')}}">
+    <!-- include my style -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vol_show.css') }}">
 @endsection
 
 @section('content')
-<section class="section about-section gray-bg" id="about">
-    <div class="container">
-        <div class="row align-items-center flex-row-reverse">
-            <div class="col-lg-6">
-                <div class="about-text go-to">
-                    <h3 class="dark-color">
-                        <td>
-                            @if (config('app.locale') == 'ar')
-                            {{ $volunteer->name_ar }}
-                            @else
-                            {{ $volunteer->name_en }}
-                            @endif
-                        </td>
-                    </h3>
-                    <h6 class="theme-color lead">
-                        @if (config('app.locale') == 'ar')
-                        {{ $volunteer->education_ar }}
-                        @else
-                        {{ $volunteer->education_en }}
-                        @endif
-                    </h6>
-                    <div class="row about-list">
-                        <div class="col-md-6">
-                            <div class="media">
-                                <label>{{ __('Birthday') }}</label>
-                                <p>{{ $volunteer->birth_date }}</p>
-                            </div>
+    <section class="section about-section gray-bg" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <div class="card user-card">
+                        <div class="card-header text-center">
+                            {{-- <h5>Profile</h5> --}}
                         </div>
-                        <div class="col-md-6">
-                            <div class="media">
-                                <label>{{ __('Email') }}</label>
-                                <p>{{ $volunteer->email }} </p>
+                        <div class="card-block">
+                            <div class="user-image">
+                                @if (!empty($volunteer->profile))
+                                    <img src="{{ asset(config('path.vprofile') . $volunteer->profile) }}"
+                                        class="img-radius" alt="User-Profile-Image">
+
+                                @else
+                                    <img src="{{ asset(config('path.default') . 'userProfile') }}" class="img-radius"
+                                        alt="User-Profile-Image">
+                                @endif
                             </div>
+                            <h6 class="f-w-600 m-t-25 m-b-10 text-center">
+                                @if (config('app.locale') == 'ar')
+                                    {{ $volunteer->name_ar }}
+                                @else
+                                    {{ $volunteer->name_en }}
+                                @endif
+                            </h6>
+                            <p class="text-muted text-center">
+                                @if (config('app.locale') == 'ar')
+                                    {{ $volunteer->education_ar }}
+                                @else
+                                    {{ $volunteer->education_en }}
+                                @endif
+                            </p>
+                            <p class="text-muted text-center">
+                                {{ $volunteer->email }} | {{ $volunteer->birth_date }}
+                            </p>
+                            <hr>
+                            @if (config('app.locale') == 'ar')
+                                <div class="text-right">
+                                    <h3>{{ __('Skills') }}:</h3>
+                                    {{ $volunteer->skills_ar }}
+                                </div>
+                            @else
+                                <div class="text-left">
+                                    <h3>{{ __('Skills') }}:</h3>
+                                    {{ $volunteer->skills_en }}
+                                </div>
+                            @endif
+                            <hr>
+                            @if (config('app.locale') == 'ar')
+                                <div class="text-right">
+                                    <h3>{{ __('Experiences') }}:</h3>
+                                    {{ $volunteer->experiences_ar }}
+                                </div>
+                            @else
+                                <div class="text-left">
+                                    <h3>{{ __('Experiences') }}:</h3>
+                                    {{ $volunteer->experiences_en }}
+                                </div>
+                            @endif
                         </div>
-                    </div>
-                    <p><mark>{{ __('Skills') }}:</mark>
-                        <td>
-                            @if (config('app.locale') == 'ar')
-                            <h2>{{ $volunteer->skills_ar }}</h2>
-                            @else
-                            <h2>{{ $volunteer->skills_en }}</h2>
-                            @endif
-                        </td>
-                    </p>
-                    <p><mark>{{ __('Experiences') }}:</mark>
-                        <td>
-                            @if (config('app.locale') == 'ar')
-                            <h2>{{ $volunteer->experiences_ar }}</h2>
-                            @else
-                            <h2>{{ $volunteer->experiences_en }}</h2>
-                            @endif
-                        </td>
-                    </p>
-                </div>
-            </div>
-            <!-- صورة المتطوع -->
-            <div class="col-lg-6">
-                <div class="about-avatar">
-                    @if (!empty($volunteer) )
-                    <img src="{{ asset(config('path.vprofile').$volunteer->profile) }}" title="" max_width="50%"
-                        height="300">
-                    @else
-                    <img src="{{ asset(config('path.default').'userProfile') }}" title="" max_width="50%" height="300">
-                @endif
-                </div>
-            </div>
-        </div>
-        <div class="row gutters">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                @if (config('app.locale') == 'ar')
-                <div class="text-left">
-                    @else
-                    <div class="text-right">
-                        @endif
-                        <button type="button" id="submit" name="submit"
-                            class="btn btn-outline-secondary">{{ __('Upload CV') }}</button>
-                        <button type="button" id="submit" name="submit"
-                            class="btn btn-outline-primary">{{ __('Create CV') }}</button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+
+        <div class="widget-26-job-info text-center">
+            <button class="btn btn-outline-primary btn-icon-text btn-edit-profile">
+                <a href="#">
+                    {{ __('Edit') }}
+                </a>
+            </button>
+            <button class="btn btn-outline-primary btn-icon-text btn-edit-profile">
+                <a href="#">
+                    {{ __('ُExport PDF') }}
+                </a>
+            </button>
+        </div>
+    </section>
 @endsection
