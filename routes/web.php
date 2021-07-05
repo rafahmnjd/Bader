@@ -33,9 +33,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::middleware(['auth'])->group(function () {
+
+
 
     Route::resource('charities', 'CharityController');
+
     Route::get('charities/{charity}/projects', 'CharityController@projects')->name('charities.projects');
     Route::get('charities/{charity}/shortages', 'CharityController@shortages')->name('charities.shortage');
     Route::get('charities/{charity}/surpluses', 'CharityController@surpluses')->name('charities.surplus');
@@ -59,8 +61,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('shortages', 'ShortageController');
 
     //fill Shortage
-
-
 
     Route::get('shortage/{shortage}/fills', 'FillController@index')->name('fills.index');
     Route::get('shortage/{shortage}/fills/create', 'FillController@create')->name('fills.create');
@@ -91,6 +91,6 @@ Route::middleware(['auth'])->group(function () {
 
     // Route::get('search/articles', 'SearchController@articles')->name('search.articles');
     // Route::post('search/{article}/articles', 'SearchController@getArticles')->name('search.getArticles'); //search Articles
-    Route::get('/pdf', 'VolunteerController@createPDF');
 
-});
+
+
