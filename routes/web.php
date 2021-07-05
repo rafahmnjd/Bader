@@ -59,6 +59,9 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('shortages', 'ShortageController');
 
     //fill Shortage
+
+
+
     Route::get('shortage/{shortage}/fills', 'FillController@index')->name('fills.index');
     Route::get('shortage/{shortage}/fills/create', 'FillController@create')->name('fills.create');
     Route::post('shortage/{shortage}/fills', 'FillController@store')->name('fills.store');
