@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\VolunteerRequest;
+use App\Models\CharityJob;
 use Illuminate\Http\Request;
 
 class VolunteerRequestController extends Controller
@@ -12,9 +13,11 @@ class VolunteerRequestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(CharityJob $job)
     {
         //
+        $volReqs=$job->volReqs;
+        return view('volreqs.index',compact('volReqs','job'));
     }
 
     /**

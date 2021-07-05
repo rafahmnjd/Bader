@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
-
+use PDF;
 class VolunteerController extends Controller
 {
     /**
@@ -144,5 +144,18 @@ class VolunteerController extends Controller
         //
         $volunteer->delete();
         return redirect(route('volunteers.index'));
+    }
+
+        // Generate PDF
+    public function createPDF() {
+      // retreive all records from db
+     $volunteers = Volunteer::all();
+
+      // share data to view
+      view()->share('volunteers', $volunteers);
+      $pdf = PDF::loadView('volReqs.cvPdf', $volunteers);
+
+      // download PDF file with download method
+      return $pdf->download('pdf_file.pdf');
     }
 }

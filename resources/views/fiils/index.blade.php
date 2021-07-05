@@ -4,8 +4,8 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title">{{__('Manage Project Requirment')}}
-                    <a id="top-plus" href="{{route('projReqs.create',$project)}}"
+                <h5 class="card-title">{{__('Manage Fills')}}
+                    <a id="top-plus" href="{{route('fills.create',$shortage)}}"
                         class="btn btn-outline-success  float-left">
                         <i class="zmdi zmdi-plus"></i>
                     </a></h5>
@@ -16,37 +16,32 @@
                         <thead>
                             <tr>
                                 <th scope="col">{{ __('id') }}</th>
-                                <th scope="col">{{ __('project') }}</th>
-                                <th scope="col">{{ __('name_ar') }}</th>
-                                <th scope="col">{{ __('details_ar') }}</th>
-                                <th scope="col">{{ __('name_en') }}</th>
-                                <th scope="col">{{ __('details_en') }}</th>
+                                <th scope="col">{{ __('shortage') }}</th>
+                                <th scope="col">{{ __('shortage type') }}</th>
                                 <th scope="col">{{ __('quantity') }}</th>
                                 <th scope="col">{{ __('state') }}</th>
                                 <th scope="col" width="150">{{ __('Control') }}</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($projReqs as $projReq)
+                            @foreach ($fills as $fill)
                             <tr>
-                                <th scope="row">{{ $projReq->id }}</th>
-                                <td>{{ $projReq->project->title_ar}}</td>
-                                <td>{{ $projReq->name_ar }}</td>
-                                <td>{{ $projReq->details_ar}}</td>
-                                <td>{{ $projReq->details_en}}</td>
-                                <td>{{ $projReq->quantity }}</td>
-                                <td>{{ $projReq->state }}</td>
+                                <th scope="row">{{ $fill->id }}</th>
+                                <td>{{ $fill->shortage->item->name_ar}}</td>
+                                <td>{{ $fill->shortage->type}}</td>
+                                <td>{{ $fill->quantity }}</td>
+                                <td>{{ $fill->state }}</td>
                                 <td>
                                     <div class="btn-group-justified">
 
                                         <div class="btn-group">
                                             <a class="btn btn-outline-warning rounded-circle"
-                                                href="{{ route('projReqs.edit', $projReq->id) }}">
+                                                href="{{ route('fills.edit', $fill->id) }}">
                                                 <i class="zmdi zmdi-edit"></i>
                                             </a>
                                         </div>
                                         <div class="btn-group">
-                                            <form action="{{ route('projReqs.destroy', $projReq->id) }}" method="POST">
+                                            <form action="{{ route('fills.destroy', $fill->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button Type="submit" class="btn rounded-circle btn-outline-danger">

@@ -13,7 +13,7 @@
             <div class="table-responsive border">
                 <table class="table">
                     <thead>
-                         <tr>
+                        <tr>
                             <th scope="col">{{ __('id') }}</th>
                             <th scope="col">{{ __('Charity') }}</th>
                             <th scope="col">{{ __('Quantity') }}</th>
@@ -35,7 +35,9 @@
                             <td>{{ $sur->created_at }}</td>
                             <td>{{ $sur->state }}</td>
                             <td>
+
                                 <div class="btn-group-justified">
+
                                     <div class="btn-group">
                                         <a class="btn btn-outline-warning rounded-circle"
                                             href="{{ route('shortages.edit', $sur->id) }}">
@@ -50,6 +52,13 @@
                                                 <i class="zmdi zmdi-delete"></i>
                                             </button>
                                         </form>
+                                    </div>
+                                    </div>
+                                <div class="btn-group-justified py-1">
+                                    <div class="btn-group">
+                                        <a class="btn btn-outline-primary" href="{{ route('fills.index', $sur->id) }}">
+                                            fills
+                                        </a>
                                     </div>
                                 </div>
                             </td>
@@ -101,6 +110,14 @@
                                                 <i class="zmdi zmdi-delete"></i>
                                             </button>
                                         </form>
+                                    </div>
+                                </div>
+                                <div class="btn-group-justified py-1">
+                                    <div class="btn-group ">
+                                        <a class="btn btn-outline-primary"
+                                            href="{{ route('fills.index', $shortage->id) }}">
+                                            fills
+                                        </a>
                                     </div>
                                 </div>
                             </td>

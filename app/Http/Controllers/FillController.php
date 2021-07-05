@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Fill;
+use App\Models\Shortage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FillController extends Controller
 {
@@ -12,10 +14,10 @@ class FillController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Shortage $shortage)
     {
-        $fills = Fill::all();
-        return view('fills.index', compact('fills'));
+        $fills = $shortage->fills()->latest()->paginate(5);
+        return view('fills.index', compact('fills','shortage'));
     }
 
     /**
@@ -23,10 +25,10 @@ class FillController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(int $shortage)
     {
         //
-        return view('fills.crup');
+        return view('fills.crup',compact('shortage'));
 
     }
 
@@ -36,11 +38,11 @@ class FillController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request ,int $shortage)
     {
-        $data = array_merge($request->all(), ['created_by' => Auth::user()->id]);
+        $data =['user_id'=>Auth::user()->id,'shortage_id'=>$shortage,'type'=>"shortage",'state'=>"waiting",'quantity'=>$request->quantity];
         $fill = Fill::create($data);
-        return redirect(route('fills.index'));
+        return redirect(route('fills.index', $shortage));
 
     }
 
@@ -53,7 +55,8 @@ class FillController extends Controller
     public function show(Fill $fill)
     {
         //
-        return view('fills.show', compact('fill'));
+        $maessages=$fill->messages()->latest()->paginate(30);
+        return view('fills.show', compact('fill','messages'));
 
     }
 
@@ -80,7 +83,8 @@ class FillController extends Controller
     {
         //
         $fill->update($request->all());
-        return back();
+        return redirect(route('fills.index', $fill->shortage_id));
+
 
     }
 

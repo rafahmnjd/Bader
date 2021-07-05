@@ -17,10 +17,13 @@ class CreateFillsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('shortage_id');
-            // $table->set('type')->default('shortage');
+            $table->set('type', ['shortage', 'projReq'])->default('shortage');
             $table->unsignedInteger('quantity')->default(1);
             $table->set('state', ['waiting', 'completed']);
             $table->timestamps();
+            $table->index(['user_id', 'created_at']);
+            $table->index(['type','shortage_id', 'created_at']);
+
         });
     }
 

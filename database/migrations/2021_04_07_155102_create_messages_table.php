@@ -17,9 +17,11 @@ class CreateMessagesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('fill_id');
             $table->unsignedBigInteger('user_id');
-            $table->boolean('hidden')->default(0);
+            $table->boolean('hidden')->default(false);
+            $table->boolean('read')->default(false);
             $table->text('text');
             $table->timestamps();
+            $table->index(['fill_id', 'created_at']);
         });
     }
 
@@ -30,6 +32,12 @@ class CreateMessagesTable extends Migration
      */
     public function down()
     {
+
+        Schema::table('messages', function (Blueprint $table) {
+            $table->dropIndex(['fill_id', 'created_at']); // Drops index 'geo_state_index'
+        });
+
         Schema::dropIfExists('messages');
+
     }
 }

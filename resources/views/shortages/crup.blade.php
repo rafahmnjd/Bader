@@ -53,7 +53,7 @@
                                 <label for="item_id">{{__("Item")}}</label>
                                 <select id="" class="form-control" name="item_id" required>
                                     @if(!empty($shortage))
-                                    <option value="{{$shortage->item}}" selected>{{__($shortage->item->name_ar)}}</option>
+                                    <option value="{{$shortage->item_id}}" selected>{{$shortage->item->name_ar}}-{{$shortage->item->name_en}}</option>
                                     @endif
                                     @foreach ($items as $item)
                                     <option value="{{$item->id}}">{{$item->name_ar}}-{{$item->name_en}}</option>
