@@ -60,22 +60,15 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('shortages', 'ShortageController');
 
     //fill Shortage
-<<<<<<< HEAD
+
+
+
     Route::get('shortage/{shortage}/fills', 'FillController@index')->name('fills.index');
     Route::get('shortage/{shortage}/fills/create', 'FillController@create')->name('fills.create');
     Route::post('shortage/{shortage}/fills', 'FillController@store')->name('fills.store');
     Route::get('shortage/fills/{fill}/edit', 'FillController@edit')->name('fills.edit');
     Route::match(['put', 'post'], 'fill/fills/{fill}', 'FillController@update')->name('fills.update');
     Route::delete('shortage/fills/{fill}', 'FillController@destroy')->name('fills.destroy');
-=======
-    Route::get('fill/{fill}/requirments', 'FillController@index')->name('fills.index');
-    Route::get('fill/{fill}/requirments/create', 'FillController@create')->name('fills.create');
-    Route::post('fill/{fill}/requirments', 'FillController@store')->name('fills.store');
-    Route::get('fill/requirments/{fill}/edit', 'FillController@edit')->name('fills.edit');
-    Route::match(['put', 'post'], 'fill/requirments/{fill}', 'FillController@update')->name('fills.update');
-    Route::delete('fill/requirments/{fill}', 'FillController@destroy')->name('fills.destroy');
->>>>>>> 276338dab031b86a56bf1556fa1e33c094f38b8e
-
 
 
     //Search Routes
