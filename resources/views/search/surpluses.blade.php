@@ -49,7 +49,7 @@
                             <td>
                                 <div class="widget-26-job-info">
                                     <button class="btn btn-light btn-icon-text btn-edit-profile">
-                                        <a href="{{route('fills.create',$shortage)}}">
+                                        <a href="{{route('fills.create',$surplus)}}">
                                             {{ __('Fill') }}
                                         </a>
                                     </button>

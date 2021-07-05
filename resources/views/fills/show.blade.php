@@ -14,12 +14,12 @@
                         <div class="col">sate = {{ $fill->state }}</div>
                     </div>
                 </div>
-                <div class="card-body" style="background-color: #9dafc2d5">
+                <div class="card-body" style="background-color: #f0c8ffd5">
                     <form action="{{route('messages.send',$fill->id)}}" method="POST">
                         @csrf
                         <div class="input-group">
                             <input class="form-control" name="text" required>
-                            <button class='btn btn-outline-success' type="submit"><i
+                            <button class='btn btn-success' type="submit"><i
                                     class="zmdi zmdi-plus"></i></button>
                         </div>
                     </form>
