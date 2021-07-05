@@ -35,9 +35,9 @@ class CreateMessagesTable extends Migration
     public function down()
     {
 
-        Schema::table('messages', function (Blueprint $table) {
-            $table->dropIndex(['fill_id', 'created_at']); // Drops index 'geo_state_index'
-        });
+        // Schema::table('messages', function (Blueprint $table) {
+        //     $table->dropIndex(['fill_id', 'created_at']); // Drops index 'geo_state_index'
+        // });
 
         Schema::dropIfExists('messages');
 

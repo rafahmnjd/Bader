@@ -30,8 +30,8 @@
                             <div class="col">
                                 <div class="d-flex justify-content-right">
                                     <button class="btn btn-light btn-icon-text btn-edit-profile">
-                                        <a href="{{route('fills.create',$shortage)}}">
-                                            {{ __('Fill') }}
+                                        <a href="{{route('fills.create',$surplus)}}">
+                                            {{ __('Ask') }}
                                         </a>
                                     </button>
                                     {{-- <button class="btn btn-light btn-icon-text btn-edit-profile">
