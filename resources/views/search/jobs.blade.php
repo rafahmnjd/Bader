@@ -1,6 +1,6 @@
 @extends('search.show')
-@section('search_class',__("Jobs"))
-@section('search_form_action',route('search.getJobs'))
+@section('search_class', __('Jobs'))
+@section('search_form_action', route('search.getJobs'))
 @section('search_middile')
 
     <div class="result-body">
@@ -31,21 +31,21 @@
                                     </a>
                                 </div>
                             </td>
-                             <td>
+                            <td>
                                 <div class="widget-26-job-title">
-                                        <a href="{{ route('charities.show', $job->charity) }}">
-                                            <span>
-                                                @if (config('app.locale') == 'ar')
-                                                    {{ $job->charity->name_ar }}
-                                                    <p class="m-0"><a href="{{ route('charities.show', $job->charity) }}"
-                                                            class="employer-name">{{ $job->charity->name_en }}</a></p>
-                                                @else
-                                                    {{ $job->charity->name_en }}
-                                                    <p class="m-0"><a href="{{ route('charities.show', $job->charity) }}"
-                                                            class="employer-name">{{ $job->charity->name_ar }}</a></p>
-                                                @endif
-                                            </span>
-                                        </a>
+                                    <a href="{{ route('charities.show', $job->charity) }}">
+                                        <span>
+                                            @if (config('app.locale') == 'ar')
+                                                {{ $job->charity->name_ar }}
+                                                <p class="m-0"><a href="{{ route('charities.show', $job->charity) }}"
+                                                        class="employer-name">{{ $job->charity->name_en }}</a></p>
+                                            @else
+                                                {{ $job->charity->name_en }}
+                                                <p class="m-0"><a href="{{ route('charities.show', $job->charity) }}"
+                                                        class="employer-name">{{ $job->charity->name_ar }}</a></p>
+                                            @endif
+                                        </span>
+                                    </a>
                                 </div>
                             </td>
                             <td>
@@ -59,6 +59,16 @@
                                     @endif
                                 </div>
                             </td>
+                            <td>
+                                <div class="widget-26-job-info">
+                                    <button class="btn btn-light btn-icon-text btn-edit-profile">
+                                        <a href="#">
+                                            {{-- {{ route('jobs.show',$job) }} --}}
+                                            {{ __('Apply') }}
+                                        </a>
+                                    </button>
+                                </div>
+                            </td>
                         </tr>
                     </tbody>
                 @endforeach
@@ -67,5 +77,5 @@
     </div>
 @endsection
 @section('search_pagination')
-{{$jobs->links()}}
+    {{ $jobs->links() }}
 @endsection

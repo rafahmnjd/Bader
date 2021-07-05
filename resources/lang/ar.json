@@ -123,14 +123,22 @@
     ,"Manage Projects":"إدارة المشاريع"
     ,"Manage Surplus":"إدارة الفائض"
     ,"Manage Shortage":"إدارة النقص"
+    ,"Manage Benefactors":"إدارة المتبرعين"
     ,"Affiliate charities":"الجمعيات المنتسبة"
-    ,"Affiliate volunteers":"المتطوعين المنتسبين"
+    ,"Established projects":"المشاريع المنشأة"
     ,"Shortage materials":"المواد الناقصة"
     ,"Surplus materials":"المواد الفائضة"
     ,"Charities":"الجمعيات"
     ,"Jobs":"الوظائف"
     ,"Search...":"البحث..."
     ,"Information":"المعلومات"
+    ,"Show":"عرض"
+    ,"Project":"المشروع"
+    ,"Name AR":"الاسم بالعربية"
+    ,"Name EN":"الاسم بالإنكليزية"
+    ,"Details AR":"التفاصيل بالعربية"
+    ,"Details EN":"التفاصيل بالإنكليزية"
+    ,"Edit":"تعديل"
 
 
 }

@@ -77,7 +77,7 @@
                             <div class="icon">
                                 <i class="fa fa-user-plus" aria-hidden="true"></i>
                             </div>
-                            <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="{{ route('search.charities') }}" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
 
@@ -85,15 +85,13 @@
                         <div class="card-box bg-red">
                             <div class="inner">
                                 <h3> 723 </h3>
-                                <p> {{ __('Affiliate volunteers') }} </p>
+                                <p> {{ __('Established projects') }} </p>
                             </div>
                             <div class="icon">
-                                <i class="fa fa-users"></i>
+                                <i class="fa fa-cogs"></i>
                             </div>
-                            <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="{{ route('search.projects') }}" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
-
-
                     </div>
                 </div>
                 <div class="row">
@@ -106,7 +104,7 @@
                             <div class="icon">
                                 <i class="fa fa-search-minus" aria-hidden="true"></i>
                             </div>
-                            <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="{{ route('search.shortages') }}" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <div class="col">
@@ -118,7 +116,7 @@
                             <div class="icon">
                                 <i class="fa fa-search-plus" aria-hidden="true"></i>
                             </div>
-                            <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="{{ route('search.surpluses') }}" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                 </div>

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Volunteer;
 use Illuminate\Support\Facades\Auth;
-;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -46,7 +46,6 @@ class VolunteerController extends Controller
             return redirect(route('volunteers.edit', Auth::user()->volunteer));
         }
         return view('volunteers.crup');
-
     }
 
     /**
@@ -60,7 +59,7 @@ class VolunteerController extends Controller
         $input = $request->except(['profile']); // ما بخزن الصور متل ما هنن
         if (request()->hasfile('profile')) {
             $profilefilepath = public_path(config('path.vprofile'));
-            $profilefile = request()->file('profile');//بتعطي الصورة كفايل
+            $profilefile = request()->file('profile'); //بتعطي الصورة كفايل
             $profilename = time() . "_." . $request->profile->extension();
             $profilefile->move($profilefilepath, $profilename);
             $input = array_merge($input, ["profile" => $profilename]);

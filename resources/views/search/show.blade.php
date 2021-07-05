@@ -25,7 +25,7 @@
                                         </div>
                                         <input type="text" placeholder="{{ __('Search...') }}" class="col form-control" id="search" name="data">
                                         <div class="col-2 px-0">
-                                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
+                                            <button class="btn btn-outline-wight dropdown-toggle" type="button" data-toggle="dropdown"
                                                 aria-haspopup="true" aria-expanded="false">
                                                 @yield('search_class')
                                             </button>
@@ -33,6 +33,8 @@
                                                    <a class="dropdown-item" href="{{ route('search.charities') }}">{{ __('Charities') }}</a>
                                                    <a class="dropdown-item" href="{{ route('search.projects') }}">{{ __('Projects') }}</a>
                                                    <a class="dropdown-item" href="{{ route('search.jobs') }}">{{ __('Jobs') }}</a>
+                                                   <a class="dropdown-item" href="{{ route('search.shortages') }}">{{ __('Shortages') }}</a>
+                                                   <a class="dropdown-item" href="{{ route('search.surpluses') }}">{{ __('Surpluses') }}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -53,7 +55,7 @@
                                     <div class="result-header">
                                         <div class="row">
                                             <div class="col-lg-6">
-                                                <div class="records">Showing: <b>1-20</b> of <b>200</b> result</div>
+                                                {{-- <div class="records">Showing: <b>1-20</b> of <b>200</b> result</div> --}}
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="result-actions">
