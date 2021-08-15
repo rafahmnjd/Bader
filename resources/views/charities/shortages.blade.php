@@ -24,7 +24,7 @@
                             </div>
                             <div class="col">
                                 <div class="progress">
-                                    <div class="progress-bar" style="width:{{round($shortage->completePercent)}}%">{{round($shortage->completePercent)}}%</div>
+                                    <div class="progress-bar" style="width:{{round($shortage->completePercent())}}%">{{round($shortage->completePercent())}}%</div>
                                 </div>
                             </div>
                             <div class="col">
