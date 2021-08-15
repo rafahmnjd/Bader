@@ -11,16 +11,14 @@
                     @foreach ($shortages as $shortage)
                         <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
                             <div class="col">
-                                <h3 class="mb-3 tx-14">
                                     @if (config('app.locale') == 'ar')
                                         {{ $shortage->item->name_ar }}
                                     @else
                                         {{ $shortage->item->name_en }}
                                     @endif
-                                </h3>
                             </div>
                             <div class="col">
-                                <h4>{{ $shortage->quantity }}</h4>
+                                {{ $shortage->quantity }}
                             </div>
                             <div class="col">
                                 <div class="progress">

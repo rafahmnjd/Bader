@@ -16,6 +16,7 @@ class FillController extends Controller
      */
     public function index(Shortage $shortage)
     {
+        
         $fills = $shortage->fills()->latest()->paginate(5);
         return view('fills.index', compact('fills', 'shortage'));
     }
@@ -25,7 +26,7 @@ class FillController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(int $shortage)
+    public function create(Shortage $shortage)
     {
         //
         return view('fills.crup', compact('shortage'));
@@ -38,9 +39,9 @@ class FillController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, int $shortage)
+    public function store(Request $request, Shortage $shortage)
     {
-        $data = ['user_id' => Auth::user()->id, 'shortage_id' => $shortage, 'type' => "shortage", 'state' => "waiting", 'quantity' => $request->quantity];
+        $data = ['user_id' => Auth::user()->id, 'shortage_id' => $shortage->id, 'type' => "shortage", 'state' => "waiting", 'quantity' => $request->quantity];
         $fill = Fill::create($data);
         return redirect(route('fills.index', $shortage));
 
@@ -117,6 +118,9 @@ class FillController extends Controller
         # code...
         $fill->state = "completed";
         $fill->save();
+        if( $fill->quantity==$fill->shortage->rest())
+            $fill->shortage->state="closed";
+            $fill->shortage->save();
         return redirect(route('fills.index', $fill->shortage_id));
     }
 }

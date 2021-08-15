@@ -160,6 +160,7 @@ class CharityController extends Controller
         } else {
             return redirect(route('charities.index'));
         }
+        
     }
 
     /**
@@ -196,13 +197,13 @@ class CharityController extends Controller
 
     public function shortages(Charity $charity)
     {
-        $shortages = $charity->shortages;
+        $shortages = $charity->shortages()->where('state','!=',"closed")->get();
         return view('charities.shortages', compact('shortages', 'charity'));
     }
 
     public function surpluses(Charity $charity)
     {
-        $surpluses = $charity->surpluses;
+        $surpluses = $charity->surpluses()->where('state',"!=","closed")->get();
         return view('charities.surpluses', compact('surpluses', 'charity'));
     }
 }

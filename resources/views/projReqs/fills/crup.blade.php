@@ -20,8 +20,8 @@
 
                                 <label for="quantity">{{ __('Quantity') }}:</label>
 
-                                <input class="form-control" type="number" name="quantity" required @if(!empty($fill))
-                                    value="{{ $fill->quantity }}" @else value="{{ old('quantity') }}" @endif>
+                                <input class="form-control" type="number" name="quantity"  required @if(!empty($fill))
+                                   max="{{$fill->projReq->rest()}}" value="{{ $fill->quantity }}" @else max="{{$projReq->rest()}}" value="{{ old('quantity') }}" @endif>
                             </div>
                         </div>
                         @if(!empty($fill))

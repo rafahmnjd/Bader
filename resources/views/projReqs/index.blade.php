@@ -35,7 +35,7 @@
                                 <td>{{ $projReq->details_en}}</td>
                                 <td>{{ $projReq->quantity }}</td>
                                 <td>{{ $projReq->state }}
-                                    {{($projReq->completePercent())}}
+                                    {{($projReq->completePercent())}}%
                                     @if($projReq->state != "closed")
                                     <form action="{{ route('projReqs.close', $projReq->id) }}" method="POST">
                                         @csrf

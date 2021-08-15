@@ -16,7 +16,7 @@ class Shortage extends Model
      */
     public function fills()
     {
-        return $this->hasMany('App\Models\Fill', 'shortage_id')->where('type', 'shotage');
+        return $this->hasMany('App\Models\Fill', 'shortage_id')->where('type', 'shortage');
     }
 
     /**

@@ -25,7 +25,7 @@ class FillProjReqController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(int $projReq)
+    public function create(ProjectRequirement $projReq)
     {
         //
         return view('projReqs.fills.crup', compact('projReq'));
@@ -38,9 +38,9 @@ class FillProjReqController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, int $projReq)
+    public function store(Request $request, ProjectRequirement $projReq)
     {
-        $data = ['user_id' => Auth::user()->id, 'shortage_id' => $projReq, 'type' => "projReq", 'state' => "waiting", 'quantity' => $request->quantity];
+        $data = ['user_id' => Auth::user()->id, 'shortage_id' => $projReq->id, 'type' => "projReq", 'state' => "waiting", 'quantity' => $request->quantity];
         $fill = Fill::create($data);
         return redirect(route('projReqs.fills.index', $projReq));
 

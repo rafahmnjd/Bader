@@ -29,11 +29,11 @@ class MessageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function send(Request $request,int $fill)
+    public function send(Request $request,Fill $fill)
     {
         //
         $data = $request->all();
-        $data = array_merge($data, ['fill_id' => $fill, 'user_id' => Auth::user()->id]);
+        $data = array_merge($data, ['fill_id' => $fill->id, 'user_id' => Auth::user()->id]);
         Message::create($data);
         return redirect(route('messages.index',$fill));
     }

@@ -71,7 +71,7 @@
                             <label for="quantity">{{ __('Cost') }}:</label>
                         </div>
                         <div class="col-md-4 input-group">
-                            <input class="form-control" type="number" name="quantity" required @if(!empty($projReq))
+                            <input class="form-control" type="number" name="quantity"  required @if(!empty($projReq))
                                 value="{{$projReq->quantity}}" @endif>
                                 <span class="btn " >{{__('SP')}}</span>
                         </div>

@@ -20,8 +20,8 @@
 
                                 <label for="quantity">{{ __('Quantity') }}:</label>
 
-                                <input class="form-control" type="number" name="quantity" required @if(!empty($fill))
-                                    value="{{ $fill->quantity }}" @else value="{{ old('quantity') }}" @endif>
+                                <input class="form-control" type="number" name="quantity"min="0" required @if(!empty($fill))
+                                    value="{{ $fill->quantity }}" max="{{$fill->shortage->rest()}}" @else value="{{ old('quantity') }}" max="{{$shortage->rest()}}" @endif>
                             </div>
                         </div>
                         @if(!empty($fill))

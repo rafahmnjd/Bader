@@ -31,6 +31,7 @@
                                 <td>{{ $fill->shortage->type}}</td>
                                 <td>{{ $fill->quantity }}</td>
                                 <td>{{ $fill->state }}
+                                    @can('ch_access',$fill->shortage->charity)
                                     @if($fill->state != "completed")
                                     <form action="{{ route('fills.close', $fill->id) }}" method="POST">
                                         @csrf
@@ -41,6 +42,8 @@
                                         </button>
                                     </form>
                                     @endif
+                                    @endcan
+
                                 </td>
                                 <td>
                                     <div class="btn-group-justified">
