@@ -16,7 +16,6 @@ class FillController extends Controller
      */
     public function index(Shortage $shortage)
     {
-        
         $fills = $shortage->fills()->latest()->paginate(5);
         return view('fills.index', compact('fills', 'shortage'));
     }
@@ -87,6 +86,7 @@ class FillController extends Controller
     public function update(Request $request, Fill $fill)
     {
         //
+
         if ($fill->state == 'completed') {
             return back()->with(['msg' => __('not avilable')]);
         }

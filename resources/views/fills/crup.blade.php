@@ -47,9 +47,10 @@
                     <br>
                     <div class="form-group float-right">
                         <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
-                        <a @if(!empty($fill)) href="{{ route('fills.index',$fill->shortage_id) }}" @else
+                        {{-- <a @if(!empty($fill)) href="{{ route('fills.index',$fill->shortage_id) }}" @else
                             href="{{ route('fills.index',$shortage) }}" @endif type="button"
-                            class="btn btn-secondary ">{{ __('Cancel') }}</a>
+                            class="btn btn-secondary ">{{ __('Cancel') }}</a> --}}
+                            <a href="#" class="btn btn-secondary" onclick="location.href = document.referrer; return false;">{{ __('Cancel') }}</a>
                     </div>
                 </form>
             </div>

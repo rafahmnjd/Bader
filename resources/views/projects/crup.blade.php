@@ -87,8 +87,9 @@
                     </div>
                     <div class="form-group float-left">
                         <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
-                        <a href="{{ route('projects.index') }}" type="button"
-                            class="btn btn-secondary ">{{ __('Cancel') }}</a>
+                        {{-- <a href="{{ route('projects.index') }}" type="button"
+                            class="btn btn-secondary ">{{ __('Cancel') }}</a> --}}
+                        <a href="#" class="btn btn-secondary" onclick="location.href = document.referrer; return false;">{{ __('Cancel') }}</a>
                     </div>
                 </form>
             </div>

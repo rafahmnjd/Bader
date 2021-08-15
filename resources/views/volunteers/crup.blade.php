@@ -127,14 +127,14 @@
                             <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
                         </div>
                         <div class="col-6 text-md-center">
-                            @can('admin')
+                            {{-- @can('admin')
                             <a href="{{ route('volunteers.index') }}" type="button"
                                 class="btn btn-secondary">{{ __('Cancel') }}</a>
                             @else
                             <a href="{{ route('base') }}" type="button"
                                 class="btn btn-secondary">{{ __('Cancel') }}</a>
-                            @endcan
-
+                            @endcan --}}
+<a href="#" class="btn btn-secondary" onclick="location.href = document.referrer; return false;">{{ __('Cancel') }}</a>
                         </div>
                     </div>
                 </form>
