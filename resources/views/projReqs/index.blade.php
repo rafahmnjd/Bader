@@ -16,7 +16,6 @@
                         <thead>
                             <tr>
                                 <th scope="col">{{ __('id') }}</th>
-                                <th scope="col">{{ __('Project') }}</th>
                                 <th scope="col">{{ __('Name AR') }}</th>
                                 <th scope="col">{{ __('Details AR') }}</th>
                                 <th scope="col">{{ __('Name EN') }}</th>
@@ -30,15 +29,30 @@
                             @foreach ($projReqs as $projReq)
                             <tr>
                                 <th scope="row">{{ $projReq->id }}</th>
-                                <td>{{ $projReq->project->title_ar}}</td>
                                 <td>{{ $projReq->name_ar }}</td>
                                 <td>{{ $projReq->details_ar}}</td>
+                                <td>{{ $projReq->name_en }}</td>
                                 <td>{{ $projReq->details_en}}</td>
                                 <td>{{ $projReq->quantity }}</td>
-                                <td>{{ $projReq->state }}</td>
+                                <td>{{ $projReq->state }}
+                                    {{($projReq->completePercent())}}
+                                    @if($projReq->state != "closed")
+                                    <form action="{{ route('projReqs.close', $projReq->id) }}" method="POST">
+                                        @csrf
+                                        @method('put')
+                                        <button Type="submit" class="btn btn-outline-danger">
+                                            {{__('completed')}}
+                                        </button>
+                                    </form>
+                                    @endif
+                                </td>
                                 <td>
                                     <div class="btn-group-justified">
-
+                                        <div class="btn-group">
+                                            <a class="btn btn-outline-info"
+                                                href="{{ route('projReqs.fills.index', $projReq->id) }}">
+                                                {{__("manage fills")}}
+                                            </a></div>
                                         <div class="btn-group">
                                             <a class="btn btn-outline-warning rounded-circle"
                                                 href="{{ route('projReqs.edit', $projReq->id) }}">

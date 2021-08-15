@@ -22,7 +22,11 @@
         <link href="{{ asset('css/zmdi.css') }}" rel="stylesheet">
 
         @yield('style')
-
+        <style>
+            body {
+                background: #dcdcdc;
+            }
+        </style>
         @if (app()->getLocale() == 'ar')
         <style>
             h1,
@@ -35,21 +39,31 @@
             label,
             div {
                 text-align: right;
+                direction: rtl;
+            }
+
+            .themHeder {
+                background: #222222;
+                color: #fff;
+                text-decoration-color: #fff
+            }
+
+            .themYellow {
+                background: #ffc600;
+                color: #fff;
             }
         </style>
         @endif
-
     </head>
 
     <body>
         <div id="app">
-            <nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm mb-2">
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm mb-2">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="{{ route('about') }}">{{ config('app.name', 'Laravel') }}</a>
+                    <a class="navbar-brand " href="{{ route('about') }}">{{ config('app.name', 'Laravel') }}</a>
                     <div class="navbar-collapse collapse show" id="navbarColor01">
                         <!-- Left Side Of Navbar -->
-                        <ul class="navbar-nav @if (app()->getLocale() == 'ar') ml-auto
-                    text-right @else mr-auto @endif">
+                        <ul class="navbar-nav @if(app()->getLocale() == 'ar') ml-auto text-right @else mr-auto @endif ">
                             <a class="nav-link" href="{{ route('base') }}">{{ __('Home') }}</a>
                             @yield('left_nav')
                             @if (App::isLocale('en'))
@@ -57,6 +71,7 @@
                             @else
                             <a class="nav-link" href="{{ route('lang', 'en') }}">{{ __('En') }}</a>
                             @endif
+                            <a class="nav-link" href="{{ route('search.charities')}}">{{__('Search...')}}</a>
                         </ul>
 
                         <!-- Right Side Of Navbar -->
@@ -111,6 +126,10 @@
                                     <a class="dropdown-item" href="{{ route('shortages.index') }}">
                                         {{ __('Manage Shortages') }}
                                     </a>
+                                    @elsecan('volunteer')
+                                    <a class="dropdown-item" href="{{ route('volunteers.create') }}">
+                                        {{ __('Manage my profile') }}
+                                    </a>
                                     @elsecan('admin')
                                     <a class="dropdown-item" href="{{ route('charities.index') }}">
                                         {{ __('Manage Charities') }}
@@ -140,6 +159,5 @@
 
     <!-- Scripts -->
 
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
     @yield('script')

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ProjectRequirement;
 use App\Models\Project;
+use App\Models\ProjectRequirement;
 use Illuminate\Http\Request;
 
 class ProjectRequirementController extends Controller
@@ -16,8 +16,8 @@ class ProjectRequirementController extends Controller
     public function index(Project $project)
     {
         //
-        $projReqs=$project->requirments;
-        return view('projReqs.show', compact('projReqs','project'));
+        $projReqs = $project->requirments;
+        return view('projReqs.index', compact('projReqs', 'project'));
     }
 
     /**
@@ -28,7 +28,6 @@ class ProjectRequirementController extends Controller
     public function create(Project $project)
     {
         //
-        // dd($project);
         return view('projReqs.crup', compact('project'));
 
     }
@@ -39,11 +38,12 @@ class ProjectRequirementController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Project $project,Request $request)
+    public function store(Project $project, Request $request)
     {
         //
-        $data=$request->all();
-        return redirect(route('projReqs.index',$project));
+        $data = $request->all();
+        $project->requirments()->create($data);
+        return redirect(route('projReqs.index', $project));
     }
 
     /**
@@ -80,7 +80,7 @@ class ProjectRequirementController extends Controller
     {
         //route('projReqs.index',$project)
         $projReq->update($request->all());
-        return redirect(route('projReqs.index', $projReq));
+        return redirect(route('projReqs.index', $projReq->project));
     }
 
     /**
@@ -94,6 +94,22 @@ class ProjectRequirementController extends Controller
         //
         // $project=$projReq->project;
         $projReq->delete();
+        return back();
+
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\ProjectRequirement  $projReq
+     * @return \Illuminate\Http\Response
+     */
+    public function close(ProjectRequirement $projReq)
+    {
+        //
+        // $project=$projReq->project;
+        $projReq->state = "closed";
+        $projReq->save();
         return back();
 
     }

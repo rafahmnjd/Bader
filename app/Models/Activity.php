@@ -4,13 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Article extends Model
+class Activity extends Model
 {
     //
      protected $guarded = [];
 
      /**
-      * Get the charity that owns the Article
+      * Get the charity that owns the Activity
       *
       * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
       */
@@ -19,7 +19,7 @@ class Article extends Model
          return $this->belongsTo('App\Models\Charity', 'charity_id','user_id');
      }
      /**
-      * Get all of the images for the Article
+      * Get all of the images for the Activity
       *
       * @return \Illuminate\Database\Eloquent\Relations\HasMany
       */

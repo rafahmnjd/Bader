@@ -17,6 +17,13 @@ class CreateItemsTable extends Migration
             $table->id();
             $table->string('name_en');
             $table->string('name_ar');
+            $table->String('cat_ar');
+            $table->String('cat_en');
+            $table->String('subcat_ar');
+            $table->String('subcat_en');
+            $table->String('subcat2_ar');
+            $table->String('subcat2_en');
+
             $table->string('unite_en')->nullable()->default("kg");
             $table->string('unite_ar')->nullable()->default("كغ");
             $table->unsignedBigInteger('created_by');

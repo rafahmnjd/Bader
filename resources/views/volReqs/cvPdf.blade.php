@@ -34,7 +34,7 @@
                                     @foreach ($volunteers as $volunteer)
                                     <tr>
                                         <th scope="row">
-                                            {{ $volunteer->id }}
+                                            {{ $volunteer->user_id }}
                                         </th>
 
                                         <td>
@@ -53,7 +53,7 @@
 
 
                                         <td>{{ $volunteer->birth_date }}</td>
-                                        <td>{{ $volunteer->email }}</td>
+                                        <td>{{ $volunteer->user->email }}</td>
 
                                         <td>
                                             @if (config('app.locale') == 'ar')
@@ -84,18 +84,18 @@
                                             <div class="btn-group-justified">
                                                 <div class="btn-group">
                                                     <a class="btn btn-outline-primary rounded-circle"
-                                                        href="{{ route('volunteers.show', $volunteer->id) }}">
+                                                        href="{{ route('volunteers.show', $volunteer->user_id) }}">
                                                         <i class="zmdi zmdi-eye"></i>
                                                     </a>
                                                 </div>
                                                 <div class="btn-group">
                                                     <a class="btn btn-outline-warning rounded-circle"
-                                                        href="{{ route('volunteers.edit', $volunteer->id) }}">
+                                                        href="{{ route('volunteers.edit', $volunteer->user_id) }}">
                                                         <i class="zmdi zmdi-edit"></i>
                                                     </a>
                                                 </div>
                                                 <div class="btn-group">
-                                                    <form action="{{ route('volunteers.destroy', $volunteer->id) }}"
+                                                    <form action="{{ route('volunteers.destroy', $volunteer->user_id) }}"
                                                         method="POST">
                                                         @csrf
                                                         @method('DELETE')

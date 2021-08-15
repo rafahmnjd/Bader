@@ -194,7 +194,7 @@
                             <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
                         </div>
                         <div class="col-6 text-md-center">
-                            <a href="{{ route('charities.index') }}" type="button"
+                            <a @can('admin') href="{{ route('charities.index') }}"@else href="{{ route('base') }}" @endcan type="button"
                                 class="btn btn-secondary">{{ __('Cancel') }}</a>
                         </div>
                     </div>

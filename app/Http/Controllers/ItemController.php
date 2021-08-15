@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-;
+
 class ItemController extends Controller
 {
     /**
@@ -16,7 +16,6 @@ class ItemController extends Controller
         $this->middleware('can:admin')->except('store');
     }
 
-
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +24,9 @@ class ItemController extends Controller
     public function index()
     {
         $items = Item::all();
-        return view('items.index', compact('items'));
+        $cat_ar = Item::select('cat_ar')->distinct()->get();
+        $cat_en = Item::select('cat_en')->distinct()->get();
+        return view('items.index', compact('items', 'cat_ar'));
     }
 
     /**
@@ -36,7 +37,7 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        $data= array_merge($request->all(),['created_by'=>Auth::user()->id]);
+        $data = array_merge($request->all(), ['created_by' => Auth::user()->id]);
         $item = Item::create($data);
         return back();
     }

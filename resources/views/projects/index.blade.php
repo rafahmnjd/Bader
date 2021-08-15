@@ -5,8 +5,7 @@
         <div class="card">
             <div class="card-header">
                 <h5 class="card-title">{{__('Manage Projects')}}
-                    <a id="top-plus" href="{{route('projects.create')}}"
-                        class="btn btn-outline-success  float-left">
+                    <a id="top-plus" href="{{route('projects.create')}}" class="btn btn-outline-success  float-left">
                         <i class="zmdi zmdi-plus"></i>
                     </a>
                 </h5>
@@ -19,8 +18,6 @@
                                 <th scope="col">{{ __('id') }}</th>
                                 <th scope="col">{{ __('Title AR') }}</th>
                                 <th scope="col">{{ __('Title EN') }}</th>
-                                <th scope="col">{{ __('Text AR') }}</th>
-                                <th scope="col">{{ __('Text EN') }}</th>
                                 <th scope="col">{{ __('Created at') }}</th>
                                 <th scope="col">{{ __('Image') }}</th>
                                 <th scope="col">{{ __('State') }}</th>
@@ -33,18 +30,30 @@
                                 <th scope="row">{{ $project->id }}</th>
                                 <td>{{ $project->title_ar }}</td>
                                 <td>{{ $project->title_en }}</td>
-                                <td>{{ $project->text_ar}}</td>
-                                <td>{{ $project->text_en}}</td>
                                 <td>{{ $project->created_at }}</td>
                                 <td style="width:10% ; max-width:15%;"><img
                                         src="{{ asset(config('path.pro_img').$project->image) }}"
                                         class=" img-fluid img-thumbnail">
                                 </td>
-                                <td>{{ $project->state }}</td>
+                                <td>{{ $project->state }}
+                                    <br>
+                                    {{round($project->completePercent())}}%
+                                    @if($project->state != "closed")
+
+                                    <form action="{{ route('projects.close', $project->id) }}" method="POST">
+                                        @csrf
+                                        @method('put')
+
+                                        <button Type="submit" class="btn btn-outline-danger">
+                                            {{__('completed')}}
+                                        </button>
+                                    </form>
+                                    @endif
+                                </td>
                                 <td>
                                     <div class="btn-group-justified">
                                         <div class="btn-group">
-                                            <a class="btn btn-outline-primary"
+                                            <a class="btn btn-outline-primary my-1"
                                                 href="{{ route('projReqs.index', $project) }}">
                                                 {{__('manage Requirments')}}
                                             </a>
@@ -53,6 +62,12 @@
                                             <a class="btn btn-outline-warning rounded-circle"
                                                 href="{{ route('projects.edit', $project->id) }}">
                                                 <i class="zmdi zmdi-edit"></i>
+                                            </a>
+                                        </div>
+                                        <div class="btn-group">
+                                            <a class="btn btn-outline-primary rounded-circle"
+                                                href="{{ route('projects.show', $project) }}">
+                                                <i class="zmdi zmdi-eye"></i>
                                             </a>
                                         </div>
                                         <div class="btn-group">

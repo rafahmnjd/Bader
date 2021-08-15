@@ -103,4 +103,12 @@ class ShortageController extends Controller
         return back();
 
     }
+
+    public function close(Shortage $shortage)
+    {
+        # code...
+        $shortage->state='closed';
+        $shortage->save();
+        return redirect(route('shortages.index'));
+    }
 }

@@ -40,10 +40,20 @@
                                 <td>{{ $job->location_ar }}</td>
                                 <td>{{ $job->location_en }}</td>
                                 <td>{{ $job->tag }}</td>
-                                <td>{{ $job->state }}</td>
+                                <td>{{ $job->state }}
+                                @if($job->state != "closed")
+                                    <form action="{{ route('jobs.close', $job->id) }}" method="POST">
+                                        @csrf
+                                        @method('put')
+                                        <button Type="submit" class="btn btn-outline-danger">
+                                            close
+                                        </button>
+                                    </form>
+                                    @endif
+                                </td>
                                 <td>
                                     <div class="btn-group-justified">
-                                       {{-- <div class="btn-group">
+                                        {{-- <div class="btn-group">
                                             <a class="btn btn-outline-primary rounded-circle"
                                                 href="{{ route('jobs.show', $job->id) }}">
                                         <i class="zmdi zmdi-eye"></i>
@@ -59,7 +69,7 @@
                                         <form action="{{ route('jobs.destroy', $job->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                             <button Type="submit" class="btn rounded-circle btn-outline-danger">
+                                            <button Type="submit" class="btn rounded-circle btn-outline-danger">
                                                 <i class="zmdi zmdi-delete"></i>
                                             </button>
                                         </form>

@@ -67,11 +67,8 @@ class VolunteerController extends Controller
 
         $input = array_merge($input, ["user_id" => Auth::user()->id]);
         $volunteer = Volunteer::create($input);
-        if ($volunteer->user_id == Auth::user()->id) {
             return redirect(route('volunteers.show', $volunteer));
-        } else {
-            return redirect(route('volunteers.index'));
-        }
+
     }
 
     /**
@@ -126,6 +123,7 @@ class VolunteerController extends Controller
 
         $volunteer->update($input);
         if ($volunteer->user_id == Auth::user()->id) {
+
             return redirect(route('volunteers.show', $volunteer));
         } else {
             return redirect(route('volunteers.index'));
@@ -144,4 +142,6 @@ class VolunteerController extends Controller
         $volunteer->delete();
         return redirect(route('volunteers.index'));
     }
+
+
 }

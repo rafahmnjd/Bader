@@ -40,7 +40,7 @@
                                 @endif
                             </p>
                             <p class="text-muted text-center">
-                                {{ $volunteer->email }} | {{ $volunteer->birth_date }}
+                                {{ $volunteer->user->email }} | {{ $volunteer->birth_date }}
                             </p>
                             <hr>
                             @if (config('app.locale') == 'ar')

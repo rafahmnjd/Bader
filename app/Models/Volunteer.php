@@ -8,6 +8,8 @@ class Volunteer extends Model
 {
     //
      protected $guarded = [];
+        public $incrementing = false;
+        protected $primaryKey = 'user_id';
      /**
       * Get the user that owns the Volunteer
       *

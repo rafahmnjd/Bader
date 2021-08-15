@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="col-8">
                                     <textarea class="form-control my-1" type="text" required
-                                        name="text_ar">@if(!empty($project)){{ $project->details_ar }} @else{{ old('text_ar') }} @endif</textarea>
+                                        name="text_ar">@if(!empty($project)){{ $project->text_ar }} @else{{ old('text_ar') }} @endif</textarea>
                                 </div>
                             </div>
                         </div>
@@ -39,7 +39,7 @@
                                 <div class="col-md-4 col-form-label">
                                     <label for="title_en">{{ __('Title EN') }}:</label>
                                 </div>
-                                <div class="col-8"><input class="form-control" type="text" name="title_en"
+                                <div class="col-8"><input class="form-control" type="text" name="title_en" dir="ltr"
                                         @if(!empty($project)) value="{{ $project->title_en }}" @else
                                         value="{{ old('title_en') }}" @endif required>
                                 </div>
@@ -48,7 +48,7 @@
                                     <label for="text_en">{{ __('Text EN') }}:</label>
                                 </div>
                                 <div class="col-8">
-                                    <textarea class="form-control my-1" type="text" required
+                                    <textarea class="form-control my-1" type="text" required dir="ltr"
                                         name="text_en">@if(!empty($project)){{ $project->text_en }} @else{{ old('text_en') }} @endif</textarea>
                                 </div>
                             </div>

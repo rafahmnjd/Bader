@@ -82,7 +82,7 @@ class SearchController extends Controller
     {
 
         $data = $request->data;
-// dd($data);
+
 
         # code...
         $charities = Charity::where('name_en', 'like', '%' . $data . '%')

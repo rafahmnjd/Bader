@@ -30,7 +30,18 @@
                                 <td>{{ $fill->shortage->item->name_ar}}</td>
                                 <td>{{ $fill->shortage->type}}</td>
                                 <td>{{ $fill->quantity }}</td>
-                                <td>{{ $fill->state }}</td>
+                                <td>{{ $fill->state }}
+                                    @if($fill->state != "completed")
+                                    <form action="{{ route('fills.close', $fill->id) }}" method="POST">
+                                        @csrf
+                                        @method('put')
+
+                                        <button Type="submit" class="btn btn-outline-danger">
+                                            {{__('completed')}}
+                                        </button>
+                                    </form>
+                                    @endif
+                                </td>
                                 <td>
                                     <div class="btn-group-justified">
 
@@ -50,8 +61,9 @@
                                             </form>
                                         </div>
                                         <div class="btn-group">
-                                            <a class="btn btn-outline-primary" href="{{ route('messages.index', $fill->id) }}">
-
+                                            <a class="btn btn-outline-primary"
+                                                href="{{ route('messages.index', $fill->id) }}">
+                                                {{__('messages')}}
                                             </a>
                                         </div>
                                     </div>

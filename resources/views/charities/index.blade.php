@@ -28,9 +28,9 @@
                         <tbody>
                             @foreach ($charities as $charity)
                             <tr>
-                                <th scope="row">{{ $charity->user_id}}</th>
-                                <td>{{ $charity->name_ar }}</td>
-                                <td>{{ $charity->name_en }}</td>
+                                <th scope="row">{{  $charity->user_id}}</th>
+                                <td>{{  $charity->name_ar }}</td>
+                                <td>{{  $charity->name_en }}</td>
                                 <td style="width:10% ; max-width:15%;"><img
                                         src="{{ asset(config('path.ch_logo').$charity->logo) }}"
                                         class=" img-fluid img-thumbnail">
@@ -40,27 +40,27 @@
                                         class=" img-fluid img-thumbnail">
                                 </td>
 
-                                <td>{{ $charity->license }}</td>
-                                <td>{{ $charity->email }}</td>
-                                <td>{{ $charity->city }}</td>
+                                <td>{{  $charity->license }}</td>
+                                <td>{{  $charity->email }}</td>
+                                <td>{{  $charity->city }}</td>
 
 
                                 <td>
                                     <div class="btn-group-justified">
                                         <div class="btn-group">
-                                            <a class="btn btn-outline-primary rounded-circle" href="{{ route('charities.show', $charity->user_id
+                                            <a class="btn btn-outline-primary rounded-circle" href="{{ route('charities.show',  $charity->user_id
 ) }}">
                                                 <i class="zmdi zmdi-eye"></i>
                                             </a>
                                         </div>
                                         <div class="btn-group">
-                                            <a class="btn btn-outline-warning rounded-circle" href="{{ route('charities.edit', $charity->user_id
+                                            <a class="btn btn-outline-warning rounded-circle" href="{{ route('charities.edit',  $charity->user_id
 ) }}">
                                                 <i class="zmdi zmdi-edit"></i>
                                             </a>
                                         </div>
                                         <div class="btn-group">
-                                            <form action="{{ route('charities.destroy', $charity->user_id
+                                            <form action="{{ route('charities.destroy',  $charity->user_id
 ) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')

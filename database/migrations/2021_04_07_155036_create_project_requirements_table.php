@@ -21,6 +21,8 @@ class CreateProjectRequirementsTable extends Migration
             $table->text('details_ar');
             $table->text('details_en');
             $table->unsignedInteger("quantity");
+            $table->double("cost")->default(0);
+
             $table->set('state', ['waiting', 'closed']);
             $table->timestamps();
         });

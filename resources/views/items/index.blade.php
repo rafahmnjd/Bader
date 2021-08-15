@@ -6,16 +6,18 @@
         <div class="card">
             <div class="card-header">
                 <h5 class="card-title">
-                {{__('Manage Items')}}</h5>
+                    {{__('Manage Items')}}</h5>
             </div>
             <div class="card-body text-nowrap overflow-auto font-weight-bolder">
                 <div class="row mx-1 py-2 border-bottom border-top">
                     <div class="col-1 p-1 ">{{__("id")}}</div>
-                    <div class="col   p-1 ">{{__("Name in Arabic")}}  </div>
+                    <div class="col   p-1 ">{{__("Category_ar")}}</div>
+                    <div class="col   p-1 ">{{__("Name in Arabic")}} </div>
                     <div class="col   p-1 ">{{__("Unite in Arabic")}} </div>
+                    <div class="col   p-1 ">{{__("Category_en")}}</div>
                     <div class="col   p-1 ">{{__("Name in English")}} </div>
                     <div class="col   p-1 ">{{__("Unite in English")}}</div>
-                    <div class="col-2 p-1 ">{{ __('Control') }}       </div>
+                    <div class="col-2 p-1 ">{{ __('Control') }} </div>
                 </div>
                 <hr class="m-0 p-0 ">
                 @foreach ($items as $item)
@@ -26,16 +28,28 @@
                         <div class="row mx-2 py-2  border-top">
                             <div class="col-1 p-1">{{$item->id}}</div>
                             <div class="col p-1">
-                                <input class=" form-control" type="text" name='name_ar' value="{{$item->name_ar}}" required>
+                                <select class=" form-control" type="text" name='cat_ar' value="{{$item->caat_ar}}"
+                                    required>
+                                    @foreach ($cat_ar as $catr)
+                                        <option @if($catr->cat_ar ==$item->cat_ar) selected @endif>{{$catr->cat_ar}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="col p-1">
-                                <input class=" form-control" type="text" name='unite_ar' value="{{$item->unite_ar}}" required>
+                                <input class=" form-control" type="text" name='name_ar' value="{{$item->name_ar}}"
+                                    required>
                             </div>
                             <div class="col p-1">
-                                <input class=" form-control" type="text" name='name_en' value="{{$item->name_en}}" required>
+                                <input class=" form-control" type="text" name='unite_ar' value="{{$item->unite_ar}}"
+                                    required>
                             </div>
                             <div class="col p-1">
-                                <input class="form-control" type="text" name='unite_en' value="{{$item->unite_en}}" required>
+                                <input class=" form-control" type="text" name='name_en' value="{{$item->name_en}}"
+                                    required>
+                            </div>
+                            <div class="col p-1">
+                                <input class="form-control" type="text" name='unite_en' value="{{$item->unite_en}}"
+                                    required>
                             </div>
                             <div class="col-2 p-1">
                                 <button type="submit" class="btn btn-outline-warning">
@@ -83,6 +97,7 @@
 
 @endsection
 @section('script')
+<script src="{{ asset('js/jquery.min.js') }}"></script>
 <script>
     $(document).ready(function () {
         $(".delete").click(function(){

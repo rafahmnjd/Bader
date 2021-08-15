@@ -17,7 +17,7 @@ class FillController extends Controller
     public function index(Shortage $shortage)
     {
         $fills = $shortage->fills()->latest()->paginate(5);
-        return view('fills.index', compact('fills','shortage'));
+        return view('fills.index', compact('fills', 'shortage'));
     }
 
     /**
@@ -28,7 +28,7 @@ class FillController extends Controller
     public function create(int $shortage)
     {
         //
-        return view('fills.crup',compact('shortage'));
+        return view('fills.crup', compact('shortage'));
 
     }
 
@@ -38,9 +38,9 @@ class FillController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request ,int $shortage)
+    public function store(Request $request, int $shortage)
     {
-        $data =['user_id'=>Auth::user()->id,'shortage_id'=>$shortage,'type'=>"shortage",'state'=>"waiting",'quantity'=>$request->quantity];
+        $data = ['user_id' => Auth::user()->id, 'shortage_id' => $shortage, 'type' => "shortage", 'state' => "waiting", 'quantity' => $request->quantity];
         $fill = Fill::create($data);
         return redirect(route('fills.index', $shortage));
 
@@ -55,8 +55,8 @@ class FillController extends Controller
     public function show(Fill $fill)
     {
         //
-        $maessages=$fill->messages()->latest()->paginate(30);
-        return view('fills.show', compact('fill','messages'));
+        $maessages = $fill->messages()->latest()->paginate(30);
+        return view('fills.show', compact('fill', 'messages'));
 
     }
 
@@ -69,6 +69,10 @@ class FillController extends Controller
     public function edit(Fill $fill)
     {
         //
+        if ($fill->state == 'completed') {
+            return back()->with(['msg' => __('not avilable')]);
+        }
+
         return view('fills.crup', compact('fill'));
     }
 
@@ -82,9 +86,12 @@ class FillController extends Controller
     public function update(Request $request, Fill $fill)
     {
         //
+        if ($fill->state == 'completed') {
+            return back()->with(['msg' => __('not avilable')]);
+        }
+
         $fill->update($request->all());
         return redirect(route('fills.index', $fill->shortage_id));
-
 
     }
 
@@ -97,8 +104,19 @@ class FillController extends Controller
     public function destroy(Fill $fill)
     {
         //
+        if ($fill->state == 'completed') {
+            return back()->with(['msg' => __('not avilable')]);
+        }
+
         $fill->delete();
         return back();
 
+    }
+    public function close(Fill $fill)
+    {
+        # code...
+        $fill->state = "completed";
+        $fill->save();
+        return redirect(route('fills.index', $fill->shortage_id));
     }
 }

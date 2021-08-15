@@ -25,13 +25,13 @@ class Charity extends Model
         return $this->belongsTo('App\Models\User', 'user_id', 'user_id');
     }
     /**
-     * Get all of the articles for the Charity
+     * Get all of the activities for the Charity
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function articles()
+    public function activities()
     {
-        return $this->hasMany('App\Models\Article', 'charity_id', 'user_id');
+        return $this->hasMany('App\Models\Activity', 'charity_id', 'user_id');
     }
 
     /**
@@ -54,7 +54,7 @@ class Charity extends Model
         return $this->hasMany(Project::class, 'charity_id', 'user_id');
     }
     /**
-     * Get all of the articles for the Charity
+     * Get all of the activities for the Charity
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -86,4 +86,12 @@ class Charity extends Model
     {
         return $this->hasMany('App\Models\Shortage', 'charity_id', 'user_id')->where('type', 'plus');
     }
+         /**
+      * Get the city that owns the CharityJob
+      *
+      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+      */
+     public function city(){
+         return $this->belongsTo(City::class, 'city_id');
+     }
 }

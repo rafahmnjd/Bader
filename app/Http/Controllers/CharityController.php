@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Charity;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Governorate;
+use App\Models\City;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
 class CharityController extends Controller
@@ -15,10 +17,11 @@ class CharityController extends Controller
      * @return void
      */
     public function __construct() //صلاحيات
+
     {
-        $this->middleware('can:admin')->only('destroy','index');
-        $this->middleware('can:ch_access,charity')->only(['edit','update']);
-        $this->middleware('can:charity')->only(['create','store']);
+        $this->middleware('can:admin')->only('destroy', 'index');
+        $this->middleware('can:ch_access,charity')->only(['edit', 'update']);
+        $this->middleware('can:charity')->only(['create', 'store']);
     }
 
     /**
@@ -27,9 +30,11 @@ class CharityController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() //للادمن فقط
+
     {
         //
-        $charities = Charity::all();
+        // $charities = User::where('role','charity')->get();
+        $charities =Charity::all();
         return view('charities.index', ['charities' => $charities]);
     }
 
@@ -40,10 +45,11 @@ class CharityController extends Controller
      */
     public function create()
     {
+        $govs=Governorate::all();
         if (Auth::user()->charity != null) {
             return redirect(route('charities.edit', Auth::user()->charity));
         }
-        return view('charities.crup');
+        return view('charities.crup',compact('govs'));
 
     }
 
@@ -53,13 +59,14 @@ class CharityController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)// حفظ من الكرييت
+    public function store(Request $request) // حفظ من الكرييت
+
     {
         //
-        $input = $request->except(['logo','cover']); // ما بخزن الصور متل ما هنن
+        $input = $request->except(['logo', 'cover']); // ما بخزن الصور متل ما هنن
         if (request()->hasfile('logo')) {
             $logofilepath = public_path(config('path.ch_logo'));
-            $logofile = request()->file('logo');//بتعطي الصورة كفايل
+            $logofile = request()->file('logo'); //بتعطي الصورة كفايل
             $logoname = time() . "_logo." . $request->logo->extension();
             $logofile->move($logofilepath, $logoname);
             $input = array_merge($input, ["logo" => $logoname]);
@@ -77,7 +84,7 @@ class CharityController extends Controller
         $charity = Charity::create($input);
         if ($charity->user_id == Auth::user()->id) {
             return redirect(route('charities.show', $charity));
-        } else if(Auth::user()->role=="admin") {
+        } else if (Auth::user()->role == "admin") {
             return redirect(route('charities.index'));
         }
 
@@ -104,7 +111,8 @@ class CharityController extends Controller
     public function edit(Charity $charity)
     {
         //
-        return view('charities.crup', compact('charity'));
+        $govs = Governorate::all();
+        return view('charities.crup', compact('charity','govs'));
     }
 
     /**
@@ -132,8 +140,6 @@ class CharityController extends Controller
             $logofile->move($logofilepath, $logoname);
             $input = array_merge($input, ["logo" => $logoname]);
         }
-
-
 
         if (request()->hasfile('cover')) {
             $coverfilepath = public_path(config('path.covers'));
@@ -184,15 +190,14 @@ class CharityController extends Controller
 
     public function projects(Charity $charity)
     {
-        $projects=$charity->projects;
-        return view('charities.projects.project_sh',compact('projects','charity'));
+        $projects = $charity->projects;
+        return view('charities.projects.project_sh', compact('projects', 'charity'));
     }
 
     public function shortages(Charity $charity)
     {
         $shortages = $charity->shortages;
-        // dd($shortages);
-        return view('charities.shortages', compact('shortages','charity'));
+        return view('charities.shortages', compact('shortages', 'charity'));
     }
 
     public function surpluses(Charity $charity)

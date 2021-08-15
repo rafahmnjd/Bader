@@ -4,8 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class State extends Model
+class Home extends Model
 {
     //
+     public $table="home_view";
      protected $guarded = [];
+
 }

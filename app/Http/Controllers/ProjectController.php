@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class ProjectController extends Controller
 {
@@ -132,4 +133,13 @@ class ProjectController extends Controller
         return redirect(route('projects.index'));
     }
 
+    public function close(Project $project)
+    {
+        //
+        // $project=$projReq->project;
+        $project->state = "closed";
+        $project->save();
+        return back();
+
+    }
 }

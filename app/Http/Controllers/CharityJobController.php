@@ -6,7 +6,6 @@ namespace App\Http\Controllers;
 use App\Models\CharityJob;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-;
 
 class CharityJobController extends Controller
 {
@@ -16,6 +15,7 @@ class CharityJobController extends Controller
      * @return void
      */
     public function __construct() //صلاحيات
+
     {
         // $this->middleware('can:ch_access,charity');
         $this->middleware('can:charity');
@@ -23,7 +23,6 @@ class CharityJobController extends Controller
         // $this->middleware('can:ch_access,charity')->only(['edit','update']);
         // $this->middleware('can:charity')->only(['index','create','store']);
     }
-
 
     /**
      * Display a listing of the resource.
@@ -33,13 +32,16 @@ class CharityJobController extends Controller
     public function index()
     {
         //
-        $user =Auth::user();
-        if( $user->can('charity'))
+        $user = Auth::user();
+        if ($user->can('charity')) {
             $jobs = $user->Charity->jobs;
-        elseif($user->can('admin'))
-            $jobs=CharityJob::all();
-        else return back();
-        return view('jobs.index',compact('jobs'));
+        } elseif ($user->can('admin')) {
+            $jobs = CharityJob::all();
+        } else {
+            return back();
+        }
+
+        return view('jobs.index', compact('jobs'));
     }
 
     /**
@@ -62,8 +64,8 @@ class CharityJobController extends Controller
     public function store(Request $request)
     {
         //
-        $data=$request->all();
-        $data=array_merge(['charity_id'=>Auth::user()->charity->user_id],$data);
+        $data = $request->all();
+        $data = array_merge(['charity_id' => Auth::user()->charity->user_id], $data);
         CharityJob::create($data);
         // Auth::user()->charity->jobs()->create($request->all());
         return redirect(route('jobs.index'));
@@ -78,7 +80,7 @@ class CharityJobController extends Controller
     public function show(CharityJob $job)
     {
         //
-        return view('jobs.show',compact('job'));
+        return view('jobs.show', compact('job'));
     }
 
     /**
@@ -89,7 +91,7 @@ class CharityJobController extends Controller
      */
     public function edit(CharityJob $job)
     {
-        return view('jobs.crup',compact('job'));
+        return view('jobs.crup', compact('job'));
     }
 
     /**
@@ -115,6 +117,14 @@ class CharityJobController extends Controller
     {
         //
         $job->delete();
+        return redirect(route('jobs.index'));
+    }
+
+    public function close(CharityJob $job)
+    {
+        //
+        $job->state = 'closed';
+        $job->save();
         return redirect(route('jobs.index'));
     }
 }

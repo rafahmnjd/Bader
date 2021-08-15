@@ -33,7 +33,6 @@ class MessageController extends Controller
     {
         //
         $data = $request->all();
-        // dd($data);
         $data = array_merge($data, ['fill_id' => $fill, 'user_id' => Auth::user()->id]);
         Message::create($data);
         return redirect(route('messages.index',$fill));

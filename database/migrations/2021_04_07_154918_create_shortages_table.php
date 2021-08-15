@@ -20,6 +20,7 @@ class CreateShortagesTable extends Migration
             $table->set('type', ['min', 'plus'])->default('min');
             $table->unsignedBigInteger('item_id');
             $table->set('state',['waiting','closed']);
+            $table->double('unite_cost')->default(0.0);
             $table->timestamps();
         });
     }

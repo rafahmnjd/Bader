@@ -27,4 +27,5 @@ class CharityJob extends Model
      {
          return $this->hasMany('App\Models\VolunteerRequest', 'charity_job_id');
      }
+
 }

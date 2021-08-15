@@ -28,6 +28,10 @@ class Fill extends Model
          return $this->belongsTo('App\Models\Shortage', 'shortage_id');
      }
 
+    public function projReq()
+     {
+         return $this->belongsTo('App\Models\ProjectRequirement', 'shortage_id');
+     }
      /**
       * Get all of the messages for the Fill
       *

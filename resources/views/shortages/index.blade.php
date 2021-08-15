@@ -33,7 +33,15 @@
                             <td>{{ $sur->type}}</td>
                             <td>{{ $sur->item->name_ar}} , {{ $sur->item->name_en}}</td>
                             <td>{{ $sur->created_at }}</td>
-                            <td>{{ $sur->state }}</td>
+                            <td>{{ $sur->state }}
+                                <form action="{{ route('shortages.close', $sur->id) }}" method="POST">
+                                    @csrf
+                                    @method('put')
+                                    <button Type="submit" class="btn btn-outline-danger">
+                                        close
+                                    </button>
+                                </form>
+                            </td>
                             <td>
 
                                 <div class="btn-group-justified">
@@ -53,7 +61,7 @@
                                             </button>
                                         </form>
                                     </div>
-                                    </div>
+                                </div>
                                 <div class="btn-group-justified py-1">
                                     <div class="btn-group">
                                         <a class="btn btn-outline-primary" href="{{ route('fills.index', $sur->id) }}">
@@ -93,7 +101,17 @@
                             <td>{{ $shortage->type}}</td>
                             <td>{{ $shortage->item->name_ar}} , {{ $shortage->item->name_en}}</td>
                             <td>{{ $shortage->created_at }}</td>
-                            <td>{{ $shortage->state }}</td>
+                            <td>{{ $shortage->state }}
+                                @if($shortage->state != "closed")
+                            <form action="{{ route('shortages.close', $shortage->id) }}" method="POST">
+                                @csrf
+                                @method('put')
+                                <button Type="submit" class="btn btn-outline-danger">
+                                    close
+                                </button>
+                            </form>
+                            @endif
+                            </td>
                             <td>
                                 <div class="btn-group-justified">
                                     <div class="btn-group">

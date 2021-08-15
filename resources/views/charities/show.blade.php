@@ -1,6 +1,6 @@
 @extends('charities.layout')
 @section('create_href',"#")
-@section('create_word',__('Add a new article'))
+@section('create_word',__('Add a new activity'))
 @section('middile')
     <div class="row">
         <div class="col-md-12 grid-margin">
