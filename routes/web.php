@@ -29,7 +29,7 @@ Route::get('locale/{locale}', function ($locale) {
 //Register & Login & Logout
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@base')->name('home');
 
 // public routes
 //Primary Page
