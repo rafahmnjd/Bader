@@ -22,7 +22,7 @@ onload="resetSelection()"
                     <div class="card-body ">
                         <h5 class="card-title">{{ __('Newest Projects') }} <small
                                 class="@if (app()->getLocale() == 'ar')float-left @else float-right @endif">
-                                <span>{{$projCount}}</span> <small>{{__('of projects')}}</small>
+                                <span>{{$counts["proj"]}}</span> <small>{{__('of projects')}}</small>
                             </small></h5>
                         <hr class="mb-0">
 
@@ -59,7 +59,7 @@ onload="resetSelection()"
                     <div class="card-body ">
                         <h5 class="card-title">{{ __('Newest Jobs') }}<small
                                 class="@if (app()->getLocale() == 'ar')float-left @else float-right @endif">
-                                <span>{{$jobCount}}</span><small> {{__('of jobs')}}</small></small>
+                                <span>{{$counts["job"]}}</span><small> {{__('of jobs')}}</small></small>
                         </h5>
                         <hr class="mb-0">
                         <div class="list-group list-group-flush">
@@ -97,7 +97,7 @@ onload="resetSelection()"
             <div class="col-md-4 mb-1 px-2">
                 <div class="card-box bg-primary shadow">
                     <div class="inner">
-                        <h3>{{$volunCount}}</h3>
+                        <h3>{{$counts["volun"]}}</h3>
                         <p class="text-left"> {{ __('of Volunteers') }} </p>
                     </div>
                     <div class="icon">
@@ -108,7 +108,7 @@ onload="resetSelection()"
             <div class="col-md-4 mb-1 px-2">
                 <div class="card-box bg-red shadow">
                     <div class="inner">
-                        <h3> {{$benefCount}} </h3>
+                        <h3> {{$counts["benef"]}} </h3>
                         <p class="text-left"> {{ __('of Benefactores') }} </p>
                     </div>
                     <div class="icon">
@@ -119,7 +119,7 @@ onload="resetSelection()"
             <div class="col-md-4 mb-1 px-2">
                 <div class="card-box bg-green">
                     <div class="inner">
-                        <h3> {{$chCount}} </h3>
+                        <h3> {{$counts["ch"]}} </h3>
                         <p class="text-left"> {{ __('of Charities') }} </p>
                     </div>
                     <div class="icon">
@@ -137,14 +137,14 @@ onload="resetSelection()"
                         <p class="card-text text-gray m-0">
                             <span class="px-1 @if(app()->getLocale() == 'ar') float-left @else float-right @endif"
                                 dir="ltr">
-                                {{$compShort2}} /{{$compShort}}
+                                {{$completed["short"]}} /{{$counts["short"]}}
                             </span>
                         </p>
                         <br>
                         <div class="progress" style="height: 5px;">
                             <div class="progress-bar bg-success" role="progressbar"
-                                style="width:{{round($compShort2 *100/$compShort)}}%"
-                                aria-valuenow="{{round($compShort2 *100/$compShort)}}" aria-valuemin="0"
+                                style="width:{{$percents["short"]}}%"
+                                aria-valuenow="{{$percents["short"]}}" aria-valuemin="0"
                                 aria-valuemax="100">
                             </div>
                         </div>
@@ -157,13 +157,13 @@ onload="resetSelection()"
                         <h6 class="card-title">{{__('Complited Projects')}}</h6>
                         <p
                             class="card-text @if(app()->getLocale() == 'ar') float-left @else float-right @endif text-gray m-0">
-                            <span class="px-1" dir="ltr">{{$compProjCount}} / {{$projCount}}</span>
+                            <span class="px-1" dir="ltr">{{$completed["proj"]}} / {{$counts["proj"]}}</span>
                         </p>
                         <br>
                         <div class="progress" style="height: 5px;">
                             <div class="progress-bar bg-info" role="progressbar"
-                                style="width:{{round($compProjCount *100/$projCount)}}%"
-                                aria-valuenow="{{round($compProjCount*100/$projCount)}}" aria-valuemin="0"
+                                style="width:{{$percents["proj"]}}%"
+                                aria-valuenow="{{$percents["proj"]}}" aria-valuemin="0"
                                 aria-valuemax="100">
                             </div>
                         </div>

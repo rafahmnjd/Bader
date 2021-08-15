@@ -6,9 +6,8 @@ use App\Models\Charity;
 use App\Models\CharityJob;
 use App\Models\Project;
 use App\Models\Shortage;
-use App\Models\View;
 use App\Models\User;
-use DB;
+use App\Models\View;
 
 class HomeController extends Controller
 {
@@ -39,21 +38,36 @@ class HomeController extends Controller
         $projects = Project::latest()->take(3)->get();
         $jobs = CharityJob::latest()->take(3)->get();
 
+        $counts = [
+            "ch" => Charity::count(),
+            "proj" => Project::count(),
+            "job" => CharityJob::count(),
+            "benef" => User::where('role', 'benef')->count(),
+            "volun" => User::where('role', 'volunteer')->count(),
+            "short" => Shortage::where('type', 'min')->count(),
+            "surp" => Shortage::where('type', 'plus')->count(),
+        ];
 
-        $chCount = Charity::count();
-        $projCount = Project::count();
-        $jobCount = CharityJob::count();
+        $completed = [
+            "proj" => Project::where('state', 'closed')->count(),
+            "short" => Shortage::where('type', 'min')->where('state', 'closed')->count(),
+            "surp" => Shortage::where('type', 'plus')->where('state', 'closed')->count(),
+        ];
+
+        if ($counts["proj"] == 0) {$projsPercent = 0;}
+        else{$projsPercent = round($completed["proj"] / $counts["proj"]);}
+        if ($counts["short"] == 0) { $shortPercent = 0;} 
+        else { $shortPercent = round($completed["short"] / $counts["short"]);}
+        if ($counts["surp"] == 0) { $surpPercent = 0;} 
+        else{$surpPercent =round($completed["surp"] / $counts["surp"]);}
 
 
-        $benefCount = User::where('role', 'benef')->count();
-        $volunCount = User::where('role', 'volunteer')->count();
+        $percents = [
+            "proj" => $projsPercent,
+            "short" => $shortPercent,
+            "surp" => $surpPercent,
+        ];
 
-        $compProjCount=Project::where('state','closed')->count();
-
-
-        $compShort = Shortage::where('type', 'min')->count();
-        $compShort2 = Shortage::where('type', 'min')->where('state', 'closed')->count();
-
-        return view('welcome', compact('charities', 'projects', 'jobs', 'chCount', 'projCount', 'jobCount', 'compShort', 'compShort2','benefCount','volunCount','compProjCount'));
+        return view('welcome', compact('charities', 'projects', 'jobs', 'counts', 'percents','completed'));
     }
 }
