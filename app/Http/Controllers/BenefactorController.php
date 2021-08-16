@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Auth;
 class BenefactorController extends Controller
 {
     /**
@@ -83,5 +83,12 @@ class BenefactorController extends Controller
     public function destroy(User $benefactor)
     {
         //
+    }
+
+    public function MyFills()
+    {
+        # code...
+        $fills= Auth::user()->fills;
+        return view('Benefactors.fills',compact('fills'));
     }
 }

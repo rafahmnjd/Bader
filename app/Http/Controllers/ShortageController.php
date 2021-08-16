@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Shortage;
 use App\Models\Item;
-
+use App\Models\Shortage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,12 +14,18 @@ class ShortageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(string $type = "proj")
     {
         //
-        $shortages = Auth::user()->charity->shortages;
-        $surpluses = Auth::user()->charity->surpluses;
-        return view('shortages.index', compact('shortages', 'surpluses'));
+        if ($type == "min") {
+            $shortages = Auth::user()->charity->shortages;
+            return view('shortages.index', compact('shortages'));
+
+        }
+        if ($type == "plus") {
+            $surpluses = Auth::user()->charity->surpluses;
+            return view('shortages.surpIndex', compact('surpluses'));
+        }
     }
 
     /**
@@ -31,8 +36,8 @@ class ShortageController extends Controller
     public function create()
     {
         //
-        $items=Item::all();
-        return view('shortages.crup',compact('items'));
+        $items = Item::all();
+        return view('shortages.crup', compact('items'));
     }
 
     /**
@@ -46,7 +51,7 @@ class ShortageController extends Controller
         //TODO accsess To Charity Only
         $data = array_merge($request->all(), ['charity_id' => Auth::user()->id]);
         $shortage = Shortage::create($data);
-        return redirect(route('shortages.index'));
+        return redirect(route('shortages.index', $shortage->type));
     }
 
     /**
@@ -72,7 +77,7 @@ class ShortageController extends Controller
     {
         //
         $items = Item::all();
-        return view('shortages.crup', compact('shortage','items'));
+        return view('shortages.crup', compact('shortage', 'items'));
 
     }
 
@@ -87,7 +92,9 @@ class ShortageController extends Controller
     {
         //
         $shortage->update($request->all());
-        return redirect(route('shortages.index'));
+        return redirect(route('shortages.index', $shortage->type));
+        // return back();
+
     }
 
     /**
@@ -107,8 +114,9 @@ class ShortageController extends Controller
     public function close(Shortage $shortage)
     {
         # code...
-        $shortage->state='closed';
+        $shortage->state = 'closed';
         $shortage->save();
-        return redirect(route('shortages.index'));
+        return back();
+
     }
 }

@@ -7,9 +7,9 @@
             <i class="zmdi zmdi-plus"></i>
         </a>
     </div>
-    <div class="card-body">
+    <div class="card-body ">
 
-        <h5 class="card-title">{{__('Manage Shortage')}}</h5>
+        <h5 class="card-title">{{__('Manage Surplus')}}</h5>
         <div class="table-responsive border">
             <table class="table">
                 <thead>
@@ -25,35 +25,35 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($shortages as $shortage)
+                    @foreach ($surpluses as $sur)
                     <tr>
-                        <th scope="row">{{ $shortage->id }}</th>
-                        <td>{{ $shortage->charity_id }}</td>
-                        <td>{{ $shortage->quantity }}</td>
-                        <td>{{ $shortage->type}}</td>
-                        <td>{{ $shortage->item->name_ar}} , {{ $shortage->item->name_en}}</td>
-                        <td>{{ $shortage->created_at }}</td>
-                        <td>{{ $shortage->state }}
-                            @if($shortage->state != "closed")
-                            <form action="{{ route('shortages.close', $shortage->id) }}" method="POST">
+                        <th scope="row">{{ $sur->id }}</th>
+                        <td>{{ $sur->charity_id }}</td>
+                        <td>{{ $sur->quantity }}</td>
+                        <td>{{ $sur->type}}</td>
+                        <td>{{ $sur->item->name_ar}} , {{ $sur->item->name_en}}</td>
+                        <td>{{ $sur->created_at }}</td>
+                        <td>{{ $sur->state }}
+                            <form action="{{ route('shortages.close', $sur->id) }}" method="POST">
                                 @csrf
                                 @method('put')
                                 <button Type="submit" class="btn btn-outline-danger">
                                     close
                                 </button>
                             </form>
-                            @endif
                         </td>
                         <td>
+
                             <div class="btn-group-justified">
+
                                 <div class="btn-group">
                                     <a class="btn btn-outline-warning rounded-circle"
-                                        href="{{ route('shortages.edit', $shortage->id) }}">
+                                        href="{{ route('shortages.edit', $sur->id) }}">
                                         <i class="zmdi zmdi-edit"></i>
                                     </a>
                                 </div>
                                 <div class="btn-group">
-                                    <form action="{{ route('shortages.destroy', $shortage->id) }}" method="POST">
+                                    <form action="{{ route('shortages.destroy', $sur->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button Type="submit" class="btn rounded-circle btn-outline-danger">
@@ -63,8 +63,8 @@
                                 </div>
                             </div>
                             <div class="btn-group-justified py-1">
-                                <div class="btn-group ">
-                                    <a class="btn btn-outline-primary" href="{{ route('fills.index', $shortage->id) }}">
+                                <div class="btn-group">
+                                    <a class="btn btn-outline-primary" href="{{ route('fills.index', $sur->id) }}">
                                         fills
                                     </a>
                                 </div>
@@ -75,6 +75,7 @@
                 </tbody>
             </table>
         </div>
+
 
     </div>
 </div>

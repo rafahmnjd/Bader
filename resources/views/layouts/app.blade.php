@@ -123,8 +123,11 @@
                                     <a class="dropdown-item" href="{{ route('projects.index') }}">
                                         {{ __('Manage Projects') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('shortages.index') }}">
-                                        {{ __('Manage Shortages') }}
+                                    <a class="dropdown-item" href="{{ route('shortages.index','min') }}">
+                                        {{ __('Manage Shortage') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('shortages.index','plus') }}">
+                                        {{ __('Manage Surplus') }}
                                     </a>
                                     @elsecan('volunteer')
                                     <a class="dropdown-item" href="{{ route('volunteers.create') }}">

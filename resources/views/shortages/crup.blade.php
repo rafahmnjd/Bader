@@ -15,7 +15,21 @@
                     @endif
                     <!--name-->
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="item_id">{{__("Item")}}</label>
+                                <select id="" class="form-control" name="item_id" required>
+                                    @if(!empty($shortage))
+                                    <option value="{{$shortage->item_id}}" selected>
+                                        {{$shortage->item->name_ar}}-{{$shortage->item->name_en}}</option>
+                                    @endif
+                                    @foreach ($items as $item)
+                                    <option value="{{$item->id}}">{{$item->name_ar}}-{{$item->name_en}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="quantity">{{__("Quantity")}}</label>
                                 <input class="form-control my-1" type="number" required name="quantity"
@@ -23,19 +37,7 @@
                                     value="{{old('quantity')}}" @endif>
                             </div>
                         </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label for="type">{{__("Type")}}</label>
-                                <select id="type" class="custom-select" name="type" required>
-                                    @if(!empty($shortage))
-                                    <option value="{{$shortage->type}}" selected>{{__($shortage->type)}}</option>
-                                    @endif
-                                    <option value="min">{{__("min")}}</option>
-                                    <option value="plus">{{__("plus")}}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-6">
+                        <div class="col-4">
                             <div class="form-group">
                                 <label for="state">{{__("State")}}</label>
                                 <select id="state" class="custom-select" name="state" required>
@@ -48,19 +50,22 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label for="item_id">{{__("Item")}}</label>
-                                <select id="" class="form-control" name="item_id" required>
-                                    @if(!empty($shortage))
-                                    <option value="{{$shortage->item_id}}" selected>{{$shortage->item->name_ar}}-{{$shortage->item->name_en}}</option>
-                                    @endif
-                                    @foreach ($items as $item)
-                                    <option value="{{$item->id}}">{{$item->name_ar}}-{{$item->name_en}}</option>
-                                    @endforeach
-                                </select>
+                                <label for="details_ar">{{ __('Ar Details') }}:</label>
+
+                                <textarea class="form-control my-1" type="text"
+                                    name="details_ar">@if(!empty($projReq)){{ $projReq->details_ar }} @else{{ old('details_ar') }} @endif</textarea>
                             </div>
                         </div>
+                        <div class="col-md-6 ">
+                            <div class="form-group">
+                                <label for="details_en">{{ __('EN Details') }}:</label>
+                                <textarea class="form-control my-1" type="text"
+                                    name="details_en">@if(!empty($projReq)){{ $projReq->details_en }} @else{{ old('details_en') }} @endif</textarea>
+                            </div>
+                        </div>
+
                         <div class="col d-flex align-items-end d-flex justify-content-end">
                             <button type="submit" class="btn btn-primary">{{__("Save")}}</button>
                         </div>
@@ -71,4 +76,3 @@
     </div>
 </div>
 @endsection
-

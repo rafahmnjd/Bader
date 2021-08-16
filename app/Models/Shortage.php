@@ -16,7 +16,7 @@ class Shortage extends Model
      */
     public function fills()
     {
-        return $this->hasMany('App\Models\Fill', 'shortage_id')->where('type', 'shortage');
+        return $this->hasMany('App\Models\Fill', 'shortage_id');
     }
 
     /**
@@ -70,5 +70,13 @@ class Shortage extends Model
         return 100 - $this->completePercent();
     }
 
-
+    /**
+     * Get the project that owns the Shortage
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function project()
+    {
+        return $this->belongsTo(Project::class, 'project_id');
+    }
 }

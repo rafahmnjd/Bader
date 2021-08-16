@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Fill;
-use App\Models\ProjectRequirement;
+use App\Models\Shortage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,7 +14,7 @@ class FillProjReqController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(ProjectRequirement $projReq)
+    public function index(Shortage $projReq)
     {
         $fills = $projReq->fills()->latest()->paginate(5);
         return view('projReqs.fills.index', compact('fills', 'projReq'));
@@ -25,7 +25,7 @@ class FillProjReqController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(ProjectRequirement $projReq)
+    public function create(Shortage $projReq)
     {
         //
         return view('projReqs.fills.crup', compact('projReq'));
@@ -38,7 +38,7 @@ class FillProjReqController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, ProjectRequirement $projReq)
+    public function store(Request $request, Shortage $projReq)
     {
         $data = ['user_id' => Auth::user()->id, 'shortage_id' => $projReq->id, 'type' => "projReq", 'state' => "waiting", 'quantity' => $request->quantity];
         $fill = Fill::create($data);

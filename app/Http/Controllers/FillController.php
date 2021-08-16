@@ -6,6 +6,7 @@ use App\Models\Fill;
 use App\Models\Shortage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class FillController extends Controller
 {
@@ -14,10 +15,18 @@ class FillController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Shortage $shortage)
+    public function index(Shortage $shortage = null)
     {
-        $fills = $shortage->fills()->latest()->paginate(5);
-        return view('fills.index', compact('fills', 'shortage'));
+        if ($shortage != null) {
+            $charity = $shortage->charity ?? $shortage->project->charity;
+            if (Gate::allows('ch_access', $charity)) {
+                $fills = $shortage->fills()->latest()->paginate(5);
+                return view('fills.index', compact('fills', 'shortage'));
+            }
+        }
+        $fills = Auth::user()->fills;
+        return view('Benefactors.fills', compact('fills'));
+
     }
 
     /**
@@ -40,8 +49,10 @@ class FillController extends Controller
      */
     public function store(Request $request, Shortage $shortage)
     {
+
         $data = ['user_id' => Auth::user()->id, 'shortage_id' => $shortage->id, 'type' => "shortage", 'state' => "waiting", 'quantity' => $request->quantity];
         $fill = Fill::create($data);
+
         return redirect(route('fills.index', $shortage));
 
     }
@@ -118,9 +129,11 @@ class FillController extends Controller
         # code...
         $fill->state = "completed";
         $fill->save();
-        if( $fill->quantity==$fill->shortage->rest())
-            $fill->shortage->state="closed";
-            $fill->shortage->save();
+        if ($fill->quantity == $fill->shortage->rest()) {
+            $fill->shortage->state = "closed";
+        }
+
+        $fill->shortage->save();
         return redirect(route('fills.index', $fill->shortage_id));
     }
 }

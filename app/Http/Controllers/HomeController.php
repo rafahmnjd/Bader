@@ -55,11 +55,11 @@ class HomeController extends Controller
         ];
 
         if ($counts["proj"] == 0) {$projsPercent = 0;}
-        else{$projsPercent = round($completed["proj"] / $counts["proj"]);}
+        else{$projsPercent = round($completed["proj"]*100 / $counts["proj"]);}
         if ($counts["short"] == 0) { $shortPercent = 0;} 
-        else { $shortPercent = round($completed["short"] / $counts["short"]);}
+        else { $shortPercent = round($completed["short"] *100 / $counts["short"]);}
         if ($counts["surp"] == 0) { $surpPercent = 0;} 
-        else{$surpPercent =round($completed["surp"] / $counts["surp"]);}
+        else{$surpPercent =round($completed["surp"] *100 / $counts["surp"]);}
 
 
         $percents = [
@@ -68,6 +68,7 @@ class HomeController extends Controller
             "surp" => $surpPercent,
         ];
 
+        // dd($percents ,$completed , $counts);
         return view('welcome', compact('charities', 'projects', 'jobs', 'counts', 'percents','completed'));
     }
 }

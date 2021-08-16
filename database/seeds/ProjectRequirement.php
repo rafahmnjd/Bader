@@ -8,6 +8,7 @@ class ProjectRequirement extends Model
 {
     //
      protected $guarded = [];
+     protected $table="shortages";
 
      /**
       * Get the project that owns the ProjectRequirement
@@ -38,7 +39,7 @@ class ProjectRequirement extends Model
     public function rest()
     {
         # code...
-        return $this->quantity -$this->completedQuantity();
+        return $this->quantity - $this->completedQuantity();
     }
      public function completePercent()
      { 

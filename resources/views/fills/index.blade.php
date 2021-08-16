@@ -31,12 +31,11 @@
                                 <td>{{ $fill->shortage->type}}</td>
                                 <td>{{ $fill->quantity }}</td>
                                 <td>{{ $fill->state }}
-                                    @can('ch_access',$fill->shortage->charity)
+                                    @can('ch_access',$fill->shortage->charity ?? $fill->shortage->project->charity)
                                     @if($fill->state != "completed")
                                     <form action="{{ route('fills.close', $fill->id) }}" method="POST">
                                         @csrf
                                         @method('put')
-
                                         <button Type="submit" class="btn btn-outline-danger">
                                             {{__('completed')}}
                                         </button>
@@ -47,7 +46,7 @@
                                 </td>
                                 <td>
                                     <div class="btn-group-justified">
-
+                                        @can('fill_access',$fill)
                                         <div class="btn-group">
                                             <a class="btn btn-outline-warning rounded-circle"
                                                 href="{{ route('fills.edit', $fill->id) }}">
@@ -63,6 +62,7 @@
                                                 </button>
                                             </form>
                                         </div>
+                                        @endcan
                                         <div class="btn-group">
                                             <a class="btn btn-outline-primary"
                                                 href="{{ route('messages.index', $fill->id) }}">

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
-use App\Models\ProjectRequirement;
+use App\Models\Shortage;
 use Illuminate\Http\Request;
 
 class ProjectRequirementController extends Controller
@@ -46,24 +46,24 @@ class ProjectRequirementController extends Controller
         return redirect(route('projReqs.index', $project));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\ProjectRequirement  $projReq
-     * @return \Illuminate\Http\Response
-     */
-    public function show(ProjectRequirement $projectR)
-    {
-        return view('projReqs.show', compact('project'));
-    }
+    // /**
+    //  * Display the specified resource.
+    //  *
+    //  * @param  \App\Models\Shortage  $projReq
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function show(Shortage $projectR)
+    // {
+    //     return view('projReqs.show', compact('project'));
+    // }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ProjectRequirement  $projReq
+     * @param  \App\Models\Shortage  $projReq
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProjectRequirement $projReq)
+    public function edit(Shortage $projReq)
     {
         //
         return view('projReqs.crup', ['project' => $projReq->project, 'projReq' => $projReq]);
@@ -73,10 +73,10 @@ class ProjectRequirementController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ProjectRequirement  $projReq
+     * @param  \App\Models\Shortage  $projReq
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProjectRequirement $projReq)
+    public function update(Request $request, Shortage $projReq)
     {
         //route('projReqs.index',$project)
         $projReq->update($request->all());
@@ -86,10 +86,10 @@ class ProjectRequirementController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ProjectRequirement  $projReq
+     * @param  \App\Models\Shortage  $projReq
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProjectRequirement $projReq)
+    public function destroy(Shortage $projReq)
     {
         //
         // $project=$projReq->project;
@@ -101,10 +101,10 @@ class ProjectRequirementController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ProjectRequirement  $projReq
+     * @param  \App\Models\Shortage  $projReq
      * @return \Illuminate\Http\Response
      */
-    public function close(ProjectRequirement $projReq)
+    public function close(Shortage $projReq)
     {
         //
         // $project=$projReq->project;

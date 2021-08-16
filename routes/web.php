@@ -72,23 +72,19 @@ Route::post('search/surpluses', 'SearchController@getSurpluses')->name('search.g
 
 //project show
 
-Route::get('projects/{project}/show','ProjectController@show')->name('projects.show');
+Route::get('projects/{project}/show', 'ProjectController@show')->name('projects.show');
 // Route::get('charities/{project}/requirments', 'ProjectRequirementController@show')->name('projReqs.show');
-
 
 // -------------------------------------------------------------------------------------------------------
 
 // Auth pages
 Route::middleware(['auth'])->group(function () {
 
-    
     //item resource
     Route::resource('items', 'ItemController')->except(['show', 'create', 'edit']);
 
-
     //charity resource
     Route::resource('charities', 'CharityController')->except(['show']);
-
 
     //project resource
     Route::resource('projects', 'ProjectController')->except(['show']);
@@ -103,23 +99,22 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('project/requirments/{projReq}', 'ProjectRequirementController@destroy')->name('projReqs.destroy');
     Route::match(['put', 'post'], 'projReq/{projReq}/close', 'ProjectRequirementController@close')->name('projReqs.close');
 
-    
-    //fill Project Requirment
-    Route::get('projReq/{projReq}/fills', 'FillProjReqController@index')->name('projReqs.fills.index');
-    Route::get('projReq/{projReq}/fills/create', 'FillProjReqController@create')->name('projReqs.fills.create');
-    Route::post('projReq/{projReq}/fills', 'FillProjReqController@store')->name('projReqs.fills.store');
-    Route::get('projReq/fills/{fill}/edit', 'FillProjReqController@edit')->name('projReqs.fills.edit');
-    Route::match(['put', 'post'], 'projReq/fill/fills/{fill}', 'FillProjReqController@update')->name('projReqs.fills.update');
-    Route::delete('projReq/fills/{fill}', 'FillProjReqController@destroy')->name('projReqs.fills.destroy');
-    Route::match(['put', 'post'], 'projReq/fills/{fill}/close', 'FillProjReqController@close')->name('projReqs.fills.close');
+    // //fill Project Requirment
+    // Route::get('projReq/{projReq}/fills', 'FillProjReqController@index')->name('projReqs.fills.index');
+    // Route::get('projReq/{projReq}/fills/create', 'FillProjReqController@create')->name('projReqs.fills.create');
+    // Route::post('projReq/{projReq}/fills', 'FillProjReqController@store')->name('projReqs.fills.store');
+    // Route::get('projReq/fills/{fill}/edit', 'FillProjReqController@edit')->name('projReqs.fills.edit');
+    // Route::match(['put', 'post'], 'projReq/fill/fills/{fill}', 'FillProjReqController@update')->name('projReqs.fills.update');
+    // Route::delete('projReq/fills/{fill}', 'FillProjReqController@destroy')->name('projReqs.fills.destroy');
+    // Route::match(['put', 'post'], 'projReq/fills/{fill}/close', 'FillProjReqController@close')->name('projReqs.fills.close');
 
-    
-    //shortage resource 
-    Route::resource('shortages', 'ShortageController');
+    //shortage resource
+    Route::resource('shortages', 'ShortageController')->except('index');
+    Route::get('shortages/type/{type?}/index','ShortageController@index')->name('shortages.index');
     Route::match(['put', 'post'], 'shortages/{shortage}/close', 'ShortageController@close')->name('shortages.close');
 
     //fill Shortage
-    Route::get('shortage/{shortage}/fills', 'FillController@index')->name('fills.index');
+    Route::get('shortage/{shortage?}/fills', 'FillController@index')->name('fills.index');
     Route::get('shortage/{shortage}/fills/create', 'FillController@create')->name('fills.create');
     Route::post('shortage/{shortage}/fills', 'FillController@store')->name('fills.store');
     Route::get('shortage/fills/{fill}/edit', 'FillController@edit')->name('fills.edit');
@@ -127,16 +122,12 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('shortage/fills/{fill}', 'FillController@destroy')->name('fills.destroy');
     Route::match(['put', 'post'], 'shortage/fills/{fill}/close', 'FillController@close')->name('fills.close');
 
-
     //messages
     Route::get('fill/{fill}/messages', 'MessageController@index')->name('messages.index');
     Route::post('fill/{fill}/messages', 'MessageController@send')->name('messages.send');
 
-
-
     //volunteer resource
     Route::resource('volunteers', 'VolunteerController');
-
 
     //jobs resource
     Route::resource('jobs', 'CharityJobController');
@@ -150,9 +141,8 @@ Route::middleware(['auth'])->group(function () {
     Route::match(['put', 'post'], 'job/request/{jobReq}', 'VolunteerRequestController@update')->name('jobReqs.update');
     Route::delete('job/request/{jobReq}', 'VolunteerRequestController@destroy')->name('jobReqs.destroy');
 
-
-
-
+//benifactors
+    // Route::get('user/fills', 'BenefactorController@MyFills')->name('user.myFills');
 
 // Route::match(['put', 'post'], 'shortages/{shortage}/close', 'ShortageController@close')->name('shortages.close');
     // Route::resource('benfes', 'BenefactorController');

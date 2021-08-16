@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -16,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','role',
+        'name', 'email', 'password', 'role',
     ];
 
     /**
@@ -56,5 +55,35 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Models\Volunteer', 'user_id', 'id');
     }
+
+    # code...
+    /**
+     * Get all of the fills for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function fills()
+    {
+        return $this->hasMany(Fill::class, 'user_id');
+    }
+    /**
+     * Get all of the sentMsgs for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function sentMsgs()
+    {
+        return $this->hasMany('App\Models\Message', 'user_id');
+    }
+
+    // /**
+    //  * Get all of the receved Messages for the User
+    //  *
+    //  * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+    //  */
+    // public function recevedMsgs()
+    // {
+        
+    // }
 
 }

@@ -7,6 +7,8 @@ namespace App\Providers;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use App\Models\User;
+use App\Models\Fill;
+
 use App\Models\Charity;
 
 class AuthServiceProvider extends ServiceProvider
@@ -48,6 +50,9 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('benef', function (User $user) {
             //allows user has benef role
             return $user->role === 'benef';
+        });
+        Gate::define('fill_access',function(User $user,Fill $fill){
+           return $user->id===$fill->user_id;
         });
     }
 }

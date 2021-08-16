@@ -30,7 +30,7 @@ class Fill extends Model
 
     public function projReq()
      {
-         return $this->belongsTo('App\Models\ProjectRequirement', 'shortage_id');
+         return $this->belongsTo('App\Models\Shortage', 'shortage_id');
      }
      /**
       * Get all of the messages for the Fill

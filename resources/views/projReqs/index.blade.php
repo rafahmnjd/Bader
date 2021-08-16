@@ -50,7 +50,7 @@
                                     <div class="btn-group-justified">
                                         <div class="btn-group">
                                             <a class="btn btn-outline-info"
-                                                href="{{ route('projReqs.fills.index', $projReq->id) }}">
+                                                href="{{ route('fills.index', $projReq->id) }}">
                                                 {{__("manage fills")}}
                                             </a></div>
                                         <div class="btn-group">

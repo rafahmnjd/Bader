@@ -25,7 +25,7 @@ class Project extends Model
      */
     public function requirments()
     {
-        return $this->hasMany('App\Models\ProjectRequirement', 'project_id');
+        return $this->hasMany('App\Models\Shortage', 'project_id');
     }
 
     public function completePercent()
