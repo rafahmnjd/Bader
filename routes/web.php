@@ -39,14 +39,6 @@ Route::view('/about', 'about.index')->name('about');
 
 // -------------------------------------------------------------------------------------------------------
 
-//Charity Show
-Route::get('charities/{charity}/show', 'CharityController@show')->name('charities.show');
-Route::get('charities/{charity}/projects', 'CharityController@projects')->name('charities.projects');
-Route::get('charities/{charity}/shortages', 'CharityController@shortages')->name('charities.shortage');
-Route::get('charities/{charity}/surpluses', 'CharityController@surpluses')->name('charities.surplus');
-// Route::get('charities/{charity}/activities', 'CharityController@activities')->name('charities.activities');
-
-// -------------------------------------------------------------------------------------------------------
 
 //Search Routes
 
@@ -70,11 +62,24 @@ Route::post('search/surpluses', 'SearchController@getSurpluses')->name('search.g
 
 // -------------------------------------------------------------------------------------------------------
 
+// show Routes
+
 //project show
 
 Route::get('projects/{project}/show', 'ProjectController@show')->name('projects.show');
 // Route::get('charities/{project}/requirments', 'ProjectRequirementController@show')->name('projReqs.show');
 
+// -------------------------------------------------------------------------------------------------------
+
+//Charity Show
+Route::get('charities/{charity}/show', 'CharityController@show')->name('charities.show');
+Route::get('charities/{charity}/projects', 'CharityController@projects')->name('charities.projects');
+Route::get('charities/{charity}/shortages', 'CharityController@shortages')->name('charities.shortage');
+Route::get('charities/{charity}/surpluses', 'CharityController@surpluses')->name('charities.surplus');
+// Route::get('charities/{charity}/activities', 'CharityController@activities')->name('charities.activities');
+
+// -------------------------------------------------------------------------------------------------------
+Route::get('jobs/{job}','CharityJobController@show')->name('jobs.show');
 // -------------------------------------------------------------------------------------------------------
 
 // Auth pages
@@ -130,7 +135,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('volunteers', 'VolunteerController');
 
     //jobs resource
-    Route::resource('jobs', 'CharityJobController');
+    Route::resource('jobs', 'CharityJobController')->except(['show']);
     Route::match(['put', 'post'], 'jobs/{job}/close', 'CharityJobController@close')->name('jobs.close');
 
     //Job request Routes

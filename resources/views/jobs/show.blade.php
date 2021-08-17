@@ -3,7 +3,7 @@
     <!-- include my style -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/job.css') }}">
 @endsection
-@section('content') --}}
+@section('content')
     <article class="post vt-post">
         <div class="row">
             <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4">

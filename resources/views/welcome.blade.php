@@ -117,7 +117,7 @@ onload="resetSelection()"
                 </div>
             </div>
             <div class="col-md-4 mb-1 px-2">
-                <div class="card-box bg-green">
+                <div class="card-box themYellow shadow">
                     <div class="inner">
                         <h3> {{$counts["ch"]}} </h3>
                         <p class="text-left"> {{ __('of Charities') }} </p>
@@ -133,7 +133,7 @@ onload="resetSelection()"
 
                 <div class="card shadow mb-2">
                     <div class="card-body">
-                        <h6 class="card-title">{{__('Closed Shortages')}}</h6>
+                        <h5 class="card-title">{{__('Closed Shortages')}}</h5>
                         <p class="card-text text-gray m-0">
                             <span class="px-1 @if(app()->getLocale() == 'ar') float-left @else float-right @endif"
                                 dir="ltr">
@@ -154,7 +154,7 @@ onload="resetSelection()"
             <div class="col-md-6 col-sm-6 mb-1 px-2">
                 <div class="card shadow mb-2">
                     <div class="card-body">
-                        <h6 class="card-title">{{__('Complited Projects')}}</h6>
+                        <h5 class="card-title">{{__('Complited Projects')}}</h5>
                         <p
                             class="card-text @if(app()->getLocale() == 'ar') float-left @else float-right @endif text-gray m-0">
                             <span class="px-1" dir="ltr">{{$completed["proj"]}} / {{$counts["proj"]}}</span>

@@ -26,6 +26,17 @@
             body {
                 background: #dcdcdc;
             }
+
+            .themHeder {
+                background: #222222;
+                color: #fff;
+                text-decoration-color: #fff
+            }
+
+            .themYellow {
+                background: #ffc600;
+                color: #fff;
+            }
         </style>
         @if (app()->getLocale() == 'ar')
         <style>
@@ -40,17 +51,6 @@
             div {
                 text-align: right;
                 direction: rtl;
-            }
-
-            .themHeder {
-                background: #222222;
-                color: #fff;
-                text-decoration-color: #fff
-            }
-
-            .themYellow {
-                background: #ffc600;
-                color: #fff;
             }
         </style>
         @endif

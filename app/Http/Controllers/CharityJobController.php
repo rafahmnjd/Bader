@@ -18,7 +18,7 @@ class CharityJobController extends Controller
 
     {
         // $this->middleware('can:ch_access,charity');
-        $this->middleware('can:charity');
+        // $this->middleware('can:charity');
         // $this->middleware('can:admin')->only('destroy','index');
         // $this->middleware('can:ch_access,charity')->only(['edit','update']);
         // $this->middleware('can:charity')->only(['index','create','store']);
