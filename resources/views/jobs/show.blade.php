@@ -1,61 +1,131 @@
 @extends('layouts.app')
-@section('style')
-    <!-- include my style -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/job.css') }}">
-@endsection
 @section('content')
-    <article class="post vt-post">
-        <div class="row">
-            <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4">
-                <div class="post-type post-img">
-                    <a href="#"><img src="{{ asset(config('path.ch_logo') . $job->charity->logo) }}"
-                            class="img-responsive" alt="image post"></a>
-                </div>
-                <div class="author-info author-info-2">
-                    <ul class="list-inline">
-                        <li>
-                            <div class="info">
-                                <p>Posted on:</p>
+    <div class="row">
+        <div class="col-lg-9 col-md-8 right-wrapper">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card mb-2 shadow">
+                        <div class="card-body">
+                            <div class="col-md-12 grid-margin">
+                                <div class="card rounded">
+                                    <!-- card-header -->
+                                    <div class="card-header">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <div class="d-flex align-items-center">
+                                                <div class="ml-2">
+                                                    <span>
+                                                        <h4>
+                                                            @if (config('app.locale') == 'ar')
+                                                                {{ $job->job_title_ar }}
+                                                            @else
+                                                                {{ $job->job_title_en }}
+                                                            @endif
+                                                        </h4>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <ul class="d-sm-flex my-0">
+                                                {{ __('Date of publication') }}: {{ $job->created_at }}
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <!-- card-body -->
+                                    <!-- text with image -->
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <div class="d-flex align-items-center">
+                                                <div class="ml-2">
+                                                    <span>
+                                                        <h6 class="mb-3 tx-14">
+                                                            {{ __('Belonging to') }} :
+                                                            <a href="{{ route('charities.show', $job->charity) }}">
+                                                                @if (config('app.locale') == 'ar')
+                                                                    {{ $job->charity->name_ar }}
+                                                                @else
+                                                                    {{ $job->charity->name_en }}
+                                                                @endif
+                                                            </a>
+                                                        </h6>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <ul class="d-sm-flex my-0">
+                                                <div class="card-body">
+                                                    <h5>{{ __('State') }} : {{ __($job->state) }}</h5>
+                                                </div>
+                                            </ul>
+                                        </div>
+                                        <p>
+                                            @if (config('app.locale') == 'ar')
+                                                {{ $job->job_details_ar }}
+                                            @else
+                                                {{ $job->job_details_en }}
+                                            @endif
+                                        </p>
+                                        <div>
+                                            <p>
+                                                @if (config('app.locale') == 'ar')
+                                                    {{ $job->location_ar }}
+                                                @else
+                                                    {{ $job->location_en }}
+                                                @endif
+                                            </p>
+                                        </div>
+                                        <form action="{{ route('jobReqs.store', $job) }}" method="POST"
+                                            enctype="multipart/form-data">
+                                            @csrf
+                                            <span>{{ __('Upload CV') }} : </span>
+                                            <input type="file" name="cv" class="form-control">
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
-                        </li>
-                        <li>
-                            <div class="info">
-                                <p>{{ $job->created_at }}</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-7 col-md-7 col-lg-8">
-                <div class="caption">
-                    <h3 class="md-heading"><a href="#">The Heading Text Size Should Match</a></h3>
-                    <p> Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec
-                        ullamcorper nulla non metus auctor fringilla. </p>
-                    <a class="btn btn-default" href="#" role="button">Read More</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </article>
-    <div class="col-md-8 ">
-        <div class="media g-mb-30 media-comment">
-            <img class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15"
-                src="{{ asset(config('path.ch_logo') . $job->charity->logo) }}" alt="Image Description">
-            <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
-                <h3>
-                    @if (config('app.locale') == 'ar')
-                        {{ $job->job_title_ar }}
-                    @else
-                        {{ $job->job_title_en }}
-                    @endif
-                </h3>
 
-                <p>
-                    @if (config('app.locale') == 'ar')
-                        {{ $job->job_details_ar }}
-                    @else
-                        {{ $job->job_details_en }}
-                    @endif
-                </p>
+        {{-- Newest Jobs --}}
+        <div class="col-lg-3 col-md-4 order-6 order-lg-12 order-md-6 order-sm-6 mb-1">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card mb-2 shadow ">
+                        <div class="card-body ">
+                            <h5 class="card-title">{{ __('Newest Jobs') }}
+                            </h5>
+                            <hr class="mb-0">
+                            <div class="list-group list-group-flush">
+                                @foreach ($jobs as $job)
+                                    <a class="list-group-item list-group-item-action"
+                                        href="{{ route('jobs.show', $job) }}">
+                                        <h6 class="font-weight-bold">
+                                            @if (app()->getLocale() == 'ar')
+                                            {{ $job->job_title_ar }} @else {{ $job->job_title_en }}
+                                            @endif
+                                        </h6>
+                                        <p class="card-text text-truncate">
+                                            @if (app()->getLocale() == 'ar')
+                                                {{ $job->job_details_ar }}
+                                            @else {{ $job->job_details_en }}@endif
+                                        </p>
+                                    </a>
+                                @endforeach
+                            </div>
+                            @if (app()->getLocale() == 'ar')
+                                <a class="@if (app()->getLocale() == 'ar') float-left
+                                @else
+                                    float-right @endif"
+                                    href="{{ route('search.jobs') }}">{{ __('View more') }} <i
+                                        class="fa fa-arrow-circle-left"></i></a>
+                            @else
+                                <a class="float-right" href="{{ route('search.jobs') }}">{{ __('View more') }}
+                                    <i class="fa fa-arrow-circle-right"></i></a>
+                            @endif
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

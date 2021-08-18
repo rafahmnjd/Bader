@@ -80,9 +80,11 @@ class CharityJobController extends Controller
     public function show(CharityJob $job)
     {
         //
-        
-        return view('jobs.show', compact('job'));
+        $jobs = CharityJob::latest()->paginate(7);
+        return view('jobs.show', compact('job','jobs'));
     }
+
+
 
     /**
      * Show the form for editing the specified resource.

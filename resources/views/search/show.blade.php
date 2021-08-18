@@ -16,25 +16,33 @@
                                     <div class="input-group row mx-0">
                                         <div class="col-1 px-0">
                                             <button type="submit" class="btn btn-base">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                    stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-search">
                                                     <circle cx="11" cy="11" r="8"></circle>
                                                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                                                 </svg>
                                             </button>
                                         </div>
-                                        <input type="text" placeholder="{{ __('Search...') }}" class="col form-control" id="search" name="data">
+                                        <input type="text" placeholder="{{ __('Search...') }}" class="col form-control"
+                                            id="search" name="data">
                                         <div class="col-2 px-0">
-                                            <button class="btn btn-outline-wight dropdown-toggle" type="button" data-toggle="dropdown"
-                                                aria-haspopup="true" aria-expanded="false">
+                                            <button class="btn btn-outline-wight dropdown-toggle" type="button"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 @yield('search_class')
                                             </button>
                                             <div class="dropdown-menu">
-                                                   <a class="dropdown-item" href="{{ route('search.charities') }}">{{ __('Charities') }}</a>
-                                                   <a class="dropdown-item" href="{{ route('search.projects') }}">{{ __('Projects') }}</a>
-                                                   <a class="dropdown-item" href="{{ route('search.jobs') }}">{{ __('Jobs') }}</a>
-                                                   <a class="dropdown-item" href="{{ route('search.shortages') }}">{{ __('Shortages') }}</a>
-                                                   <a class="dropdown-item" href="{{ route('search.surpluses') }}">{{ __('Surpluses') }}</a>
+                                                <a class="dropdown-item"
+                                                    href="{{ route('search.charities') }}">{{ __('Charities') }}</a>
+                                                <a class="dropdown-item"
+                                                    href="{{ route('search.projects') }}">{{ __('Projects') }}</a>
+                                                <a class="dropdown-item"
+                                                    href="{{ route('search.jobs') }}">{{ __('Jobs') }}</a>
+                                                <a class="dropdown-item"
+                                                    href="{{ route('search.shortages') }}">{{ __('Shortages') }}</a>
+                                                <a class="dropdown-item"
+                                                    href="{{ route('search.surpluses') }}">{{ __('Surpluses') }}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -71,7 +79,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                     @yield('search_middile')
+                                    @yield('search_middile')
                                 </div>
                             </div>
                         </div>
