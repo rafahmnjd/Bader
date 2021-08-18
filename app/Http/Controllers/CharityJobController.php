@@ -80,6 +80,7 @@ class CharityJobController extends Controller
     public function show(CharityJob $job)
     {
         //
+        
         return view('jobs.show', compact('job'));
     }
 
