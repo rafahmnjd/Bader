@@ -76,7 +76,7 @@ Route::get('charities/{charity}/show', 'CharityController@show')->name('charitie
 Route::get('charities/{charity}/projects', 'CharityController@projects')->name('charities.projects');
 Route::get('charities/{charity}/shortages', 'CharityController@shortages')->name('charities.shortage');
 Route::get('charities/{charity}/surpluses', 'CharityController@surpluses')->name('charities.surplus');
-// Route::get('charities/{charity}/activities', 'CharityController@activities')->name('charities.activities');
+Route::get('charities/{charity}/jobs', 'CharityController@jobs')->name('charities.jobs');
 
 // -------------------------------------------------------------------------------------------------------
 Route::get('jobs/{job}','CharityJobController@show')->name('jobs.show');

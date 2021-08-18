@@ -1,5 +1,5 @@
 @extends('charities.layout')
-@section('create_href', route("shortages.create"))
+@section('create_href', route('shortages.create'))
 @section('create_word', __('Add a new shortage'))
 @section('middile')
     <div class="row">
@@ -11,24 +11,25 @@
                     @foreach ($shortages as $shortage)
                         <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
                             <div class="col">
-                                    @if (config('app.locale') == 'ar')
-                                        {{ $shortage->item->name_ar }}
-                                    @else
-                                        {{ $shortage->item->name_en }}
-                                    @endif
+                                @if (config('app.locale') == 'ar')
+                                    {{ $shortage->item->name_ar }}
+                                @else
+                                    {{ $shortage->item->name_en }}
+                                @endif
                             </div>
                             <div class="col">
                                 {{ $shortage->quantity }}
                             </div>
                             <div class="col">
                                 <div class="progress">
-                                    <div class="progress-bar" style="width:{{round($shortage->completePercent())}}%">{{round($shortage->completePercent())}}%</div>
+                                    <div class="progress-bar" style="width:{{ round($shortage->completePercent()) }}%">
+                                        {{ round($shortage->completePercent()) }}%</div>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="d-flex justify-content-right">
                                     <button class="btn btn-light btn-icon-text btn-edit-profile">
-                                        <a href="{{route('fills.create',$shortage)}}">
+                                        <a href="{{ route('fills.create', $shortage) }}">
                                             {{ __('Fill') }}
                                         </a>
                                     </button>

@@ -1,56 +1,54 @@
 @extends('search.show')
-@section('search_class',__("Charities"))
-@section('search_form_action',route('search.getCharities'))
+@section('search_class', __('Charities'))
+@section('search_form_action', route('search.getCharities'))
 @section('search_middile')
 
     <div class="result-body">
         <div class="table-responsive">
             <table class="table widget-26">
-                @foreach ($charities as $charity)
-                    <tbody>
+                <thead>
+                    <tr>
+                        <th scope="col">{{ __('id') }}</th>
+                        <th scope="col">{{ __('Charity Logo') }}</th>
+                        <th scope="col">{{ __('Charity') }}</th>
+                        <th scope="col">{{ __('Address') }}</th>
+                        <th scope="col">{{ __('Information') }}</th>
+                        <th scope="col" width="150">{{ __('Control') }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($charities as $charity)
                         <tr>
+                            <th scope="row">{{ $charity->id }}</th>
                             <td>
                                 <div class="widget-26-job-emp-img">
                                     <img src="{{ asset(config('path.ch_logo') . $charity->logo) }}" alt="" />
                                 </div>
                             </td>
                             <td>
-                                <div class="widget-26-job-title">
-                                    <a href="{{ route('charities.show', $charity) }}">
-                                        <span>
-                                            @if (config('app.locale') == 'ar')
-                                                <p class="m-0">{{ $charity->name_ar }}</p>
-                                                <p class="text-muted m-0">{{ $charity->name_en }}</p>
-                                            @else
-                                                <p class="m-0">{{ $charity->name_en }}</p>
-                                                <p class="text-muted m-0">{{ $charity->name_ar }}</p>
-                                            @endif
-                                        </span>
-                                    </a>
+                                <div class="widget-26-job-info">
+                                    @if (config('app.locale') == 'ar')
+                                        <p class="m-0">{{ $charity->name_ar }}</p>
+                                    @else
+                                        <p class="m-0">{{ $charity->name_en }}</p>
+                                    @endif
                                 </div>
                             </td>
                             <td>
                                 <div class="widget-26-job-info">
                                     @if (config('app.locale') == 'ar')
                                         <p class="type m-0">{{ $charity->address_ar }}</p>
-                                        <p class="text-muted m-0">{{ $charity->address_en }}</p>
                                     @else
                                         <p class="type m-0">{{ $charity->address_en }}</p>
-                                        <p class="text-muted m-0">{{ $charity->address_ar }}</p>
                                     @endif
                                 </div>
-                            </td>
-                            <td>
-                                <div class="widget-26-job-salary"></div>
                             </td>
                             <td>
                                 <div class="widget-26-job-info">
                                     @if (config('app.locale') == 'ar')
                                         <p class="type m-0">{{ $charity->info_ar }}</p>
-                                        <p class="text-muted m-0">{{ $charity->info_en }}</p>
                                     @else
                                         <p class="type m-0">{{ $charity->info_en }}</p>
-                                        <p class="text-muted m-0">{{ $charity->info_ar }}</p>
                                     @endif
                                 </div>
                             </td>
@@ -64,12 +62,12 @@
                                 </div>
                             </td>
                         </tr>
-                    </tbody>
+                </tbody>
                 @endforeach
             </table>
         </div>
     </div>
 @endsection
 @section('search_pagination')
-{{$charities->links()}}
+    {{ $charities->links() }}
 @endsection

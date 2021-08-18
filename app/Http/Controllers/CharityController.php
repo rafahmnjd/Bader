@@ -34,7 +34,7 @@ class CharityController extends Controller
     {
         //
         // $charities = User::where('role','charity')->get();
-        $charities =Charity::all();
+        $charities = Charity::all();
         return view('charities.index', ['charities' => $charities]);
     }
 
@@ -45,12 +45,11 @@ class CharityController extends Controller
      */
     public function create()
     {
-        $govs=Governorate::all();
+        $govs = Governorate::all();
         if (Auth::user()->charity != null) {
             return redirect(route('charities.edit', Auth::user()->charity));
         }
-        return view('charities.crup',compact('govs'));
-
+        return view('charities.crup', compact('govs'));
     }
 
     /**
@@ -87,7 +86,6 @@ class CharityController extends Controller
         } else if (Auth::user()->role == "admin") {
             return redirect(route('charities.index'));
         }
-
     }
 
     /**
@@ -112,7 +110,7 @@ class CharityController extends Controller
     {
         //
         $govs = Governorate::all();
-        return view('charities.crup', compact('charity','govs'));
+        return view('charities.crup', compact('charity', 'govs'));
     }
 
     /**
@@ -145,7 +143,8 @@ class CharityController extends Controller
             $coverfilepath = public_path(config('path.covers'));
             if ($charity->cover != null) {
                 if (file_exists($coverfilepath . $charity->cover)) {
-                    File::delete($coverfilepath . $charity->cover);}
+                    File::delete($coverfilepath . $charity->cover);
+                }
             }
 
             $coverfile = request()->file('cover');
@@ -160,7 +159,6 @@ class CharityController extends Controller
         } else {
             return redirect(route('charities.index'));
         }
-        
     }
 
     /**
@@ -175,18 +173,19 @@ class CharityController extends Controller
         if ($charity->logo != null) {
             $logofilepath = public_path(config('path.ch_logo'));
             if (file_exists($logofilepath . $charity->logo)) {
-                File::delete($logofilepath . $charity->logo);}
+                File::delete($logofilepath . $charity->logo);
+            }
         }
 
         if ($charity->cover != null) {
             $coverfilepath = public_path(config('path.covers'));
             if (file_exists($coverfilepath . $charity->cover)) {
-                File::delete($coverfilepath . $charity->cover);}
+                File::delete($coverfilepath . $charity->cover);
+            }
         }
 
         $charity->delete();
         return redirect(route('charities.index'));
-
     }
 
     public function projects(Charity $charity)
@@ -197,13 +196,19 @@ class CharityController extends Controller
 
     public function shortages(Charity $charity)
     {
-        $shortages = $charity->shortages()->where('state','!=',"closed")->get();
+        $shortages = $charity->shortages()->where('state', '!=', "closed")->get();
         return view('charities.shortages', compact('shortages', 'charity'));
     }
 
     public function surpluses(Charity $charity)
     {
-        $surpluses = $charity->surpluses()->where('state',"!=","closed")->get();
+        $surpluses = $charity->surpluses()->where('state', "!=", "closed")->get();
         return view('charities.surpluses', compact('surpluses', 'charity'));
+    }
+
+    public function jobs(Charity $charity)
+    {
+        $jobs = $charity->jobs;
+        return view('charities.jobs', compact('jobs', 'charity'));
     }
 }

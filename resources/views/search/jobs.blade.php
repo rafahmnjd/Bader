@@ -6,45 +6,42 @@
     <div class="result-body">
         <div class="table-responsive">
             <table class="table widget-26">
-                @foreach ($jobs as $job)
-                    <tbody>
+                <thead>
+                    <tr>
+                        <th scope="col">{{ __('id') }}</th>
+                        <th scope="col">{{ __('Charity Logo') }}</th>
+                        <th scope="col">{{ __('Jobs') }}</th>
+                        <th scope="col">{{ __('Charity') }}</th>
+                        <th scope="col">{{ __('Details') }}</th>
+                        <th scope="col" width="150">{{ __('Control') }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($jobs as $job)
                         <tr>
+                            <th scope="row">{{ $job->id }}</th>
                             <td>
                                 <div class="widget-26-job-emp-img">
                                     <img src="{{ asset(config('path.ch_logo') . $job->charity->logo) }}" alt="" />
                                 </div>
                             </td>
                             <td>
-                                <div class="widget-26-job-title">
-                                    <a href="{{ route('charities.show', $job->charity) }}">
-                                        <span>
-                                            @if (config('app.locale') == 'ar')
-                                                {{ $job->job_title_ar }}
-                                                <p class="m-0"><a href="{{ route('charities.show', $job->charity) }}"
-                                                        class="employer-name">{{ $job->job_title_en }}</a></p>
-                                            @else
-                                                {{ $job->job_title_en }}
-                                                <p class="m-0"><a href="{{ route('charities.show', $job->charity) }}"
-                                                        class="employer-name">{{ $job->job_title_ar }}</a></p>
-                                            @endif
-                                        </span>
-                                    </a>
+                                <div class="widget-26-job-info">
+                                    @if (config('app.locale') == 'ar')
+                                        {{ $job->job_title_ar }}
+                                    @else
+                                        {{ $job->job_title_en }}
+                                    @endif
                                 </div>
                             </td>
                             <td>
-                                <div class="widget-26-job-title">
+                                <div class="widget-26-job-info">
                                     <a href="{{ route('charities.show', $job->charity) }}">
-                                        <span>
-                                            @if (config('app.locale') == 'ar')
-                                                {{ $job->charity->name_ar }}
-                                                <p class="m-0"><a href="{{ route('charities.show', $job->charity) }}"
-                                                        class="employer-name">{{ $job->charity->name_en }}</a></p>
-                                            @else
-                                                {{ $job->charity->name_en }}
-                                                <p class="m-0"><a href="{{ route('charities.show', $job->charity) }}"
-                                                        class="employer-name">{{ $job->charity->name_ar }}</a></p>
-                                            @endif
-                                        </span>
+                                        @if (config('app.locale') == 'ar')
+                                            <p class="m-0">{{ $job->charity->name_ar }}</p>
+                                        @else
+                                            <p class="m-0">{{ $job->charity->name_en }}</p>
+                                        @endif
                                     </a>
                                 </div>
                             </td>
@@ -52,10 +49,8 @@
                                 <div class="widget-26-job-info">
                                     @if (config('app.locale') == 'ar')
                                         <p class="type m-0">{{ $job->job_details_ar }}</p>
-                                        <p class="text-muted m-0">{{ $job->job_details_en }}</p>
                                     @else
                                         <p class="type m-0">{{ $job->job_details_en }}</p>
-                                        <p class="text-muted m-0">{{ $job->job_details_ar }}</p>
                                     @endif
                                 </div>
                             </td>
@@ -63,14 +58,13 @@
                                 <div class="widget-26-job-info">
                                     <button class="btn btn-light btn-icon-text btn-edit-profile">
                                         <a href="#">
-                                            {{-- {{ route('jobs.show',$job) }} --}}
                                             {{ __('Apply') }}
                                         </a>
                                     </button>
                                 </div>
                             </td>
                         </tr>
-                    </tbody>
+                </tbody>
                 @endforeach
             </table>
         </div>

@@ -54,7 +54,6 @@ onload="resetSelection()"
             </div>
             {{-- Newest Jobs --}}
             <div class="col-lg-12 col-md-6 col-sm-12 mb-1">
-
                 <div class="card mb-2 shadow">
                     <div class="card-body ">
                         <h5 class="card-title">{{ __('Newest Jobs') }}<small

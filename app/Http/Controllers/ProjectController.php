@@ -73,7 +73,8 @@ class ProjectController extends Controller
     public function show(Project $project)
     {
         //
-        return view('projects.show', compact('project'));
+        $projects = Project::latest()->paginate(7);
+        return view('projects.show', compact('project','projects'));
     }
 
     /**
