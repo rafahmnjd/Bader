@@ -24,7 +24,7 @@ class VolunteerRequest extends Model
       *
       * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
       */
-     public function Job()
+     public function job()
      {
          return $this->belongsTo('App\Models\CharityJob', 'charity_job_id');
      }

@@ -10,6 +10,8 @@ use App\Models\User;
 use App\Models\Fill;
 
 use App\Models\Charity;
+use App\Models\Volunteer;
+
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -47,6 +49,11 @@ class AuthServiceProvider extends ServiceProvider
             //allows user has volunteer role
             return $user->role === 'volunteer';
         });
+        Gate::define('vol_access', function (User $user, Volunteer $vol) {
+    //allows admin or charity_owner
+    return (($user->role === 'volunteer' && $user->id === $vol->user_id));
+});
+
         Gate::define('benef', function (User $user) {
             //allows user has benef role
             return $user->role === 'benef';

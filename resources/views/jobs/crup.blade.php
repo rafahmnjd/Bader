@@ -88,7 +88,7 @@
                                 </div>
                             </div>
                             <div class="col d-flex align-items-end d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
+                                <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
                             </div>
                         </div>
                     </form>

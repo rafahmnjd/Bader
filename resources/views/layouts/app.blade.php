@@ -2,44 +2,43 @@
 <html dir="{{ str_replace('_', '-', app()->getLocale()) == 'ar' ? 'rtl' : 'ltr' }}"
     lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'Laravel') }}</title>
 
 
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+        <!-- Fonts -->
+        <link rel="dns-prefetch" href="//fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/zmdi.css') }}" rel="stylesheet">
+        <!-- Styles -->
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/zmdi.css') }}" rel="stylesheet">
 
-    @yield('style')
-    <style>
-        body {
-            background: #dcdcdc;
-        }
+        @yield('style')
+        <style>
+            body {
+                background: #dcdcdc;
+            }
 
-        .themHeder {
-            background: #222222;
-            color: #fff;
-            text-decoration-color: #fff
-        }
+            .themHeder {
+                background: #222222;
+                color: #fff;
+                text-decoration-color: #fff
+            }
 
-        .themYellow {
-            background: #ffc600;
-            color: #fff;
-        }
-
-    </style>
-    @if (app()->getLocale() == 'ar')
+            .themYellow {
+                background: #ffc600;
+                color: #fff;
+            }
+        </style>
+        @if (app()->getLocale() == 'ar')
         <style>
             h1,
             h2,
@@ -53,58 +52,57 @@
                 text-align: right;
                 direction: rtl;
             }
-
         </style>
-    @endif
-</head>
+        @endif
+    </head>
 
-<body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm mb-2">
-            <div class="container-fluid">
-                <a class="navbar-brand " href="{{ route('about') }}">{{ config('app.name', 'Laravel') }}</a>
-                <div class="navbar-collapse collapse show" id="navbarColor01">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav @if (app()->getLocale() == 'ar') ml-auto
+    <body>
+        <div id="app">
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm mb-2">
+                <div class="container-fluid">
+                    <a class="navbar-brand " href="{{ route('about') }}">{{ config('app.name', 'Laravel') }}</a>
+                    <div class="navbar-collapse collapse show" id="navbarColor01">
+                        <!-- Left Side Of Navbar -->
+                        <ul class="navbar-nav @if (app()->getLocale() == 'ar') ml-auto
                     text-right @else mr-auto @endif ">
-                        <a class="nav-link" href="{{ route('base') }}">{{ __('Home') }}</a>
-                        @yield('left_nav')
-                        @if (App::isLocale('en'))
+                            <a class="nav-link" href="{{ route('base') }}">{{ __('Home') }}</a>
+                            @yield('left_nav')
+                            @if (App::isLocale('en'))
                             <a class="nav-link" href="{{ route('lang', 'ar') }}">{{ __('Ar') }}</a>
-                        @else
+                            @else
                             <a class="nav-link" href="{{ route('lang', 'en') }}">{{ __('En') }}</a>
-                        @endif
-                        <a class="nav-link" href="{{ route('search.charities') }}">{{ __('Search...') }}</a>
-                    </ul>
+                            @endif
+                            <a class="nav-link" href="{{ route('search.charities') }}">{{ __('Search...') }}</a>
+                        </ul>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav @if (app()->getLocale() == 'ar') mr-auto
+                        <!-- Right Side Of Navbar -->
+                        <ul class="navbar-nav @if (app()->getLocale() == 'ar') mr-auto
                     text-right @else ml-auto @endif">
-                        <!-- Authentication Links -->
-                        @guest
+                            <!-- Authentication Links -->
+                            @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            </li>
                             @endif
-                        @else
+                            @else
                             <li class="nav-item dropdown">
 
                                 <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class=""></span>
                                     @can('charity')
-                                        @if (!empty(Auth::user()->charity->logo))
-                                            <img src="{{ asset(config('path.ch_logo') . Auth::user()->charity->logo) }}"
-                                                width="30" height="30" alt="">
-                                        @else
-                                            <img src="{{ asset(config('path.default')) }}" width="30" height="30" alt="">
-                                        @endif
+                                    @if (!empty(Auth::user()->charity->logo))
+                                    <img src="{{ asset(config('path.ch_logo') . Auth::user()->charity->logo) }}"
+                                        width="30" height="30" alt="">
                                     @else
-                                        <img src="{{ asset(config('path.default')) }}" width="30" height="30" alt="">
+                                    <img src="{{ asset(config('path.default')) }}" width="30" height="30" alt="">
+                                    @endif
+                                    @else
+                                    <img src="{{ asset(config('path.default')) }}" width="30" height="30" alt="">
                                     @endcan
                                 </a>
                                 <div class="dropdown-menu @if (app()->getLocale() == 'ar') dropdown-menu-left text-right @else dropdown-menu-right @endif "
@@ -123,57 +121,61 @@
                                         {{ __('Manage My Fills') }}
                                     </a>
                                     <hr>
-                                        <a class="dropdown-item" href="{{ route('charities.create') }}">
-                                            {{ __('Manage my charity') }}
-                                        </a>
-                                        <a class="dropdown-item" href="{{ route('jobs.index') }}">
-                                            {{ __('Manage Jobs') }}
-                                        </a>
-                                        <a class="dropdown-item" href="{{ route('projects.index') }}">
-                                            {{ __('Manage Projects') }}
-                                        </a>
-                                        <a class="dropdown-item" href="{{ route('shortages.index', 'min') }}">
-                                            {{ __('Manage Shortage') }}
-                                        </a>
-                                        <a class="dropdown-item" href="{{ route('shortages.index', 'plus') }}">
-                                            {{ __('Manage Surplus') }}
-                                        </a>
+                                    <a class="dropdown-item" href="{{ route('charities.create') }}">
+                                        {{ __('Manage my charity') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('jobs.index') }}">
+                                        {{ __('Manage Jobs') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('projects.index') }}">
+                                        {{ __('Manage Projects') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('shortages.index', 'min') }}">
+                                        {{ __('Manage Shortage') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('shortages.index', 'plus') }}">
+                                        {{ __('Manage Surplus') }}
+                                    </a>
                                     @elsecan('benef')
                                     <a class="dropdown-item" href="{{ route('user.myFills') }}">
                                         {{ __('Manage my Fills') }}
                                     </a>
                                     @elsecan('volunteer')
-                                        <a class="dropdown-item" href="{{ route('volunteers.create') }}">
-                                            {{ __('Manage my profile') }}
-                                        </a>
+                                    <a class="dropdown-item" href="{{ route('user.jobReqs') }}">
+                                        {{ __('My Jobs Requests') }}
+                                    </a>
+                                    <hr>
+                                    <a class="dropdown-item" href="{{ route('volunteers.create') }}">
+                                        {{ __('Manage my profile') }}
+                                    </a>
                                     @elsecan('admin')
-                                        <a class="dropdown-item" href="{{ route('charities.index') }}">
-                                            {{ __('Manage Charities') }}
-                                        </a>
-                                        <a class="dropdown-item" href="{{ route('items.index') }}">
-                                            {{ __('Manage Items') }}
-                                        </a>
+                                    <a class="dropdown-item" href="{{ route('charities.index') }}">
+                                        {{ __('Manage Charities') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('items.index') }}">
+                                        {{ __('Manage Items') }}
+                                    </a>
                                     @endcan
                                     {{-- <a class="dropdown-item" href="{{route('profile.show')}}">
                                     {{__('Profile_pic')}}
                                     </a> --}}
                                 </div>
                             </li>
-                        @endguest
-                    </ul>
+                            @endguest
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
 
-        {{-- <main class="container-fluid"> --}}
-        <main class="container-fluid">
-            @yield('content')
-        </main>
-    </div>
-</body>
+            {{-- <main class="container-fluid"> --}}
+            <main class="container-fluid">
+                @yield('content')
+            </main>
+        </div>
+    </body>
 
 
-<!-- Scripts -->
+    <!-- Scripts -->
 
-<script src="{{ asset('js/app.js') }}" defer></script>
-@yield('script')
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    @yield('script')

@@ -83,6 +83,13 @@
                                                     </form>
                                                 </div>
                                             </div>
+                                            <div class="btn-group-justified">
+                                                <div class="btn-group">
+                                                    <a class="btn btn-outline-info" href="{{ route('jobReqs.index', $job) }}">
+                                                       {{__('Job Requests')}}
+                                                    </a>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach

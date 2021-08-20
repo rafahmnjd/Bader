@@ -23,9 +23,11 @@ class CharityJob extends Model
       *
       * @return \Illuminate\Database\Eloquent\Relations\HasMany
       */
-     public function jobRequests(): HasMany
+     public function jobRequests()
      {
          return $this->hasMany('App\Models\VolunteerRequest', 'charity_job_id');
      }
+
+     
 
 }

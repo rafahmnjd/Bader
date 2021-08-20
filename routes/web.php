@@ -97,7 +97,6 @@ Route::middleware(['auth'])->group(function () {
 
     //Project Requirment Routes
     Route::get('project/{project}/requirments', 'ProjectRequirementController@index')->name('projReqs.index');
-    Route::get('project/{project}/requirments/create', 'ProjectRequirementController@create')->name('projReqs.create');
     Route::post('project/{project}/requirments', 'ProjectRequirementController@store')->name('projReqs.store');
     Route::get('project/requirments/{projReq}/edit', 'ProjectRequirementController@edit')->name('projReqs.edit');
     Route::match(['put', 'post'], 'project/requirments/{projReq}', 'ProjectRequirementController@update')->name('projReqs.update');
@@ -148,7 +147,7 @@ Route::middleware(['auth'])->group(function () {
 
 //benifactors && charity
     Route::get('user/fills', 'FillController@MyFills')->name('user.myFills');
-
+    Route::get('user/jobReqs','VolunteerRequestController@myJobRequests')->name('user.jobReqs');
 // Route::match(['put', 'post'], 'shortages/{shortage}/close', 'ShortageController@close')->name('shortages.close');
     // Route::resource('benfes', 'BenefactorController');
 });

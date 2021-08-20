@@ -1,86 +1,72 @@
 @extends('layouts.app')
 @section('content')
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title">{{ __('Manage Jobs') }}
-                        <a id="top-plus" href="{{ route('jobs.create') }}" class="btn btn-outline-success  float-left">
-                            <i class="zmdi zmdi-plus"></i>
-                        </a>
-                    </h5>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">{{ __('id') }}</th>
-                                    <th scope="col">{{ __('Title') }}</th>
-                                    <th scope="col">{{ __('Details') }}</th>
-                                    <th scope="col">{{ __('Created at') }}</th>
-                                    <th scope="col">{{ __('Location') }}</th>
-                                    <th scope="col">{{ __('Tags') }}</th>
-                                    <th scope="col">{{ __('State') }}</th>
+<div class="row justify-content-center">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
 
-                                    <th scope="col" width="150">{{ __('Control') }}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($jobs as $job)
-                                    <tr>
-                                        <th scope="row">{{ $job->id }}</th>
-                                        <td>
-                                            @if (config('app.locale') == 'ar')
-                                                {{ $job->job_title_ar }}
-                                            @else
-                                                {{ $job->job_title_en }}
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if (config('app.locale') == 'ar')
-                                                {{ $job->job_details_ar }}
-                                            @else
-                                                {{ $job->job_details_en }}
-                                            @endif
-                                        </td>
-                                        <td>{{ $job->created_at }}</td>
-                                        <td>
-                                            @if (config('app.locale') == 'ar')
-                                                {{ $job->location_ar }}
-                                            @else
-                                                {{ $job->location_en }}
-                                            @endif
+                <h5 class="card-title">
+                    @if(!empty($job)) {{$job->naame_ar}}
+                    @else {{__('My Jobs Requests')}}
+                    @endif
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">{{ __('Volnteer Name') }}</th>
+                                <th scope="col">{{ __('CV') }}</th>
+                                <th scope="col">{{ __('State') }}</th>
+                                <th scope="col" width="150">{{ __('Control') }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                                        </td>
-                                        <td>{{ $job->tag }}</td>
-                                        <td>{{ __($job->state) }}</td>
-                                        <td>
-                                            <div class="btn-group-justified">
-                                                <div class="btn-group">
-                                                    <a class="btn btn-outline-warning rounded-circle"
-                                                        href="{{ route('jobs.edit', $job->id) }}">
-                                                        <i class="zmdi zmdi-edit"></i>
-                                                    </a>
-                                                </div>
-                                                <div class="btn-group">
-                                                    <form action="{{ route('jobs.destroy', $job->id) }}" method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button Type="submit" class="btn rounded-circle btn-outline-danger">
-                                                            <i class="zmdi zmdi-delete"></i>
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                            @foreach ($jobReqs as $jreq)
+                            <tr>
+                                <td> @if (config('app.locale') ==
+                                    'ar'){{$jreq->volunteer->name_ar}}@else{{$jreq->volunteer->name_en}} @endif</td>
+                                <td>
+                                    <a href="{{asset(config('path.cvs').'/'.$jreq->cv)}}"
+                                        target="__blank()">{{__('show CV')}}</a>
+                                </td>
+                                <td>{{__($jreq->state)}}</td>
+                                <td>
+                                    @can('ch_access',$jreq->job->charity)
+
+                                    <form action="{{route('jobReqs.update',$jreq)}}" method="POST">
+
+                                        @csrf
+                                        @method('PUT')
+                                        <input type="hidden" name="state" value="accepted">
+                                        <button type="submit" class="btn btn-success m-1 @if($jreq->state !="waiting") disabled @endif" >{{__('accepted')}}</button>
+                                    </form>
+                                    <form action="{{route('jobReqs.update',$jreq)}}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <input type="hidden" name="state" value="refused">
+                                        <button type="submit" class="btn btn-warning m-1 @if($jreq->state !="waiting") disabled @endif">{{__('refused')}}</button>
+                                    </form>
+                                    @elsecan('vol_access',$jreq->volunteer)
+                                    <form action="{{ route('jobReqs.destroy', $jreq) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button Type="submit" class="btn rounded-circle btn-outline-danger">
+                                            <i class="zmdi zmdi-delete m-1"></i>
+                                        </button>
+                                    </form>
+                                    @endcan
+                                </td>
+                            </tr>
+                            @endforeach
+
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
+</div>
 @endsection

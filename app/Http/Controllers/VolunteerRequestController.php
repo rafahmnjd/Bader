@@ -16,8 +16,8 @@ class VolunteerRequestController extends Controller
     public function index(CharityJob $job)
     {
 
-        $volReqs = $job->volReqs;
-        return view('volreqs.index', compact('volReqs', 'job'));
+        $jobReqs = $job->jobRequests;
+        return view('volreqs.index', compact('jobReqs', 'job'));
     }
 
     // /**
@@ -49,52 +49,41 @@ class VolunteerRequestController extends Controller
         }
 
         $volReq = VolunteerRequest::create($input);
+        return redirect(route('user.myFills'));
+
+    }
+
+/**
+ * update the specified resource from storage.
+ *
+ * @param  \App\Models\VolunteerRequest  $jobReqs
+ * @return \Illuminate\Http\Response
+ */
+
+    public function update(Request $request, VolunteerRequest $jobReq)
+    {
+        # code...
+        $jobReq->state= $request->state;
+        $jobReq->save();
         return back();
-
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\VolunteerRequest  $volunteerRequest
-     * @return \Illuminate\Http\Response
-     */
-    public function show(VolunteerRequest $volunteerRequest)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\VolunteerRequest  $volunteerRequest
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(VolunteerRequest $volunteerRequest)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\VolunteerRequest  $volunteerRequest
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, VolunteerRequest $volunteerRequest)
-    {
-        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\VolunteerRequest  $volunteerRequest
+     * @param  \App\Models\VolunteerRequest  $jobReq
      * @return \Illuminate\Http\Response
      */
-    public function destroy(VolunteerRequest $volunteerRequest)
+    public function destroy(VolunteerRequest $jobReq)
     {
         //
+
+    }
+
+    public function myJobRequests()
+    {
+        # code...
+        $jobReqs=Auth::user()->Volunteer->jobRequests;
+        return view('volreqs.index',compact('jobReqs'));
     }
 }
