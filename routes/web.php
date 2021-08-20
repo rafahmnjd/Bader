@@ -79,7 +79,7 @@ Route::get('charities/{charity}/surpluses', 'CharityController@surpluses')->name
 Route::get('charities/{charity}/jobs', 'CharityController@jobs')->name('charities.jobs');
 
 // -------------------------------------------------------------------------------------------------------
-Route::get('jobs/{job}','CharityJobController@show')->name('jobs.show');
+Route::get('jobs/{job}/show','CharityJobController@show')->name('jobs.show');
 // -------------------------------------------------------------------------------------------------------
 
 // Auth pages
@@ -139,15 +139,15 @@ Route::middleware(['auth'])->group(function () {
     Route::match(['put', 'post'], 'jobs/{job}/close', 'CharityJobController@close')->name('jobs.close');
 
     //Job request Routes
-    Route::get('job/{job}/request', 'VolunteerRequestController@index')->name('jobReqs.index');
-    Route::get('job/{job}/request/create', 'VolunteerRequestController@create')->name('jobReqs.create');
-    Route::post('job/{job}/request', 'VolunteerRequestController@store')->name('jobReqs.store');
-    Route::get('job/request/{jobReq}/edit', 'VolunteerRequestController@edit')->name('jobReqs.edit');
-    Route::match(['put', 'post'], 'job/request/{jobReq}', 'VolunteerRequestController@update')->name('jobReqs.update');
-    Route::delete('job/request/{jobReq}', 'VolunteerRequestController@destroy')->name('jobReqs.destroy');
+    Route::get('jobreq/{job}/request', 'VolunteerRequestController@index')->name('jobReqs.index');
+    Route::get('jobreq/{job}/request/create', 'VolunteerRequestController@create')->name('jobReqs.create');
+    Route::post('jobreq/{job}/request', 'VolunteerRequestController@store')->name('jobReqs.store');
+    Route::get('jobreq/request/{jobReq}/edit', 'VolunteerRequestController@edit')->name('jobReqs.edit');
+    Route::match(['put', 'post'], 'jobreq/request/{jobReq}', 'VolunteerRequestController@update')->name('jobReqs.update');
+    Route::delete('jobreq/request/{jobReq}', 'VolunteerRequestController@destroy')->name('jobReqs.destroy');
 
-//benifactors
-    // Route::get('user/fills', 'BenefactorController@MyFills')->name('user.myFills');
+//benifactors && charity
+    Route::get('user/fills', 'FillController@MyFills')->name('user.myFills');
 
 // Route::match(['put', 'post'], 'shortages/{shortage}/close', 'ShortageController@close')->name('shortages.close');
     // Route::resource('benfes', 'BenefactorController');

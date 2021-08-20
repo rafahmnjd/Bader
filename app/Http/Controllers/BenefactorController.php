@@ -84,11 +84,4 @@ class BenefactorController extends Controller
     {
         //
     }
-
-    public function MyFills()
-    {
-        # code...
-        $fills= Auth::user()->fills;
-        return view('Benefactors.fills',compact('fills'));
-    }
 }

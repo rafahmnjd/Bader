@@ -117,7 +117,12 @@
                                         style="display: none;">
                                         @csrf
                                     </form>
+                                    <hr>
                                     @can('charity')
+                                    <a class="dropdown-item" href="{{ route('user.myFills') }}">
+                                        {{ __('Manage My Fills') }}
+                                    </a>
+                                    <hr>
                                         <a class="dropdown-item" href="{{ route('charities.create') }}">
                                             {{ __('Manage my charity') }}
                                         </a>
@@ -133,6 +138,10 @@
                                         <a class="dropdown-item" href="{{ route('shortages.index', 'plus') }}">
                                             {{ __('Manage Surplus') }}
                                         </a>
+                                    @elsecan('benef')
+                                    <a class="dropdown-item" href="{{ route('user.myFills') }}">
+                                        {{ __('Manage my Fills') }}
+                                    </a>
                                     @elsecan('volunteer')
                                         <a class="dropdown-item" href="{{ route('volunteers.create') }}">
                                             {{ __('Manage my profile') }}

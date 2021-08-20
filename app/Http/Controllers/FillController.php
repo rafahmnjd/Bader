@@ -24,9 +24,9 @@ class FillController extends Controller
                 return view('fills.index', compact('fills', 'shortage'));
             }
         }
-        $fills = Auth::user()->fills;
-        return view('Benefactors.fills', compact('fills'));
 
+        $fills = Auth::user()->fills;
+        return view('fills.index', compact('fills', 'shortage'));
     }
 
     /**
@@ -52,8 +52,8 @@ class FillController extends Controller
 
         $data = ['user_id' => Auth::user()->id, 'shortage_id' => $shortage->id, 'type' => "shortage", 'state' => "waiting", 'quantity' => $request->quantity];
         $fill = Fill::create($data);
+        return redirect(route('user.myFills'));
 
-        return redirect(route('fills.index', $shortage));
 
     }
 
@@ -103,7 +103,7 @@ class FillController extends Controller
         }
 
         $fill->update($request->all());
-        return redirect(route('fills.index', $fill->shortage_id));
+        return redirect(route('user.myFills'));
 
     }
 
@@ -135,5 +135,12 @@ class FillController extends Controller
 
         $fill->shortage->save();
         return redirect(route('fills.index', $fill->shortage_id));
+    }
+
+    public function MyFills()
+    {
+        $fills = Auth::user()->fills;
+        return view('fills.index', compact('fills'));
+
     }
 }
