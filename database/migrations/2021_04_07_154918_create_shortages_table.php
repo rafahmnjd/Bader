@@ -20,11 +20,10 @@ class CreateShortagesTable extends Migration
             $table->text('details_ar')->nullable();
             $table->text('details_en')->nullable();
             $table->unsignedInteger('quantity')->default(1);
-            $table->set('type', ['min', 'plus'])->default('min');
+            $table->set('type', ['min', 'plus','proj'])->default('proj');
             $table->unsignedBigInteger('item_id');
             $table->set('state', ['waiting', 'closed']);
             $table->double('unite_cost')->default(0.0);
-
             $table->timestamps();
         });
     }
