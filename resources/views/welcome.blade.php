@@ -8,23 +8,24 @@
 <link rel="stylesheet" href="{{asset('css/statistics.css')}}">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 @endsection
-@section('bodyTag')
+{{-- @section('bodyTag')
 onload="resetSelection()"
-@endsection
+@endsection --}}
 @section('content')
 <div class="row">
+
     {{-- first column --}}
-    <div class="col-lg-3 col-md-12 order-12 order-lg-1 order-md-12 order-sm-12 mb-1">
+    <div class="col-lg-3 col-md-12 order-12 order-lg-1 order-md-12 order-sm-12 my-1">
         <div class="row">
             {{-- Newest Projects --}}
-            <div class="col-lg-12 col-md-6 col-sm-12 mb-1">
-                <div class="card mb-2 shadow">
+            <div class="col-lg-12 col-md-6 col-sm-12 my-1">
+                <div class="card my-2 shadow">
                     <div class="card-body ">
                         <h5 class="card-title">{{ __('Newest Projects') }} <small
                                 class="@if (app()->getLocale() == 'ar')float-left @else float-right @endif">
                                 <span>{{$counts["proj"]}}</span> <small>{{__('of projects')}}</small>
                             </small></h5>
-                        <hr class="mb-0">
+                        <hr class="my-0">
 
                         <div class="list-group list-group-flush ">
                             @foreach ($projects as $project)
@@ -53,14 +54,15 @@ onload="resetSelection()"
                 </div>
             </div>
             {{-- Newest Jobs --}}
-            <div class="col-lg-12 col-md-6 col-sm-12 mb-1">
-                <div class="card mb-2 shadow">
+            <div class="col-lg-12 col-md-6 col-sm-12 my-1">
+
+                <div class="card my-2 shadow">
                     <div class="card-body ">
                         <h5 class="card-title">{{ __('Newest Jobs') }}<small
                                 class="@if (app()->getLocale() == 'ar')float-left @else float-right @endif">
                                 <span>{{$counts["job"]}}</span><small> {{__('of jobs')}}</small></small>
                         </h5>
-                        <hr class="mb-0">
+                        <hr class="my-0">
                         <div class="list-group list-group-flush">
                             @foreach ($jobs as $job)
                             <a class="list-group-item list-group-item-action" href="{{ route('jobs.show', $job) }}">
@@ -90,11 +92,11 @@ onload="resetSelection()"
     </div>
 
     {{-- second column --}}
-    <div class="col-lg-6 col-md-8 order-1 order-lg-4 order-md-4 order-sm-1 mb-1">
+    <div class="col-lg-6 col-md-8 order-1 order-lg-4 order-md-4 order-sm-1 my-1">
         {{-- statistics --}}
         <div class="row">
-            <div class="col-md-4 mb-1 px-2">
-                <div class="card-box bg-primary shadow">
+            <div class="col-md-4 my-1 px-2">
+                <div class="card-box my-2 bg-primary shadow">
                     <div class="inner">
                         <h3>{{$counts["volun"]}}</h3>
                         <p class="text-left"> {{ __('of Volunteers') }} </p>
@@ -104,8 +106,8 @@ onload="resetSelection()"
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-1 px-2">
-                <div class="card-box bg-red shadow">
+            <div class="col-md-4  my-1 px-2">
+                <div class="card-box my-2 bg-red shadow">
                     <div class="inner">
                         <h3> {{$counts["benef"]}} </h3>
                         <p class="text-left"> {{ __('of Benefactores') }} </p>
@@ -115,8 +117,8 @@ onload="resetSelection()"
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-1 px-2">
-                <div class="card-box themYellow shadow">
+            <div class="col-md-4 my-1 px-2">
+                <div class="card-box my-2 themYellow shadow">
                     <div class="inner">
                         <h3> {{$counts["ch"]}} </h3>
                         <p class="text-left"> {{ __('of Charities') }} </p>
@@ -128,9 +130,8 @@ onload="resetSelection()"
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6 col-sm-6 mb-1 px-2">
-
-                <div class="card shadow mb-2">
+            <div class="col-md-6 col-sm-6 my-1 px-2">
+                <div class="card shadow my-2">
                     <div class="card-body">
                         <h5 class="card-title">{{__('Closed Shortages')}}</h5>
                         <p class="card-text text-gray m-0">
@@ -142,16 +143,15 @@ onload="resetSelection()"
                         <br>
                         <div class="progress" style="height: 5px;">
                             <div class="progress-bar bg-success" role="progressbar"
-                                style="width:{{$percents["short"]}}%"
-                                aria-valuenow="{{$percents["short"]}}" aria-valuemin="0"
-                                aria-valuemax="100">
+                                style="width:{{$percents["short"]}}%" aria-valuenow="{{$percents["short"]}}"
+                                aria-valuemin="0" aria-valuemax="100">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-sm-6 mb-1 px-2">
-                <div class="card shadow mb-2">
+            <div class="col-md-6 col-sm-6 my-1 px-2">
+                <div class="card shadow my-2">
                     <div class="card-body">
                         <h5 class="card-title">{{__('Complited Projects')}}</h5>
                         <p
@@ -160,22 +160,37 @@ onload="resetSelection()"
                         </p>
                         <br>
                         <div class="progress" style="height: 5px;">
-                            <div class="progress-bar bg-info" role="progressbar"
-                                style="width:{{$percents["proj"]}}%"
-                                aria-valuenow="{{$percents["proj"]}}" aria-valuemin="0"
-                                aria-valuemax="100">
+                            <div class="progress-bar bg-info" role="progressbar" style="width:{{$percents["proj"]}}%"
+                                aria-valuenow="{{$percents["proj"]}}" aria-valuemin="0" aria-valuemax="100">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-12 my-1 px-2">
+                <div class="card shadow my-2">
+                    <div class="card-body">
+                        <canvas id="itemByGov"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 my-1 px-2 ">
+                <div class="card shadow my-2">
+                    <div class="card-body">
+                        <canvas id="chByGov"></canvas>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 
     {{-- third column--}}
-    <div class="col-lg-3 col-md-4 order-6 order-lg-12 order-md-6 order-sm-6 mb-1">
+    <div class="col-lg-3 col-md-4 order-6 order-lg-12 order-md-6 order-sm-6 my-1">
         {{-- Charities --}}
-        <div class="card shadow mb-2">
+        <div class="card shadow my-2">
             <div class="card-body">
                 <h5 class="card-title">{{__('Newest Charities')}}</h5>
                 {{-- <p class="card-text"><small>{{__('charity _count',['num'=>$chCount])}}</small></p> --}}
@@ -208,5 +223,140 @@ onload="resetSelection()"
             </div>
         </div>
     </div>
+
+
 </div>
+@endsection
+@section('script')
+<script src="{{asset('js/jquery.min.js')}}"></script>
+<script src="{{asset('js/chart.min.js')}}"
+    integrity="sha512-asxKqQghC1oBShyhiBwA+YgotaSYKxGP1rcSYTDrB0U6DxwlJjU59B67U8+5/++uFjcuVM8Hh5cokLjZlhm3Vg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    $(document).ready(function () {
+        var ctx = $('#chByGov');
+        var jslabels = [];
+        var chval = [];
+        var itemByGov=$('#itemByGov');
+        var colors = [
+            '#00876c',
+            '#379469',
+            '#58a066',
+            '#78ab63',
+            '#98b561',
+            '#b8bf62',
+            '#dac767',
+            '#deb256',
+            '#e09d4b',
+            '#e18745',
+            '#e06f45',
+            '#dc574a',
+            '#d43d51',
+            // '#3490dc', '#d9534f','#e3342f', '#ffc600','#ffed4a','#38c172','#6c757d',
+        ];
+
+    // var patterns = pattern.generate(colors);
+        @foreach ($ch_gov_Chart as $ch)
+            jslabels.push("{!! $ch->name_ar !!}");
+            chval.push("{!!$ch->val!!}");
+            // consol.log(val);
+        @endforeach
+
+
+        var chByGov = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                // labels:labels
+                labels: jslabels,
+                datasets: [{
+                    label: "charties count",
+                    // data: val,
+                    data: chval,
+                    // data: [3,4,2,1,5,6,3,1,8,7,2,3,2,5,7],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.4)',
+                        'rgba(54, 162, 235, 0.4)',
+                        'rgba(255, 206, 86, 0.4)',
+                        'rgba(75, 192, 192, 0.4)',
+                        'rgba(153, 102, 255, 0.4)',
+                        'rgba(255, 159, 64, 0.4)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        display: true,
+                        position:'left',
+                    }
+                }
+            }
+        });
+
+
+var itemdata = {
+labels: jslabels,
+datasets: [
+    <?php $rand = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');?>
+@for($i=0; $i < count($item_gov_chart) ; $i++){
+<?php $lindex=$item_gov_chart[$i]->item_name;?>
+
+    label:"{!! $lindex !!}",
+    data:[<?php
+
+        $firstId=$item_gov_chart[$i]->gov_id;
+        for($j=1;$j<$firstId;$j++){
+            echo("0,");
+        }
+        echo($item_gov_chart[$i]->val.",");
+        $firstId = $firstId+1;
+        $i=$i+1;
+        while($i<count($item_gov_chart) && $lindex==$item_gov_chart[$i]->item_name){
+            for($j=$firstId; $j< $item_gov_chart[$i]->gov_id; $j++){
+                    echo("0,");
+               }
+                $firstId=$item_gov_chart[$i]->gov_id;
+                echo($item_gov_chart[$i]->val);
+                echo(",");
+                $firstId=$firstId+1;
+            $i+=1;
+        }
+        for($j=$firstId;$j<=14;$j++){
+            echo("0,");
+        }
+
+        ?>],
+       <?php
+        $colo = $rand[rand(0,2)].$rand[rand(0,5)].$rand[rand(0,5)].','.$rand[rand(0,1)].$rand[rand(0,9)].$rand[rand(0,9)].','.$rand[rand(0,1)].$rand[rand(0,9)].$rand[rand(0,9)];
+        echo( "backgroundColor:['rgba(".$colo.",0.2)']," );
+        echo( "borderColor:['rgba(".$colo.",1)']," ) ;
+        ?>
+        borderWidth: 1
+        },
+        @endfor
+        ],
+        };
+var myChart = new Chart(itemByGov, {
+type: 'bar',
+data: itemdata,
+options: {
+scales: {
+y: {
+beginAtZero: true
+}
+}
+}
+});
+    });
+</script>
 @endsection
