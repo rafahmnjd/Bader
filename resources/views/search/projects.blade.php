@@ -55,7 +55,7 @@
                         <td>
                             <div class="widget-26-job-info">
                                 <button class="btn btn-light btn-icon-text btn-edit-profile">
-                                    <a href="{{ route('charities.projects', $project) }}">
+                                    <a href="{{ route('projects.show', $project) }}">
                                         {{ __('Show') }}
                                     </a>
                                 </button>

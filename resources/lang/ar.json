@@ -169,10 +169,12 @@
     ,"Completed":"اكتملت"
     ,"completed":"اكتملت"
     ,"Manage Requirments":"إدراة المتطلبات"
-    ,"Manage fills":"إدارة النقص"
+    ,"Manage Fills":"إدارة النقص"
     ,"Messages":"الرسائل"
     ,"min":"نقص"
     ,"plus":"فائض"
     ,"Close":"إغلاق"
+    ,"New Requirment For":"متطلب جديد لـ"
+    ,"Manage Project Requirment":"إدارة متطلبات المشروع"
 
 }
