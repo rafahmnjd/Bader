@@ -152,10 +152,10 @@
                             </div>
                             <div class="col-md-4">
 
-                                <select id="citySelect" class="custom-select" name="city_id">
-                                    <option value="" disabled selected>{{ __('Choose City') }}</option>
+                                <select id="citySelect" class="custom-select" name="city_id" required>
+                                    <option value="" disabled>{{ __('Choose City') }}</option>
                                     @if (!empty($charity) && !empty($charity->city))
-                                        <option value="$charity->city_id" selected> {{ $charity->city->name_ar }}</option>
+                                        <option value="{{$charity->city_id}}" selected> {{ $charity->city->name_ar }}</option>
                                     @endif
                                 </select>
                             </div>

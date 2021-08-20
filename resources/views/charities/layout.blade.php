@@ -131,88 +131,20 @@
 
             <!-- left wrapper end -->
             <!-- middle wrapper start -->
-            <div class="col-md-8 col-xl-6 middle-wrapper">
+            <div class="col-md-8 col-xl-9 middle-wrapper">
                 @yield('middile')
             </div>
 
             <!-- middle wrapper end -->
             <!-- right wrapper start -->
-            {{-- Newest Jobs --}}
+            {{-- Newest Jobs
             <div class="d-none d-xl-block col-xl-3 right-wrapper">
                 <div class="row">
                     <div class="col-md-12">
-                        {{-- <div class="card mb-2 shadow ">
-                            <div class="card-body ">
-                                <h5 class="card-title">{{ __('Newest Jobs') }}
-                                </h5>
-                                <hr class="mb-0">
-                                <div class="list-group list-group-flush">
-                                    @foreach ($charity->jobs as $job)
-                                        <a class="list-group-item list-group-item-action"
-                                            href="{{ route('jobs.show', $job) }}">
-                                            <h6 class="font-weight-bold">
-                                                @if (app()->getLocale() == 'ar')
-                                                {{ $job->job_title_ar }} @else {{ $job->job_title_en }}
-                                                @endif
-                                            </h6>
-                                            <p class="card-text text-truncate">
-                                                @if (app()->getLocale() == 'ar')
-                                                    {{ $job->job_details_ar }}
-                                                @else {{ $job->job_details_en }}@endif
-                                            </p>
-                                        </a>
-                                    @endforeach
-                                </div>
-                                @if (app()->getLocale() == 'ar')
-                                    <a class="@if (app()->getLocale() == 'ar') float-left
-                                    @else
-                                        float-right @endif"
-                                        href="{{ route('search.jobs') }}">{{ __('View more') }} <i
-                                            class="fa fa-arrow-circle-left"></i></a>
-                                @else
-                                    <a class="float-right" href="{{ route('search.jobs') }}">{{ __('View more') }}
-                                        <i class="fa fa-arrow-circle-right"></i></a>
-                                @endif
-                            </div>
-                        </div> --}}
 
-                        {{-- Charities --}}
-                        {{-- <div class="card shadow mb-2">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ __('Newest Charities') }}</h5>
-                                <hr>
-                                <div class="list-group">
-                                    @foreach ($charity as $ch)
-                                        <a class="list-group-item list-group-item-action border-0 "
-                                            href="{{ route('charities.show', $ch) }}">
-                                            <div class="row align-items-center">
-                                                <div class="col p-0 text-center">
-                                                    <img src="{{ asset(config('path.ch_logo') . $ch->logo) }}"
-                                                        class="img-fluid px-1" style="max-height: 3rem">
-                                                </div>
-                                                <div class="col-md-9 col-sm-10 p-0 ">
-                                                    @if (app()->getLocale() == 'ar')
-                                                    {{ $ch->name_ar }} @else
-                                                        {{ $ch->name_en }}@endif
-                                                </div>
-                                            </div>
-                                        </a>
-                                    @endforeach
-                                </div>
-                                @if (app()->getLocale() == 'ar')
-                                    <a class="@if (app()->getLocale() == 'ar') float-left
-                                    @else float-right @endif"
-                                        href="{{ route('search.charities') }}">{{ __('View more') }} <i
-                                            class="fa fa-arrow-circle-left"></i></a>
-                                @else
-                                    <a class="float-right" href="{{ route('search.charities') }}">{{ __('View more') }}
-                                        <i class="fa fa-arrow-circle-right"></i></a>
-                                @endif
-                            </div>
-                        </div> --}}
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- right wrapper end -->
         </div>
     </div>
