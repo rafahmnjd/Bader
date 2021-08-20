@@ -14,7 +14,7 @@ class ShortageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(string $type = "proj")
+    public function index(string $type)
     {
         //
         if ($type == "min") {
@@ -22,10 +22,11 @@ class ShortageController extends Controller
             return view('shortages.index', compact('shortages'));
 
         }
-        if ($type == "plus") {
+        elseif ($type == "plus") {
             $surpluses = Auth::user()->charity->surpluses;
             return view('shortages.surpIndex', compact('surpluses'));
         }
+
     }
 
     /**

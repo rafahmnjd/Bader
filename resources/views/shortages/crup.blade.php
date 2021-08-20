@@ -15,7 +15,7 @@
                         @endif
                         <!--name-->
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="item_id">{{ __('Item') }}</label>
                                     <select id="" class="form-control" name="item_id" required>
@@ -30,14 +30,24 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="quantity">{{ __('Quantity') }}</label>
                                 <input class="form-control my-1" type="number" required name="quantity" @if (!empty($shortage)) value="{{ $shortage->quantity }}" @else
                                         value="{{ old('quantity') }}" @endif>
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label for="type">{{ __('Type') }}</label>
+                                    <select id="type" class="custom-select" name="type" required>
+                                        <option value="min" @if(!empty($shortage)&&$shortage->type=='min')selected @endif>{{ __('min') }}</option>
+                                        <option value="plus" @if(!empty($shortage)&&$shortage->type=='min')selected @endif>{{ __('plus') }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-3">
                                 <div class="form-group">
                                     <label for="state">{{ __('State') }}</label>
                                     <select id="state" class="custom-select" name="state" required>

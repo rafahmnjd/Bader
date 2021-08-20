@@ -72,7 +72,7 @@
                                         <div class="btn-group ">
                                             <a class="btn btn-outline-primary"
                                                 href="{{ route('fills.index', $shortage->id) }}">
-                                                {{ __('Fill') }}
+                                                {{ __('Fills Request') }}
                                             </a>
                                         </div>
                                     </div>

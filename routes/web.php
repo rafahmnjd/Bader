@@ -115,7 +115,7 @@ Route::middleware(['auth'])->group(function () {
 
     //shortage resource
     Route::resource('shortages', 'ShortageController')->except('index');
-    Route::get('shortages/type/{type?}/index','ShortageController@index')->name('shortages.index');
+    Route::get('shortages/type/{type}/index','ShortageController@index')->name('shortages.index');
     Route::match(['put', 'post'], 'shortages/{shortage}/close', 'ShortageController@close')->name('shortages.close');
 
     //fill Shortage
