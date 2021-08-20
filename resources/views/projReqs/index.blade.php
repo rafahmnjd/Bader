@@ -60,7 +60,7 @@
                                                 <div class="btn-group">
                                                     <a class="btn btn-outline-info"
                                                         href="{{ route('fills.index', $projReq->id) }}">
-                                                        {{ __('Manage fills') }}
+                                                        {{ __('Manage Fills') }}
                                                     </a>
                                                 </div>
                                                 <div class="btn-group">
