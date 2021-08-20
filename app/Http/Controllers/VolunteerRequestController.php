@@ -49,7 +49,7 @@ class VolunteerRequestController extends Controller
         }
 
         $volReq = VolunteerRequest::create($input);
-        return redirect(route('user.myFills'));
+        return redirect(route('user.jobReqs'));
 
     }
 
