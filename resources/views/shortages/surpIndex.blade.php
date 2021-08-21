@@ -3,7 +3,7 @@
 
     <div class="card">
         <div class="card-header">
-            <a id="top-plus" href="{{ route('shortages.create') }}" class="btn btn-outline-success btn-sm float-left">
+            <a id="top-plus" href="{{ route('shortages.create','plus') }}" class="btn btn-outline-success btn-sm float-left">
                 <i class="zmdi zmdi-plus"></i>
             </a>
         </div>

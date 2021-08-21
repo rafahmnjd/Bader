@@ -1,5 +1,5 @@
 @extends('charities.layout')
-@section('create_href', route('shortages.create'))
+@section('create_href', route('shortages.create','plus'))
 @section('create_word', __('Add a new surplus'))
 @section('middile')
     <div class="row">

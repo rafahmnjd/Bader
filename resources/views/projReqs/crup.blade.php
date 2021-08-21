@@ -1,86 +1,100 @@
 @extends('layouts.app')
-@section('content')
-    <div class="row justify-content-center">
-        <div class="col-md">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title">{{ __('New Requirment For') }} "{{ $project->name_ar }}" {{ __('Project') }}
-                    </h5>
-                </div>
-                <div class="card-body">
-                    <form
-                        action="{{ empty($projReq) ? route('projReqs.store', $project) : route('projReqs.update', $projReq) }}"
-                        method="Post" enctype="multipart/form-data">
-                        @csrf
-                        @if (!empty($projReq))
-                            @method('PUT')
-                        @endif
-                        <!--name-->
-                        <div class="row">
-                            <div class="col">
-                                <div class="row">
-                                    <div class="col-md-4 col-form-label">
-                                        <label for="name_ar">{{ __('Title AR') }}:</label>
-                                    </div>
-                                    <div class="col-8">
-                                    <input class="form-control" type="text" name="name_ar" required @if (!empty($projReq)) value="{{ $projReq->name_ar }}" @else
-                                            value="{{ old('name_ar') }}" @endif>
-                                    </div>
-                                    <div class="col-md-4 col-form-label">
-                                        <label for="details_ar">{{ __('Text AR') }}:</label>
-                                    </div>
-                                    <div class="col-8">
-                                        <textarea class="form-control my-1" type="text" required
-                                            name="details_ar">@if (!empty($projReq)){{ $projReq->details_ar }} @else{{ old('details_ar') }} @endif</textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="row">
-                                    <div class="col-md-4 col-form-label">
-                                        <label for="name_en">{{ __('Title EN') }}:</label>
-                                    </div>
-                                <div class="col-8"><input class="form-control" type="text" name="name_en" @if (!empty($projReq)) value="{{ $projReq->name_en }}" @else
-                                            value="{{ old('name_en') }}" @endif required>
-                                    </div>
+@section('style')
 
-                                    <div class="col-md-4 col-form-label">
-                                        <label for="details_en">{{ __('Text EN') }}:</label>
-                                    </div>
-                                    <div class="col-8">
-                                        <textarea class="form-control my-1" type="text" required
-                                            name="details_en">@if (!empty($projReq)){{ $projReq->details_en }} @else{{ old('details_en') }} @endif</textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2 col-form-label">
-                                <label for="state">{{ __('state') }}</label>
-                            </div>
-                            <div class="col-md-4">
-                                <select id="state" class="custom-select" name="state" required>
-                                    <option value="waiting" @if (!empty($projReq) && $projReq->state == 'waiting') selected @endif>{{ __('Waiting') }}</option>
-                                    <option value="closed" @if (!empty($projReq) && $projReq->state == 'closed') selected @endif>{{ __('Closed') }}</option>
+<link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{asset('css/bootstrap-select.min.css')}}">
+
+@endsection
+@section('content')
+<div class="row justify-content-center">
+    <div class="col-md">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">{{ __('Requierment Information') }}</h5>
+            </div>
+            <div class="card-body">
+                <form action="{{ empty($projReq) ? route('projReqs.store',$project) : route('projReqs.update', $projReq) }}"
+                    method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @if (!empty($projReq))
+                    @method('PUT')
+                    @endif
+                    <!--name-->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="item_id">{{ __('Item') }}</label>
+                                <select id="items-select" class="selectpicker form-control" data-live-search="true" name="item_id" required>
+                                    @if (!empty($projReq))
+                                    <option data-tokens="{{ $projReq->item_id }}" value="{{ $projReq->item_id }}" selected>
+                                        {{ $projReq->item->name_ar }}-{{ $projReq->item->name_en }}</option>
+                                    @endif
+                                    @foreach ($items as $item)
+                                    <option data-tokens="{{ $item->id }}" value="{{ $item->id }}">{{ $item->name_ar }}
+                                    </option>
+                                    @endforeach
                                 </select>
                             </div>
-                            <div class="col-md-2 col-form-label">
-                                <label for="quantity">{{ __('Cost') }}:</label>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="quantity">{{ __('Quantity') }}</label>
+                                <input class="form-control my-1" type="number" required name="quantity"
+                                @if(!empty($projReq)) value="{{ $projReq->quantity }}" @else
+                                    value="{{ old('quantity') }}" @endif>
                             </div>
-                            <div class="col-md-4 input-group">
-                                <input class="form-control" type="number" name="quantity" required @if (!empty($projReq)) value="{{ $projReq->quantity }}" @endif>
-                                <span class="btn ">{{ __('SP') }}</span>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="type">{{ __('Type') }}</label>
+                                <select id="type" class="form-control selectpicker" name="type" required readonly>
+                                    <option value="proj" selected>{{__('Project Requirments')}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="state">{{ __('State') }}</label>
+                                <select id="state" class="form-control selectpicker" name="state" required>
+                                    @if (!empty($projReq))
+                                    <option value="{{ $projReq->state }}" selected>{{ __($projReq->state) }}
+                                    </option>
+                                    @endif
+                                    <option value="waiting">{{ __('Waiting') }}</option>
+                                    {{-- <option value="undeployed">{{__("undeployed")}}</option> --}}
+                                    <option value="closed">{{ __('Closed') }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="details_ar">{{ __('Ar Details') }}:</label>
+
+                                <textarea class="form-control my-1" type="text"
+                                    name="details_ar">@if (!empty($projReq)){{ $projReq->details_ar }} @else{{ old('details_ar') }} @endif</textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6 ">
+                            <div class="form-group">
+                                <label for="details_en">{{ __('EN Details') }}:</label>
+                                <textarea class="form-control my-1" type="text"
+                                    name="details_en">@if (!empty($projReq)){{ $projReq->details_en }} @else{{ old('details_en') }} @endif</textarea>
                             </div>
                         </div>
 
-                        <div class="form-group float-left">
-                            <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
-                            <a href="#" class="btn btn-secondary"
-                                onclick="location.href = document.referrer; return false;">{{ __('Cancel') }}</a>
+                        <div class="col d-flex align-items-end d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
+@endsection
+@section('script')
+<script src="{{asset('js/jquery.min.js')}}"></script>
+<script src="{{asset('js/bootstrap.js')}}"></script>
+<script src="{{asset('js/bootstrap-select.min.js')}}"></script>
 @endsection

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use App\Models\Shortage;
+use App\Models\Item;
+
 use Illuminate\Http\Request;
 
 class ProjectRequirementController extends Controller
@@ -17,6 +19,7 @@ class ProjectRequirementController extends Controller
     {
         //
         $projReqs = $project->requirments;
+        $type ="proj";
         return view('projReqs.index', compact('projReqs', 'project'));
     }
 
@@ -28,7 +31,8 @@ class ProjectRequirementController extends Controller
     public function create(Project $project)
     {
         //
-        return view('projReqs.crup', compact('project'));
+        $items = Item::all();
+        return view('projReqs.crup', compact('project','items'));
 
     }
 
@@ -66,7 +70,8 @@ class ProjectRequirementController extends Controller
     public function edit(Shortage $projReq)
     {
         //
-        return view('projReqs.crup', ['project' => $projReq->project, 'projReq' => $projReq]);
+        $items = Item::all();
+        return view('projReqs.crup', ['project' => $projReq->project, 'projReq' => $projReq,'items'=>$items]);
     }
 
     /**

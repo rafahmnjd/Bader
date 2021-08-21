@@ -172,10 +172,11 @@
                 @yield('content')
             </main>
         </div>
+        <script src="{{ asset('js/app.js') }}" defer></script>
+        @yield('script')
     </body>
 
 
     <!-- Scripts -->
 
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    @yield('script')
+

@@ -34,11 +34,11 @@ class ShortageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(string $type)
     {
         //
         $items = Item::all();
-        return view('shortages.crup', compact('items'));
+        return view('shortages.crup', compact('items','type'));
     }
 
     /**

@@ -42,8 +42,8 @@
                                 <div class="form-group">
                                     <label for="type">{{ __('Type') }}</label>
                                     <select id="type" class="custom-select" name="type" required>
-                                        <option value="min" @if(!empty($shortage)&&$shortage->type=='min')selected @endif>{{ __('min') }}</option>
-                                        <option value="plus" @if(!empty($shortage)&&$shortage->type=='min')selected @endif>{{ __('plus') }}</option>
+                                        <option value="min" @if((!empty($shortage)&&$shortage->type=='min')||(!empty($type)&&$type=='min'))selected @endif>{{ __('min') }}</option>
+                                        <option value="plus" @if((!empty($shortage)&&$shortage->type=='plus')||(!empty($type)&&$type=='plus'))selected @endif>{{ __('plus') }}</option>
                                     </select>
                                 </div>
                             </div>

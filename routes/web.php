@@ -39,7 +39,6 @@ Route::view('/about', 'about.index')->name('about');
 
 // -------------------------------------------------------------------------------------------------------
 
-
 //Search Routes
 
 Route::get('search/jobs', 'SearchController@jobs')->name('search.jobs'); //allJobs
@@ -79,7 +78,7 @@ Route::get('charities/{charity}/surpluses', 'CharityController@surpluses')->name
 Route::get('charities/{charity}/jobs', 'CharityController@jobs')->name('charities.jobs');
 
 // -------------------------------------------------------------------------------------------------------
-Route::get('jobs/{job}/show','CharityJobController@show')->name('jobs.show');
+Route::get('jobs/{job}/show', 'CharityJobController@show')->name('jobs.show');
 // -------------------------------------------------------------------------------------------------------
 
 // Auth pages
@@ -97,6 +96,8 @@ Route::middleware(['auth'])->group(function () {
 
     //Project Requirment Routes
     Route::get('project/{project}/requirments', 'ProjectRequirementController@index')->name('projReqs.index');
+    Route::get('project/{project}/requirments/create', 'ProjectRequirementController@create')->name('projReqs.create');
+
     Route::post('project/{project}/requirments', 'ProjectRequirementController@store')->name('projReqs.store');
     Route::get('project/requirments/{projReq}/edit', 'ProjectRequirementController@edit')->name('projReqs.edit');
     Route::match(['put', 'post'], 'project/requirments/{projReq}', 'ProjectRequirementController@update')->name('projReqs.update');
@@ -113,13 +114,15 @@ Route::middleware(['auth'])->group(function () {
     // Route::match(['put', 'post'], 'projReq/fills/{fill}/close', 'FillProjReqController@close')->name('projReqs.fills.close');
 
     //shortage resource
-    Route::resource('shortages', 'ShortageController')->except('index');
-    Route::get('shortages/type/{type}/index','ShortageController@index')->name('shortages.index');
+    Route::resource('shortages', 'ShortageController')->except('index', 'create');
+    Route::get('shortages/type/{type}/index', 'ShortageController@index')->name('shortages.index');
+    Route::get('shortages/type/{type}/create', 'ShortageController@create')->name('shortages.create');
+
     Route::match(['put', 'post'], 'shortages/{shortage}/close', 'ShortageController@close')->name('shortages.close');
 
     //fill Shortage
     Route::get('shortage/{shortage?}/fills', 'FillController@index')->name('fills.index');
-    Route::get('shortage/{shortage}/fills/create', 'FillController@create')->name('fills.create');
+    Route::get('shortage/{shortage}/fills/create/', 'FillController@create')->name('fills.create');
     Route::post('shortage/{shortage}/fills', 'FillController@store')->name('fills.store');
     Route::get('shortage/fills/{fill}/edit', 'FillController@edit')->name('fills.edit');
     Route::match(['put', 'post'], 'shortage/fill/fills/{fill}', 'FillController@update')->name('fills.update');
@@ -147,7 +150,7 @@ Route::middleware(['auth'])->group(function () {
 
 //benifactors && charity
     Route::get('user/fills', 'FillController@MyFills')->name('user.myFills');
-    Route::get('user/jobReqs','VolunteerRequestController@myJobRequests')->name('user.jobReqs');
+    Route::get('user/jobReqs', 'VolunteerRequestController@myJobRequests')->name('user.jobReqs');
 // Route::match(['put', 'post'], 'shortages/{shortage}/close', 'ShortageController@close')->name('shortages.close');
     // Route::resource('benfes', 'BenefactorController');
 });
