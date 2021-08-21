@@ -1,11 +1,10 @@
 @extends('layouts.app')
 @section('content')
-<div class="row">
-    <div class="col-lg-9 col-md-8 right-wrapper">
-
-        <div class="card mb-2 shadow">
-            <div class="card-body">
-                {{-- <div class="col-md-12 grid-margin"> --}}
+    <div class="row">
+        <div class="col-lg-9 col-md-8 right-wrapper">
+            <div class="card mb-2 shadow">
+                <div class="card-body">
+                    {{-- <div class="col-md-12 grid-margin"> --}}
                     <div class="card rounded">
                         <!-- card-header -->
                         <div class="card-header">
@@ -15,9 +14,9 @@
                                         <span>
                                             <h4>
                                                 @if (config('app.locale') == 'ar')
-                                                {{ $job->job_title_ar }}
+                                                    {{ $job->job_title_ar }}
                                                 @else
-                                                {{ $job->job_title_en }}
+                                                    {{ $job->job_title_en }}
                                                 @endif
                                             </h4>
                                         </span>
@@ -40,9 +39,9 @@
                                                 {{ __('Belonging to') }} :
                                                 <a href="{{ route('charities.show', $job->charity) }}">
                                                     @if (config('app.locale') == 'ar')
-                                                    {{ $job->charity->name_ar }}
+                                                        {{ $job->charity->name_ar }}
                                                     @else
-                                                    {{ $job->charity->name_en }}
+                                                        {{ $job->charity->name_en }}
                                                     @endif
                                                 </a>
                                             </h6>
@@ -57,17 +56,17 @@
                             </div>
                             <p>
                                 @if (config('app.locale') == 'ar')
-                                {{ $job->job_details_ar }}
+                                    {{ $job->job_details_ar }}
                                 @else
-                                {{ $job->job_details_en }}
+                                    {{ $job->job_details_en }}
                                 @endif
                             </p>
                             <div>
                                 <p>
                                     @if (config('app.locale') == 'ar')
-                                    {{ $job->location_ar }}
+                                        {{ $job->location_ar }}
                                     @else
-                                    {{ $job->location_en }}
+                                        {{ $job->location_en }}
                                     @endif
                                 </p>
                             </div>
@@ -76,53 +75,50 @@
                                 @csrf
                                 <label>{{ __('Upload CV') }} : </label>
                                 <input type="file" name="cv" class="form-control" required>
-<br>
-                                <button class="btn btn-primary @if (config('app.locale') == 'ar') float-left @else float-right @endif" >{{ __('Submit') }}</button>
+                                <br>
+                                <button class="btn btn-primary @if (config('app.locale')=='ar' ) float-left @else float-right @endif">{{ __('Submit') }}</button>
                             </form>
                         </div>
                     </div>
-                {{-- </div> --}}
-            </div>
-        </div>
-
-    </div>
-
-    {{-- Newest Jobs --}}
-    <div class="col-lg-3 col-md-4 order-6 order-lg-12 order-md-6 order-sm-6 mb-1">
-
-        <div class="card mb-2 shadow ">
-            <div class="card-body ">
-                <h5 class="card-title">{{ __('Newest Jobs') }}
-                </h5>
-                <hr class="mb-0">
-                <div class="list-group list-group-flush">
-                    @foreach ($jobs as $job)
-                    <a class="list-group-item list-group-item-action" href="{{ route('jobs.show', $job) }}">
-                        <h6 class="font-weight-bold">
-                            @if (app()->getLocale() == 'ar')
-                            {{ $job->job_title_ar }} @else {{ $job->job_title_en }}
-                            @endif
-                        </h6>
-                        <p class="card-text text-truncate">
-                            @if (app()->getLocale() == 'ar')
-                            {{ $job->job_details_ar }}
-                            @else {{ $job->job_details_en }}@endif
-                        </p>
-                    </a>
-                    @endforeach
+                    {{-- </div> --}}
                 </div>
-                @if (app()->getLocale() == 'ar')
-                <a class="@if (app()->getLocale() == 'ar') float-left
-                                @else
-                                    float-right @endif" href="{{ route('search.jobs') }}">{{ __('View more') }} <i
-                        class="fa fa-arrow-circle-left"></i></a>
-                @else
-                <a class="float-right" href="{{ route('search.jobs') }}">{{ __('View more') }}
-                    <i class="fa fa-arrow-circle-right"></i></a>
-                @endif
             </div>
         </div>
 
+        {{-- Newest Jobs --}}
+        <div class="col-lg-3 col-md-4 order-6 order-lg-12 order-md-6 order-sm-6 mb-1">
+            <div class="card mb-2 shadow ">
+                <div class="card-body ">
+                    <h5 class="card-title">{{ __('Newest Jobs') }}
+                    </h5>
+                    <hr class="mb-0">
+                    <div class="list-group list-group-flush">
+                        @foreach ($jobs as $job)
+                            <a class="list-group-item list-group-item-action" href="{{ route('jobs.show', $job) }}">
+                                <h6 class="font-weight-bold">
+                                    @if (app()->getLocale() == 'ar')
+                                    {{ $job->job_title_ar }} @else {{ $job->job_title_en }}
+                                    @endif
+                                </h6>
+                                <p class="card-text text-truncate">
+                                    @if (app()->getLocale() == 'ar')
+                                        {{ $job->job_details_ar }}
+                                    @else {{ $job->job_details_en }}@endif
+                                </p>
+                            </a>
+                        @endforeach
+                    </div>
+                    @if (app()->getLocale() == 'ar')
+                        <a class="@if (app()->getLocale() == 'ar') float-left
+                        @else
+                            float-right @endif" href="{{ route('search.jobs') }}">{{ __('View more') }}
+                            <i class="fa fa-arrow-circle-left"></i></a>
+                    @else
+                        <a class="float-right" href="{{ route('search.jobs') }}">{{ __('View more') }}
+                            <i class="fa fa-arrow-circle-right"></i></a>
+                    @endif
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 @endsection
