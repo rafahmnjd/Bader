@@ -73,7 +73,7 @@ Route::get('projects/{project}/show', 'ProjectController@show')->name('projects.
 // -------------------------------------------------------------------------------------------------------
 
 //Charity Show
-Route::get('charities/{charity}', 'CharityController@show')->name('charities.show');
+Route::get('charities/{charity}/show', 'CharityController@show')->name('charities.show');
 Route::get('charities/{charity}/projects', 'CharityController@projects')->name('charities.projects');
 Route::get('charities/{charity}/shortages', 'CharityController@shortages')->name('charities.shortage');
 Route::get('charities/{charity}/surpluses', 'CharityController@surpluses')->name('charities.surplus');
@@ -156,9 +156,9 @@ Route::middleware(['auth'])->group(function () {
 
 
     //messages
-Route::get('messages/index', 'MessageController@index')->name('messages.index');
+Route::get('messages/index/{type}', 'MessageController@index')->name('messages.index');
 
 // Route::get('fill/{fill}/messages', 'MessageController@index')->name('messages.fill.index');
-Route::post('fill/{fill}/messages', 'MessageController@send')->name('messages.send');
-
+Route::post('fill/{fill}/messages/type/{type}', 'MessageController@send')->name('messages.send');
+Route::get('fill/{fill}/messages/type/{type}','MessageController@show')->name('fill.messages');
 });

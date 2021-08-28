@@ -69,8 +69,12 @@
                                         </div>
                                         @endcan
                                         <div class="btn-group">
-                                            <a class="btn btn-outline-primary"
-                                                href="{{ route('messages.index', $fill->id) }}">
+                                            <a class="btn btn-outline-primary"@if(!empty($shortage))
+                                                href="{{ route('fill.messages', ['fill'=>$fill,'type'=>1]) }}"
+                                                @else
+                                                href="{{ route('fill.messages', ['fill'=>$fill,'type'=>0]) }}"
+                                                @endif
+                                                >
                                                 {{ __('Messages') }}
                                             </a>
                                         </div>

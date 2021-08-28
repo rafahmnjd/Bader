@@ -25,7 +25,7 @@
         <div class="col-lg-9 col-md-8 right-wrapper">
             <div class="card mb-2 shadow ">
                 <div class="card-body ">
-                    <form action="{{ route('messages.send', $fill->id) }}" method="POST">
+                    <form action="{{ route('messages.send', ["fill"=>$fill,"type"=>$type??0]) }}" method="POST">
                         @csrf
                         @if ($fill->state == 'completed')
                             <div>
@@ -47,7 +47,7 @@
                     <div class="list-group list-group-flush">
                         @foreach ($messages as $msg)
                             <a class="list-group-item list-group-item-action"
-                                href="{{ route('messages.index', $fill->id) }}">
+                                href="{{ route('messages.index',0) }}">
                                 <h6 class="font-weight-bold">
                                     {{ $msg->user_id }} :
                                 </h6>

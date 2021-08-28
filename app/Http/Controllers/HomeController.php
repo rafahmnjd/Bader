@@ -32,6 +32,7 @@ class HomeController extends Controller
     public function index()
     {
         $data = ArView::all();
+        // dd($data);
         return view('home', compact('data'));
     }
 

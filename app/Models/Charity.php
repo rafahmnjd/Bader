@@ -53,6 +53,16 @@ class Charity extends Model
     {
         return $this->hasMany(Project::class, 'charity_id', 'user_id');
     }
+
+    /**
+     * Get all of the projReq for the Charity
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
+    public function projReq()
+    {
+        return $this->hasManyThrough(Shortage::class, Project::class,'charity_id','project_id');
+    }
     /**
      * Get all of the activities for the Charity
      *
@@ -63,10 +73,6 @@ class Charity extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function fills()
-    {
-        return $this->hasMany('App\Models\Fill', 'shortage_id', 'user_id');
-    }
 
     /**
      * Get all of the shortages for the Charity
@@ -86,14 +92,23 @@ class Charity extends Model
     {
         return $this->hasMany('App\Models\Shortage', 'charity_id', 'user_id')->where('type', 'plus');
     }
-         /**
-      * Get the city that owns the CharityJob
-      *
-      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-      */
-     public function city(){
-         return $this->belongsTo(City::class, 'city_id');
-     }
+    /**
+     * Get the city that owns the CharityJob
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function city()
+    {
+        return $this->belongsTo(City::class, 'city_id');
+    }
 
-     
+    public function fills()
+    {
+        $fill1= $this->hasManyThrough(Shortage::class,Fill::class,'shortage_id','charity_id')->get();
+        // dd($this->projReq()->pluck('shortages.id')->toArray());
+        $fill2=Fill::whereIn('fills.shortage_id',$this->projReq()->pluck('shortages.id')->toArray())->get();
+        // dd($fill1->all(),$fill2->all());
+        return array_merge( $fill1->all(),$fill2->all());
+        # code...
+    }
 }

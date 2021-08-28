@@ -76,7 +76,18 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Message', 'user_id');
     }
 
-    
+    public function imagepath()
+    {
+        if($this->role == 'charity' && $this->charity!=null){
+            return config('path.ch_logo') .$this->charity->logo;
+        }
+        elseif($this->role == 'volunteer' && $this->volunteer!=null){
+            return config('path.profile') .$this->volunteer->profile;
+        }
+        else
+            return config('path.default');
+        # code...
+    }
     // /**
     //  * Get all of the receved Messages for the User
     //  *

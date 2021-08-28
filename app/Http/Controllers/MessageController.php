@@ -14,38 +14,56 @@ class MessageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(int $type = 0)
     {
         //
-        $fills = Auth::user()->fills;
-        $fill=$fills[0];
-        // $messages = $fill->messages()->latest()->take(30)->get();
-        // $messages =Auth::user()->msgs;
-        return view('fills.msg.all', compact('fills','fill'));
+
+        if ($type == 0) {
+            $fills = Auth::user()->fills;
+            // $fill = $fills->first();
+            return view('fills.msg.all', compact('fills', 'type'));
+
+        } elseif ($type == 1) {
+            $fills = Auth::user()->charity->fills();
+            // $fill = $fills[0] ?? null;
+            return view('fills.msg.all', compact('fills', 'type'));
+
+        }
+        // return view('fills.msg.all', compact('fills', 'fill','type'));
     }
 
+    public function show(Fill $fill, int $type = 0)
+    {
+
+        if ($type == 0) {
+            $fills = Auth::user()->fills;
+            $messages = $fill->messages()->latest()->paginate(10);
+
+            return view('fills.msg.all', compact('fills', 'fill', 'messages', 'type'));
+
+        } elseif ($type == 1) {
+            $fills = Auth::user()->charity->fills();
+            $messages = $fill->messages()->latest()->paginate(10);
+
+            return view('fills.msg.all', compact('fills', 'fill', 'messages', 'type'));
+
+        }
+
+        # code...
+    }
     /**
      * Send a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function send(Request $request,Fill $fill)
+    public function send(Request $request, Fill $fill,int $type)
     {
         //
         $data = $request->all();
         $data = array_merge($data, ['fill_id' => $fill->id, 'user_id' => Auth::user()->id]);
         Message::create($data);
-        return redirect(route('messages.index',$fill));
+        return redirect(route('fill.messages', ['fill'=>$fill,'type'=>$type]));
     }
-
-    // public function index(Fill $fill)
-    // {
-    //     //
-    //     $messages = $fill->messages()->latest()->take(30)->get();
-    //     Message::where('user_id', '<>', Auth::user()->id)->where('read', 0)->update(['read' => 1]);
-
-    //     return view('fills.show', compact('fill', 'messages'));
-    // }
 
 }
