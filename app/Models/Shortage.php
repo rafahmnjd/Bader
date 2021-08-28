@@ -41,13 +41,18 @@ class Shortage extends Model
     public function completedQuantity()
     {
         # code...
+        if ($this->state == 'closed') {
+            return $this->quantity;
+        }
+
         return $this->fills()->where('state', 'completed')->sum('quantity');
+
     }
 
     public function rest()
     {
         # code...
-        return $this->quantity -$this->completedQuantity();
+        return $this->quantity - $this->completedQuantity();
     }
     public function completePercent()
     {

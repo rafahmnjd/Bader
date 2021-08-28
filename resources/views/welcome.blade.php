@@ -228,143 +228,124 @@ onload="resetSelection()"
 </div>
 @endsection
 @section('script')
-<script src="{{asset('js/jquery.min.js')}}"></script>
-<script src="{{asset('js/chart.min.js')}}"
-    integrity="sha512-asxKqQghC1oBShyhiBwA+YgotaSYKxGP1rcSYTDrB0U6DxwlJjU59B67U8+5/++uFjcuVM8Hh5cokLjZlhm3Vg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{{asset('js/jquery.min.js')}}"></script>
+    <script src="{{asset('js/chart.min.js')}}"
+        integrity="sha512-asxKqQghC1oBShyhiBwA+YgotaSYKxGP1rcSYTDrB0U6DxwlJjU59B67U8+5/++uFjcuVM8Hh5cokLjZlhm3Vg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<script>
-    $(document).ready(function () {
-        var ctx = $('#chByGov');
-        var jslabels = [];
-        var chval = [];
-        var itemByGov=$('#itemByGov');
-        var colors = [
-            'rgba(255,192,0,0.4)',
-            'rgba(80,126,50,0.4)',
-            'rgba(68,114,196,0.4)',
-            'rgba(227,52,47,0.4)',
-            'rgba(91,155,213,0.4)',
-            'rgba(255,103,0,0.4)',
-            'rgba(165,165,165,0.4)',
-            'rgba(0,0,0,0.4)',
-            'rgba(255, 99, 132, 0.4)',
-            'rgba(54, 162, 235, 0.4)',
-            'rgba(255, 206, 86, 0.4)',
-            'rgba(75, 192, 192, 0.4)',
-            'rgba(153, 102, 255, 0.4)',
-            'rgba(255, 159, 64, 0.4)'
-        ];
-        var borderColors =[
-'rgba(255,192,0,1)',
-'rgba(80,126,50,1)',
-'rgba(68,114,196,1)',
-'rgba(227,52,47,1)',
-'rgba(91,155,213,1)',
-'rgba(255,103,0,1)',
-'rgba(165,165,165,1)',
-'rgba(0,0,0,1)',
-'rgba(255, 99, 132, 1)',
-'rgba(54, 162, 235, 1)',
-'rgba(255, 206, 86, 1)',
-'rgba(75, 192, 192, 1)',
-'rgba(153, 102, 255, 1)',
-'rgba(255, 159, 64, 1)'
-        ]
+    <script>
+        $(document).ready(function () {
+            var ctx = $('#chByGov');
+            var jslabels = [];
+            var chval = [];
+            var itemByGov=$('#itemByGov');
+            var colors = [
+                // 'rgba(255, 0, 0, 0.4)',
+                'rgba(255, 0, 93, 0.25)',
+                'rgba(255, 0, 191, 0.25)',
+                'rgba(204, 0, 255, 0.25)',
+                'rgba(102, 0, 255, 0.25)',
+                'rgba(0, 34, 255, 0.25)',
+                'rgba(0, 119, 255, 0.25)',
+                'rgba(0, 187, 255, 0.25)',
+                'rgba(0, 255, 247, 0.25)',
+                'rgba(0, 255, 140, 0.25)',
+                'rgba(0, 255, 30, 0.25)',
+                'rgba(178, 255, 0, 0.25)',
+                'rgba(255, 225, 0, 0.25)',
+                'rgba(255, 140, 0, 0.25)',
+                'rgba(255, 55, 0, 0.25)',
+            ];
+            var borderColors =[
+                // 'rgba(255, 0, 0, 1)',
+                'rgba(255, 0, 93, 0.5)',
+                'rgba(255, 0, 191, 0.5)',
+                'rgba(204, 0, 255, 0.5)',
+                'rgba(102, 0, 255, 0.5)',
+                'rgba(0, 34, 255, 0.5)',
+                'rgba(0, 119, 255, 0.5)',
+                'rgba(0, 187, 255, 0.5)',
+                'rgba(0, 255, 247, 0.5)',
+                'rgba(0, 255, 140, 0.5)',
+                'rgba(0, 255, 30, 0.5)',
+                'rgba(178, 255, 0, 0.5)',
+                'rgba(255, 225, 0, 0.5)',
+                'rgba(255, 140, 0, 0.5)',
+                'rgba(255, 55, 0, 0.5)',
+            ];
 
-    // var patterns = pattern.generate(colors);
-        @foreach ($ch_gov_Chart as $ch)
-            jslabels.push("{!! $ch->name_ar !!}");
-            chval.push("{!!$ch->val!!}");
-            // consol.log(val);
-        @endforeach
-
-
-        var chByGov = new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                // labels:labels
-                labels: jslabels,
-                datasets: [{
-                    label: "charties count",
-                    // data: val,
-                    data: chval,
-                    // data: [3,4,2,1,5,6,3,1,8,7,2,3,2,5,7],
-                    backgroundColor: ['rgba(255, 99, 132, 0.4)',
-                    'rgba(54, 162, 235, 0.4)',
-                    'rgba(255, 206, 86, 0.4)',
-                    'rgba(75, 192, 192, 0.4)',
-                    'rgba(153, 102, 255, 0.4)',
-                    'rgba(255, 159, 64, 0.4)'],
-
-                    borderColor:['rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                plugins: {
-                    legend: {
-                        display: true,
-                        position:'left',
-                    }
-                }
-            }
-        });
-
-
-var itemdata = {
-labels: jslabels,
-    datasets: [
-        <?php $rand = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');?>
-        @for($i=0; $i < count($item_gov_chart) ; $i++)
-        { <?php $lindex=$item_gov_chart[$i]->item_name;?>
-            label:"{!! $lindex !!}",
-            data:[<?php
-                $firstId=$item_gov_chart[$i]->gov_id;
-                for($j=1;$j<$firstId;$j++){
-                    echo("0,");
-                }
-                echo($item_gov_chart[$i]->val.",");
-                $firstId = $firstId+1;
-                $i=$i+1;
-                while($i<count($item_gov_chart) && $lindex==$item_gov_chart[$i]->item_name){
-                    for($j=$firstId; $j< $item_gov_chart[$i]->gov_id; $j++){
-                            echo("0,");
-                    }
-                        $firstId=$item_gov_chart[$i]->gov_id;
-                        echo($item_gov_chart[$i]->val);
-                        echo(",");
-                        $firstId=$firstId+1;
-                    $i+=1;
-                }
-                for($j=$firstId;$j<=14;$j++){
-                    echo("0,");
-                }?>],
-                <?php
-                    $colo = $rand[rand(0,2)].$rand[rand(0,5)].$rand[rand(0,5)].','.$rand[rand(0,1)].$rand[rand(0,9)].$rand[rand(0,9)].','.$rand[rand(0,1)].$rand[rand(0,9)].$rand[rand(0,9)];
-                ?>
-            backgroundColor:['rgba({{$colo}},0.3)'],
-            borderColor:['rgba({{$colo}},0.9)'],
-            borderWidth: 1
-            },
-            @endfor
-        ],
-        };
-        var myChart = new Chart(itemByGov, {
-            type: 'bar',
-            data: itemdata,
-            options: {
-                title: {
+            @foreach ($ch_gov_Chart as $ch)
+                jslabels.push("{!! $ch->name_ar !!}");
+                chval.push("{!!$ch->val!!}");
+            @endforeach
+            var chByGov = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    // labels:labels
+                    labels: jslabels,
+                    datasets: [{
+                        label: "charties count",
+                        // data: val,
+                        data: chval,
+                        backgroundColor:colors,
+                        borderColor:borderColors,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    plugins: {
+                        legend: {
                             display: true,
-                            text: 'Custom Chart Title'
+                            position:'left',
+                        }
+                    }
                 }
-            }
+            });
+            var itemdata = {
+                labels: jslabels,
+                datasets: [
+                    @for($i=0; $i < count($item_gov_chart) ; $i++) {
+                        <?php $lindex=$item_gov_chart[$i]->item_name;?>
+                        label:"{!! $lindex !!}",
+                        data:[<?php
+                                $firstId=$item_gov_chart[$i]->gov_id;
+                                for($j=1;$j<$firstId;$j++){
+                                    echo("0,");
+                                }
+                                echo($item_gov_chart[$i]->val.",");
+                                $firstId = $firstId+1;
+                                $i=$i+1;
+                                while($i<count($item_gov_chart) && $lindex==$item_gov_chart[$i]->item_name){
+                                    for($j=$firstId; $j< $item_gov_chart[$i]->gov_id; $j++){
+                                            echo("0,");
+                                    }
+                                        $firstId=$item_gov_chart[$i]->gov_id;
+                                        echo($item_gov_chart[$i]->val);
+                                        echo(",");
+                                        $firstId=$firstId+1;
+                                    $i+=1;
+                                }
+                                for($j=$firstId;$j<=14;$j++){
+                                    echo("0,");
+                                }?>
+                            ],
+                        backgroundColor:[colors[{!!$i!!}]],
+                        borderColor:[borderColors[{!!$i!!}]],
+                        borderWidth: 1
+                    },
+                    @endfor
+                ],
+            };
+            var myChart = new Chart(itemByGov, {
+                type: 'bar',
+                data: itemdata,
+                options: {
+                    title: {
+                                display: true,
+                                text: 'Custom Chart Title'
+                    }
+                }
+            });
         });
-    });
-</script>
+    </script>
 @endsection

@@ -10,7 +10,7 @@
     'locale' => 'ar',
     'fallback_locale' => 'en',
     'faker_locale' => 'en_US',
-    'key' => 'base64:hYMGVD+YINp68QPyOMS8zc1SfUbAndHRGJ5+v40zzF8=',
+    'key' => 'base64:6m9edYYeu5RCCerYNCJUrOzCJAHfgByQzO5exmhfz+g=',
     'cipher' => 'AES-256-CBC',
     'providers' => 
     array (
@@ -177,7 +177,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'C:\\xampp\\htdocs\\Bader\\storage\\framework/cache/data',
+        'path' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v2\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -254,7 +254,7 @@
       array (
         'driver' => 'sqlite',
         'url' => NULL,
-        'database' => 'Bader',
+        'database' => 'baderreal',
         'prefix' => '',
         'foreign_key_constraints' => true,
       ),
@@ -264,7 +264,7 @@
         'url' => NULL,
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'Bader',
+        'database' => 'baderreal',
         'username' => 'root',
         'password' => '',
         'unix_socket' => '',
@@ -284,7 +284,7 @@
         'url' => NULL,
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'Bader',
+        'database' => 'baderreal',
         'username' => 'root',
         'password' => '',
         'charset' => 'utf8',
@@ -299,7 +299,7 @@
         'url' => NULL,
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'Bader',
+        'database' => 'baderreal',
         'username' => 'root',
         'password' => '',
         'charset' => 'utf8',
@@ -340,10 +340,10 @@
     'orientation' => 'portrait',
     'defines' => 
     array (
-      'font_dir' => 'C:\\xampp\\htdocs\\Bader\\storage\\fonts/',
-      'font_cache' => 'C:\\xampp\\htdocs\\Bader\\storage\\fonts/',
-      'temp_dir' => 'C:\\Users\\ASUS\\AppData\\Local\\Temp',
-      'chroot' => 'C:\\xampp\\htdocs\\Bader',
+      'font_dir' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v2\\storage\\fonts/',
+      'font_cache' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v2\\storage\\fonts/',
+      'temp_dir' => 'C:\\Users\\AMZ\\AppData\\Local\\Temp',
+      'chroot' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v2',
       'enable_font_subsetting' => false,
       'pdf_backend' => 'CPDF',
       'default_media_type' => 'screen',
@@ -366,12 +366,12 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\xampp\\htdocs\\Bader\\storage\\app',
+        'root' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v2\\storage\\app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\xampp\\htdocs\\Bader\\storage\\app/public',
+        'root' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v2\\storage\\app/public',
         'url' => 'http://localhost/storage',
         'visibility' => 'public',
       ),
@@ -388,7 +388,7 @@
     ),
     'links' => 
     array (
-      'C:\\xampp\\htdocs\\Bader\\public\\storage' => 'C:\\xampp\\htdocs\\Bader\\storage\\app/public',
+      'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v2\\public\\storage' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v2\\storage\\app/public',
     ),
   ),
   'hashing' => 
@@ -422,13 +422,13 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'C:\\xampp\\htdocs\\Bader\\storage\\logs/laravel.log',
+        'path' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v2\\storage\\logs/laravel.log',
         'level' => 'debug',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'C:\\xampp\\htdocs\\Bader\\storage\\logs/laravel.log',
+        'path' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v2\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
       ),
@@ -478,7 +478,7 @@
       ),
       'emergency' => 
       array (
-        'path' => 'C:\\xampp\\htdocs\\Bader\\storage\\logs/laravel.log',
+        'path' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v2\\storage\\logs/laravel.log',
       ),
     ),
   ),
@@ -534,7 +534,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'C:\\xampp\\htdocs\\Bader\\resources\\views/vendor/mail',
+        0 => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v2\\resources\\views/vendor/mail',
       ),
     ),
   ),
@@ -623,7 +623,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'C:\\xampp\\htdocs\\Bader\\storage\\framework/sessions',
+    'files' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v2\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -643,9 +643,9 @@
   array (
     'paths' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\Bader\\resources\\views',
+      0 => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v2\\resources\\views',
     ),
-    'compiled' => 'C:\\xampp\\htdocs\\Bader\\storage\\framework\\views',
+    'compiled' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v2\\storage\\framework\\views',
   ),
   'flare' => 
   array (

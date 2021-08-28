@@ -18,7 +18,7 @@
                                 @endif
                             </div>
                             <div class="col">
-                                {{ $shortage->quantity }}
+                                {{ number_format($shortage->quantity) }}
                             </div>
                             <div class="col">
                                 <div class="progress">

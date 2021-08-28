@@ -130,9 +130,9 @@
                             </p>
                             <p>
                                 @if (config('app.locale') == 'ar')
-                                    {{ $projReq->details_ar }} - {{ __('Need') }}({{ $projReq->quantity }})
+                                    {{ $projReq->details_ar }} - {{ __('Need') }}({{ number_format($projReq->quantity) }})
                                 @else
-                                    {{ $projReq->details_en }} - {{ __('Need') }}({{ $projReq->quantity }})
+                                    {{ $projReq->details_en }} - {{ __('Need') }}({{ number_format($projReq->quantity )}})
                                 @endif
                             </p>
 

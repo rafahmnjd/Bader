@@ -19,10 +19,10 @@ class CreateItemsTable extends Migration
             $table->string('name_ar');
             $table->String('cat_ar');
             $table->String('cat_en');
-            $table->String('subcat_ar');
-            $table->String('subcat_en');
-            $table->String('subcat2_ar');
-            $table->String('subcat2_en');
+            $table->String('subcat_ar')->nullable();
+            $table->String('subcat_en')->nullable();
+            $table->String('subcat2_ar')->nullable();
+            $table->String('subcat2_en')->nullable();
 
             $table->string('unite_en')->nullable()->default("kg");
             $table->string('unite_ar')->nullable()->default("كغ");

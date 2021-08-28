@@ -49,7 +49,7 @@
                         </td>
                         <td>
                             <div class="widget-26-job-info">
-                                <p class="type m-0">{{ $surplus->quantity }}</p>
+                                <p class="type m-0">{{ number_format($surplus->quantity) }}</p>
                             </div>
                         </td>
                         <td>

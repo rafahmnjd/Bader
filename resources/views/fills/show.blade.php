@@ -13,7 +13,7 @@
                         {{-- </div>
                 <div class="row"> --}}
                         <div class="col">{{ __('Type') }} : {{ __($fill->shortage->type) }}</div>
-                        <div class="col">{{ __('Quantity') }} : {{ $fill->quantity }}</div>
+                        <div class="col">{{ __('Quantity') }} : {{ number_format($fill->quantity) }}</div>
                         <div class="col">{{ __('State') }} : {{ __($fill->state) }}</div>
                     </div>
                 </div>

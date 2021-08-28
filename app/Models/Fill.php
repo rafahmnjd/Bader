@@ -41,4 +41,6 @@ class Fill extends Model
      {
          return $this->hasMany('App\Models\Message', 'fill_id');
      }
+
+     
 }

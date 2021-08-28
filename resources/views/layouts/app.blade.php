@@ -58,7 +58,7 @@
 
     <body>
         <div id="app">
-            <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm mb-2">
+            <nav class="navbar navbar-expand-md navbar-light shadow mb-2" style="background: #ffffffee">
                 <div class="container-fluid">
                     <a class="navbar-brand " href="{{ route('about') }}">{{ config('app.name', 'Laravel') }}</a>
                     <div class="navbar-collapse collapse show" id="navbarColor01">

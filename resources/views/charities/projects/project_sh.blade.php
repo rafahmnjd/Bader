@@ -28,7 +28,7 @@
                             <ul class="list-inline d-sm-flex my-0">
                                 <li class="list-inline-item ml-auto">
                                     <button class="btn btn-light btn-icon-text btn-edit-profile">
-                                        <a href="{{ route('projReqs.index', $project) }}">
+                                        <a href="{{ route('projects.show', $project) }}">
                                             {{ __('Show Requirments') }}
                                         </a>
                                     </button>

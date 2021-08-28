@@ -169,7 +169,7 @@
     ,"Completed":"اكتملت"
     ,"completed":"اكتملت"
     ,"Manage Requirments":"إدراة المتطلبات"
-    ,"Manage Fills":"إدارة النقص"
+    ,"Manage Fills":"إدارة طلبات التسديد"
     ,"Messages":"الرسائل"
     ,"min":"نقص"
     ,"plus":"فائض"
@@ -179,4 +179,9 @@
     ,"Manage Project Requirment":"إدارة متطلبات المشروع"
     ,"Manage My Fills":"إدارة طلبات التسديد الخاصة بي"
     ,"My Jobs Requests":"طلبات العمل "
+    ,"charity:":"الجمعية:"
+    ,"date:":"التاريخ:"
+    ,"quantity:":"الكمية:"
+    ,"percentage":"النسبة المئوية"
+    ,"rest":"المتبقي"
 }

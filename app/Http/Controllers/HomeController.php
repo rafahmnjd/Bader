@@ -7,7 +7,7 @@ use App\Models\CharityJob;
 use App\Models\Project;
 use App\Models\Shortage;
 use App\Models\User;
-use App\Models\View;
+use App\Models\EnView;
 use App\Models\ArView;
 
 use DB;
@@ -31,7 +31,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data = View::all();
+        $data = ArView::all();
         return view('home', compact('data'));
     }
 

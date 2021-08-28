@@ -97,7 +97,8 @@ class CharityController extends Controller
     public function show(Charity $charity)
     {
         //
-        return view('charities.show', compact('charity'));
+        return redirect(route('charities.projects',$charity));
+        // return view('charities.show', compact('charity'));
     }
 
     /**

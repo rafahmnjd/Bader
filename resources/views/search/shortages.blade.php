@@ -46,7 +46,7 @@
                         </td>
                         <td>
                             <div class="widget-26-job-info">
-                                <p class="type m-0">{{ $shortage->quantity }}</p>
+                                <p class="type m-0">{{ number_format($shortage->quantity) }}</p>
                             </div>
                         </td>
                         <td>

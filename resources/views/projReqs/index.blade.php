@@ -17,11 +17,11 @@
                             <thead>
                                 <tr>
                                     <th scope="col">{{ __('id') }}</th>
-                                    <th scope="col">{{ __('Name') }}</th>
+                                    <th scope="col">{{ __('Item') }}</th>
                                     <th scope="col">{{ __('Details') }}</th>
                                     <th scope="col">{{ __('Quantity') }}</th>
                                     <th scope="col">{{ __('State') }}</th>
-                                    <th scope="col" width="150">{{ __('Control') }}</th>
+                                    <th scope="col" width="170">{{ __('Control') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -30,9 +30,9 @@
                                         <th scope="row">{{ $projReq->id }}</th>
                                         <td>
                                             @if (config('app.locale') == 'ar')
-                                                {{ $projReq->name_ar }}
+                                                {{ $projReq->item->name_ar }}
                                             @else
-                                                {{ $projReq->name_en }}
+                                                {{ $projReq->item->name_en }}
                                             @endif
                                         </td>
                                         <td>
@@ -58,7 +58,7 @@
                                         <td>
                                             <div class="btn-group-justified">
                                                 <div class="btn-group">
-                                                    <a class="btn btn-outline-info"
+                                                    <a class="btn btn-outline-info my-1"
                                                         href="{{ route('fills.index', $projReq->id) }}">
                                                         {{ __('Manage Fills') }}
                                                     </a>

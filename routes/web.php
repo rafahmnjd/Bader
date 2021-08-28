@@ -29,7 +29,9 @@ Route::get('locale/{locale}', function ($locale) {
 //Register & Login & Logout
 Auth::routes();
 
-Route::get('/home', 'HomeController@base')->name('home');
+// Route::get('/home', 'HomeController@base')->name('home');
+Route::get('/reports','HomeController@index')->name('home');
+
 
 // public routes
 //Primary Page
@@ -71,7 +73,7 @@ Route::get('projects/{project}/show', 'ProjectController@show')->name('projects.
 // -------------------------------------------------------------------------------------------------------
 
 //Charity Show
-Route::get('charities/{charity}/show', 'CharityController@show')->name('charities.show');
+Route::get('charities/{charity}', 'CharityController@show')->name('charities.show');
 Route::get('charities/{charity}/projects', 'CharityController@projects')->name('charities.projects');
 Route::get('charities/{charity}/shortages', 'CharityController@shortages')->name('charities.shortage');
 Route::get('charities/{charity}/surpluses', 'CharityController@surpluses')->name('charities.surplus');
@@ -129,9 +131,7 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('shortage/fills/{fill}', 'FillController@destroy')->name('fills.destroy');
     Route::match(['put', 'post'], 'shortage/fills/{fill}/close', 'FillController@close')->name('fills.close');
 
-    //messages
-    Route::get('fill/{fill}/messages', 'MessageController@index')->name('messages.index');
-    Route::post('fill/{fill}/messages', 'MessageController@send')->name('messages.send');
+
 
     //volunteer resource
     Route::resource('volunteers', 'VolunteerController');
@@ -153,4 +153,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('user/jobReqs', 'VolunteerRequestController@myJobRequests')->name('user.jobReqs');
 // Route::match(['put', 'post'], 'shortages/{shortage}/close', 'ShortageController@close')->name('shortages.close');
     // Route::resource('benfes', 'BenefactorController');
+
+
+    //messages
+Route::get('messages/index', 'MessageController@index')->name('messages.index');
+
+// Route::get('fill/{fill}/messages', 'MessageController@index')->name('messages.fill.index');
+Route::post('fill/{fill}/messages', 'MessageController@send')->name('messages.send');
+
 });

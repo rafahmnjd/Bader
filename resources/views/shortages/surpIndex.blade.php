@@ -29,7 +29,7 @@
                             <tr>
                                 <th scope="row">{{ $sur->id }}</th>
                                 <td>{{ $sur->charity_id }}</td>
-                                <td>{{ $sur->quantity }}</td>
+                                <td>{{ number_format($sur->quantity) }}</td>
                                 <td>{{ __($sur->type) }}</td>
                                 <td>
                                     @if (config('app.locale') == 'ar')

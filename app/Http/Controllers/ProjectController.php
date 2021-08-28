@@ -73,8 +73,10 @@ class ProjectController extends Controller
     public function show(Project $project)
     {
         //
-        $projects = Project::latest()->paginate(7);
-        return view('projects.show', compact('project','projects'));
+        $projects = $project->charity->projects()->latest()->paginate(3);
+        $thiProj=$project;
+        // dd($project->requirments);
+        return view('projects.show', compact('thiProj','projects'));
     }
 
     /**

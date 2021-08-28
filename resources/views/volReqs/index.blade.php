@@ -4,7 +4,6 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-
                 <h5 class="card-title">
                     @if(!empty($job)) {{$job->naame_ar}}
                     @else {{__('My Jobs Requests')}}
@@ -17,17 +16,17 @@
                         <thead>
                             <tr>
                                 <th scope="col">{{ __('Volnteer Name') }}</th>
+                                <th scope="col">{{ __('Job Title') }}</th>
                                 <th scope="col">{{ __('CV') }}</th>
                                 <th scope="col">{{ __('State') }}</th>
                                 <th scope="col" width="150">{{ __('Control') }}</th>
                             </tr>
                         </thead>
                         <tbody>
-
                             @foreach ($jobReqs as $jreq)
                             <tr>
-                                <td> @if (config('app.locale') ==
-                                    'ar'){{$jreq->volunteer->name_ar}}@else{{$jreq->volunteer->name_en}} @endif</td>
+                                <td> @if(config('app.locale')=='ar'){{$jreq->volunteer->name_ar}}@else{{$jreq->volunteer->name_en}} @endif</td>
+                                <td> @if(config('app.locale')=='ar'){{$jreq->job->job_title_ar}}@else{{$jreq->job->job_title_en}} @endif</td>
                                 <td>
                                     <a href="{{asset(config('path.cvs').'/'.$jreq->cv)}}"
                                         target="__blank()">{{__('show CV')}}</a>
@@ -35,9 +34,7 @@
                                 <td>{{__($jreq->state)}}</td>
                                 <td>
                                     @can('ch_access',$jreq->job->charity)
-
                                     <form action="{{route('jobReqs.update',$jreq)}}" method="POST">
-
                                         @csrf
                                         @method('PUT')
                                         <input type="hidden" name="state" value="accepted">
@@ -61,7 +58,6 @@
                                 </td>
                             </tr>
                             @endforeach
-
                         </tbody>
                     </table>
                 </div>

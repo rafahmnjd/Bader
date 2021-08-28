@@ -18,5 +18,35 @@ class Item extends Model
      {
          return $this->belongsTo('App\Models\User', 'created_by');
      }
+
+     /**
+      * Get all of the shortages for the Item
+      *
+      * @return \Illuminate\Database\Eloquent\Relations\HasMany
+      */
+     public function shortages()
+     {
+         return $this->hasMany(Shortage::class, 'item_id')->where('type','min');
+     }
+
+        /**
+      * Get all of the surplus for the Item
+      *
+      * @return \Illuminate\Database\Eloquent\Relations\HasMany
+      */
+     public function surplus()
+     {
+         return $this->hasMany(Shortage::class, 'item_id')->where('type','plus');
+     }
+
+     /**
+      * Get all of the surplus for the Item
+      *
+      * @return \Illuminate\Database\Eloquent\Relations\HasMany
+      */
+     public function projReq()
+     {
+         return $this->hasMany(Shortage::class, 'item_id')->where('type','proj');
+     }
 }
 

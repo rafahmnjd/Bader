@@ -14,13 +14,14 @@ class MessageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Fill $fill)
+    public function index()
     {
         //
-        $messages = $fill->messages()->latest()->take(30)->get();
-        Message::where('user_id', '<>', Auth::user()->id)->where('read', 0)->update(['read' => 1]);
-
-        return view('fills.show', compact('fill', 'messages'));
+        $fills = Auth::user()->fills;
+        $fill=$fills[0];
+        // $messages = $fill->messages()->latest()->take(30)->get();
+        // $messages =Auth::user()->msgs;
+        return view('fills.msg.all', compact('fills','fill'));
     }
 
     /**
@@ -37,5 +38,14 @@ class MessageController extends Controller
         Message::create($data);
         return redirect(route('messages.index',$fill));
     }
+
+    // public function index(Fill $fill)
+    // {
+    //     //
+    //     $messages = $fill->messages()->latest()->take(30)->get();
+    //     Message::where('user_id', '<>', Auth::user()->id)->where('read', 0)->update(['read' => 1]);
+
+    //     return view('fills.show', compact('fill', 'messages'));
+    // }
 
 }

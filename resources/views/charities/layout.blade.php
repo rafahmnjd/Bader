@@ -8,13 +8,13 @@
     {{-- <div class="container"> --}}
     <div class="profile-page tx-13">
         <div class="row">
-            <div class="col-12 grid-margin">
+            <div class="col-12 grid-margin ">
                 <div class="profile-header">
                     <div class="cover">
                         <div class="gray-shade"></div>
                         <figure>
                             <img src="{{ asset(config('path.covers') . $charity->cover) }}" class="img-fluid"
-                                style="max-height: 25rem" alt="profile cover">
+                                style="max-height: 16rem" alt="profile cover">
                         </figure>
                         <div class="cover-body d-flex justify-content-between align-items-center">
                             <div>
@@ -76,10 +76,10 @@
                 </div>
             </div>
         </div>
-        <div class="row profile-body">
+        <div class="row">
             <!-- left wrapper start -->
-            <div class="d-none d-md-block col-md-4 col-xl-3 left-wrapper">
-                <div class="card rounded">
+            <div class="col-md-4 col-xl-3 ">
+                <div class="card mb-2">
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between mb-2">
                             <h6 class="card-title tx-11 font-weight-bold mb-0">{{ __('About') }}:</h6>
@@ -127,14 +127,14 @@
                         </div>
                     </div>
                 </div>
+                @yield('side_bottm')
             </div>
 
             <!-- left wrapper end -->
             <!-- middle wrapper start -->
-            <div class="col-md-8 col-xl-9 middle-wrapper">
+            <div class="col-md-8 col-xl-9 ">
                 @yield('middile')
             </div>
-
             <!-- middle wrapper end -->
             <!-- right wrapper start -->
             {{-- Newest Jobs

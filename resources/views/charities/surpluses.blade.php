@@ -20,7 +20,7 @@
                                 {{-- </h3> --}}
                             </div>
                             <div class="col">
-                                {{ $surplus->quantity }}
+                                {{ number_format($surplus->quantity) }}
                             </div>
                             <div class="col">
                                 {{-- {{  }} --}}

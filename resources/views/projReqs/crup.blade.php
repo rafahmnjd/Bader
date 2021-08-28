@@ -40,7 +40,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="quantity">{{ __('Quantity') }}</label>
-                                <input class="form-control my-1" type="number" required name="quantity"
+                                <input class=" form-control" type="number" required name="quantity" style="font-size: 100%"
                                 @if(!empty($projReq)) value="{{ $projReq->quantity }}" @else
                                     value="{{ old('quantity') }}" @endif>
                             </div>
@@ -71,14 +71,14 @@
                             <div class="form-group">
                                 <label for="details_ar">{{ __('Ar Details') }}:</label>
 
-                                <textarea class="form-control my-1" type="text"
+                                <textarea class="form-control my-1" type="text" style="font-size: 100%"
                                     name="details_ar">@if (!empty($projReq)){{ $projReq->details_ar }} @else{{ old('details_ar') }} @endif</textarea>
                             </div>
                         </div>
                         <div class="col-md-6 ">
                             <div class="form-group">
                                 <label for="details_en">{{ __('EN Details') }}:</label>
-                                <textarea class="form-control my-1" type="text"
+                                <textarea class="form-control my-1" type="text" style="font-size: 100%"
                                     name="details_en">@if (!empty($projReq)){{ $projReq->details_en }} @else{{ old('details_en') }} @endif</textarea>
                             </div>
                         </div>

@@ -76,6 +76,7 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Message', 'user_id');
     }
 
+    
     // /**
     //  * Get all of the receved Messages for the User
     //  *
@@ -83,7 +84,7 @@ class User extends Authenticatable
     //  */
     // public function recevedMsgs()
     // {
-        
+
     // }
 
 }

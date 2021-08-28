@@ -34,7 +34,7 @@
                                 <th scope="row">{{ $fill->id }}</th>
                                 <td>{{ $fill->shortage->item->name_ar }}</td>
                                 <td>{{ __($fill->shortage->type) }}</td>
-                                <td>{{ $fill->quantity }}</td>
+                                <td>{{ number_format($fill->quantity) }}</td>
                                 <td>{{ __($fill->state) }}
                                     @can('ch_access', $fill->shortage->charity ?? $fill->shortage->project->charity)
                                     @if ($fill->state != 'completed')
