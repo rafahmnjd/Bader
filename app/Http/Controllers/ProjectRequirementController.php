@@ -10,6 +10,19 @@ use Illuminate\Http\Request;
 
 class ProjectRequirementController extends Controller
 {
+
+        /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct() //صلاحيات
+
+    {
+        $this->middleware('can:charity')->except(['show']);
+        $this->middleware('can:proj_access,project')->only(['index','create','store']);
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -111,11 +124,8 @@ class ProjectRequirementController extends Controller
      */
     public function close(Shortage $projReq)
     {
-        //
-        // $project=$projReq->project;
         $projReq->state = "closed";
         $projReq->save();
         return back();
-
     }
 }

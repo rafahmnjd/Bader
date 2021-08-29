@@ -30,7 +30,7 @@ Route::get('locale/{locale}', function ($locale) {
 Auth::routes();
 
 // Route::get('/home', 'HomeController@base')->name('home');
-Route::get('/reports','HomeController@index')->name('home');
+Route::get('/reports','HomeController@index')->name('reports');
 
 
 // public routes

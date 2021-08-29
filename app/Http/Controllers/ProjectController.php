@@ -10,6 +10,19 @@ use Illuminate\Support\Facades\File;
 class ProjectController extends Controller
 {
     /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct() //صلاحيات
+
+    {
+        $this->middleware('can:charity')->except(['show']);
+        $this->middleware('can:proj_access,project')->only(['edit', 'update', 'destroy', 'close']);
+
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -74,9 +87,9 @@ class ProjectController extends Controller
     {
         //
         $projects = $project->charity->projects()->latest()->paginate(3);
-        $thiProj=$project;
+        $thiProj = $project;
         // dd($project->requirments);
-        return view('projects.show', compact('thiProj','projects'));
+        return view('projects.show', compact('thiProj', 'projects'));
     }
 
     /**
@@ -138,8 +151,6 @@ class ProjectController extends Controller
 
     public function close(Project $project)
     {
-        //
-        // $project=$projReq->project;
         $project->state = "closed";
         $project->save();
         return back();
