@@ -177,7 +177,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v3\\storage\\framework/cache/data',
+        'path' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v4\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -340,10 +340,10 @@
     'orientation' => 'portrait',
     'defines' => 
     array (
-      'font_dir' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v3\\storage\\fonts/',
-      'font_cache' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v3\\storage\\fonts/',
+      'font_dir' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v4\\storage\\fonts/',
+      'font_cache' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v4\\storage\\fonts/',
       'temp_dir' => 'C:\\Users\\AMZ\\AppData\\Local\\Temp',
-      'chroot' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v3',
+      'chroot' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v4',
       'enable_font_subsetting' => false,
       'pdf_backend' => 'CPDF',
       'default_media_type' => 'screen',
@@ -366,12 +366,12 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v3\\storage\\app',
+        'root' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v4\\storage\\app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v3\\storage\\app/public',
+        'root' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v4\\storage\\app/public',
         'url' => 'http://localhost/storage',
         'visibility' => 'public',
       ),
@@ -388,7 +388,7 @@
     ),
     'links' => 
     array (
-      'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v3\\public\\storage' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v3\\storage\\app/public',
+      'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v4\\public\\storage' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v4\\storage\\app/public',
     ),
   ),
   'hashing' => 
@@ -422,13 +422,13 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v3\\storage\\logs/laravel.log',
+        'path' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v4\\storage\\logs/laravel.log',
         'level' => 'debug',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v3\\storage\\logs/laravel.log',
+        'path' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v4\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
       ),
@@ -478,7 +478,7 @@
       ),
       'emergency' => 
       array (
-        'path' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v3\\storage\\logs/laravel.log',
+        'path' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v4\\storage\\logs/laravel.log',
       ),
     ),
   ),
@@ -534,7 +534,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v3\\resources\\views/vendor/mail',
+        0 => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v4\\resources\\views/vendor/mail',
       ),
     ),
   ),
@@ -623,7 +623,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v3\\storage\\framework/sessions',
+    'files' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v4\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -643,9 +643,9 @@
   array (
     'paths' => 
     array (
-      0 => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v3\\resources\\views',
+      0 => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v4\\resources\\views',
     ),
-    'compiled' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v3\\storage\\framework\\views',
+    'compiled' => 'D:\\xampp\\htdocs\\fifthYear\\gitlapGroup\\networkingOfCharities\\v4\\storage\\framework\\views',
   ),
   'flare' => 
   array (
