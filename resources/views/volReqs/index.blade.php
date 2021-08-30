@@ -17,6 +17,7 @@
                             <tr>
                                 <th scope="col">{{ __('Volnteer Name') }}</th>
                                 <th scope="col">{{ __('Job Title') }}</th>
+                                <th scope="col">{{ __('Charity') }}</th>
                                 <th scope="col">{{ __('CV') }}</th>
                                 <th scope="col">{{ __('State') }}</th>
                                 <th scope="col" width="150">{{ __('Control') }}</th>
@@ -25,13 +26,16 @@
                         <tbody>
                             @foreach ($jobReqs as $jreq)
                             <tr>
-                                <td> @if(config('app.locale')=='ar'){{$jreq->volunteer->name_ar}}@else{{$jreq->volunteer->name_en}} @endif</td>
-                                <td> @if(config('app.locale')=='ar'){{$jreq->job->job_title_ar}}@else{{$jreq->job->job_title_en}} @endif</td>
+                                <td> @if(config('app.locale')=='ar'){{$jreq->volunteer->name_ar}}       @else{{$jreq->volunteer->name_en}} @endif</td>
+                                <td> @if(config('app.locale')=='ar'){{$jreq->job->job_title_ar}}        @else{{$jreq->job->job_title_en}} @endif</td>
+                                <td> @if(config('app.locale')=='ar'){{$jreq->job->charity->name_ar}}    @else{{$jreq->job->charity->name_en}}@endif</td>
                                 <td>
                                     <a href="{{asset(config('path.cvs').'/'.$jreq->cv)}}"
                                         target="__blank()">{{__('show CV')}}</a>
                                 </td>
+
                                 <td>{{__($jreq->state)}}</td>
+                                
                                 <td>
                                     @can('ch_access',$jreq->job->charity)
                                     <form action="{{route('jobReqs.update',$jreq)}}" method="POST">

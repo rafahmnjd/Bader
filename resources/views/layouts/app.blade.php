@@ -72,8 +72,8 @@
                             @else
                             <a class="nav-link" href="{{ route('lang', 'en') }}">{{ __('En') }}</a>
                             @endif
+                            <a class="nav-link" href="{{ route('reports') }}">{{ __('Reports') }}</a>
                             <a class="nav-link" href="{{ route('search.charities') }}">{{ __('Search...') }}</a>
-                            <a class="nav-link" href="{{ route('reports') }}">{{ __('Reports...') }}</a>
                         </ul>
 
                         <!-- Right Side Of Navbar -->
