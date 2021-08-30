@@ -7,8 +7,11 @@ use App\Models\CharityJob;
 use App\Models\Project;
 use App\Models\Shortage;
 use App\Models\User;
+use App\Models\Item;
 use App\Models\EnView;
 use App\Models\ArView;
+use App\Models\View;
+
 
 use DB;
 
@@ -78,9 +81,11 @@ class HomeController extends Controller
             ->select('governorates.name_ar', DB::raw('count(charities.user_id) as val'))
             ->groupBy('governorates.name_ar')->orderBy('governorates.id')->get();
 
-        $item_gov_chart = ArView::select('gov_id','item_name',DB::raw('sum(quantity) as val'))
-        ->where('type','min')->whereIn('item_id' , ArView::select('item_id',DB::raw('sum(quantity) as Sval'))->groupBy('item_name')->orderBy('Sval','DESC')->take(7)->get())
-        ->groupBy('item_name','gov_id')->orderBy('item_name')->orderBy('gov_id')->get();
+
+        $a=Item::select('items.name_ar')->join('shortages','shortages.item_id','items.id')->where('shortages.type','min')
+         ->groupBy('items.name_ar')->orderBy(DB::raw('sum(quantity)'),'DESC')->take(5)->pluck('name_ar')->toArray();
+        $item_gov_chart = View::select('item_name','gov_id',DB::raw('sum(quantity) as val'))
+        ->whereIn('item_name' ,$a)->groupBy('gov_id','item_name')->get();
         // dd( $item_gov_chart);
         return view('welcome', compact('charities', 'projects', 'jobs', 'counts', 'percents', 'completed', 'ch_gov_Chart','item_gov_chart'));
     }

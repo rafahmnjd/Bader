@@ -16,17 +16,21 @@ class CreateArView extends Migration
         \DB::statement( "
             CREATE VIEW ar_view AS
                 SELECT
-                items.id as item_id,
-                items.name_ar as item_name,
-                items.cat_ar as item_cat,
-                items.subcat_ar as item_subcat,
-                items.subcat2_ar as item_subcat2,
-                shortages.id,shortages.type,shortages.quantity,shortages.state,shortages.created_at,
-                governorates.id as gov_id,
-                governorates.name_ar as gov_name,
-                cities.name_ar as city_name
-                FROM governorates join cities on(cities.governorate_id=governorates.id) join charities on(charities.city_id=cities.id) join shortages on (shortages.charity_id =  charities.user_id ) join items on (shortages.item_id= items.id)"
-            );
+                items.id as `رمز المادة`,
+                items.name_ar as `اسم المادة`,
+                items.cat_ar as `تصنيف المادة`,
+                shortages.type as `النوع`,
+                shortages.quantity as `الكمية`,
+                shortages.state as `الحالة`,
+                shortages.created_at as `تاريخ الطلب`,
+                month(shortages.created_at) as `الشهر`,
+                year(shortages.created_at) as `العام`,
+                governorates.name_ar as `اسم المحافظة`,
+                cities.name_ar as `اسم المدينة`
+                FROM governorates join cities on(cities.governorate_id=governorates.id) join charities on(charities.city_id=cities.id) join  shortages on (shortages.charity_id =  charities.user_id ) join items on (shortages.item_id= items.id)
+                where shortages.type != 'proj'"
+
+);
     }
 
     /**

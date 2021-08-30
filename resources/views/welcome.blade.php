@@ -228,13 +228,13 @@ onload="resetSelection()"
 </div>
 @endsection
 @section('script')
-    <script src="{{asset('js/jquery.min.js')}}"></script>
-    <script src="{{asset('js/chart.min.js')}}"
-        integrity="sha512-asxKqQghC1oBShyhiBwA+YgotaSYKxGP1rcSYTDrB0U6DxwlJjU59B67U8+5/++uFjcuVM8Hh5cokLjZlhm3Vg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="{{asset('js/jquery.min.js')}}"></script>
+<script src="{{asset('js/chart.min.js')}}"
+    integrity="sha512-asxKqQghC1oBShyhiBwA+YgotaSYKxGP1rcSYTDrB0U6DxwlJjU59B67U8+5/++uFjcuVM8Hh5cokLjZlhm3Vg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <script>
-        $(document).ready(function () {
+<script>
+    $(document).ready(function () {
             var ctx = $('#chByGov');
             var jslabels = [];
             var chval = [];
@@ -301,6 +301,7 @@ onload="resetSelection()"
                     }
                 }
             });
+
             var itemdata = {
                 labels: jslabels,
                 datasets: [
@@ -315,16 +316,16 @@ onload="resetSelection()"
                                 echo($item_gov_chart[$i]->val.",");
                                 $firstId = $firstId+1;
                                 $i=$i+1;
+                                // console("{!! $i !!}");
                                 while($i<count($item_gov_chart) && $lindex==$item_gov_chart[$i]->item_name){
-                                    for($j=$firstId; $j< $item_gov_chart[$i]->gov_id; $j++){
-                                            echo("0,");
-                                    }
-                                        $firstId=$item_gov_chart[$i]->gov_id;
-                                        echo($item_gov_chart[$i]->val);
-                                        echo(",");
+                                    for($j=$firstId;$j<$item_gov_chart[$i]->gov_id;$j++){ echo("0,"); }
+                                      $firstId = $item_gov_chart[$i]->gov_id;
+                                       echo($item_gov_chart[$i]->val);
+                                    echo(",");
                                         $firstId=$firstId+1;
-                                    $i+=1;
+                                        $i+=1;
                                 }
+                                $i-=1;
                                 for($j=$firstId;$j<=14;$j++){
                                     echo("0,");
                                 }?>
@@ -336,6 +337,7 @@ onload="resetSelection()"
                     @endfor
                 ],
             };
+
             var myChart = new Chart(itemByGov, {
                 type: 'bar',
                 data: itemdata,
@@ -347,5 +349,5 @@ onload="resetSelection()"
                 }
             });
         });
-    </script>
+</script>
 @endsection
